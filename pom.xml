@@ -4,6 +4,10 @@
   <groupId>devops.codereview</groupId>
   <artifactId>DevOps_gp4</artifactId>
   <version>0.1.0.1</version>
-  <name>Archetype - DevOps_gp4</name>
+    <properties>
+        <maven.compiler.source>19</maven.compiler.source>
+        <maven.compiler.target>19</maven.compiler.target>
+    </properties>
+    <name>Archetype - DevOps_gp4</name>
   <url>http://maven.apache.org</url>
 </project>
