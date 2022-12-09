@@ -1,4 +1,4 @@
 FROM openjdk:19
-COPY ./target/classes/devops /tmp/devops
+COPY ./target/DevOps_gp4-0.1.0.1-jar-with-dependencies.jar /tmp/devops
 WORKDIR /tmp
-ENTRYPOINT ["java", "devops.codereview.App"]
+ENTRYPOINT ["java", "-jar", "DevOps_gp4-0.1.0.1-jar-with-dependencies.jar"]
