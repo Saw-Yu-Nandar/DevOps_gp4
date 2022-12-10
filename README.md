@@ -3,7 +3,7 @@ SET09623 2022-2023 TR2 001 - DevOps
 
 #Team Members: Saw Yu Nandar, Yoon Ei Shwe Zin, Su Hnin Lwin, Nang Shwe Sin Win
 
-CodeReview 1: project workflow is set-up and try one of the feature requirements
+CodeReview 1: project workflow is set-up and try one of the feature requirements.
 
 
 
