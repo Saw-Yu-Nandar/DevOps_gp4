@@ -11,7 +11,7 @@ CodeReview 1: project workflow is set-up and try one of the feature requirements
 
 [![LICENSE](https://img.shields.io/github/license/Saw-Yu-Nandar/DevOps_gp4.svg?style=flat-square)](https://github.com/Saw-Yu-Nandar/DevOps_gp_project/blob/master/LICENSE)
 
-[![Releases](https://img.shields.io/github/release/Saw-Yu-Nandar/DevOps_gp4/all.svg?style=flat-square)](https://github.com/Saw-Yu-Nandar/DevOps_gp_project/releases)
+[![Releases](https://img.shields.io/github/release/Saw-Yu-Nandar/DevOps_gp4/all.svg?style=flat-square)](https://github.com/Saw-Yu-Nandar/DevOps_gp4/releases)
 
 # Software Engineering Methods
 ![workflow](https://img.shields.io/github/workflow/status/Saw-Yu-Nandar/DevOps_gp4/main.yml/main?style=flat-square)
