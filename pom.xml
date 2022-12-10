@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>devops.codereview</groupId>
   <artifactId>DevOps_gp4</artifactId>
-  <version>0.1.0.1</version>
+  <version>0.1.0.2</version>
     <name>Archetype - DevOps_gp4</name>
     <url>http://maven.apache.org</url>
     <properties>
