@@ -4,8 +4,10 @@
   <groupId>devops.codereview</groupId>
   <artifactId>DevOps_gp4</artifactId>
   <version>0.1.0.2</version>
+
     <name>Archetype - DevOps_gp4</name>
     <url>http://maven.apache.org</url>
+
     <dependencies>
         <dependency>
             <groupId>mysql</groupId>
@@ -13,6 +15,7 @@
             <version>8.0.18</version>
         </dependency>
     </dependencies>
+
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
