@@ -1,4 +1,4 @@
-# USE CASE: 4 Produce a Report on the Salary of Employees of a Given Role
+# Team 4 report file for the Population Information Project
 
 ## CHARACTERISTIC INFORMATION
 
