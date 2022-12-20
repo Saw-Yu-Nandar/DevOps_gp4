@@ -70,6 +70,11 @@ public class App
         }
     }
 
+    /**
+     * 1. All the countries in the world organised by largest population to smallest.
+     * Query execution and pass the array list to format the return value.
+     * Function is called in main.
+     **/
     public ArrayList<Countries> getAllCountries()
     {
         try
@@ -100,14 +105,10 @@ public class App
         }
     }
 
-    public void displayCountries(Countries ctr)
-    {
-        if (ctr != null)
-        {
-            System.out.println(ctr.name + " " + ctr.population + " ");
-        }
-    }
-
+    /**
+     * 1. All the countries in the world organised by largest population to smallest.
+     * Formatting the output data from the list.
+     **/
     public void printCountries(ArrayList<Countries> countries)
     {
         // Print header
