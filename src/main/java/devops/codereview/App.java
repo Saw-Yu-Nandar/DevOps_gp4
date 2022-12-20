@@ -82,10 +82,11 @@ public class App
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect =
+            //Query 1: All the countries in the world organised by largest population to smallest.
+            String strQueryOne =
                     "SELECT country.Name, country.Population FROM country ORDER BY country.Population DESC;";
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
+            ResultSet rset = stmt.executeQuery(strQueryOne);
             // Extract employee information
             ArrayList<Countries> countries = new ArrayList<Countries>();
             while (rset.next())
@@ -123,6 +124,60 @@ public class App
         }
     }
 
+    /**
+     * 2. All the countries in a continent organised by largest population to smallest.
+     * Query execution and pass the array list to format the return value.
+     * Function is called in main.
+     **/
+    public ArrayList<Continent> getAllContinents()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            //Query 2: All the countries in a continent organised by largest population to smallest.
+            String strQueryTwo =
+                    "SELECT country.Continent, country.Population FROM country ORDER BY country.Population DESC;";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strQueryTwo);
+            // Extract employee information
+            ArrayList<Continent> continent = new ArrayList<Continent>();
+            while (rset.next())
+            {
+                Continent contnt = new Continent();
+                contnt.continent = rset.getString("Continent");
+                contnt.population = rset.getString("Population");
+                continent.add(contnt);
+            }
+            return continent;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get salary details");
+            return null;
+        }
+    }
+
+    /**
+     * 2. All the countries in a continent organised by largest population to smallest.
+     * Formatting the output data from the list.
+     **/
+    public void printContinent(ArrayList<Continent> continent)
+    {
+        // Print header
+        System.out.println(String.format("%-70s %-70s", "Continent", "Population"));
+        // Loop over all employees in the list
+        for (Continent cont : continent)
+        {
+            String ctr_string =
+                    String.format("%-70s %-70s",
+                            cont.continent, cont.population);
+            System.out.println(ctr_string);
+        }
+    }
+
     public static void main(String[] args)
     {
         // Create new Application
@@ -133,6 +188,10 @@ public class App
         // Display countries
         ArrayList<Countries> countries = a.getAllCountries();
         a.printCountries(countries);
+
+        // Display continent
+        ArrayList<Continent> continent = a.getAllContinents();
+        a.printContinent(continent);
 
         // Disconnect from database
         a.disconnect();
