@@ -1,5 +1,6 @@
 package devops.codereview;
 
+import javax.swing.plaf.synth.Region;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -178,6 +179,60 @@ public class App
         }
     }
 
+    /**
+     * 3. All the countries in a region organised by largest population to smallest.
+     * Query execution and pass the array list to format the return value.
+     * Function is called in main.
+     **/
+    public ArrayList<Regions> getAllRegion()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            //Query 3: All the countries in a region organised by largest population to smallest.
+            String strQueryThree =
+                    "SELECT country.Region, country.Population FROM country ORDER BY country.Population DESC;";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strQueryThree);
+            // Extract employee information
+            ArrayList<Regions> regions = new ArrayList<Regions>();
+            while (rset.next())
+            {
+                Regions reg = new Regions();
+                reg.region = rset.getString("Region");
+                reg.population = rset.getString("Population");
+                regions.add(reg);
+            }
+            return regions;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get salary details");
+            return null;
+        }
+    }
+
+    /**
+     * 3. All the countries in a region organised by largest population to smallest.
+     * Formatting the output data from the list.
+     **/
+    public void printRegion(ArrayList<Regions> region)
+    {
+        // Print header
+        System.out.println(String.format("%-70s %-70s", "Region", "Population"));
+        // Loop over all employees in the list
+        for (Regions r : region)
+        {
+            String reg_string =
+                    String.format("%-70s %-70s",
+                            r.region, r.population);
+            System.out.println(reg_string);
+        }
+    }
+
     public static void main(String[] args)
     {
         // Create new Application
@@ -192,6 +247,10 @@ public class App
         // Display continent
         ArrayList<Continent> continent = a.getAllContinents();
         a.printContinent(continent);
+
+        // Display region
+        ArrayList<Regions> region = a.getAllRegion();
+        a.printRegion(region);
 
         // Disconnect from database
         a.disconnect();
