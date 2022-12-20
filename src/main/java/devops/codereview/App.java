@@ -239,18 +239,25 @@ public class App
         App a = new App();
         // Connect to database
         a.connect();
+        System.out.println("\n");
 
         // Display countries
+        System.out.println("1: All the countries in the world organised by largest population to smallest.\n");
         ArrayList<Countries> countries = a.getAllCountries();
         a.printCountries(countries);
+        System.out.println("\n");
 
         // Display continent
+        System.out.println("2: All the countries in a continent organised by largest population to smallest.\n");
         ArrayList<Continent> continent = a.getAllContinents();
         a.printContinent(continent);
+        System.out.println("\n");
 
         // Display region
+        System.out.println("3: All the countries in a region organised by largest population to smallest.\n");
         ArrayList<Regions> region = a.getAllRegion();
         a.printRegion(region);
+        System.out.println("\n");
 
         // Disconnect from database
         a.disconnect();
