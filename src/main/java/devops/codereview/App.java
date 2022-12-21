@@ -468,7 +468,7 @@ public class App
             // Create string for SQL statement
             //Query 8: All the cities in a continent organised by largest population to smallest.
             String strQueryEight =
-                    "SELECT city.Name, country.Population FROM city INNER JOIN country on city.Population = country.Population ORDER BY city.Population DESC";
+                    "SELECT city.Name, country.Continent, country.Population FROM city INNER JOIN country on city.Population = country.Population ORDER BY city.Population DESC;";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryEight);
             // Extract continent information
@@ -476,7 +476,7 @@ public class App
             while (rset.next())
             {
                 Continent conti = new Continent();
-                conti.continent = rset.getString("Name");
+                conti.continent = rset.getString("Continent");
                 conti.population = rset.getString("Population");
                 continent.add(conti);
             }
@@ -485,7 +485,7 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get salary details");
+            System.out.println("Failed to get all the cities in a continent organised by largest population to smallest.");
             return null;
         }
     }
@@ -507,8 +507,59 @@ public class App
             System.out.println(conti_string);
         }
     }
+    /**
+     * 9. All the cities in a region organised by largest population to smallest.
+     * Query execution and pass the array list to format the return value.
+     * Function is called in main.
+     **/
+    public ArrayList<Regions> getALLRegions()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            //Query 9: All the cities in a region organised by largest population to smallest.
+            String strQueryEight =
+                    "SELECT city.Name, country.Region, country.Population FROM city INNER JOIN country on city.Population = country.Population ORDER BY city.Population DESC;";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strQueryEight);
+            // Extract continent information
+            ArrayList<Regions> reg = new ArrayList<Regions>();
+            while (rset.next())
+            {
+                Regions regs = new Regions();
+                regs.region = rset.getString("Region");
+                regs.region = rset.getString("Population");
+                reg.add(regs);
+            }
+            return reg;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get all the cities in a region organised by largest population to smallest.");
+            return null;
+        }
+    }
 
-
+    /**
+     * 9. All the cities in a region organised by largest population to smallest.
+     * Formatting the output data from the list.
+     **/
+    public void printRegions(ArrayList<Regions> regions)
+    {
+        // Print header
+        System.out.println(String.format("%-70s %-70s", "Name", "Population"));
+        // Loop over all countries in the list
+        for (Regions regs : regions)
+        {
+            String reg_string =
+                    String.format("%-70s %-70s",
+                            regs.region,regs.population);
+            System.out.println(reg_string);
+        }
+    }
     public static void main(String[] args)
     {
         // Create new Application
@@ -566,6 +617,13 @@ public class App
         ArrayList<Continent> continent = a.getAllContinent();
         a.printContinent(continent);
         System.out.println("\n");
+
+
+        System.out.println("9: All the cities in a region organised by largest population to smallest.\n");
+        ArrayList<Regions> regions = a.getAllRegion();
+        a.printRegions(regions);
+        System.out.println("\n");
+
 
         // Disconnect from database
         a.disconnect();
