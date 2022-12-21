@@ -412,12 +412,12 @@ public class App
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            //Query 1: All the countries in the world organised by largest population to smallest.
+            //Query 7: All the cities in the world organised by largest population to smallest.
             String strQuerySeven =
                     "SELECT city.Name, city.Population FROM city ORDER BY city.Population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQuerySeven);
-            // Extract countries information
+            // Extract cities information
             ArrayList<Cities> cities = new ArrayList<Cities>();
             while (rset.next())
             {
@@ -444,13 +444,67 @@ public class App
     {
         // Print header
         System.out.println(String.format("%-70s %-70s", "Name", "Population"));
-        // Loop over all countries in the list
+        // Loop over all cities in the list
         for (Cities cit : cities)
         {
             String cit_string =
                     String.format("%-70s %-70s",
                             cit.cit_name, cit.cit_population);
             System.out.println(cit_string);
+        }
+    }
+
+    /**
+     * 8. All the cities in a continent organised by largest population to smallest.
+     * Query execution and pass the array list to format the return value.
+     * Function is called in main.
+     **/
+    public ArrayList<Continent> getAllContinent()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            //Query 8: All the cities in a continent organised by largest population to smallest.
+            String strQueryEight =
+                    "SELECT city.Name, country.Population FROM city INNER JOIN country on city.Population = country.Population ORDER BY city.Population DESC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strQueryEight);
+            // Extract continent information
+            ArrayList<Continent> continent = new ArrayList<Continent>();
+            while (rset.next())
+            {
+                Continent conti = new Continent();
+                conti.continent = rset.getString("Name");
+                conti.population = rset.getString("Population");
+                continent.add(conti);
+            }
+            return continent;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get salary details");
+            return null;
+        }
+    }
+
+    /**
+     * 8. All the cities in a continent organised by largest population to smallest.
+     * Formatting the output data from the list.
+     **/
+    public void printContinents(ArrayList<Continent> continent)
+    {
+        // Print header
+        System.out.println(String.format("%-70s %-70s", "Name", "Population"));
+        // Loop over all countries in the list
+        for (Continent conti : continent)
+        {
+            String conti_string =
+                    String.format("%-70s %-70s",
+                            conti.continent, conti.population);
+            System.out.println(conti_string);
         }
     }
 
@@ -503,9 +557,14 @@ public class App
 //        a.printNPopulatedRegion(npopreg);
 //        System.out.println("\n");
 
-        System.out.println("7: All the cities in the world organised by largest population to smallest.\n");
-        ArrayList<Cities> cities = a.getAllCities();
-        a.printCities(cities);
+//        System.out.println("7: All the cities in the world organised by largest population to smallest.\n");
+//        ArrayList<Cities> cities = a.getAllCities();
+//        a.printCities(cities);
+//        System.out.println("\n");
+
+        System.out.println("8: All the cities in a continent organised by largest population to smallest.\n");
+        ArrayList<Continent> continent = a.getAllContinent();
+        a.printContinent(continent);
         System.out.println("\n");
 
         // Disconnect from database
