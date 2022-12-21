@@ -613,10 +613,10 @@ public class App
 //        a.printCities(cities);
 //        System.out.println("\n");
 
-        System.out.println("8: All the cities in a continent organised by largest population to smallest.\n");
-        ArrayList<Continent> continent = a.getAllContinent();
-        a.printContinent(continent);
-        System.out.println("\n");
+       // System.out.println("8: All the cities in a continent organised by largest population to smallest.\n");
+       // ArrayList<Continent> continent = a.getAllContinent();
+       // a.printContinent(continent);
+       // System.out.println("\n");
 
 
         System.out.println("9: All the cities in a region organised by largest population to smallest.\n");
