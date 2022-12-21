@@ -346,6 +346,59 @@ public class App
         }
     }
 
+    /**
+     * 6. The top N populated countries in a region where N is provided by the user.
+     * Query execution by user input and pass the array list to format the return value.
+     * Function is called in main.
+     **/
+    public ArrayList<NPopulatedRegion> getAllNPopulatedRegion(int input_num)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            //Query 6: The top N populated countries in a region where N is provided by the user.
+            String strQuerySix =
+                    "SELECT country.Region, country.Population FROM country ORDER BY country.Population DESC LIMIT "+input_num;
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strQuerySix);
+            // Extract region information
+            ArrayList<NPopulatedRegion> NPopulated_Region = new ArrayList<NPopulatedRegion>();
+            while (rset.next())
+            {
+                NPopulatedRegion npopreg = new NPopulatedRegion();
+                npopreg.reg_name = rset.getString("Region");
+                npopreg.reg_population = rset.getString("Population");
+                NPopulated_Region.add(npopreg);
+            }
+            return NPopulated_Region;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get salary details");
+            return null;
+        }
+    }
+    /**
+     * 6. The top N populated countries in a region where N is provided by the user
+     * Query execution by user input and pass the array list to format the return value.
+     * Function is called in main.
+     **/
+    public void printNPopulatedRegion(ArrayList<NPopulatedRegion> NPopulatedRegion)
+    {
+        // Print header
+        System.out.println(String.format("%-70s %-70s", "Region Name", "Population"));
+        // Loop over all region in the list
+        for (NPopulatedRegion npopreg : NPopulatedRegion)
+        {
+            String npopreg_string =
+                    String.format("%-70s %-70s",
+                            npopreg.reg_name, npopreg.reg_population);
+            System.out.println(npopreg_string);
+        }
+    }
     public static void main(String[] args)
     {
         // Create new Application
@@ -383,9 +436,15 @@ public class App
         //System.out.println("\n");
 
         // Top N countries in continent by user input
-        System.out.println("5.The top N populated countries in a continent where N is provided by the user..\n");
-        ArrayList<NPopulatedContinents> npopcont = a.getAllNPopulatedContinents(10);
-        a.printNPopulatedContinents(npopcont);
+//        System.out.println("5.The top N populated countries in a continent where N is provided by the user..\n");
+//        ArrayList<NPopulatedContinents> npopcont = a.getAllNPopulatedContinents(10);
+//        a.printNPopulatedContinents(npopcont);
+//        System.out.println("\n");
+
+        // Top N countries in continent by user input
+        System.out.println("6.The top N populated countries in a region where N is provided by the user..\n");
+        ArrayList<NPopulatedRegion> npopreg = a.getAllNPopulatedRegion(10);
+        a.printNPopulatedRegion(npopreg);
         System.out.println("\n");
 
         // Disconnect from database
