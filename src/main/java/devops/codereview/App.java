@@ -3,6 +3,7 @@ package devops.codereview;
 import javax.swing.plaf.synth.Region;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class App
 {
@@ -233,6 +234,68 @@ public class App
         }
     }
 
+
+
+
+
+
+
+
+
+    /**
+     * 4. The top N populated countries in the world where N is provided by the user.
+     * Query execution by user input and pass the array list to format the return value.
+     * Function is called in main.
+     **/
+    public ArrayList<NPopulatedCountries> getAllNPopulatedCountries(int input_num)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            //Query 4: The top N populated countries in the world where N is provided by the user.
+            String strQueryFour =
+                    "SELECT country.Name, country.Population FROM country ORDER BY country.Population DESC LIMIT "+input_num;
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strQueryFour);
+            // Extract employee information
+            ArrayList<NPopulatedCountries> NPopulatedCountries = new ArrayList<NPopulatedCountries>();
+            while (rset.next())
+            {
+                NPopulatedCountries npopctr = new NPopulatedCountries();
+                npopctr.name = rset.getString("Name");
+                npopctr.population = rset.getString("Population");
+                NPopulatedCountries.add(npopctr);
+            }
+            return NPopulatedCountries;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get salary details");
+            return null;
+        }
+    }
+
+    /**
+     * 4. The top N populated countries in the world where N is provided by the user.
+     * Formatting the output data from the list.
+     **/
+    public void printNPopulatedCountries(ArrayList<NPopulatedCountries> NPopulatedCountries)
+    {
+        // Print header
+        System.out.println(String.format("%-70s %-70s", "Name", "Population"));
+        // Loop over all employees in the list
+        for (NPopulatedCountries npopctr : NPopulatedCountries)
+        {
+            String npopctr_string =
+                    String.format("%-70s %-70s",
+                            npopctr.name, npopctr.population);
+            System.out.println(npopctr_string);
+        }
+    }
+
     public static void main(String[] args)
     {
         // Create new Application
@@ -257,6 +320,16 @@ public class App
         System.out.println("3: All the countries in a region organised by largest population to smallest.\n");
         ArrayList<Regions> region = a.getAllRegion();
         a.printRegion(region);
+        System.out.println("\n");
+
+        // Top N countries by user input
+        System.out.println("4: The top N populated countries in the world where N is provided by the user.\n");
+        //Request input from user
+        //Scanner sc = new Scanner(System.in);
+        //System.out.println("Enter number: ");
+        //int usr_input = sc.nextInt();
+        ArrayList<NPopulatedCountries> npopctr = a.getAllNPopulatedCountries(10);
+        a.printNPopulatedCountries(npopctr);
         System.out.println("\n");
 
         // Disconnect from database
