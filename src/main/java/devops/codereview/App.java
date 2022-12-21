@@ -399,6 +399,62 @@ public class App
             System.out.println(npopreg_string);
         }
     }
+
+    /**
+     * 7. All the cities in the world organised by largest population to smallest.
+     * Query execution and pass the array list to format the return value.
+     * Function is called in main.
+     **/
+    public ArrayList<Cities> getAllCities()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            //Query 1: All the countries in the world organised by largest population to smallest.
+            String strQuerySeven =
+                    "SELECT city.Name, city.Population FROM city ORDER BY city.Population DESC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strQuerySeven);
+            // Extract countries information
+            ArrayList<Cities> cities = new ArrayList<Cities>();
+            while (rset.next())
+            {
+                Cities cit = new Cities();
+                cit.cit_name = rset.getString("Name");
+                cit.cit_population = rset.getString("Population");
+                cities.add(cit);
+            }
+            return cities;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get salary details");
+            return null;
+        }
+    }
+
+    /**
+     * 7. All the cities in the world organised by largest population to smallest.
+     * Formatting the output data from the list.
+     **/
+    public void printCities(ArrayList<Cities> cities)
+    {
+        // Print header
+        System.out.println(String.format("%-70s %-70s", "Name", "Population"));
+        // Loop over all countries in the list
+        for (Cities cit : cities)
+        {
+            String cit_string =
+                    String.format("%-70s %-70s",
+                            cit.cit_name, cit.cit_population);
+            System.out.println(cit_string);
+        }
+    }
+
+
     public static void main(String[] args)
     {
         // Create new Application
@@ -442,9 +498,14 @@ public class App
 //        System.out.println("\n");
 
         // Top N countries in continent by user input
-        System.out.println("6.The top N populated countries in a region where N is provided by the user..\n");
-        ArrayList<NPopulatedRegion> npopreg = a.getAllNPopulatedRegion(10);
-        a.printNPopulatedRegion(npopreg);
+//        System.out.println("6.The top N populated countries in a region where N is provided by the user..\n");
+//        ArrayList<NPopulatedRegion> npopreg = a.getAllNPopulatedRegion(10);
+//        a.printNPopulatedRegion(npopreg);
+//        System.out.println("\n");
+
+        System.out.println("7: All the cities in the world organised by largest population to smallest.\n");
+        ArrayList<Cities> cities = a.getAllCities();
+        a.printCities(cities);
         System.out.println("\n");
 
         // Disconnect from database
