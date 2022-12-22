@@ -563,17 +563,73 @@ public class App
     public void printTopNCountries(ArrayList<Countries> count)
     {
         // Print header
-        System.out.println(String.format("%-20s %-40s %-35s %-30s","Country","City Name","District","Population"));
+        System.out.println(String.format("%-20s %-35s %-35s %-30s","Country","City Name","District","Population"));
         // Loop over all countries in the list
         for (Countries cont : count)
         {
             String cont_string =
-                    String.format("%-20s %-40s %-35s %-30s",
+                    String.format("%-20s %-35s %-35s %-30s",
                             cont.name,cont.cityname,cont.district,cont.population);
             System.out.println(cont_string);
         }
     }
 
+    /**
+     * 16. The top N populated cities in a district where N is provided by the user.
+     * Query execution and pass the array list to format the return value.
+     * Function is called in main.
+     **/
+    public ArrayList<Cities> getTopNPopulatedDistrict(String input_District, int input_limited)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            //Query 13: The top N populated cities in a district  where N is provided by the user.
+            String strQueryEight =
+                    "SELECT city.Name, country.name as 'countryname', city.District, city.Population FROM city INNER JOIN country on city.CountryCode = country.Code WHERE city.District = '"+input_District+"' ORDER BY city.Population DESC LIMIT "+input_limited+";";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strQueryEight);
+            // Extract continent information
+            ArrayList<Cities> dist = new ArrayList<Cities>();
+            while (rset.next())
+            {
+                Cities dis = new Cities();
+                dis.cit_name = rset.getString("Name");
+                dis.countryname = rset.getString("countryname");
+                dis.district = rset.getString("District");
+                dis.cit_population = rset.getString("Population");
+                dist.add(dis);
+            }
+            return dist;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get the top N populated cities in a district where N is provided by the user.");
+            return null;
+        }
+    }
+
+    /**
+     * 16. The top N populated cities in a district where N is provided by the user.
+     * Formatting the output data from the list.
+     **/
+    public void printTopNDistrict(ArrayList<Cities> dists)
+    {
+        // Print header
+        System.out.println(String.format("%-30s %-20s %-20s %-30s","City Name","Country","District","Population"));
+        // Loop over all countries in the list
+        for (Cities cont : dists)
+        {
+            String cont_string =
+                    String.format("%-30s %-20s %-20s %-30s",
+                            cont.cit_name,cont.countryname,cont.district,cont.cit_population);
+            System.out.println(cont_string);
+        }
+
+    }
     public static void main(String[] args)
     {
         // Create new Application
@@ -622,11 +678,15 @@ public class App
 //        a.printTopNRegion(regs);
 //        System.out.println("\n");
 
-        System.out.println("15: The top N populated cities in a country where N is provided by the user.\n");
-        ArrayList<Countries> ctys = a.getTopNPopulatedCountries("Argentina",10);
-        a.printTopNCountries(ctys);
-        System.out.println("\n");
+//        System.out.println("15: The top N populated cities in a country where N is provided by the user.\n");
+//        ArrayList<Countries> ctys = a.getTopNPopulatedCountries("Argentina",10);
+//        a.printTopNCountries(ctys);
+//        System.out.println("\n");
 
+        System.out.println("16: The top N populated cities in a district where N is provided by the user.\n");
+        ArrayList<Cities> district = a.getTopNPopulatedDistrict("Zuid-Holland",10);
+        a.printTopNDistrict(district);
+        System.out.println("\n");
 
         // Disconnect from database
         a.disconnect();
