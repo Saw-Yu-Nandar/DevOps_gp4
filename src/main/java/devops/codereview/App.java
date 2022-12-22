@@ -451,12 +451,12 @@ public class App
     public void printTopNContinent(ArrayList<Continent> cnt)
     {
         // Print header
-        System.out.println(String.format("%-30s %-30s %-50s %-50s %-30s","Continent","City Name","Country Name","District","Population"));
+        System.out.println(String.format("%-20s %-40s %-30s %-30s %-30s","Continent","City Name","Country Name","District","Population"));
         // Loop over all countries in the list
         for (Continent cont : cnt)
         {
             String cont_string =
-                    String.format("%-30s %-30s %-50s %-50s %-30s",
+                    String.format("%-20s %-40s %-30s %-30s %-30s",
                             cont.continent,cont.cityname,cont.countryname,cont.district,cont.population);
             System.out.println(cont_string);
         }
@@ -508,13 +508,68 @@ public class App
     public void printTopNRegion(ArrayList<Regions> regn)
     {
         // Print header
-        System.out.println(String.format("%-20s %-40s %-30s %-30s %-30s","Region","City Name","Country Name","District","Population"));
+        System.out.println(String.format("%-20s %-40s %-40s %-40s %-30s","Region","City Name","Country Name","District","Population"));
         // Loop over all countries in the list
         for (Regions cont : regn)
         {
             String cont_string =
-                    String.format("%-20s %-40s %-30s %-30s %-30s",
+                    String.format("%-20s %-40s %-40s %-40s %-30s",
                             cont.region,cont.cityname,cont.countryname,cont.district,cont.population);
+            System.out.println(cont_string);
+        }
+    }
+
+    /**
+     * 15. The top N populated cities in a country where N is provided by the user.
+     * Query execution and pass the array list to format the return value.
+     * Function is called in main.
+     **/
+    public ArrayList<Countries> getTopNPopulatedCountries(String input_Country, int input_limited)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            //Query 13: The top N populated cities in a country where N is provided by the user.
+            String strQueryEight =
+                    "SELECT country.Name as 'name', city.Name as 'cityname', city.District, city.Population FROM city INNER JOIN country on city.CountryCode = country.Code WHERE country.Name = '"+input_Country+"' ORDER BY city.Population DESC LIMIT "+input_limited+";";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strQueryEight);
+            // Extract continent information
+            ArrayList<Countries> country = new ArrayList<Countries>();
+            while (rset.next())
+            {
+                Countries cty = new Countries();
+                cty.name = rset.getString("name");
+                cty.cityname = rset.getString("cityname");
+                cty.district = rset.getString("District");
+                cty.population = rset.getString("Population");
+                country.add(cty);
+            }
+            return country;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get the top N populated cities in a country where N is provided by the user.");
+            return null;
+        }
+    }
+    /**
+     * 15. The top N populated cities in a country where N is provided by the user.
+     * Formatting the output data from the list.
+     **/
+    public void printTopNCountries(ArrayList<Countries> count)
+    {
+        // Print header
+        System.out.println(String.format("%-20s %-40s %-35s %-30s","Country","City Name","District","Population"));
+        // Loop over all countries in the list
+        for (Countries cont : count)
+        {
+            String cont_string =
+                    String.format("%-20s %-40s %-35s %-30s",
+                            cont.name,cont.cityname,cont.district,cont.population);
             System.out.println(cont_string);
         }
     }
@@ -562,9 +617,14 @@ public class App
 //        a.printTopNContinent(con);
 //        System.out.println("\n");
 
-        System.out.println("14: The top N populated cities in a region where N is provided by the user.\n");
-        ArrayList<Regions> regs = a.getTopNPopulatedRegion("Caribbean",10);
-        a.printTopNRegion(regs);
+//        System.out.println("14: The top N populated cities in a region where N is provided by the user.\n");
+//        ArrayList<Regions> regs = a.getTopNPopulatedRegion("Caribbean",10);
+//        a.printTopNRegion(regs);
+//        System.out.println("\n");
+
+        System.out.println("15: The top N populated cities in a country where N is provided by the user.\n");
+        ArrayList<Countries> ctys = a.getTopNPopulatedCountries("Argentina",10);
+        a.printTopNCountries(ctys);
         System.out.println("\n");
 
 
