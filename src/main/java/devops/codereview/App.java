@@ -349,6 +349,61 @@ public class App
             System.out.println(d_string);
         }
     }
+    /**
+     * 12. The top N populated cities in the world where N is provided by the user.
+     * Query execution and pass the array list to format the return value.
+     * Function is called in main.
+     **/
+    public ArrayList<Cities> getTopNPopulatedcities(int input_world)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            //Query 12: The top N populated cities in the world where N is provided by the user.
+            String strQueryEight =
+                    "SELECT city.Name as 'Cityname', country.Name as 'Countryname', city.District, city.Population FROM city INNER JOIN country WHERE city.CountryCode=country.Code ORDER BY city.Population DESC LIMIT "+input_world+";";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strQueryEight);
+            // Extract continent information
+            ArrayList<Cities> worlds = new ArrayList<Cities>();
+            while (rset.next())
+            {
+                Cities world = new Cities();
+                world.cit_name = rset.getString("Cityname");
+                world.countryname = rset.getString("Countryname");
+                world.district = rset.getString("District");
+                world.cit_population = rset.getString("Population");
+                worlds.add(world);
+            }
+            return worlds;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get the top N populated cities in the world where N is provided by the user.");
+            return null;
+        }
+    }
+
+    /**
+     * 12. The top N populated cities in the world where N is provided by the user.
+     * Formatting the output data from the list.
+     **/
+    public void printWorlds(ArrayList<Cities> wld)
+    {
+        // Print header
+        System.out.println(String.format("%-30s %-50s %-50s %-30s","City Name","Country Name","District","Population"));
+        // Loop over all countries in the list
+        for (Cities w : wld)
+        {
+            String w_string =
+                    String.format("%-30s %-50s %-50s %-30s",
+                            w.cit_name,w.countryname,w.district,w.cit_population);
+            System.out.println(w_string);
+        }
+    }
     public static void main(String[] args)
     {
         // Create new Application
@@ -377,11 +432,17 @@ public class App
        // a.printCountries(countries);
        // System.out.println("\n");
 
-        System.out.println("11: All the cities in a district organised by largest population to smallest.\n");
-        ArrayList<Cities> dist = a.getAllcitiesDistrict("Queensland");
-        a.printDistrict(dist);
+       // System.out.println("11: All the cities in a district organised by largest population to smallest.\n");
+       // ArrayList<Cities> dist = a.getAllcitiesDistrict("Queensland");
+       // a.printDistrict(dist);
+       // System.out.println("\n");
+
+
+        System.out.println("12: The top N populated cities in the world where N is provided by the user.\n");
+        ArrayList<Cities> wor = a.getTopNPopulatedcities(10);
+        a.printWorlds(wor);
         System.out.println("\n");
-        // Disconnect from database
+            // Disconnect from database
         a.disconnect();
     }
 }
