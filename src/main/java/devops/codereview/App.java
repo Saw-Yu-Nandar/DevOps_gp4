@@ -71,34 +71,33 @@ public class App
             }
         }
     }
-
     /**
-     * 1. All the countries in the world organised by largest population to smallest.
+     * 7. All the cities in the world organised by largest population to smallest.
      * Query execution and pass the array list to format the return value.
      * Function is called in main.
      **/
-    public ArrayList<Countries> getAllCountries()
+    public ArrayList<Cities> getAllCities()
     {
         try
         {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            //Query 1: All the countries in the world organised by largest population to smallest.
-            String strQueryOne =
-                    "SELECT country.Name, country.Population FROM country ORDER BY country.Population DESC;";
+            //Query 7: All the cities in the world organised by largest population to smallest.
+            String strQuerySeven =
+                    "SELECT city.Name, city.Population FROM city ORDER BY city.Population DESC";
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strQueryOne);
-            // Extract countries information
-            ArrayList<Countries> countries = new ArrayList<Countries>();
+            ResultSet rset = stmt.executeQuery(strQuerySeven);
+            // Extract cities information
+            ArrayList<Cities> cities = new ArrayList<Cities>();
             while (rset.next())
             {
-                Countries ctr = new Countries();
-                ctr.name = rset.getString("Name");
-                ctr.population = rset.getString("Population");
-                countries.add(ctr);
+                Cities cit = new Cities();
+                cit.cit_name = rset.getString("Name");
+                cit.cit_population = rset.getString("Population");
+                cities.add(cit);
             }
-            return countries;
+            return cities;
         }
         catch (Exception e)
         {
@@ -109,101 +108,108 @@ public class App
     }
 
     /**
-     * 1. All the countries in the world organised by largest population to smallest.
+     * 7. All the cities in the world organised by largest population to smallest.
      * Formatting the output data from the list.
      **/
-    public void printCountries(ArrayList<Countries> countries)
+    public void printCities(ArrayList<Cities> cities)
     {
         // Print header
         System.out.println(String.format("%-70s %-70s", "Name", "Population"));
-        // Loop over all countries in the list
-        for (Countries ctr : countries)
+        // Loop over all cities in the list
+        for (Cities cit : cities)
         {
-            String ctr_string =
+            String cit_string =
                     String.format("%-70s %-70s",
-                            ctr.name, ctr.population);
-            System.out.println(ctr_string);
+                            cit.cit_name, cit.cit_population);
+            System.out.println(cit_string);
         }
     }
 
     /**
-     * 2. All the countries in a continent organised by largest population to smallest.
+     * 8. All the cities in a continent organised by largest population to smallest.
      * Query execution and pass the array list to format the return value.
      * Function is called in main.
      **/
-    public ArrayList<Continent> getAllContinents()
+    public ArrayList<Continent> getAllcitiesContinent(String input_continent)
     {
         try
         {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            //Query 2: All the countries in a continent organised by largest population to smallest.
-            String strQueryTwo =
-                    "SELECT country.Continent, country.Population FROM country ORDER BY country.Population DESC;";
+            //Query 8: All the cities in a continent organised by largest population to smallest.
+            String strQueryEight =
+                    "SELECT country.Continent, city.Name as 'cityname', country.Name as 'countryname', city.District, city.Population, country.Code FROM city INNER JOIN country on city.CountryCode = country.Code WHERE country.Continent = '"+input_continent+"' ORDER BY city.Population DESC;";
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strQueryTwo);
+            ResultSet rset = stmt.executeQuery(strQueryEight);
             // Extract continent information
             ArrayList<Continent> continent = new ArrayList<Continent>();
             while (rset.next())
             {
-                Continent contnt = new Continent();
-                contnt.continent = rset.getString("Continent");
-                contnt.population = rset.getString("Population");
-                continent.add(contnt);
+                Continent conti = new Continent();
+                conti.continent = rset.getString("Continent");
+                conti.cityname = rset.getString("cityname");
+                conti.countryname = rset.getString("countryname");
+                conti.district = rset.getString("District");
+                conti.population = rset.getString("Population");
+                conti.countrycode = rset.getString("Code");
+                continent.add(conti);
             }
             return continent;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get salary details");
+            System.out.println("Failed to get all the cities in a continent organised by largest population to smallest.");
             return null;
         }
     }
 
     /**
-     * 2. All the countries in a continent organised by largest population to smallest.
+     * 8. All the cities in a continent organised by largest population to smallest.
      * Formatting the output data from the list.
      **/
-    public void printContinent(ArrayList<Continent> continent)
+    public void printContinents(ArrayList<Continent> continent)
     {
         // Print header
-        System.out.println(String.format("%-70s %-70s", "Continent", "Population"));
-        // Loop over all continent in the list
-        for (Continent cont : continent)
+        System.out.println(String.format("%-20s %-20s %-20s %-50s %-20s %-20s","Continent","City Name","Country Name","District","Population","Code"));
+        // Loop over all countries in the list
+        for (Continent c : continent)
         {
-            String ctr_string =
-                    String.format("%-70s %-70s",
-                            cont.continent, cont.population);
-            System.out.println(ctr_string);
+            String conti_string =
+                    String.format("%-20s %-20s %-20s %-50s %-20s %-20s",
+                            c.continent,c.cityname,c.countryname,c.district,c.population,c.countrycode);
+            System.out.println(conti_string);
         }
     }
-
     /**
-     * 3. All the countries in a region organised by largest population to smallest.
+     * 9. All the cities in a region organised by largest population to smallest.
      * Query execution and pass the array list to format the return value.
      * Function is called in main.
      **/
-    public ArrayList<Regions> getAllRegion()
+    public ArrayList<Regions> getAllcitiesRegions(String input_regions)
     {
         try
         {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            //Query 3: All the countries in a region organised by largest population to smallest.
-            String strQueryThree =
-                    "SELECT country.Region, country.Population FROM country ORDER BY country.Population DESC;";
+            //Query 9: All the cities in a region organised by largest population to smallest.
+            String strQueryEight =
+                    "SELECT country.Region, city.Name as 'cityname', country.Name as 'countryname', city.District, city.Population, country.Code FROM city INNER JOIN country on city.CountryCode = country.Code WHERE country.Region = '"+input_regions+"' ORDER BY city.Population DESC;";
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strQueryThree);
-            // Extract region information
+            ResultSet rset = stmt.executeQuery(strQueryEight);
+            // Extract continent information
             ArrayList<Regions> regions = new ArrayList<Regions>();
             while (rset.next())
             {
                 Regions reg = new Regions();
                 reg.region = rset.getString("Region");
+                reg.cityname = rset.getString("cityname");
+                reg.countryname = rset.getString("countryname");
+                reg.district = rset.getString("District");
                 reg.population = rset.getString("Population");
+                reg.countrycode = rset.getString("Code");
                 regions.add(reg);
             }
             return regions;
@@ -211,195 +217,83 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get salary details");
+            System.out.println("Failed to get all the cities in a region organised by largest population to smallest.");
             return null;
         }
     }
 
     /**
-     * 3. All the countries in a region organised by largest population to smallest.
+     * 9. All the cities in a region organised by largest population to smallest.
      * Formatting the output data from the list.
      **/
-    public void printRegion(ArrayList<Regions> region)
+    public void printRegions(ArrayList<Regions> regions)
     {
         // Print header
-        System.out.println(String.format("%-70s %-70s", "Region", "Population"));
-        // Loop over all region in the list
-        for (Regions r : region)
+        System.out.println(String.format("%-20s %-30s %-30s %-50s %-30s %-20s","Region","City Name","Country Name","District","Population","Code"));
+        // Loop over all countries in the list
+        for (Regions r : regions)
         {
             String reg_string =
-                    String.format("%-70s %-70s",
-                            r.region, r.population);
+                    String.format("%-20s %-30s %-30s %-50s %-30s %-20s",
+                            r.region,r.cityname,r.countryname,r.district,r.population,r.countrycode);
             System.out.println(reg_string);
         }
     }
-
-
-
     /**
-     * 4. The top N populated countries in the world where N is provided by the user.
-     * Query execution by user input and pass the array list to format the return value.
+     * 10. All the cities in a country organised by largest population to smallest.
+     * Query execution and pass the array list to format the return value.
      * Function is called in main.
      **/
-    public ArrayList<NPopulatedCountries> getAllNPopulatedCountries(int input_num)
+    public ArrayList<Countries> getAllcitiesCountries(String input_countries)
     {
         try
         {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            //Query 4: The top N populated countries in the world where N is provided by the user.
-            String strQueryFour =
-                    "SELECT country.Name, country.Population FROM country ORDER BY country.Population DESC LIMIT "+input_num;
+            //Query 10: All the cities in a country organised by largest population to smallest.
+            String strQueryEight =
+                    "SELECT country.Name as 'Countries', city.Name as 'Cityname', city.District, city.Population FROM country INNER JOIN city WHERE country.Code = city.CountryCode AND country.Name='"+input_countries+"' ORDER BY city.Population DESC;";
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strQueryFour);
-            // Extract countries information
-            ArrayList<NPopulatedCountries> NPopulatedCountries = new ArrayList<NPopulatedCountries>();
+            ResultSet rset = stmt.executeQuery(strQueryEight);
+            // Extract continent information
+            ArrayList<Countries> countries = new ArrayList<Countries>();
             while (rset.next())
             {
-                NPopulatedCountries npopctr = new NPopulatedCountries();
-                npopctr.name = rset.getString("Name");
-                npopctr.population = rset.getString("Population");
-                NPopulatedCountries.add(npopctr);
+                Countries c1 = new Countries();
+                c1.name = rset.getString("Countries");
+                c1.cityname = rset.getString("Cityname");
+                c1.district = rset.getString("District");
+                c1.population = rset.getString("Population");
+                countries.add(c1);
             }
-            return NPopulatedCountries;
+            return countries;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get salary details");
+            System.out.println("Failed to get all the cities in a country organised by largest population to smallest.");
             return null;
         }
     }
 
     /**
-     * 4. The top N populated countries in the world where N is provided by the user.
+     * 10. All the cities in a country organised by largest population to smallest.
      * Formatting the output data from the list.
      **/
-    public void printNPopulatedCountries(ArrayList<NPopulatedCountries> NPopulatedCountries)
+    public void printCountries(ArrayList<Countries> countries)
     {
         // Print header
-        System.out.println(String.format("%-70s %-70s", "Countries Name", "Population"));
+        System.out.println(String.format("%-30s %-30s %-50s %-30s","Country Name","City Name","District","Population"));
         // Loop over all countries in the list
-        for (NPopulatedCountries npopctr : NPopulatedCountries)
+        for (Countries cou : countries)
         {
-            String npopctr_string =
-                    String.format("%-70s %-70s",
-                            npopctr.name, npopctr.population);
-            System.out.println(npopctr_string);
+            String c_string =
+                    String.format("%-30s %-30s %-50s %-30s",
+                            cou.name,cou.cityname,cou.district,cou.population);
+            System.out.println(c_string);
         }
     }
-
-
-
-    /**
-     * 5. The top N populated countries in a continent where N is provided by the user.
-     * Query execution by user input and pass the array list to format the return value.
-     * Function is called in main.
-     **/
-    public ArrayList<NPopulatedContinents> getAllNPopulatedContinents(int input_num)
-    {
-        try
-        {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            //Query 5: The top N populated countries in a continent where N is provided by the user.
-            String strQueryFive =
-                    "SELECT country.Continent, country.Population FROM country ORDER BY country.Population DESC LIMIT "+input_num;
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strQueryFive);
-            // Extract continent information
-            ArrayList<NPopulatedContinents> NPopulated_Continents = new ArrayList<NPopulatedContinents>();
-            while (rset.next())
-            {
-                NPopulatedContinents npopcont = new NPopulatedContinents();
-                npopcont.cont_name = rset.getString("Continent");
-                npopcont.cont_population = rset.getString("Population");
-                NPopulated_Continents.add(npopcont);
-            }
-            return NPopulated_Continents;
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get salary details");
-            return null;
-        }
-    }
-    /**
-     * 5. The top N populated countries in a continent where N is provided by the user.
-     * Query execution by user input and pass the array list to format the return value.
-     * Function is called in main.
-     **/
-    public void printNPopulatedContinents(ArrayList<NPopulatedContinents> NPopulatedContinents)
-    {
-        // Print header
-        System.out.println(String.format("%-70s %-70s", "Continent Name", "Population"));
-        // Loop over all continent in the list
-        for (NPopulatedContinents npopcont : NPopulatedContinents)
-        {
-            String npopcont_string =
-                    String.format("%-70s %-70s",
-                            npopcont.cont_name, npopcont.cont_population);
-            System.out.println(npopcont_string);
-        }
-    }
-
-    /**
-     * 6. The top N populated countries in a region where N is provided by the user.
-     * Query execution by user input and pass the array list to format the return value.
-     * Function is called in main.
-     **/
-    public ArrayList<NPopulatedRegion> getAllNPopulatedRegion(int input_num)
-    {
-        try
-        {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            //Query 6: The top N populated countries in a region where N is provided by the user.
-            String strQuerySix =
-                    "SELECT country.Region, country.Population FROM country ORDER BY country.Population DESC LIMIT "+input_num;
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strQuerySix);
-            // Extract region information
-            ArrayList<NPopulatedRegion> NPopulated_Region = new ArrayList<NPopulatedRegion>();
-            while (rset.next())
-            {
-                NPopulatedRegion npopreg = new NPopulatedRegion();
-                npopreg.reg_name = rset.getString("Region");
-                npopreg.reg_population = rset.getString("Population");
-                NPopulated_Region.add(npopreg);
-            }
-            return NPopulated_Region;
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get salary details");
-            return null;
-        }
-    }
-    /**
-     * 6. The top N populated countries in a region where N is provided by the user
-     * Query execution by user input and pass the array list to format the return value.
-     * Function is called in main.
-     **/
-    public void printNPopulatedRegion(ArrayList<NPopulatedRegion> NPopulatedRegion)
-    {
-        // Print header
-        System.out.println(String.format("%-70s %-70s", "Region Name", "Population"));
-        // Loop over all region in the list
-        for (NPopulatedRegion npopreg : NPopulatedRegion)
-        {
-            String npopreg_string =
-                    String.format("%-70s %-70s",
-                            npopreg.reg_name, npopreg.reg_population);
-            System.out.println(npopreg_string);
-        }
-    }
-
 
     public static void main(String[] args)
     {
@@ -409,47 +303,25 @@ public class App
         a.connect();
         System.out.println("\n");
 
-        // Display countries
-        //System.out.println("1: All the countries in the world organised by largest population to smallest.\n");
-        //ArrayList<Countries> countries = a.getAllCountries();
-        //a.printCountries(countries);
-        //System.out.println("\n");
-
-        // Display continent
-        //System.out.println("2: All the countries in a continent organised by largest population to smallest.\n");
-        //ArrayList<Continent> continent = a.getAllContinents();
-        //a.printContinent(continent);
-        //System.out.println("\n");
-
-        // Display region
-        //System.out.println("3: All the countries in a region organised by largest population to smallest.\n");
-        //ArrayList<Regions> region = a.getAllRegion();
-        //a.printRegion(region);
-        //System.out.println("\n");
-
-        // Top N countries by user input
-        //System.out.println("4: The top N populated countries in the world where N is provided by the user.\n");
-        //Request input from user
-        //Scanner sc = new Scanner(System.in);
-        //System.out.println("Enter number: ");
-        //int usr_input = sc.nextInt();
-        //ArrayList<NPopulatedCountries> npopctr = a.getAllNPopulatedCountries(10);
-        //a.printNPopulatedCountries(npopctr);
-        //System.out.println("\n");
-
-        // Top N countries in continent by user input
-//        System.out.println("5.The top N populated countries in a continent where N is provided by the user..\n");
-//        ArrayList<NPopulatedContinents> npopcont = a.getAllNPopulatedContinents(10);
-//        a.printNPopulatedContinents(npopcont);
+//        System.out.println("7: All the cities in the world organised by largest population to smallest.\n");
+//        ArrayList<Cities> cities = a.getAllCities();
+//        a.printCities(cities);
 //        System.out.println("\n");
 
-        // Top N countries in continent by user input
-        System.out.println("6.The top N populated countries in a region where N is provided by the user..\n");
-        ArrayList<NPopulatedRegion> npopreg = a.getAllNPopulatedRegion(10);
-        a.printNPopulatedRegion(npopreg);
+        // System.out.println("8: All the cities in a continent organised by largest population to smallest.\n");
+        // ArrayList<Continent> continent = a.getAllcitiesContinent("Asia");
+        // a.printContinents(continent);
+        // System.out.println("\n");
+
+       // System.out.println("9: All the cities in a region organised by largest population to smallest.\n");
+       // ArrayList<Regions> regions = a.getAllcitiesRegions("Caribbean");
+       // a.printRegions(regions);
+       // System.out.println("\n");
+
+        System.out.println("10: All the cities in a country organised by largest population to smallest.\n");
+        ArrayList<Countries> countries = a.getAllcitiesCountries("Myanmar");
+        a.printCountries(countries);
         System.out.println("\n");
-
-
         // Disconnect from database
         a.disconnect();
     }
