@@ -294,7 +294,61 @@ public class App
             System.out.println(c_string);
         }
     }
+    /**
+     * 11. All the cities in a district organised by largest population to smallest.
+     * Query execution and pass the array list to format the return value.
+     * Function is called in main.
+     **/
+    public ArrayList<Cities> getAllcitiesDistrict(String input_district)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            //Query 11: All the cities in a district organised by largest population to smallest.
+            String strQueryEight =
+                    "SELECT city.Name as 'Cityname', country.Name as 'Countryname', city.District as 'District', city.Population FROM country INNER JOIN city WHERE city.District='"+input_district+"' ORDER BY city.Population DESC;";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strQueryEight);
+            // Extract continent information
+            ArrayList<Cities> district = new ArrayList<Cities>();
+            while (rset.next())
+            {
+                Cities dist = new Cities();
+                dist.cit_name = rset.getString("Cityname");
+                dist.countryname = rset.getString("Countryname");
+                dist.district = rset.getString("District");
+                dist.cit_population = rset.getString("Population");
+                district.add(dist);
+            }
+            return district;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get all the cities in a district organised by largest population to smallest.");
+            return null;
+        }
+    }
 
+    /**
+     * 11. All the cities in a district organised by largest population to smallest.
+     * Formatting the output data from the list.
+     **/
+    public void printDistrict(ArrayList<Cities> district)
+    {
+        // Print header
+        System.out.println(String.format("%-30s %-50s %-50s %-30s","City Name","Country Name","District","Population"));
+        // Loop over all countries in the list
+        for (Cities di : district)
+        {
+            String d_string =
+                    String.format("%-30s %-50s %-50s %-30s",
+                            di.cit_name,di.countryname,di.district,di.cit_population);
+            System.out.println(d_string);
+        }
+    }
     public static void main(String[] args)
     {
         // Create new Application
@@ -318,9 +372,14 @@ public class App
        // a.printRegions(regions);
        // System.out.println("\n");
 
-        System.out.println("10: All the cities in a country organised by largest population to smallest.\n");
-        ArrayList<Countries> countries = a.getAllcitiesCountries("Myanmar");
-        a.printCountries(countries);
+       // System.out.println("10: All the cities in a country organised by largest population to smallest.\n");
+       // ArrayList<Countries> countries = a.getAllcitiesCountries("Myanmar");
+       // a.printCountries(countries);
+       // System.out.println("\n");
+
+        System.out.println("11: All the cities in a district organised by largest population to smallest.\n");
+        ArrayList<Cities> dist = a.getAllcitiesDistrict("Queensland");
+        a.printDistrict(dist);
         System.out.println("\n");
         // Disconnect from database
         a.disconnect();
