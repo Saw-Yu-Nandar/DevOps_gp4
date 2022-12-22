@@ -391,7 +391,7 @@ public class App
      * 12. The top N populated cities in the world where N is provided by the user.
      * Formatting the output data from the list.
      **/
-    public void printWorlds(ArrayList<Cities> wld)
+    public void printTopNWorlds(ArrayList<Cities> wld)
     {
         // Print header
         System.out.println(String.format("%-30s %-50s %-50s %-30s","City Name","Country Name","District","Population"));
@@ -404,6 +404,64 @@ public class App
             System.out.println(w_string);
         }
     }
+
+    /**
+     * 13. The top N populated cities in a continent where N is provided by the user.
+     * Query execution and pass the array list to format the return value.
+     * Function is called in main.
+     **/
+    public ArrayList<Continent> getTopNPopulatedContinent(String input_Continent, int input_limited)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            //Query 13: The top N populated cities in a continent where N is provided by the user.
+            String strQueryEight =
+                    "SELECT country.Continent, city.Name as 'Cityname', country.Name as 'Countryname', city.District, city.Population FROM city INNER JOIN country on city.CountryCode = country.Code WHERE country.Continent = '"+input_Continent+"' ORDER BY city.Population DESC LIMIT "+input_limited+";";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strQueryEight);
+            // Extract continent information
+            ArrayList<Continent> continent = new ArrayList<Continent>();
+            while (rset.next())
+            {
+                Continent conti = new Continent();
+                conti.continent = rset.getString("Continent");
+                conti.cityname = rset.getString("Cityname");
+                conti.countryname = rset.getString("Countryname");
+                conti.district = rset.getString("District");
+                conti.population = rset.getString("Population");
+                continent.add(conti);
+            }
+            return continent;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get the top N populated cities in a continent where N is provided by the user.");
+            return null;
+        }
+    }
+
+    /**
+     * 13. The top N populated cities in a continent where N is provided by the user.
+     * Formatting the output data from the list.
+     **/
+    public void printTopNContinent(ArrayList<Continent> cnt)
+    {
+        // Print header
+        System.out.println(String.format("%-30s %-30s %-50s %-50s %-30s","Continent","City Name","Country Name","District","Population"));
+        // Loop over all countries in the list
+        for (Continent cont : cnt)
+        {
+            String cont_string =
+                    String.format("%-30s %-30s %-50s %-50s %-30s",
+                            cont.continent,cont.cityname,cont.countryname,cont.district,cont.population);
+            System.out.println(cont_string);
+        }
+    }
+
     public static void main(String[] args)
     {
         // Create new Application
@@ -437,12 +495,18 @@ public class App
        // a.printDistrict(dist);
        // System.out.println("\n");
 
+//        System.out.println("12: The top N populated cities in the world where N is provided by the user.\n");
+//        ArrayList<Cities> wor = a.getTopNPopulatedcities(10);
+//        a.printTopNWorlds(wor);
+//        System.out.println("\n");
 
-        System.out.println("12: The top N populated cities in the world where N is provided by the user.\n");
-        ArrayList<Cities> wor = a.getTopNPopulatedcities(10);
-        a.printWorlds(wor);
+        System.out.println("13: The top N populated cities in a continent where N is provided by the user.\n");
+        ArrayList<Continent> con = a.getTopNPopulatedContinent("Europe",10);
+        a.printTopNContinent(con);
         System.out.println("\n");
-            // Disconnect from database
+
+
+        // Disconnect from database
         a.disconnect();
     }
 }
