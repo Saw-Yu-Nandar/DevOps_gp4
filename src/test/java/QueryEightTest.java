@@ -1,3 +1,4 @@
+//Unit testing for all the cities in a continent organised by largest population to smallest.
 import devops.codereview.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -33,13 +34,12 @@ public class QueryEightTest
     void printContinent()
     {
         ArrayList<Cities> continent = new ArrayList<Cities>();
-        Cities conti = new Cities();
-        conti.cit_name = "Tilburg";
-        conti.country_name = "Netherlands";
-        conti.cit_district = "Noord-Brabant";
-        conti.cit_population = "193238";
+        Cities conti                = new Cities();
+        conti.cit_name              = "Tilburg";
+        conti.country_name          = "Netherlands";
+        conti.cit_district          = "Noord-Brabant";
+        conti.cit_population        = "193238";
         continent.add(conti);
         app.printContinents(continent);
-
     }
 }

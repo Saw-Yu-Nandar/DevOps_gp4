@@ -1,3 +1,4 @@
+//Unit testing for all the cities in a country organised by largest population to smallest.
 import devops.codereview.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -33,11 +34,11 @@ public class QueryTenTest
     void printCountries()
     {
         ArrayList<Cities> countries = new ArrayList<Cities>();
-        Cities co = new Cities();
-        co.cit_name = "Europe";
-        co.country_name = "Greece";
-        co.cit_district = "Southern Europe";
-        co.cit_population = "94000";
+        Cities co                   = new Cities();
+        co.cit_name                 = "Europe";
+        co.country_name             = "Greece";
+        co.cit_district             = "Southern Europe";
+        co.cit_population           = "94000";
         countries.add(co);
         app.printCountries(countries);
     }

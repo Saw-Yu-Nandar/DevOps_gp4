@@ -115,11 +115,16 @@ public class App
      **/
     public void printCities(ArrayList<Cities> cities)
     {
+        if (cities == null){
+            System.out.println("There is no city in the world!");
+        }
         // Print header
         System.out.println(String.format("%-40s %-40s %-30s %-30s","City Name","Country Name","District","Population"));
         // Loop over all cities in the list
         for (Cities cit : cities)
         {
+            if (cit == null)
+                continue;
             String cit_string =
                     String.format("%-40s %-40s %-30s %-30s",
                             cit.cit_name,cit.country_name,cit.cit_district,cit.cit_population);
@@ -170,11 +175,16 @@ public class App
      **/
     public void printContinents(ArrayList<Cities> continent)
     {
+        if (continent == null){
+            System.out.println("There is no city in a continent!");
+        }
         // Print header
         System.out.println(String.format("%-20s %-40s %-20s %-20s","City Name","Country Name","District","Population"));
-        // Loop over all countries in the list
+        // Loop over all cities in the list
         for (Cities c : continent)
         {
+            if (c == null)
+                continue;
             String conti_string =
                     String.format("%-20s %-40s %-20s %-20s",
                             c.cit_name,c.country_name,c.cit_district,c.cit_population);
@@ -198,7 +208,7 @@ public class App
                     "SELECT city.Name as 'CityName',country.Name as 'CountryName', city.District, city.Population FROM city INNER JOIN country on city.CountryCode = country.Code WHERE country.Region = '"+input_regions+"' ORDER BY city.Population DESC;";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryEight);
-            // Extract continent information
+            // Extract regions information
             ArrayList<Cities> regions = new ArrayList<Cities>();
             while (rset.next())
             {
@@ -225,11 +235,16 @@ public class App
      **/
     public void printRegions(ArrayList<Cities> regions)
     {
+        if (regions == null){
+            System.out.println("There is no city in a region!");
+        }
         // Print header
         System.out.println(String.format("%-30s %-30s %-50s %-30s","City Name","Country Name","District","Population"));
-        // Loop over all countries in the list
+        // Loop over all cities in the list
         for (Cities r : regions)
         {
+            if (r == null)
+                continue;
             String reg_string =
                     String.format("%-30s %-30s %-50s %-30s",
                             r.cit_name,r.country_name,r.cit_district,r.cit_population);
@@ -253,7 +268,7 @@ public class App
                     "SELECT city.Name as 'CityName',country.Name as 'CountryName',city.District, city.Population FROM country INNER JOIN city WHERE country.Code = city.CountryCode AND country.Name='"+input_countries+"' ORDER BY city.Population DESC;";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryEight);
-            // Extract continent information
+            // Extract country information
             ArrayList<Cities> countries = new ArrayList<Cities>();
             while (rset.next())
             {
@@ -280,11 +295,16 @@ public class App
      **/
     public void printCountries(ArrayList<Cities> countries)
     {
+        if (countries == null){
+            System.out.println("There is no city in a country!");
+        }
         // Print header
         System.out.println(String.format("%-30s %-30s %-50s %-30s","City Name","Country Name","District","Population"));
-        // Loop over all countries in the list
+        // Loop over all cities in the list
         for (Cities cou : countries)
         {
+            if (cou == null)
+                continue;
             String c_string =
                     String.format("%-30s %-30s %-50s %-30s",
                             cou.cit_name,cou.country_name,cou.cit_district,cou.cit_population);
@@ -308,7 +328,7 @@ public class App
                     "SELECT city.Name as 'CityName', country.Name as 'CountryName', city.District as 'District', city.Population FROM country INNER JOIN city WHERE city.District='"+input_district+"' ORDER BY city.Population DESC;";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryEight);
-            // Extract continent information
+            // Extract district information
             ArrayList<Cities> district = new ArrayList<Cities>();
             while (rset.next())
             {
@@ -335,11 +355,16 @@ public class App
      **/
     public void printDistrict(ArrayList<Cities> district)
     {
+        if (district == null){
+            System.out.println("There is no cities in a district!");
+        }
         // Print header
         System.out.println(String.format("%-30s %-50s %-50s %-30s","City Name","Country Name","District","Population"));
-        // Loop over all countries in the list
+        // Loop over all cities in the list
         for (Cities di : district)
         {
+            if (di == null)
+                continue;
             String d_string =
                     String.format("%-30s %-50s %-50s %-30s",
                             di.cit_name,di.country_name,di.cit_district,di.cit_population);
@@ -363,7 +388,7 @@ public class App
                     "SELECT city.Name as 'Cityname', country.Name as 'Countryname', city.District, city.Population FROM city INNER JOIN country WHERE city.CountryCode=country.Code ORDER BY city.Population DESC LIMIT "+input_world+";";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryEight);
-            // Extract continent information
+            // Extract cities information
             ArrayList<Cities> worlds = new ArrayList<Cities>();
             while (rset.next())
             {
@@ -390,11 +415,11 @@ public class App
     public void printTopNWorlds(ArrayList<Cities> wld)
     {
         if (wld == null){
-            System.out.println("No cities");
+            System.out.println("There is no top N populated cities in the world!");
         }
         // Print header
         System.out.println(String.format("%-30s %-50s %-50s %-30s","City Name","Country Name","District","Population"));
-        // Loop over all countries in the list
+        // Loop over all cities in the list
         for (Cities w : wld)
         {
             if (w == null)
@@ -482,7 +507,7 @@ public class App
                     "SELECT country.Region, city.Name as 'CityName', country.Name as 'CountryName', city.District, city.Population FROM city INNER JOIN country on city.CountryCode = country.Code WHERE country.Region = '"+input_Region+"' ORDER BY city.Population DESC LIMIT "+input_limited+";";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryEight);
-            // Extract continent information
+            // Extract region information
             ArrayList<Cities> region = new ArrayList<Cities>();
             while (rset.next())
             {
@@ -514,7 +539,7 @@ public class App
         }
         // Print header
         System.out.println(String.format("%-40s %-40s %-40s %-30s","City Name","Country Name","District","Population"));
-        // Loop over all countries in the list
+        // Loop over all cities in the list
         for (Cities cont : regn)
         {
             if (cont == null)
@@ -543,7 +568,7 @@ public class App
                     "SELECT city.Name as 'CityName',country.Name as 'CountryName',city.District, city.Population FROM city INNER JOIN country on city.CountryCode = country.Code WHERE country.Name = '"+input_Country+"' ORDER BY city.Population DESC LIMIT "+input_limited+";";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryEight);
-            // Extract continent information
+            // Extract country information
             ArrayList<Cities> country = new ArrayList<Cities>();
             while (rset.next())
             {
@@ -574,7 +599,7 @@ public class App
         }
         // Print header
         System.out.println(String.format("%-20s %-35s %-35s %-30s","Country","City Name","District","Population"));
-        // Loop over all countries in the list
+        // Loop over all cities in the list
         for (Cities cont : count)
         {
             if (cont == null)
@@ -603,7 +628,7 @@ public class App
                     "SELECT city.Name as 'CityName', country.name as 'CountryName', city.District, city.Population FROM city INNER JOIN country on city.CountryCode = country.Code WHERE city.District = '"+input_District+"' ORDER BY city.Population DESC LIMIT "+input_limited+";";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryEight);
-            // Extract continent information
+            // Extract district information
             ArrayList<Cities> dist = new ArrayList<Cities>();
             while (rset.next())
             {
@@ -635,7 +660,7 @@ public class App
         }
         // Print header
         System.out.println(String.format("%-30s %-20s %-20s %-30s","City Name","Country Name","District","Population"));
-        // Loop over all countries in the list
+        // Loop over all cities in the list
         for (Cities cont : dists)
         {
             if (cont == null)
