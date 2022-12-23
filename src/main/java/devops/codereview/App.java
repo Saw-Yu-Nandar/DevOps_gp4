@@ -142,7 +142,7 @@ public class App
             // Create string for SQL statement
             //Query 2: All the countries in a continent organised by largest population to smallest.
             String strQueryTwo =
-                    "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name FROM country INNER JOIN city WHERE country.Code = city.CountryCode AND country.Continent = '"+input_continent+"' ORDER BY country.Population DESC;";
+                    "SELECT country.Code, country.Name as 'CountryName', country.Continent, country.Region, city.Name as 'CityName', country.Population FROM country INNER JOIN city WHERE country.Code = city.CountryCode AND country.Continent = '"+input_continent+"' ORDER BY country.Population DESC;";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryTwo);
             // Extract continent information
@@ -151,11 +151,11 @@ public class App
             {
                 Countries contnt = new Countries();
                 contnt.country_code         = rset.getString("Code");
-                contnt.country_name         = rset.getString("Name");
+                contnt.country_name         = rset.getString("CountryName");
                 contnt.country_cont         = rset.getString("Continent");
                 contnt.country_reg          = rset.getString("Region");
                 contnt.country_population   = rset.getString("Population");
-                contnt.country_cap          = rset.getString("Capital");
+                contnt.country_cap          = rset.getString("CityName");
                 continent.add(contnt);
             }
             return continent;
@@ -200,7 +200,7 @@ public class App
             // Create string for SQL statement
             //Query 3: All the countries in a region organised by largest population to smallest.
             String strQueryThree =
-                    "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name FROM country INNER JOIN city WHERE country.Code = city.CountryCode AND country.Region = '"+input_region+"' ORDER BY country.Population DESC;";
+                    "SELECT country.Code, country.Name as 'CountryName', country.Continent, country.Region, city.Name as 'CityName', country.Population FROM country INNER JOIN city WHERE country.Code = city.CountryCode AND country.Region = '"+input_region+"' ORDER BY country.Population DESC;";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryThree);
             // Extract region information
@@ -209,11 +209,11 @@ public class App
             {
                 Countries reg           = new Countries();
                 reg.country_code        = rset.getString("Code");
-                reg.country_name        = rset.getString("Name");
+                reg.country_name        = rset.getString("CountryName");
                 reg.country_cont        = rset.getString("Continent");
                 reg.country_reg         = rset.getString("Region");
                 reg.country_population  = rset.getString("Population");
-                reg.country_cap         = rset.getString("Capital");
+                reg.country_cap         = rset.getString("CityName");
                 regions.add(reg);
             }
             return regions;
@@ -266,7 +266,7 @@ public class App
             // Create string for SQL statement
             //Query 4: The top N populated countries in the world where N is provided by the user.
             String strQueryFour =
-                    "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name FROM country INNER JOIN city WHERE country.Code = city.CountryCode ORDER BY country.Population DESC LIMIT "+input_limit+";";
+                    "SELECT country.Code, country.Name as 'CountryName', country.Continent, country.Region, city.Name as 'CityName',country.Population FROM country INNER JOIN city WHERE country.Code = city.CountryCode ORDER BY country.Population DESC LIMIT "+input_limit+";";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryFour);
             // Extract countries information
@@ -275,11 +275,11 @@ public class App
             {
                 Countries npopctr = new Countries();
                 npopctr.country_code        = rset.getString("Code");
-                npopctr.country_name        = rset.getString("Name");
+                npopctr.country_name        = rset.getString("CountryName");
                 npopctr.country_cont        = rset.getString("Continent");
                 npopctr.country_reg         = rset.getString("Region");
                 npopctr.country_population  = rset.getString("Population");
-                npopctr.country_cap         = rset.getString("Capital");
+                npopctr.country_cap         = rset.getString("CityName");
                 NPopulatedCountries.add(npopctr);
             }
             return NPopulatedCountries;
@@ -322,7 +322,7 @@ public class App
             // Create string for SQL statement
             //Query 5: The top N populated countries in a continent where N is provided by the user.
             String strQueryFive =
-                    "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name FROM country INNER JOIN city WHERE country.Code = city.CountryCode AND country.Continent = '"+ input_topCon+"' ORDER BY country.Population DESC LIMIT "+input_numb+";";
+                    "SELECT country.Code, country.Name as 'CountryName', country.Continent, country.Region, city.Name as 'CityName', country.Population FROM country INNER JOIN city WHERE country.Code = city.CountryCode AND country.Continent = '"+ input_topCon+"' ORDER BY country.Population DESC LIMIT "+input_numb+";";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryFive);
             // Extract continent information
@@ -331,11 +331,11 @@ public class App
             {
                 Countries npopcont = new Countries();
                 npopcont.country_code       = rset.getString("Code");
-                npopcont.country_name       = rset.getString("Name");
+                npopcont.country_name       = rset.getString("CountryName");
                 npopcont.country_cont       = rset.getString("Continent");
                 npopcont.country_reg        = rset.getString("Region");
                 npopcont.country_population = rset.getString("Population");
-                npopcont.country_cap        = rset.getString("Capital");
+                npopcont.country_cap        = rset.getString("CityName");
                 NPopulated_Continents.add(npopcont);
             }
             return NPopulated_Continents;
@@ -357,11 +357,11 @@ public class App
         // Print header
         System.out.println(String.format("%-30s %-30s %-30s %-30s %-30s %-30s","Code","Country Name","Continent","Region","Population","Capital"));
         // Loop over all continent in the list
-        for (Countries npopcont : NPopulatedContinents)
+        for (Countries npopconti : NPopulatedContinents)
         {
             String npopcont_string =
                     String.format("%-30s %-30s %-30s %-30s %-30s %-30s",
-                            npopcont.country_code,npopcont.country_name,npopcont.country_cont,npopcont.country_reg,npopcont.country_population,npopcont.country_cap);
+                            npopconti.country_code,npopconti.country_name,npopconti.country_cont,npopconti.country_reg,npopconti.country_population,npopconti.country_cap);
             System.out.println(npopcont_string);
         }
     }
@@ -380,7 +380,7 @@ public class App
             // Create string for SQL statement
             //Query 6: The top N populated countries in a region where N is provided by the user.
             String strQuerySix =
-                    "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name FROM country INNER JOIN city WHERE country.Code = city.CountryCode AND country.Region = '"+ input_topReg+"' ORDER BY country.Population DESC LIMIT "+input_num+";";
+                    "SELECT country.Code, country.Name as 'CountryName', country.Continent, country.Region, city.Name as 'CityName', country.Population FROM country INNER JOIN city WHERE country.Code = city.CountryCode AND country.Region = '"+ input_topReg+"' ORDER BY country.Population DESC LIMIT "+input_num+";";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQuerySix);
             // Extract region information
@@ -389,11 +389,11 @@ public class App
             {
                 Countries npopreg           = new Countries();
                 npopreg.country_code        = rset.getString("Code");
-                npopreg.country_name        = rset.getString("Name");
+                npopreg.country_name        = rset.getString("CountryName");
                 npopreg.country_cont        = rset.getString("Continent");
                 npopreg.country_reg         = rset.getString("Region");
                 npopreg.country_population  = rset.getString("Population");
-                npopreg.country_cap         = rset.getString("Capital");
+                npopreg.country_cap         = rset.getString("CityName");
                 NPopulated_Region.add(npopreg);
             }
             return NPopulated_Region;
