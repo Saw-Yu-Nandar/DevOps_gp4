@@ -85,7 +85,7 @@ public class App
             // Create string for SQL statement
             //Query 1: All the countries in the world organised by largest population to smallest.
             String strQueryOne =
-                    "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name FROM country INNER JOIN city WHERE country.Code = city.CountryCode ORDER BY country.Population DESC;";
+                    "SELECT country.Code, country.Name as 'CountryName', country.Continent, country.Region, city.Name as 'CityName', country.Population  FROM country INNER JOIN city WHERE country.Code = city.CountryCode ORDER BY country.Population DESC;";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryOne);
             // Extract countries information
@@ -94,11 +94,11 @@ public class App
             {
                 Countries ctr = new Countries();
                 ctr.country_code        = rset.getString("Code");
-                ctr.country_name        = rset.getString("Name");
+                ctr.country_name        = rset.getString("CountryName");
                 ctr.country_cont        = rset.getString("Continent");
                 ctr.country_reg         = rset.getString("Region");
                 ctr.country_population  = rset.getString("Population");
-                ctr.country_cap         = rset.getString("Capital");
+                ctr.country_cap         = rset.getString("CityName");
                 countries.add(ctr);
             }
             return countries;
@@ -117,13 +117,13 @@ public class App
     public void printAllCountries(ArrayList<Countries> countries)
     {
         // Print header
-        System.out.println(String.format("%-70s %-70s %-70s %-70s %-70s %-70s", "Code","Name","Continent","Region","Population","Capital"));
+        System.out.println(String.format("%-20s %-50s %-50s %-50s %-50s %-30s", "Code","Name","Continent","Region","Population","Capital"));
         // Loop over all countries in the list
-        for (Countries ctr : countries)
+        for (Countries c : countries)
         {
             String ctr_string =
-                    String.format("%-70s %-70s %-70s %-70s %-70s %-70s",
-                            ctr.country_code,ctr.country_name,ctr.country_cont,ctr.country_reg,ctr.country_population,ctr.country_cap);
+                    String.format("%-20s %-50s %-50s %-50s %-50s %-30s",
+                            c.country_code,c.country_name,c.country_cont,c.country_reg,c.country_population,c.country_cap);
             System.out.println(ctr_string);
         }
     }
@@ -442,7 +442,7 @@ public class App
 
         // Display all the countries in the world organised by largest population to smallest.
          System.out.println("1: All the countries in the world organised by largest population to smallest.\n");
-         ArrayList<Countries> countries = new ArrayList<Countries>();
+         ArrayList<Countries> countries = a.getAllCountries();
          a.printAllCountries(countries);
          System.out.println("\n");
 
