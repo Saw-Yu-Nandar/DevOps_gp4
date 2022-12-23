@@ -113,11 +113,16 @@ public class App
      **/
     public void printCities(ArrayList<Cities> cities)
     {
+        if (cities == null){
+            System.out.println("No cities");
+        }
         // Print header
         System.out.println(String.format("%-70s %-70s", "Name", "Population"));
         // Loop over all cities in the list
         for (Cities cit : cities)
         {
+            if (cit == null)
+                continue;
             String cit_string =
                     String.format("%-70s %-70s",
                             cit.cit_name, cit.cit_population);
@@ -171,11 +176,16 @@ public class App
      **/
     public void printContinents(ArrayList<Continent> continent)
     {
+        if (continent == null){
+            System.out.println("No continent");
+        }
         // Print header
         System.out.println(String.format("%-20s %-20s %-20s %-50s %-20s %-20s","Continent","City Name","Country Name","District","Population","Code"));
         // Loop over all countries in the list
         for (Continent c : continent)
         {
+            if (c == null)
+                continue;
             String conti_string =
                     String.format("%-20s %-20s %-20s %-50s %-20s %-20s",
                             c.continent,c.cityname,c.countryname,c.district,c.population,c.countrycode);
@@ -228,11 +238,16 @@ public class App
      **/
     public void printRegions(ArrayList<Regions> regions)
     {
+        if (regions == null){
+            System.out.println("No region");
+        }
         // Print header
         System.out.println(String.format("%-20s %-30s %-30s %-50s %-30s %-20s","Region","City Name","Country Name","District","Population","Code"));
         // Loop over all countries in the list
         for (Regions r : regions)
         {
+            if (r == null)
+                continue;
             String reg_string =
                     String.format("%-20s %-30s %-30s %-50s %-30s %-20s",
                             r.region,r.cityname,r.countryname,r.district,r.population,r.countrycode);
@@ -283,11 +298,16 @@ public class App
      **/
     public void printCountries(ArrayList<Countries> countries)
     {
+        if (countries == null){
+            System.out.println("No country");
+        }
         // Print header
         System.out.println(String.format("%-30s %-30s %-50s %-30s","Country Name","City Name","District","Population"));
         // Loop over all countries in the list
         for (Countries cou : countries)
         {
+            if (cou == null)
+                continue;
             String c_string =
                     String.format("%-30s %-30s %-50s %-30s",
                             cou.name,cou.cityname,cou.district,cou.population);
@@ -338,11 +358,16 @@ public class App
      **/
     public void printDistrict(ArrayList<Cities> district)
     {
+        if (district == null){
+            System.out.println("No District");
+        }
         // Print header
         System.out.println(String.format("%-30s %-50s %-50s %-30s","City Name","Country Name","District","Population"));
         // Loop over all countries in the list
         for (Cities di : district)
         {
+            if (di == null)
+                continue;
             String d_string =
                     String.format("%-30s %-50s %-50s %-30s",
                             di.cit_name,di.countryname,di.district,di.cit_population);
@@ -393,11 +418,16 @@ public class App
      **/
     public void printTopNWorlds(ArrayList<Cities> wld)
     {
+        if (wld == null){
+            System.out.println("No cities");
+        }
         // Print header
         System.out.println(String.format("%-30s %-50s %-50s %-30s","City Name","Country Name","District","Population"));
         // Loop over all countries in the list
         for (Cities w : wld)
         {
+            if (w == null)
+                continue;
             String w_string =
                     String.format("%-30s %-50s %-50s %-30s",
                             w.cit_name,w.countryname,w.district,w.cit_population);
