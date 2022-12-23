@@ -480,11 +480,16 @@ public class App
      **/
     public void printTopNContinent(ArrayList<Continent> cnt)
     {
+        if (cnt == null){
+            System.out.println("No cities in a continent");
+        }
         // Print header
         System.out.println(String.format("%-20s %-40s %-30s %-30s %-30s","Continent","City Name","Country Name","District","Population"));
         // Loop over all countries in the list
         for (Continent cont : cnt)
         {
+            if (cont == null)
+                continue;
             String cont_string =
                     String.format("%-20s %-40s %-30s %-30s %-30s",
                             cont.continent,cont.cityname,cont.countryname,cont.district,cont.population);
@@ -537,11 +542,16 @@ public class App
      **/
     public void printTopNRegion(ArrayList<Regions> regn)
     {
+        if (regn == null){
+            System.out.println("No cities in a region");
+        }
         // Print header
         System.out.println(String.format("%-20s %-40s %-40s %-40s %-30s","Region","City Name","Country Name","District","Population"));
         // Loop over all countries in the list
         for (Regions cont : regn)
         {
+            if (cont == null)
+                continue;
             String cont_string =
                     String.format("%-20s %-40s %-40s %-40s %-30s",
                             cont.region,cont.cityname,cont.countryname,cont.district,cont.population);
@@ -592,11 +602,16 @@ public class App
      **/
     public void printTopNCountries(ArrayList<Countries> count)
     {
+        if (count == null){
+            System.out.println("No cities in a region");
+        }
         // Print header
         System.out.println(String.format("%-20s %-35s %-35s %-30s","Country","City Name","District","Population"));
         // Loop over all countries in the list
         for (Countries cont : count)
         {
+            if (cont == null)
+                continue;
             String cont_string =
                     String.format("%-20s %-35s %-35s %-30s",
                             cont.name,cont.cityname,cont.district,cont.population);
@@ -648,11 +663,16 @@ public class App
      **/
     public void printTopNDistrict(ArrayList<Cities> dists)
     {
+        if (dists == null){
+            System.out.println("No cities in a region");
+        }
         // Print header
         System.out.println(String.format("%-30s %-20s %-20s %-30s","City Name","Country","District","Population"));
         // Loop over all countries in the list
         for (Cities cont : dists)
         {
+            if (cont == null)
+                continue;
             String cont_string =
                     String.format("%-30s %-20s %-20s %-30s",
                             cont.cit_name,cont.countryname,cont.district,cont.cit_population);

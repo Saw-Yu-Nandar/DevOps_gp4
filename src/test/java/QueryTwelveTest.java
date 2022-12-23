@@ -15,22 +15,22 @@ public class QueryTwelveTest
     }
 
     @Test
-    void printCountriesTestEmpty()
+    void printTopNCitiesTestEmpty()
     {
         ArrayList<Cities> worlds = new ArrayList<Cities>();
-        app.printDistrict(worlds);
+        app.printCities(worlds);
     }
 
     //print a list with a null value
     @Test
-    void printAllCountriesTestContainsNull()
+    void printTopNCitiesTestContainsNull()
     {
         ArrayList<Cities> worlds = new ArrayList<Cities>();
         worlds.add(null);
-        app.printDistrict(worlds);
+        app.printCities(worlds);
     }
     @Test
-    void printCountries()
+    void printCities()
     {
         ArrayList<Cities> worlds = new ArrayList<Cities>();
         Cities world = new Cities();
