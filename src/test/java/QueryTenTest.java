@@ -17,7 +17,7 @@ public class QueryTenTest
     @Test
     void printCountriesTestEmpty()
     {
-        ArrayList<Countries> countries = new ArrayList<Countries>();
+        ArrayList<Cities> countries = new ArrayList<Cities>();
         app.printCountries(countries);
     }
 
@@ -25,19 +25,19 @@ public class QueryTenTest
     @Test
     void printAllCountriesTestContainsNull()
     {
-        ArrayList<Countries> countries = new ArrayList<Countries>();
+        ArrayList<Cities> countries = new ArrayList<Cities>();
         countries.add(null);
         app.printCountries(countries);
     }
     @Test
     void printCountries()
     {
-        ArrayList<Countries> countries = new ArrayList<Countries>();
-        Countries co = new Countries();
-        co.name = "Greece";
-        co.cityname = "Europe";
-        co.district = "Southern Europe";
-        co.population = "94000";
+        ArrayList<Cities> countries = new ArrayList<Cities>();
+        Cities co = new Cities();
+        co.cit_name = "Europe";
+        co.country_name = "Greece";
+        co.cit_district = "Southern Europe";
+        co.cit_population = "94000";
         countries.add(co);
         app.printCountries(countries);
     }

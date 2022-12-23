@@ -18,7 +18,7 @@ public class QueryTwelveTest
     void printTopNCitiesTestEmpty()
     {
         ArrayList<Cities> worlds = new ArrayList<Cities>();
-        app.printCities(worlds);
+        app.printTopNWorlds(worlds);
     }
 
     //print a list with a null value
@@ -27,18 +27,18 @@ public class QueryTwelveTest
     {
         ArrayList<Cities> worlds = new ArrayList<Cities>();
         worlds.add(null);
-        app.printCities(worlds);
+        app.printTopNWorlds(worlds);
     }
     @Test
-    void printCities()
+    void printTopNCities()
     {
         ArrayList<Cities> worlds = new ArrayList<Cities>();
         Cities world = new Cities();
         world.cit_name = "Moscow";
-        world.countryname = "Russian Federation";
-        world.district = "Moscow (City)";
+        world.country_name = "Russian Federation";
+        world.cit_district = "Moscow (City)";
         world.cit_population = "8389200";
         worlds.add(world);
-        app.printCities(worlds);
+        app.printTopNWorlds(worlds);
     }
 }

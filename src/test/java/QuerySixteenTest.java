@@ -35,8 +35,8 @@ public class QuerySixteenTest
         ArrayList<Cities> dist = new ArrayList<Cities>();
         Cities dis = new Cities();
         dis.cit_name = "Moscow";
-        dis.countryname = "Russian Federation";
-        dis.district = "Moscow (City)";
+        dis.country_name = "Russian Federation";
+        dis.cit_district = "Moscow (City)";
         dis.cit_population = "8389200";
         dist.add(dis);
         app.printTopNDistrict(dist);

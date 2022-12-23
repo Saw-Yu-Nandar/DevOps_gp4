@@ -17,7 +17,7 @@ public class QueryFifteenTest
     @Test
     void printTopNCountriesTestEmpty()
     {
-        ArrayList<Countries> country = new ArrayList<Countries>();
+        ArrayList<Cities> country = new ArrayList<Cities>();
         app.printTopNCountries(country);
     }
 
@@ -25,19 +25,19 @@ public class QueryFifteenTest
     @Test
     void printTopNCountriesTestContainsNull()
     {
-        ArrayList<Countries> country = new ArrayList<Countries>();
+        ArrayList<Cities> country = new ArrayList<Cities>();
         country.add(null);
         app.printTopNCountries(country);
     }
     @Test
     void printTopNCountries()
     {
-        ArrayList<Countries> country = new ArrayList<Countries>();
-        Countries cty = new Countries();
-        cty.cityname = "Moscow";
-        cty.name = "Russian Federation";
-        cty.district = "Moscow (City)";
-        cty.population = "8389200";
+        ArrayList<Cities> country = new ArrayList<Cities>();
+        Cities cty = new Cities();
+        cty.cit_name = "Moscow";
+        cty.country_name = "Russian Federation";
+        cty.cit_district = "Moscow (City)";
+        cty.cit_population = "8389200";
         country.add(cty);
         app.printTopNCountries(country);
     }

@@ -17,7 +17,7 @@ public class QueryEightTest
     @Test
     void printContinentTestEmpty()
     {
-        ArrayList<Continent> continent = new ArrayList<Continent>();
+        ArrayList<Cities> continent = new ArrayList<Cities>();
         app.printContinents(continent);
     }
 
@@ -25,21 +25,19 @@ public class QueryEightTest
     @Test
     void printAllContinentTestContainsNull()
     {
-        ArrayList<Continent> continent = new ArrayList<Continent>();
+        ArrayList<Cities> continent = new ArrayList<Cities>();
         continent.add(null);
         app.printContinents(continent);
     }
     @Test
     void printContinent()
     {
-        ArrayList<Continent> continent = new ArrayList<Continent>();
-        Continent conti = new Continent();
-        conti.continent = "Europe";
-        conti.cityname = "Tilburg";
-        conti.countryname = "Netherlands";
-        conti.district = "Noord-Brabant";
-        conti.population = "193238";
-        conti.countrycode = "NLD";
+        ArrayList<Cities> continent = new ArrayList<Cities>();
+        Cities conti = new Cities();
+        conti.cit_name = "Tilburg";
+        conti.country_name = "Netherlands";
+        conti.cit_district = "Noord-Brabant";
+        conti.cit_population = "193238";
         continent.add(conti);
         app.printContinents(continent);
 

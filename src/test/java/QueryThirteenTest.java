@@ -17,7 +17,7 @@ public class QueryThirteenTest
     @Test
     void printTopNContinentTestEmpty()
     {
-        ArrayList<Continent> continent = new ArrayList<Continent>();
+        ArrayList<Cities> continent = new ArrayList<Cities>();
         app.printTopNContinent(continent);
     }
 
@@ -25,20 +25,19 @@ public class QueryThirteenTest
     @Test
     void printTopNContinentTestContainsNull()
     {
-        ArrayList<Continent> continent = new ArrayList<Continent>();
+        ArrayList<Cities> continent = new ArrayList<Cities>();
         continent.add(null);
         app.printTopNContinent(continent);
     }
     @Test
     void printTopNContinent()
     {
-        ArrayList<Continent> continent = new ArrayList<Continent>();
-        Continent conti = new Continent();
-        conti.continent = "Europe";
-        conti.cityname = "Moscow";
-        conti.countryname = "Russian Federation";
-        conti.district = "Moscow (City)";
-        conti.population = "8389200";
+        ArrayList<Cities> continent = new ArrayList<Cities>();
+        Cities conti = new Cities();
+        conti.cit_name = "Moscow";
+        conti.country_name = "Russian Federation";
+        conti.cit_district = "Moscow (City)";
+        conti.cit_population = "8389200";
         continent.add(conti);
         app.printTopNContinent(continent);
     }

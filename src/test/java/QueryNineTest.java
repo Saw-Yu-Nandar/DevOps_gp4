@@ -17,7 +17,7 @@ public class QueryNineTest
     @Test
     void printRegionTestEmpty()
     {
-        ArrayList<Regions> regions = new ArrayList<Regions>();
+        ArrayList<Cities> regions = new ArrayList<Cities>();
         app.printRegions(regions);
     }
 
@@ -25,21 +25,19 @@ public class QueryNineTest
     @Test
     void printAllRegionsTestContainsNull()
     {
-        ArrayList<Regions> regions = new ArrayList<Regions>();
+        ArrayList<Cities> regions = new ArrayList<Cities>();
         regions.add(null);
         app.printRegions(regions);
     }
     @Test
     void printRegions()
     {
-        ArrayList<Regions> regions = new ArrayList<Regions>();
-        Regions reg = new Regions();
-        reg.region = "Central Africa";
-        reg.cityname = "Luanda";
-        reg.countryname = "Angola";
-        reg.district = "Luanda";
-        reg.population = "12878000";
-        reg.countrycode = "AGO";
+        ArrayList<Cities> regions = new ArrayList<Cities>();
+        Cities reg = new Cities();
+        reg.cit_name = "Luanda";
+        reg.country_name = "Angola";
+        reg.cit_district = "Luanda";
+        reg.cit_population = "12878000";
         regions.add(reg);
         app.printRegions(regions);
     }

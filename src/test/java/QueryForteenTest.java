@@ -17,7 +17,7 @@ public class QueryForteenTest
     @Test
     void printTopNRegionsTestEmpty()
     {
-        ArrayList<Regions> region = new ArrayList<Regions>();
+        ArrayList<Cities> region = new ArrayList<Cities>();
         app.printTopNRegion(region);
     }
 
@@ -25,20 +25,19 @@ public class QueryForteenTest
     @Test
     void printTopNRegionsTestContainsNull()
     {
-        ArrayList<Regions> region = new ArrayList<Regions>();
+        ArrayList<Cities> region = new ArrayList<Cities>();
         region.add(null);
         app.printTopNRegion(region);
     }
     @Test
     void printTopNRegions()
     {
-        ArrayList<Regions> region = new ArrayList<Regions>();
-        Regions reg = new Regions();
-        reg.region = "Eastern Europe";
-        reg.cityname = "Moscow";
-        reg.countryname = "Russian Federation";
-        reg.district = "Moscow (City)";
-        reg.population = "8389200";
+        ArrayList<Cities> region = new ArrayList<Cities>();
+        Cities reg = new Cities();
+        reg.cit_name = "Moscow";
+        reg.country_name = "Russian Federation";
+        reg.cit_district = "Moscow (City)";
+        reg.cit_population = "8389200";
         region.add(reg);
         app.printTopNRegion(region);
     }
