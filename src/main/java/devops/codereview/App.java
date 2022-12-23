@@ -116,11 +116,19 @@ public class App
      **/
     public void printAllCountries(ArrayList<Countries> countries)
     {
+        // Check countries is not null
+        if (countries == null)
+        {
+            System.out.println("No employees");
+            return;
+        }
         // Print header
         System.out.println(String.format("%-20s %-50s %-50s %-50s %-50s %-30s", "Code","Name","Continent","Region","Population","Capital"));
         // Loop over all countries in the list
         for (Countries c : countries)
         {
+            if (c == null)
+                continue;
             String ctr_string =
                     String.format("%-20s %-50s %-50s %-50s %-50s %-30s",
                             c.country_code,c.country_name,c.country_cont,c.country_reg,c.country_population,c.country_cap);
@@ -174,11 +182,19 @@ public class App
      **/
     public void printContinent(ArrayList<Countries> continent)
     {
+        // Check continent is not null
+        if (continent == null)
+        {
+            System.out.println("No employees");
+            return;
+        }
         // Print header
         System.out.println(String.format("%-30s %-30s %-30s %-30s %-30s %-30s","Code","Country Name","Continent","Region","Population","Capital"));
         // Loop over all continent in the list
         for (Countries cont : continent)
         {
+            if (cont == null)
+                continue;
             String ctr_string =
                     String.format("%-30s %-30s %-30s %-30s %-30s %-30s",
                             cont.country_code,cont.country_name,cont.country_cont,cont.country_reg,cont.country_population,cont.country_cap);
@@ -242,7 +258,7 @@ public class App
         // Loop over all region in the list
         for (Countries r : region)
         {
-            //printRegion to check if an Continent is null
+            //printRegion to check if an region is null
             if (r == null)
                 continue;
             String reg_string =
@@ -296,11 +312,22 @@ public class App
      * 4. The top N populated countries in the world where N is provided by the user.
      * Formatting the output data from the list.
      **/
-    public void printNPopulatedCountries(ArrayList<Countries> NPopulatedC) {
+    public void printNPopulatedCountries(ArrayList<Countries> NPopulatedC)
+    {
+        // Check npopulatedcountries is not null
+        if (NPopulatedC == null)
+        {
+            System.out.println("No region");
+            return;
+        }
         // Print header
         System.out.println(String.format("%-30s %-30s %-30s %-30s %-30s %-30s", "Code", "Country Name", "Continent", "Region", "Population", "Capital"));
         // Loop over all countries in the list
-        for (Countries npopc : NPopulatedC) {
+        for (Countries npopc : NPopulatedC)
+        {
+            //printcontinent to check if an Continent is null
+            if (npopc == null)
+                continue;
             String npopctr_string =
                     String.format("%-30s %-30s %-30s %-30s %-30s %-30s",
                             npopc.country_code, npopc.country_name, npopc.country_cont, npopc.country_reg, npopc.country_population, npopc.country_cap);
@@ -354,11 +381,20 @@ public class App
      **/
     public void printNPopulatedContinents(ArrayList<Countries> NPopulatedContinents)
     {
+        // Check npopulatedcontinent is not null
+        if (NPopulatedContinents == null)
+        {
+            System.out.println("No region");
+            return;
+        }
         // Print header
         System.out.println(String.format("%-30s %-30s %-30s %-30s %-30s %-30s","Code","Country Name","Continent","Region","Population","Capital"));
         // Loop over all continent in the list
         for (Countries npopconti : NPopulatedContinents)
         {
+            //printRegion to check if an Continent is null
+            if (npopconti == null)
+                continue;
             String npopcont_string =
                     String.format("%-30s %-30s %-30s %-30s %-30s %-30s",
                             npopconti.country_code,npopconti.country_name,npopconti.country_cont,npopconti.country_reg,npopconti.country_population,npopconti.country_cap);
@@ -412,10 +448,10 @@ public class App
      **/
     public void printNPopulatedRegion(ArrayList<Countries> NPopulatedRegion)
     {
-        // Check NPopulatedContinents is not null
+        // Check npopulatedregion is not null
         if (NPopulatedRegion == null)
         {
-            System.out.println("No populated region");
+            System.out.println("No region");
             return;
         }
         // Print header
