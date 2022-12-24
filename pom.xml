@@ -27,12 +27,6 @@
             <scope>test</scope>
         </dependency>
 
-        <!--        <dependency>-->
-<!--            <groupId>org.junit.jupiter</groupId>-->
-<!--            <artifactId>junit-jupiter-api</artifactId>-->
-<!--            <version>5.1.0</version>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
     </dependencies>
 
     <properties>
@@ -46,22 +40,8 @@
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>3.3.0</version>
 
-<!--                <dependencies>-->
-<!--                    <dependency>-->
-<!--                        <groupId>org.junit.platform</groupId>-->
-<!--                        <artifactId>junit-platform-surefire-provider</artifactId>-->
-<!--                        <version>1.1.0</version>-->
-<!--                        <scope>test</scope>-->
-<!--                    </dependency>-->
-<!--                    <dependency>-->
-<!--                        <groupId>org.junit.jupiter</groupId>-->
-<!--                        <artifactId>junit-jupiter-engine</artifactId>-->
-<!--                        <version>5.1.0</version>-->
-<!--                        <scope>test</scope>-->
-<!--                    </dependency>-->
-<!--                </dependencies>-->
-
                 <configuration>
+                    <finalName>DevOps_gp4</finalName>
                     <archive>
                         <manifest>
                             <mainClass>devops.codereview.App</mainClass>
@@ -70,6 +50,7 @@
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
+                    <appendAssemblyId>false</appendAssemblyId>
                 </configuration>
                 <executions>
                     <execution>
