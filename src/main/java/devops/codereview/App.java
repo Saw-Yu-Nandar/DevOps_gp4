@@ -15,39 +15,31 @@ public class App
     /**
      * Connect to the MySQL database.
      */
-    public void connect()
-    {
-        try
-        {
+    public void connect(String location, int delay) {
+        try {
             // Load Database driver
             Class.forName("com.mysql.cj.jdbc.Driver");
-        }
-        catch (ClassNotFoundException e)
-        {
+        } catch (ClassNotFoundException e) {
             System.out.println("Could not load SQL driver");
             System.exit(-1);
         }
 
         int retries = 10;
-        for (int i = 0; i < retries; ++i)
-        {
+        for (int i = 0; i < retries; ++i) {
             System.out.println("Connecting to database...");
-            try
-            {
+            try {
                 // Wait a bit for db to start
-                Thread.sleep(30000);
+                Thread.sleep(delay);
                 // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "Team_4");
+                con = DriverManager.getConnection("jdbc:mysql://" + location
+                                + "/world?allowPublicKeyRetrieval=true&useSSL=false",
+                        "root", "Team_4");
                 System.out.println("Successfully connected");
                 break;
-            }
-            catch (SQLException sqle)
-            {
-                System.out.println("Failed to connect to database attempt " + Integer.toString(i));
+            } catch (SQLException sqle) {
+                System.out.println("Failed to connect to database attempt " +                                  Integer.toString(i));
                 System.out.println(sqle.getMessage());
-            }
-            catch (InterruptedException ie)
-            {
+            } catch (InterruptedException ie) {
                 System.out.println("Thread interrupted? Should not happen.");
             }
         }
@@ -672,49 +664,19 @@ public class App
         }
 
     }
+
     public static void main(String[] args)
     {
         // Create new Application
         App a = new App();
         // Connect to database
-        a.connect();
-        System.out.println("\n");
-
-        // Display all the countries in the world organised by largest population to smallest.
-        // System.out.println("1: All the countries in the world organised by largest population to smallest.\n");
-        // ArrayList<World> countries = a.getAllCountries();
-        // a.printCountries(countries);
-        // System.out.println("\n");
-
-        // Display all the countries in a continent organised by largest population to smallest.
-        // System.out.println("2: All the countries in a continent organised by largest population to smallest.\n");
-        // ArrayList<Countries> continent = a.getAllContinents();
-        // a.printContinent(continent);
-        // System.out.println("\n");
-
-        // Display all the countries in a region organised by largest population to smallest.
-        // System.out.println("3: All the countries in a region organised by largest population to smallest.\n");
-        // ArrayList<Countries> continent = a.getAllRegion();
-        // a.printRegion(continent);
-        // System.out.println("\n");
-
-        // Display the top N populated countries in the world where N is provided by the user.
-        // System.out.println("4: The top N populated countries in the world where N is provided by the user.\n");
-        // ArrayList<World> tnw = a.getAllNPopulatedCountries("Africa",10);
-        // a.printNPopulatedCountries(tnw);
-        // System.out.println("\n");
-
-        // Display all the countries in a continent organised by largest population to smallest.
-        // System.out.println("5. The top N populated countries in a continent where N is provided by the user.\n");
-        // ArrayList<Countries> continent = a.getAllContinents();
-        // a.printContinent(continent);
-        // System.out.println("\n");
-
-        // Display the top N populated countries in a region where N is provided by the user.
-        // System.out.println("6: the top N populated countries in a region where N is provided by the user.\n");
-        // ArrayList<Countries> continent = a.getAllNPopulatedRegion(10);
-        // a.printNPopulatedRegion(continent);
-        // System.out.println("\n");
+        //a.connect();
+        //System.out.println("\n");
+        if(args.length < 1){
+            a.connect("localhost:33060", 0);
+        }else{
+            a.connect("db:3306", 30000);
+        }
 
         // Display all the cities in the world organised by largest population to smallest.
          System.out.println("7: All the cities in the world organised by largest population to smallest.\n");
