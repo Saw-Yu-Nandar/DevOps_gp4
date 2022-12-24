@@ -17,8 +17,8 @@ jobs:
           distribution: 'adopt'
       - name: Unit Tests
         run: mvn -Dtest=devops.codereview.QuerySevenTest test
-      - name: Unit Tests
-        run: mvn -Dtest=devops.codereview.QueryEightTest test
+             mvn -Dtest=devops.codereview.QueryEightTest test
+
 
   build:
     name: Build and Start Using docker-compose
