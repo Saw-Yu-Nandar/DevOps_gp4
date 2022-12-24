@@ -16,8 +16,7 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Unit Tests
-        run: mvn -Dtest=devops.codereview.QuerySevenTest test
-             mvn -Dtest=devops.codereview.QueryEightTest test
+        run: mvn -Dtest=devops.codereview.QuerySevenTest test, devops.codereview.QueryEightTest test
 
 
   build:
