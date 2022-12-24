@@ -16,7 +16,7 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Unit Tests
-        run: mvn -Dtest=devops.codereview.QueryOneTest ./test/java
+        run: mvn -Dtest=devops.codereview.QueryOneTest test
 
   build:
     name: Team4 action
