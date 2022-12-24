@@ -16,10 +16,7 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Unit Tests
-        run: |
-            mvn -sevenTest=devops.codereview.QuerySevenTest test
-            mvn -eightTest=devops.codereview.QueryEightTest test
-
+        run: mvn -Dtest=devops.codereview test
 
   build:
     name: Build and Start Using docker-compose
