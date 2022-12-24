@@ -15,11 +15,10 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
-      - name: Unit Tests for Seven Query
-        run: mvn -Dtest=devops.codereview.QuerySevenTest test
-
-      - name: Unit Tests for Eight Query
-        run: mvn -Dtest=devops.codereview.QueryEightTest test
+      - name: Unit Tests
+        run: |
+            mvn -sevenTest=devops.codereview.QuerySevenTest test
+            mvn -eightTest=devops.codereview.QueryEightTest test
 
 
   build:
