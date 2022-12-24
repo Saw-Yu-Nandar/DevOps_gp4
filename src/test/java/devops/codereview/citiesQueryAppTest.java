@@ -17,43 +17,43 @@ public class citiesQueryAppTest
     @Test
     void printAllCitiesTestEmpty()
     {
-        ArrayList<Cities> cities = new ArrayList<Cities>();
-        app.printCities(cities);
+        ArrayList<Cities> cittestempty = new ArrayList<Cities>();
+        app.printCities(cittestempty);
     }
     //print a list with a null value
     @Test
     void printAllCitiesTestContainsNull()
     {
-        ArrayList<Cities> cities = new ArrayList<Cities>();
-        cities.add(null);
-        app.printCities(cities);
+        ArrayList<Cities> citnull = new ArrayList<Cities>();
+        citnull.add(null);
+        app.printCities(citnull);
     }
     @Test
     void printAllCities()
     {
-        ArrayList<Cities> cities    = new ArrayList<Cities>();
+        ArrayList<Cities> allcities    = new ArrayList<Cities>();
         Cities cit                  = new Cities();
         cit.cit_name                = "Seoul";
         cit.country_name            = "South Korea";
         cit.cit_district            = "Seoul";
         cit.cit_population          = "9981619";
-        cities.add(cit);
-        app.printCities(cities);
+        allcities.add(cit);
+        app.printCities(allcities);
     }
     //Unit testing for all the cities in a continent organised by largest population to smallest.
     @Test
     void printContinentTestEmpty()
     {
-        ArrayList<Cities> continent = new ArrayList<Cities>();
-        app.printContinents(continent);
+        ArrayList<Cities> conttestemp = new ArrayList<Cities>();
+        app.printContinents(conttestemp);
     }
     //print a list with a null value
     @Test
     void printAllContinentTestContainsNull()
     {
-        ArrayList<Cities> continent = new ArrayList<Cities>();
-        continent.add(null);
-        app.printContinents(continent);
+        ArrayList<Cities> contnull = new ArrayList<Cities>();
+        contnull.add(null);
+        app.printContinents(contnull);
     }
     @Test
     void printContinent()
