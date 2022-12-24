@@ -18,12 +18,12 @@ public class QuerySevenIntegrationTest
         app.connect("localhost:33060", 30000);
     }
     @Test
-    void testSevenQuery()
+    void testGetAllCities()
     {
-        Cities cite = app.getAllCities().get(1780000);
-        assertEquals(cite.cit_name, "Kabul");
-        assertEquals(cite.country_name, "China");
-        assertEquals(cite.cit_district,"Kabol");
-        assertEquals(cite.cit_population,1780000);
+        Cities city = app.getAllCities().get(1780000);
+        assertEquals(city.cit_name, "Kabul");
+        assertEquals(city.country_name, "China");
+        assertEquals(city.cit_district,"Kabol");
+        assertEquals(city.cit_population,1780000);
     }
 }
