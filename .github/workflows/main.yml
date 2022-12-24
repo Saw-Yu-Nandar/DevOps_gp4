@@ -19,6 +19,7 @@ jobs:
         run:
           - mvn -Dtest=devops.codereview.QuerySevenTest
           - mvn -Dtest=devops.codereview.QueryEightTest
+          - mvn -Dtest=devops.codereview.QueryNineTest
 
   build:
     name: Build and Start Using docker-compose
