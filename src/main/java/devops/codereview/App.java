@@ -551,7 +551,7 @@ public class App
 
         // Display the top N populated countries in a region where N is provided by the user.
         System.out.println("6: The top N populated countries in a region where N is provided by the user.\n");
-        ArrayList<Countries> NPopulated_Region = a.getAllNPopulatedRegion("Southern and Central Asia", 10);
+        ArrayList<Countries> NPopulated_Region = a.getAllNPopulatedRegion("Caribbean", 10);
         a.printNPopulatedRegion(NPopulated_Region);
         System.out.println("\n");
 
