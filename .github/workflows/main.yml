@@ -16,7 +16,10 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Unit Tests
-        run: mvn test -Dtest=devops.codereview.QuerySevenTest, QueryEightTest, QueryNineTest
+        run: |
+          mvn test -Dtest=devops.codereview.QuerySevenTest
+          mvn test -Dtest=devops.codereview.QueryEightTest
+          mvn test -Dtest=devops.codereview.QueryNineTest
   IntegrationTests:
     name: Integration Tests
     runs-on: ubuntu-20.04
