@@ -181,7 +181,8 @@ public class App
             // Create string for SQL statement
             //Query 2: All the countries in a continent organised by largest population to smallest.
             String strQueryTwo =
-                    "SELECT country.Code, country.Name as 'CountryName', country.Continent, country.Region, city.Name as 'CityName', country.Population FROM country INNER JOIN city WHERE country.Code = city.CountryCode AND country.Continent = '"+input_continent+"' ORDER BY country.Population DESC;";
+                    "SELECT country.Code, country.Name as 'CountryName', country.Continent, country.Region, city.Name as 'CityName', country.Population FROM country INNER JOIN city WHERE country.Code = city.CountryCode AND country.Capital=city.ID AND country.Continent = '"+input_continent+"' ORDER BY country.Population DESC;";
+
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryTwo);
             // Extract continent information

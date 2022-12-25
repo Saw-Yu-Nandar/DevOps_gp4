@@ -45,7 +45,7 @@ public class AppIntegrationTestCountry
         assertEquals(continent.getCountry_name(), "Australia");
         assertEquals(continent.getCountry_cont(), "Oceania");
         assertEquals(continent.getCountry_reg(), "Australia and New Zealand");
-        assertEquals(continent.getCountry_cap(), "Cairns");
+        assertEquals(continent.getCountry_cap(), "Canberra");
         assertEquals(Integer.parseInt(continent.getCountry_population()), 18886000);
     }
 
