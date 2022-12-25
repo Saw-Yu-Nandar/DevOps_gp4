@@ -1,6 +1,5 @@
 package devops.codereview;
 
-import devops.codereview.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -19,7 +18,7 @@ public class QueryFourTest
     @Test
     void printNPopulatedCountriesTestEmpty()
     {
-        ArrayList<Countries> NPopulatedCountries = new ArrayList<Countries>();
+        ArrayList<Country> NPopulatedCountries = new ArrayList<Country>();
         app.printNPopulatedCountries(NPopulatedCountries);
     }
 
@@ -27,15 +26,15 @@ public class QueryFourTest
     @Test
     void printNPopulatedCountriesTestContainsNull()
     {
-        ArrayList<Countries> NPopulatedCountries = new ArrayList<Countries>();
+        ArrayList<Country> NPopulatedCountries = new ArrayList<Country>();
         NPopulatedCountries.add(null);
         app.printNPopulatedCountries(NPopulatedCountries);
     }
     @Test
     void printNPopulatedCountries()
     {
-        ArrayList<Countries> NPopulatedCountries = new ArrayList<Countries>();
-        Countries npopctr = new Countries();
+        ArrayList<Country> NPopulatedCountries = new ArrayList<Country>();
+        Country npopctr = new Country();
         npopctr.country_name = "China";
         npopctr.country_population = "1277558000";
         NPopulatedCountries.add(npopctr);

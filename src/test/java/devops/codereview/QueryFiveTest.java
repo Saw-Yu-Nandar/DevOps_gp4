@@ -1,6 +1,5 @@
 package devops.codereview;
 
-import devops.codereview.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -19,7 +18,7 @@ public class QueryFiveTest
     @Test
     void printNPopulatedContinentsTestEmpty()
     {
-        ArrayList<Countries> NPopulated_Continents = new ArrayList<Countries>();
+        ArrayList<Country> NPopulated_Continents = new ArrayList<Country>();
         app.printNPopulatedContinents(NPopulated_Continents);
     }
 
@@ -27,7 +26,7 @@ public class QueryFiveTest
     @Test
     void printNPopulatedContinentsTestContainsNull()
     {
-        ArrayList<Countries> NPopulated_Continents = new ArrayList<Countries>();
+        ArrayList<Country> NPopulated_Continents = new ArrayList<Country>();
         NPopulated_Continents.add(null);
         app.printNPopulatedContinents(NPopulated_Continents);
     }
@@ -35,8 +34,8 @@ public class QueryFiveTest
     @Test
     void printNPopulatedContinents()
     {
-        ArrayList<Countries> NPopulated_Continents = new ArrayList<Countries>();
-        Countries npopcont = new Countries();
+        ArrayList<Country> NPopulated_Continents = new ArrayList<Country>();
+        Country npopcont = new Country();
         npopcont.country_name = "South America";
         npopcont.country_population = "170115000";
         NPopulated_Continents.add(npopcont);

@@ -1,10 +1,8 @@
 package devops.codereview;
 
-import devops.codereview.App;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import javax.swing.plaf.synth.Region;
 import java.util.ArrayList;
 
 public class QueryThreeTest
@@ -20,7 +18,7 @@ public class QueryThreeTest
     @Test
     void printRegionTestEmpty()
     {
-        ArrayList<Countries> regions = new ArrayList<Countries>();
+        ArrayList<Country> regions = new ArrayList<Country>();
         app.printRegion(regions);
     }
 
@@ -28,15 +26,15 @@ public class QueryThreeTest
     @Test
     void printRegionTestContainsNull()
     {
-        ArrayList<Countries> regions = new ArrayList<Countries>();
+        ArrayList<Country> regions = new ArrayList<Country>();
         regions.add(null);
         app.printRegion(regions);
     }
     @Test
     void printRegion()
     {
-        ArrayList<Countries> regions = new ArrayList<Countries>();
-        Countries reg = new Countries();
+        ArrayList<Country> regions = new ArrayList<Country>();
+        Country reg = new Country();
         reg.country_reg = "British Islands";
         reg.country_population = "59623400";
         regions.add(reg);

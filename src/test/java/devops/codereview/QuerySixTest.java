@@ -1,6 +1,5 @@
 package devops.codereview;
 
-import devops.codereview.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -19,7 +18,7 @@ public class QuerySixTest
     @Test
     void printNPopulatedRegionTestEmpty()
     {
-        ArrayList<Countries> NPopulated_Region = new ArrayList<Countries>();
+        ArrayList<Country> NPopulated_Region = new ArrayList<Country>();
         app.printNPopulatedRegion(NPopulated_Region);
     }
 
@@ -27,7 +26,7 @@ public class QuerySixTest
     @Test
     void printNPopulatedRegionTestContainsNull()
     {
-        ArrayList<Countries> NPopulated_Region = new ArrayList<Countries>();
+        ArrayList<Country> NPopulated_Region = new ArrayList<Country>();
         NPopulated_Region.add(null);
         app.printNPopulatedRegion(NPopulated_Region);
     }
@@ -35,8 +34,8 @@ public class QuerySixTest
     @Test
     void printNPopulatedRegion()
     {
-        ArrayList<Countries> NPopulated_Region = new ArrayList<Countries>();
-        Countries npopreg = new Countries();
+        ArrayList<Country> NPopulated_Region = new ArrayList<Country>();
+        Country npopreg = new Country();
         npopreg.country_name = "Eastern Asia";
         npopreg.country_population = "1277558000";
         NPopulated_Region.add(npopreg);

@@ -23,8 +23,8 @@ public class AppIntegrationTestCountry
     @Test
     void testGetAllCountries()
     {
-        ArrayList<Countries> countries = app.getAllCountries();
-        Countries country = countries.get(0);
+        ArrayList<Country> countries = app.getAllCountries();
+        Country country = countries.get(0);
         assertEquals(country.getCountry_code(), "CHN");
         assertEquals(country.getCountry_name(), "China");
         assertEquals(country.getCountry_cont(), "Asia");
@@ -39,8 +39,8 @@ public class AppIntegrationTestCountry
     @Test
     void testGetAllContinents()
     {
-        ArrayList<Countries> continents = app.getAllContinents("Oceania");
-        Countries continent = continents.get(0);
+        ArrayList<Country> continents = app.getAllContinents("Oceania");
+        Country continent = continents.get(0);
         assertEquals(continent.getCountry_code(), "AUS");
         assertEquals(continent.getCountry_name(), "Australia");
         assertEquals(continent.getCountry_cont(), "Oceania");
@@ -55,8 +55,8 @@ public class AppIntegrationTestCountry
     @Test
     void testGetAllRegion()
     {
-        ArrayList<Countries> regions = app.getAllRegion("Caribbean");
-        Countries reg = regions.get(0);
+        ArrayList<Country> regions = app.getAllRegion("Caribbean");
+        Country reg = regions.get(0);
         assertEquals(reg.getCountry_code(), "CUB");
         assertEquals(reg.getCountry_name(), "Cuba");
         assertEquals(reg.getCountry_cont(), "North America");
@@ -71,8 +71,8 @@ public class AppIntegrationTestCountry
     @Test
     void testGetAllNPopCountries()
     {
-        ArrayList<Countries> npopctrs = app.getAllNPopulatedCountries(10);
-        Countries npopctr = npopctrs.get(0);
+        ArrayList<Country> npopctrs = app.getAllNPopulatedCountries(10);
+        Country npopctr = npopctrs.get(0);
         assertEquals(npopctr.getCountry_code(), "CHN");
         assertEquals(npopctr.getCountry_name(), "China");
         assertEquals(npopctr.getCountry_cont(), "Asia");
@@ -87,8 +87,8 @@ public class AppIntegrationTestCountry
     @Test
     void testGetAllNPopContinents()
     {
-        ArrayList<Countries> npopconts = app.getAllNPopulatedContinents("Europe", 10);
-        Countries npopcont = npopconts.get(0);
+        ArrayList<Country> npopconts = app.getAllNPopulatedContinents("Europe", 10);
+        Country npopcont = npopconts.get(0);
         assertEquals(npopcont.getCountry_code(), "RUS");
         assertEquals(npopcont.getCountry_name(), "Russian Federation");
         assertEquals(npopcont.getCountry_cont(), "Europe");
@@ -103,8 +103,8 @@ public class AppIntegrationTestCountry
     @Test
     void testGetAllNPopRegions()
     {
-        ArrayList<Countries> npopregns = app.getAllNPopulatedRegion("Caribbean", 10);
-        Countries npopregn = npopregns.get(0);
+        ArrayList<Country> npopregns = app.getAllNPopulatedRegion("Caribbean", 10);
+        Country npopregn = npopregns.get(0);
         assertEquals(npopregn.country_code, "CUB");
         assertEquals(npopregn.country_name, "Cuba");
         assertEquals(npopregn.country_cont, "North America");

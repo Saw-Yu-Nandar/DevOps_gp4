@@ -1,6 +1,5 @@
 package devops.codereview;
 
-import devops.codereview.App;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -19,21 +18,21 @@ public class QueryOneTest
     @Test
     void printCountriesTestEmpty()
     {
-        ArrayList<Countries> countries = new ArrayList<Countries>();
+        ArrayList<Country> countries = new ArrayList<Country>();
         app.printAllCountries(countries);
     }
     @Test
     void printCountriesTestContainsNull()
     {
-        ArrayList<Countries> countries = new ArrayList<Countries>();
+        ArrayList<Country> countries = new ArrayList<Country>();
         countries.add(null);
         app.printAllCountries(countries);
     }
     @Test
     void printCountries()
     {
-        ArrayList<Countries> countries = new ArrayList<Countries>();
-        Countries info = new Countries();
+        ArrayList<Country> countries = new ArrayList<Country>();
+        Country info = new Country();
         info.country_name = "Brazil";
         info.country_population = "170115000";
         countries.add(info);

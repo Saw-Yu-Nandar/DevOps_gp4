@@ -1,6 +1,6 @@
 package devops.codereview;
 
-public class Countries {
+public class Country {
     //Variables for countries table in world database
     public String country_code;
     public String country_name;
