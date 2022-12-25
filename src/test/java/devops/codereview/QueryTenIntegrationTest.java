@@ -17,9 +17,9 @@ public class QueryTenIntegrationTest
         app.connect("localhost:33060", 30000);
     }
     @Test
-    void testGetAllCities()
+    void testGetAllCitiesCountries()
     {
-        ArrayList<City> city = app.getAllCities();
+        ArrayList<City> city = app.getAllCitiesCountries("Myanmar");
         City cit = city.get(0);
         assertEquals(cit.getCit_name(), "Rangoon (Yangon)");
         assertEquals(cit.getCountry_name(), "Myanmar");

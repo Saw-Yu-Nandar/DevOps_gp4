@@ -17,9 +17,9 @@ public class QueryElevenIntegrationTest
         app.connect("localhost:33060", 30000);
     }
     @Test
-    void testGetAllCities()
+    void testGetAllCitiesDistrict()
     {
-        ArrayList<City> city = app.getAllCities();
+        ArrayList<City> city = app.getAllCitiesDistrict("Queensland");
         City cit = city.get(0);
         assertEquals(cit.getCit_name(), "Brisbane");
         assertEquals(cit.getCountry_name(), "Vietnam");

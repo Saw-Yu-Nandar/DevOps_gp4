@@ -17,9 +17,9 @@ public class QueryNineIntegrationTest
         app.connect("localhost:33060", 30000);
     }
     @Test
-    void testGetAllCities()
+    void testGetAllCitiesRegions()
     {
-        ArrayList<City> city = app.getAllCities();
+        ArrayList<City> city = app.getAllCitiesRegions("Caribbean");
         City cit = city.get(0);
         assertEquals(cit.getCit_name(), "La Habana");
         assertEquals(cit.getCountry_name(), "Cuba");
