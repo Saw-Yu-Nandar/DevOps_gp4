@@ -21,9 +21,10 @@ public class QuerySevenIntegrationTest
     {
         ArrayList<City> city = app.getAllCities();
         City cit = city.get(0);
-        assertEquals(cit.getCit_name(), "Kabul");
-        assertEquals(cit.getCountry_name(), "Afghanistan");
-        assertEquals(cit.getCit_district(),"Kabol");
-        assertEquals(cit.getCit_population(),1780000);
+        System.out.println(cit);
+        assertEquals(cit.getCit_name(), "Mumbai (Bombay)");
+        assertEquals(cit.getCountry_name(), "India");
+        assertEquals(cit.getCit_district(),"Maharashtra");
+        assertEquals(cit.getCit_population(),10500000);
     }
 }

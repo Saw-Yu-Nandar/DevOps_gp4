@@ -20,6 +20,17 @@ public class City {
     }
 
     public String country_name;
+
+    @Override
+    public String toString() {
+        return "City{" +
+                "cit_name='" + cit_name + '\'' +
+                ", country_name='" + country_name + '\'' +
+                ", cit_district='" + cit_district + '\'' +
+                ", cit_population='" + cit_population + '\'' +
+                '}';
+    }
+
     public String cit_district;
     public String cit_population;
 }
