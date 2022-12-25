@@ -105,11 +105,13 @@ public class AppIntegrationTestCountry
     {
         ArrayList<Countries> npopregns = app.getAllNPopulatedContinents("Southern and Central Asia", 10);
         Countries npopregn = npopregns.get(0);
-        assertEquals(npopregn.country_code, "IND");
-        assertEquals(npopregn.country_name, "India");
-        assertEquals(npopregn.country_cont, "Asia");
-        assertEquals(npopregn.country_reg, "Southern and Central Asia");
-        assertEquals(npopregn.country_cap, "New Delhi");
-        assertEquals(Integer.parseInt(npopregn.country_population), "1013662000");
+        assertEquals(npopregn.country_code, "CUB");
+        assertEquals(npopregn.country_name, "Cuba");
+        assertEquals(npopregn.country_cont, "North America");
+        assertEquals(npopregn.country_reg, "Caribbean");
+        assertEquals(npopregn.country_cap, "La Habana");
+        assertEquals(Integer.parseInt(npopregn.country_population), 11201000);
     }
 }
+
+
