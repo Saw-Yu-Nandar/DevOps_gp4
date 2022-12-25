@@ -77,7 +77,7 @@ public class AppIntegrationTestCountry
         assertEquals(npopctr.country_name, "China");
         assertEquals(npopctr.country_cont, "Asia");
         assertEquals(npopctr.country_reg, "Eastern Asia");
-        assertEquals(npopctr.country_cap, "Shanghai");
+        assertEquals(npopctr.country_cap, "Peking");
         assertEquals(Integer.parseInt(npopctr.country_population), "1277558000");
     }
 
@@ -103,13 +103,13 @@ public class AppIntegrationTestCountry
     @Test
     void testGetAllNPopRegions()
     {
-        ArrayList<Countries> npopregns = app.getAllNPopulatedContinents("Middle East", 10);
+        ArrayList<Countries> npopregns = app.getAllNPopulatedContinents("Southern and Central Asia", 10);
         Countries npopregn = npopregns.get(0);
-        assertEquals(npopregn.country_code, "TUR");
-        assertEquals(npopregn.country_name, "Turkey");
+        assertEquals(npopregn.country_code, "IND");
+        assertEquals(npopregn.country_name, "India");
         assertEquals(npopregn.country_cont, "Asia");
-        assertEquals(npopregn.country_reg, "Middle East");
-        assertEquals(npopregn.country_cap, "Istanbul");
-        assertEquals(Integer.parseInt(npopregn.country_population), "66591000");
+        assertEquals(npopregn.country_reg, "Southern and Central Asia");
+        assertEquals(npopregn.country_cap, "New Delhi");
+        assertEquals(Integer.parseInt(npopregn.country_population), "1013662000");
     }
 }
