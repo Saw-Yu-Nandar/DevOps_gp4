@@ -25,6 +25,6 @@ public class QuerySevenIntegrationTest
         assertEquals(cit.getCit_name(), "Mumbai (Bombay)");
         assertEquals(cit.getCountry_name(), "India");
         assertEquals(cit.getCit_district(),"Maharashtra");
-        assertEquals(Integer.toString(Integer.parseInt(cit.getCit_population())),10500000);
+        assertEquals(String.valueOf(cit.getCit_population()),10500000);
     }
 }
