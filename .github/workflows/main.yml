@@ -20,6 +20,8 @@ jobs:
           mvn test -Dtest=devops.codereview.QuerySevenTest
           mvn test -Dtest=devops.codereview.QueryEightTest
           mvn test -Dtest=devops.codereview.QueryNineTest
+          mvn test -Dtest=devops.codereview.QueryTenTest
+          mvn test -Dtest=devops.codereview.QueryElevenTest
   IntegrationTests:
     name: Integration Tests
     runs-on: ubuntu-20.04
@@ -37,7 +39,11 @@ jobs:
         run: |
           docker build -t database ./db 
           docker run --name world -dp 33060:3306 database
-          mvn -Dtest=devops.codereview.QuerySevenIntegrationTest test          
+          mvn -Dtest=devops.codereview.QuerySevenIntegrationTest test 
+          mvn -Dtest=devops.codereview.QueryEightIntegrationTest test
+          mvn -Dtest=devops.codereview.QueryNineIntegrationTest test
+          mvn -Dtest=devops.codereview.QueryTenIntegrationTest test
+          mvn -Dtest=devops.codereview.QueryElevenIntegrationTest test
           docker stop world
           docker rm world
           docker image rm database
