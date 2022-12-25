@@ -103,7 +103,7 @@ public class AppIntegrationTestCountry
     @Test
     void testGetAllNPopRegions()
     {
-        ArrayList<Countries> npopregns = app.getAllNPopulatedContinents("Southern and Central Asia", 10);
+        ArrayList<Countries> npopregns = app.getAllNPopulatedRegion("North America", 10);
         Countries npopregn = npopregns.get(0);
         assertEquals(npopregn.country_code, "CUB");
         assertEquals(npopregn.country_name, "Cuba");
