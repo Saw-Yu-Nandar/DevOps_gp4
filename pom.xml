@@ -52,6 +52,7 @@
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>3.3.0</version>
                 <configuration>
+                    <finalName>DevOps_gp4</finalName>
                     <archive>
                         <manifest>
                             <mainClass>devops.codereview.App</mainClass>

@@ -2,7 +2,6 @@ package devops.codereview;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 
 import java.util.ArrayList;
 
@@ -20,10 +19,11 @@ public class QuerySevenIntegrationTest
     @Test
     void testGetAllCities()
     {
-        Cities city = app.getAllCities().get(1780000);
-        assertEquals(city.cit_name, "Kabul");
-        assertEquals(city.country_name, "China");
-        assertEquals(city.cit_district,"Kabol");
-        assertEquals(city.cit_population,1780000);
+        ArrayList<City> city = app.getAllCities();
+        City cit = city.get(0);
+        assertEquals(cit.getCit_name(), "Kabul");
+        assertEquals(cit.getCountry_name(), "Afghanistan");
+        assertEquals(cit.getCit_district(),"Kabol");
+        assertEquals(cit.getCit_population(),1780000);
     }
 }

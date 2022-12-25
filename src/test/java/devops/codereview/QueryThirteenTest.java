@@ -1,6 +1,5 @@
 package devops.codereview;
 
-import devops.codereview.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -19,7 +18,7 @@ public class QueryThirteenTest
     @Test
     void printTopNContinentTestEmpty()
     {
-        ArrayList<Cities> continent = new ArrayList<Cities>();
+        ArrayList<City> continent = new ArrayList<City>();
         app.printTopNContinent(continent);
     }
 
@@ -27,15 +26,15 @@ public class QueryThirteenTest
     @Test
     void printTopNContinentTestContainsNull()
     {
-        ArrayList<Cities> continent = new ArrayList<Cities>();
+        ArrayList<City> continent = new ArrayList<City>();
         continent.add(null);
         app.printTopNContinent(continent);
     }
     @Test
     void printTopNContinent()
     {
-        ArrayList<Cities> continent = new ArrayList<Cities>();
-        Cities conti = new Cities();
+        ArrayList<City> continent = new ArrayList<City>();
+        City conti = new City();
         conti.cit_name = "Moscow";
         conti.country_name = "Russian Federation";
         conti.cit_district = "Moscow (City)";

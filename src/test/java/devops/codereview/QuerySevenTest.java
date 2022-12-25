@@ -1,5 +1,4 @@
 package devops.codereview;//Unit testing for all the cities in the world organised by largest population to smallest.
-import devops.codereview.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +17,7 @@ public class QuerySevenTest
     @Test
     void printAllCitiesTestEmpty()
     {
-        ArrayList<Cities> cities = new ArrayList<Cities>();
+        ArrayList<City> cities = new ArrayList<City>();
         app.printCities(cities);
     }
 
@@ -26,7 +25,7 @@ public class QuerySevenTest
     @Test
     void printAllCitiesTestContainsNull()
     {
-        ArrayList<Cities> cities = new ArrayList<Cities>();
+        ArrayList<City> cities = new ArrayList<City>();
         cities.add(null);
         app.printCities(cities);
     }
@@ -34,8 +33,8 @@ public class QuerySevenTest
     @Test
     void printAllCities()
     {
-        ArrayList<Cities> cities    = new ArrayList<Cities>();
-        Cities cit                  = new Cities();
+        ArrayList<City> cities    = new ArrayList<City>();
+        City cit                  = new City();
         cit.cit_name                = "Seoul";
         cit.country_name            = "South Korea";
         cit.cit_district            = "Seoul";

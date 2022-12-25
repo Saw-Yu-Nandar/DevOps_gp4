@@ -1,5 +1,4 @@
 package devops.codereview;//Unit testing for all the cities in a district organised by largest population to smallest.
-import devops.codereview.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +17,7 @@ public class QueryElevenTest
     @Test
     void printCountriesTestEmpty()
     {
-        ArrayList<Cities> district = new ArrayList<Cities>();
+        ArrayList<City> district = new ArrayList<City>();
         app.printDistrict(district);
     }
 
@@ -26,15 +25,15 @@ public class QueryElevenTest
     @Test
     void printAllCountriesTestContainsNull()
     {
-        ArrayList<Cities> district = new ArrayList<Cities>();
+        ArrayList<City> district = new ArrayList<City>();
         district.add(null);
         app.printDistrict(district);
     }
     @Test
     void printDistrict()
     {
-        ArrayList<Cities> district  = new ArrayList<Cities>();
-        Cities cit                  = new Cities();
+        ArrayList<City> district  = new ArrayList<City>();
+        City cit                  = new City();
         cit.cit_name                = "Kabul";
         cit.country_name            = "Afghanistan";
         cit.cit_district            = "Kabol";
