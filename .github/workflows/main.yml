@@ -20,7 +20,7 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Unit Tests
-        run: mvn test -Dtest=Q*.java
+        run: mvn test -Dtest=devops.codereview.QueryOneTest.*
 
   IntegrationTests:
     name: Integration Tests
