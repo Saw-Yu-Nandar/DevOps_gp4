@@ -209,7 +209,10 @@ public class App
 
     /**
      * 2. All the countries in a continent organised by largest population to smallest.
-     * Formatting the output data from the list.
+     * F
+
+     Su Hnin, [12/25/2022 11:38 PM]
+     ormatting the output data from the list.
      **/
     public void printContinent(ArrayList<Countries> continent)
     {
@@ -302,7 +305,10 @@ public class App
     /**
      * 4. The top N populated countries in the world where N is provided by the user.
      * Query execution by user input and pass the array list to format the return value.
-     * Function is called in main.
+     * Function is called in ma
+
+     Su Hnin, [12/25/2022 11:38 PM]
+     in.
      **/
     public ArrayList<Countries> getAllNPopulatedCountries(int input_limit)
     {
@@ -514,39 +520,39 @@ public class App
 
         // Display all the countries in the world organised by largest population to smallest.
         System.out.println("1: All the countries in the world organised by largest population to smallest.\n");
-        ArrayList<Countries> c = a.getAllCountries();
-        a.printAllCountries(c);
+        ArrayList<Countries> countries = a.getAllCountries();
+        a.printAllCountries(countries);
         System.out.println("\n");
 
         // Display all the countries in a continent organised by largest population to smallest.
-//         System.out.println("2: All the countries in a continent organised by largest population to smallest.\n");
-//         ArrayList<Countries> continent = a.getAllContinents("Antarctica");
-//         a.printContinent(continent);
-//         System.out.println("\n");
+        System.out.println("2: All the countries in a continent organised by largest population to smallest.\n");
+        ArrayList<Countries> continents = a.getAllContinents("Oceania");
+        a.printAllCountries(continents);
+        System.out.println("\n");
 
         // Display all the countries in a region organised by largest population to smallest.
-//         System.out.println("3: All the countries in a region organised by largest population to smallest.\n");
-//         ArrayList<Countries> regions = a.getAllRegion("North Africa");
-//         a.printRegion(regions);
-//         System.out.println("\n");
+        System.out.println("3: All the countries in a region organised by largest population to smallest.\n");
+        ArrayList<Countries> regions = a.getAllRegion("Caribbean");
+        a.printAllCountries(regions);
+        System.out.println("\n");
 
         // Display the top N populated countries in the world where N is provided by the user.
-//         System.out.println("4: The top N populated countries in the world where N is provided by the user.\n");
-//         ArrayList<Countries> NPopulatedCountries = a.getAllNPopulatedCountries(10);
-//         a.printNPopulatedCountries(NPopulatedCountries);
-//         System.out.println("\n");
+        System.out.println("4: The top N populated countries in the world where N is provided by the user.\n");
+        ArrayList<Countries> NPopulatedCountries = a.getAllNPopulatedCountries(10);
+        a.printNPopulatedCountries(NPopulatedCountries);
+        System.out.println("\n");
 
         // Display all the countries in a continent organised by largest population to smallest.
-//         System.out.println("5. The top N populated countries in a continent where N is provided by the user.\n");
-//         ArrayList<Countries> NPopulated_Continents = a.getAllNPopulatedContinents("Asia", 10);
-//         a.printContinent(NPopulated_Continents);
-//         System.out.println("\n");
+        System.out.println("5. The top N populated countries in a continent where N is provided by the user.\n");
+        ArrayList<Countries> NPopulated_Continents = a.getAllNPopulatedContinents("Europe", 10);
+        a.printContinent(NPopulated_Continents);
+        System.out.println("\n");
 
         // Display the top N populated countries in a region where N is provided by the user.
-//         System.out.println("6: the top N populated countries in a region where N is provided by the user.\n");
-//         ArrayList<Countries> NPopulated_Region = a.getAllNPopulatedRegion("Caribbean", 10);
-//         a.printNPopulatedRegion(NPopulated_Region);
-//         System.out.println("\n");
+        System.out.println("6: The top N populated countries in a region where N is provided by the user.\n");
+        ArrayList<Countries> NPopulated_Region = a.getAllNPopulatedRegion("Middle East", 10);
+        a.printNPopulatedRegion(NPopulated_Region);
+        System.out.println("\n");
 
         // Disconnect from database
         a.disconnect();

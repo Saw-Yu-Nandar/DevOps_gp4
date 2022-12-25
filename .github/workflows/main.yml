@@ -1,9 +1,5 @@
 name: Team4 Action
-on:
-  push:
-    branches:
-      - master
-      - lab08
+on: push
 
 jobs:
   UnitTests:
@@ -20,7 +16,13 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Unit Tests
-        run: mvn test -Dtest=devops.codereview.*
+        run: |
+          mvn test -Dtest=devops.codereview.QueryOneTest
+          mvn test -Dtest=devops.codereview.QueryTwoTest
+          mvn test -Dtest=devops.codereview.QueryThreeTest
+          mvn test -Dtest=devops.codereview.QueryFourTest
+          mvn test -Dtest=devops.codereview.QueryFiveTest
+          mvn test -Dtest=devops.codereview.QuerySixTest
 
   IntegrationTests:
     name: Integration Tests
@@ -39,7 +41,7 @@ jobs:
         run: |
           docker build -t database ./db 
           docker run --name world -dp 33060:3306 database
-          mvn -Dtest=AppIntegrationTest test          
+          mvn test -Dtest=devops.codereview.AppIntegrationTestCountry  
           docker stop world
           docker rm world
           docker image rm database
@@ -68,4 +70,3 @@ jobs:
         run: |
           mvn package -DskipTests
           docker-compose up --abort-on-container-exit
-#hello

@@ -1,7 +1,6 @@
 package devops.codereview;
 
 import devops.codereview.App;
-import devops.codereview.Countries;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
