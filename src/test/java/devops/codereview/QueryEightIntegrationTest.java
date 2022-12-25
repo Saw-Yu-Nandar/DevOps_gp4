@@ -17,9 +17,9 @@ public class QueryEightIntegrationTest
         app.connect("localhost:33060", 30000);
     }
     @Test
-    void testGetAllCities()
+    void testGetAllCitiesContinent()
     {
-        ArrayList<City> city = app.getAllCities();
+        ArrayList<City> city = app.getAllCitiesContinent("Asia");
         City cit = city.get(0);
         assertEquals(cit.getCit_name(), "Mumbai (Bombay)");
         assertEquals(cit.getCountry_name(), "India");
