@@ -22,6 +22,11 @@ jobs:
           mvn test -Dtest=devops.codereview.QueryNineTest
           mvn test -Dtest=devops.codereview.QueryTenTest
           mvn test -Dtest=devops.codereview.QueryElevenTest
+          mvn test -Dtest=devops.codereview.QueryTwelveTest
+          mvn test -Dtest=devops.codereview.QueryThirteenTest
+          mvn test -Dtest=devops.codereview.QueryForteenTest
+          mvn test -Dtest=devops.codereview.QueryFifteenTest
+          mvn test -Dtest=devops.codereview.QuerySixteenTest
   IntegrationTests:
     name: Integration Tests
     runs-on: ubuntu-20.04
@@ -44,6 +49,11 @@ jobs:
           mvn -Dtest=devops.codereview.QueryNineIntegrationTest test
           mvn -Dtest=devops.codereview.QueryTenIntegrationTest test
           mvn -Dtest=devops.codereview.QueryElevenIntegrationTest test
+          mvn -Dtest=devops.codereview.QueryTwelveIntegrationTest test
+          mvn -Dtest=devops.codereview.QueryThirteenIntegrationTest test
+          mvn -Dtest=devops.codereview.QueryForteenIntegrationTest test
+          mvn -Dtest=devops.codereview.QueryFifteenIntegrationTest test
+          mvn -Dtest=devops.codereview.QuerySixteenIntegrationTest test
           docker stop world
           docker rm world
           docker image rm database
