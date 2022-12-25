@@ -4,7 +4,7 @@ public class City {
     public String cit_name;
     public String country_name;
     public String cit_district;
-    public String cit_population;
+    public int cit_population;
 
     public String getCit_name() {
         return cit_name;
@@ -18,7 +18,7 @@ public class City {
         return cit_district;
     }
 
-    public String getCit_population() {
+    public int getCit_population() {
         return cit_population;
     }
 
@@ -34,7 +34,7 @@ public class City {
         this.cit_district = cit_district;
     }
 
-    public void setCit_population(String cit_population) {
+    public void setCit_population(int cit_population) {
         this.cit_population = cit_population;
     }
 }
