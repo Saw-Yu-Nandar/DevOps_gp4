@@ -22,7 +22,7 @@ public class QueryElevenIntegrationTest
         ArrayList<City> city = app.getAllCitiesDistrict("Queensland");
         City cit = city.get(0);
         assertEquals(cit.getCit_name(), "Brisbane");
-        assertEquals(cit.getCountry_name(), "Vietnam");
+        assertEquals(cit.getCountry_name(), "Australia");
         assertEquals(cit.getCit_district(),"Queensland");
         assertEquals(Integer.parseInt(cit.getCit_population()),1291117);
     }

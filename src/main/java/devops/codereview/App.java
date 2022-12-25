@@ -315,7 +315,7 @@ public class App
             // Create string for SQL statement
             //Query 11: All the cities in a district organised by largest population to smallest.
             String strQueryEight =
-                    "SELECT city.Name as 'CityName', country.Name as 'CountryName', city.District as 'District', city.Population FROM country INNER JOIN city WHERE city.District='"+input_district+"' ORDER BY city.Population DESC;";
+                    "SELECT city.Name as 'CityName', country.Name as 'CountryName', city.District as 'District', city.Population FROM country INNER JOIN city WHERE city.District='"+input_district+"' AND country.Code=city.CountryCode ORDER BY city.Population DESC;";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryEight);
             // Extract district information
