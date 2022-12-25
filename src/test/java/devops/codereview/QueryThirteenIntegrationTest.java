@@ -19,7 +19,7 @@ public class QueryThirteenIntegrationTest
     @Test
     void testGetTopNPopulatedContinent()
     {
-        ArrayList<City> continent = app.getTopNPopulatedContinent("Moscow",10);
+        ArrayList<City> continent = app.getTopNPopulatedContinent("Europe",10);
         City cnt = continent.get(0);
         assertEquals(cnt.getCit_name(), "Moscow");
         assertEquals(cnt.getCountry_name(), "Russian Federation");
