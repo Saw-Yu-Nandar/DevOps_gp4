@@ -25,12 +25,12 @@ public class AppIntegrationTestCountry
     {
         ArrayList<Countries> countries = app.getAllCountries();
         Countries country = countries.get(0);
-        assertEquals(country.country_code, "CHN");
-        assertEquals(country.country_name, "China");
-        assertEquals(country.country_cont, "Asia");
-        assertEquals(country.country_reg, "Eastern Asia");
-        assertEquals(country.country_cap, "Shanghai");
-        assertEquals(Integer.parseInt(country.country_population), "1277558000");
+        assertEquals(country.getCountry_code(), "CHN");
+        assertEquals(country.getCountry_name(), "China");
+        assertEquals(country.getCountry_cont(), "Asia");
+        assertEquals(country.getCountry_reg(), "Eastern Asia");
+        assertEquals(country.getCountry_cap(), "Shanghai");
+        assertEquals(Integer.parseInt(country.getCountry_population()),1277558000);
     }
 
     /*
@@ -41,12 +41,12 @@ public class AppIntegrationTestCountry
     {
         ArrayList<Countries> continents = app.getAllContinents("Oceania");
         Countries continent = continents.get(0);
-        assertEquals(continent.country_code, "AUS");
-        assertEquals(continent.country_name, "Australia");
-        assertEquals(continent.country_cont, "Oceania");
-        assertEquals(continent.country_reg, "Australia and New Zealand");
-        assertEquals(continent.country_cap, "Sydney");
-        assertEquals(Integer.parseInt(continent.country_population), "18886000");
+        assertEquals(continent.getCountry_code(), "AUS");
+        assertEquals(continent.getCountry_name(), "Australia");
+        assertEquals(continent.getCountry_cont(), "Oceania");
+        assertEquals(continent.getCountry_reg(), "Australia and New Zealand");
+        assertEquals(continent.getCountry_cap(), "Sydney");
+        assertEquals(Integer.parseInt(continent.getCountry_population()), 18886000);
     }
 
     /*
@@ -57,12 +57,12 @@ public class AppIntegrationTestCountry
     {
         ArrayList<Countries> regions = app.getAllRegion("Caribbean");
         Countries reg = regions.get(0);
-        assertEquals(reg.country_code, "CUB");
-        assertEquals(reg.country_name, "Cuba");
-        assertEquals(reg.country_cont, "North America");
-        assertEquals(reg.country_reg, "Caribbean");
-        assertEquals(reg.country_cap, "La Habana");
-        assertEquals(Integer.parseInt(reg.country_population), "11201000");
+        assertEquals(reg.getCountry_code(), "CUB");
+        assertEquals(reg.getCountry_name(), "Cuba");
+        assertEquals(reg.getCountry_cont(), "North America");
+        assertEquals(reg.getCountry_reg(), "Caribbean");
+        assertEquals(reg.getCountry_cap(), "La Habana");
+        assertEquals(Integer.parseInt(reg.getCountry_population()), 11201000);
     }
 
     /*
@@ -73,12 +73,12 @@ public class AppIntegrationTestCountry
     {
         ArrayList<Countries> npopctrs = app.getAllNPopulatedCountries(10);
         Countries npopctr = npopctrs.get(0);
-        assertEquals(npopctr.country_code, "CHN");
-        assertEquals(npopctr.country_name, "China");
-        assertEquals(npopctr.country_cont, "Asia");
-        assertEquals(npopctr.country_reg, "Eastern Asia");
-        assertEquals(npopctr.country_cap, "Peking");
-        assertEquals(Integer.parseInt(npopctr.country_population), "1277558000");
+        assertEquals(npopctr.getCountry_code(), "CHN");
+        assertEquals(npopctr.getCountry_name(), "China");
+        assertEquals(npopctr.getCountry_cont(), "Asia");
+        assertEquals(npopctr.getCountry_reg(), "Eastern Asia");
+        assertEquals(npopctr.getCountry_cap(), "Peking");
+        assertEquals(Integer.parseInt(npopctr.getCountry_population()), 1277558000);
     }
 
     /*
@@ -89,12 +89,12 @@ public class AppIntegrationTestCountry
     {
         ArrayList<Countries> npopconts = app.getAllNPopulatedContinents("Europe", 10);
         Countries npopcont = npopconts.get(0);
-        assertEquals(npopcont.country_code, "RUS");
-        assertEquals(npopcont.country_name, "Russian Federation");
-        assertEquals(npopcont.country_cont, "Europe");
-        assertEquals(npopcont.country_reg, "Eastern Europe");
-        assertEquals(npopcont.country_cap, "Moscow");
-        assertEquals(Integer.parseInt(npopcont.country_population), "146934000");
+        assertEquals(npopcont.getCountry_code(), "RUS");
+        assertEquals(npopcont.getCountry_name(), "Russian Federation");
+        assertEquals(npopcont.getCountry_cont(), "Europe");
+        assertEquals(npopcont.getCountry_reg(), "Eastern Europe");
+        assertEquals(npopcont.getCountry_cap(), "Moscow");
+        assertEquals(Integer.parseInt(npopcont.getCountry_population()), 146934000);
     }
 
     /*
