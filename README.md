@@ -14,4 +14,8 @@ CodeReview 1: project workflow is set-up and try one of the feature requirements
 [![Releases](https://img.shields.io/github/release/Saw-Yu-Nandar/DevOps_gp4/all.svg?style=flat-square)](https://github.com/Saw-Yu-Nandar/DevOps_gp_project/releases)
 
 # Software Engineering Methods
-![workflow](https://img.shields.io/github/workflow/status/Saw-Yu-Nandar/DevOps_gp4/main.yml/main?style=flat-square)
+![workflow](https://img.shields.io/github/workflow/status/Saw-Yu-Nandar/DevOps_gp4/main.yml/main?style=flat-square)]
+
+
+#Code Coverage
+[![codecov](https://codecov.io/gh/Saw-Yu-Nandar/DevOps_gp4/branch/master/graph/badge.svg)](https://codecov.io/gh/Saw-Yu-Nandar/DevOps_gp4)
