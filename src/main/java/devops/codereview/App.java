@@ -114,7 +114,8 @@ public class App
             // Create string for SQL statement
             //Query 17.All the capital cities in the world organised by largest population to smallest.
             String strQuerySeventeen =
-                    "SELECT city.Name as CapitalCity, country.Name as CountryName, country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode ORDER BY city.Population DESC;";
+                    "SELECT city.Name as CapitalCity, country.Name as CountryName, country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode ORDER BY country.Population DESC;";
+
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQuerySeventeen);
             // Extract capitalcities information
@@ -132,7 +133,7 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get all the countries in the world organised by largest population to smallest.");
+            System.out.println("Failed to get all the capital cities in the world organised by largest population to smallest.");
             return null;
         }
     }
@@ -177,7 +178,7 @@ public class App
             // Create string for SQL statement
             //Query 18.All the capital cities in a continent organised by largest population to smallest.
             String strQueryEighteen =
-                    "SELECT city.Name as CapitalCity, country.Name as CountryName, country.Continent, country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode AND country.Continent = '"+input_continent+"' ORDER BY city.Population DESC;";
+                    "SELECT city.Name as CapitalCity, country.Name as CountryName, country.Continent, country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode AND country.Continent = '"+input_continent+"' ORDER BY country.Population DESC;";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryEighteen);
@@ -188,6 +189,7 @@ public class App
                 CapitalCities capcitCont = new CapitalCities();
                 capcitCont.cap_cit_name         = rset.getString("CapitalCity");
                 capcitCont.cap_cit_country         = rset.getString("CountryName");
+                capcitCont.cap_cit_continent       = rset.getString("Continent");
                 capcitCont.cap_cit_population         = rset.getString("Population");
                 capcit_continent.add(capcitCont);
             }
@@ -196,7 +198,7 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get all the countries in a continent organised by largest population to smallest.");
+            System.out.println("Failed to get all the capitalcities in a Asia organised by largest population to smallest.");
             return null;
         }
     }
@@ -214,15 +216,15 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-25s %-25s %-25s", "CapitalCity","Country","Population"));
+        System.out.println(String.format("%-25s %-25s %-25s %-25s", "CapitalCity", "Country", "Continent", "Population"));
         // Loop over all continent in the list
         for (CapitalCities cccon : capcit_continent)
         {
             if (cccon == null)
                 continue;
             String ctr_string =
-                    String.format("%-25s %-25s %-25s",
-                            cccon.cap_cit_name, cccon.cap_cit_country, cccon.cap_cit_population);
+                    String.format("%-25s %-25s %-25s %-25s",
+                            cccon.cap_cit_name, cccon.cap_cit_country, cccon.cap_cit_continent, cccon.cap_cit_population);
             System.out.println(ctr_string);
         }
     }
@@ -241,7 +243,7 @@ public class App
             // Create string for SQL statement
             //Query 19.All the capital cities in a region organised by largest to smallest.
             String strQueryNineteen =
-                    "SELECT city.Name as CapitalCity, country.Name as CityName, country.Region, country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode AND country.Region = '"+input_region+"' ORDER BY city.Population DESC;";
+                    "SELECT city.Name as CapitalCity, country.Name as CityName, country.Region, country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode AND country.Region = '"+input_region+"' ORDER BY country.Population DESC;";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryNineteen);
@@ -252,6 +254,7 @@ public class App
                 CapitalCities capcitreg           = new CapitalCities();
                 capcitreg.cap_cit_name        = rset.getString("CapitalCity");
                 capcitreg.cap_cit_country        = rset.getString("CountryName");
+                capcitreg.cap_cit_region        = rset.getString("Region");
                 capcitreg.cap_cit_population        = rset.getString("Population");
                 capcit_region.add(capcitreg);
             }
@@ -260,7 +263,7 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get all the countries in a region organised by largest population to smallest.");
+            System.out.println("Failed to get all the capitalcities in a Caribbean organised by largest population to smallest.");
             return null;
         }
     }
@@ -277,7 +280,7 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-25s %-25s %-25s", "CapitalCity","Country","Population"));
+        System.out.println(String.format("%-25s %-25s %-25s %-25s", "CapitalCity","Country","Region", "Population"));
         // Loop over all region in the list
         for (CapitalCities ccr : capcit_region)
         {
@@ -285,8 +288,8 @@ public class App
             if (ccr == null)
                 continue;
             String reg_string =
-                    String.format("%-25s %-25s %-25s",
-                            ccr.cap_cit_name,ccr.cap_cit_country,ccr.cap_cit_population);
+                    String.format("%-25s %-25s %-25s %-25s",
+                            ccr.cap_cit_name,ccr.cap_cit_country,ccr.cap_cit_region, ccr.cap_cit_population);
             System.out.println(reg_string);
         }
     }
@@ -304,11 +307,11 @@ public class App
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             //Query 31. List the population of people who speak Chinese in descending order
-            String strQueryFour =
+            String strQuerylanguage1 =
                     "SELECT countrylanguage.Language, countrylanguage.Percentage, country.Population FROM countrylanguage INNER JOIN country WHERE countrylanguage.CountryCode = country.Code AND countrylanguage.Language='"+input_language+"' ORDER BY countrylanguage.Percentage DESC;";
 
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strQueryFour);
+            ResultSet rset = stmt.executeQuery(strQuerylanguage1);
             // Extract countries information
             ArrayList<CountryLanguage> countrylanguage1 = new ArrayList<CountryLanguage>();
             while (rset.next())
