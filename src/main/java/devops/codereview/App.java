@@ -357,6 +357,8 @@ public class App
             System.out.println(reg_string);
         }
     }
+    //start
+    //end
 
     /**
      * 31. List the population of people who speak Chinese in descending order
@@ -517,6 +519,12 @@ public class App
         System.out.println("19.All the capital cities in a Caribbean region organised by largest to smallest.\n");
         ArrayList<CapitalCities> capcit_region = a.getAllCapitalCitiesRegions("Caribbean");
         a.printAllCapitalCityRegion(capcit_region);
+        System.out.println("\n");
+
+        // The top N populated capital cities in the world where N is provided by the user.
+        System.out.println("20.The top 10 populated capital cities in the world \n");
+        ArrayList<CapitalCities> Capwld = a.getTopNCapCities_World(10);
+        a.printTopNCapCities_World(Capwld);
         System.out.println("\n");
 
         // List the population of people who speak Chinese in descending order.
