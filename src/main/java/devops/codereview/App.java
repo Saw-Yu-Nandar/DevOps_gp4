@@ -372,7 +372,7 @@ public class App
             // Create string for SQL statement
             //Query 20.The top N populated capital cities in a continent where N is provided by the user.
             String strQueryTwentyOne =
-                    "SELECT city.Name, country.Name, country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode AND country.Continent = "+input_continent+" ORDER BY country.Population DESC LIMIT "+input_limited+";";
+                    "SELECT city.Name as 'CityName', country.Name as 'CountryName', country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode AND country.Continent = "+input_continent+" ORDER BY country.Population DESC LIMIT "+input_limited+";";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryTwentyOne);
@@ -399,10 +399,10 @@ public class App
      * 21. The top N populated capital cities in a continent where N is provided by the user.
      * Formatting the output data from the list.
      **/
-    public void printTopNCapCities_cont(ArrayList<CapitalCities> Cap_Conti)
+    public void printTopNCapCities_cont(ArrayList<CapitalCities> Cont_Cap)
     {
         // Check region is not null
-        if (Cap_Conti == null)
+        if (Cont_Cap == null)
         {
             System.out.println("There is no Capital City in the world");
             return;
@@ -410,7 +410,7 @@ public class App
         // Print header
         System.out.println(String.format("%-30s %-30s %-30s", "Capital City Name","Country Name", "Population"));
         // Loop over all capital cities in a continent
-        for (CapitalCities ccr : Cap_Conti)
+        for (CapitalCities ccr : Cont_Cap)
         {
             //print the list to check if capital cities in a continent is null
             if (ccr == null)
@@ -422,7 +422,6 @@ public class App
         }
     }
 
-    //start
     /**
      * 22.The top N populated capital cities in a region where N is provided by the user.
      * Query execution and pass the array list to format the return value.
@@ -437,7 +436,7 @@ public class App
             // Create string for SQL statement
             //Query 20.The top N populated capital cities in a region where N is provided by the user.
             String strQueryTwentyTwo =
-                    "SELECT city.Name, country.Name, country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode AND country.Continent = "+input_region+" ORDER BY country.Population DESC LIMIT "+input_limited+";";
+                    "SELECT city.Name as 'CityName', country.Name as 'CountryName', country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode AND country.Continent = "+input_region+" ORDER BY country.Population DESC LIMIT "+input_limited+";";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryTwentyTwo);
@@ -486,7 +485,6 @@ public class App
             System.out.println(reg_string);
         }
     }
-    //end
 
     /**
      * 31. List the population of people who speak Chinese in descending order
@@ -554,7 +552,7 @@ public class App
     }
 
     /**
-     * 31. List the population of people who speak English in descending order
+     * 32. List the population of people who speak English in descending order
      * Query execution by user input and pass the array list to format the return value.
      * Function is called in ma
      **/
@@ -592,7 +590,7 @@ public class App
     }
 
     /**
-     * 31. List the population of people who speak Chinese in descending order
+     * 32. List the population of people who speak Chinese in descending order
      * Formatting the output data from the list.
      **/
     public void printCountryLanguage2(ArrayList<CountryLanguage> countrylanguage2)
