@@ -345,7 +345,7 @@ public class App
         }
         // Print header
         System.out.println(String.format("%-30s %-30s %-30s", "Capital City Name","Country Name", "Population"));
-        // Loop over all capital cities in the list
+        // Loop over all capital cities in the world
         for (CapitalCities ccr : Cap_Wor)
         {
             //print the list to check if capital cities in the world is null
@@ -399,10 +399,10 @@ public class App
      * 20. The top N populated capital cities in a continent where N is provided by the user.
      * Formatting the output data from the list.
      **/
-    public void printTopNCapCities_cont(ArrayList<CapitalCities> cap_cont)
+    public void printTopNCapCities_cont(ArrayList<CapitalCities> Cap_Conti)
     {
         // Check region is not null
-        if (cap_cont == null)
+        if (Cap_Conti == null)
         {
             System.out.println("There is no Capital City in the world");
             return;
@@ -410,7 +410,7 @@ public class App
         // Print header
         System.out.println(String.format("%-30s %-30s %-30s", "Capital City Name","Country Name", "Population"));
         // Loop over all capital cities in a continent
-        for (CapitalCities ccr : cap_cont)
+        for (CapitalCities ccr : Cap_Conti)
         {
             //print the list to check if capital cities in a continent is null
             if (ccr == null)
@@ -589,6 +589,12 @@ public class App
         System.out.println("20.The top 10 populated capital cities in the world \n");
         ArrayList<CapitalCities> Capwld = a.getTopNCapCities_World(10);
         a.printTopNCapCities_World(Capwld);
+        System.out.println("\n");
+
+        // The top N populated capital cities in a continent where N is provided by the user.
+        System.out.println("21.The top 10 populated capital cities in a continent \n");
+        ArrayList<CapitalCities> cont_wld = a.getTopNCapCities_cont(10);
+        a.printTopNCapCities_cont(cont_wld);
         System.out.println("\n");
 
         // List the population of people who speak Chinese in descending order.
