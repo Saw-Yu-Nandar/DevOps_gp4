@@ -9,48 +9,6 @@ public class App
      * Connection to MySQL database.
      */
     private Connection con = null;
-
-    /**
-     * Connect to the MySQL database.
-     */
-//    public void connect()
-//    {
-//        try
-//        {
-//            // Load Database driver
-//            Class.forName("com.mysql.cj.jdbc.Driver");
-//        }
-//        catch (ClassNotFoundException e)
-//        {
-//            System.out.println("Could not load SQL driver");
-//            System.exit(-1);
-//        }
-//
-//        int retries = 10;
-//        for (int i = 0; i < retries; ++i)
-//        {
-//            System.out.println("Connecting to database...");
-//            try
-//            {
-//                // Wait a bit for db to start
-//                Thread.sleep(30000);
-//                // Connect to database
-//                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "Team_4");
-//                System.out.println("Successfully connected");
-//                break;
-//            }
-//            catch (SQLException sqle)
-//            {
-//                System.out.println("Failed to connect to database attempt " + Integer.toString(i));
-//                System.out.println(sqle.getMessage());
-//            }
-//            catch (InterruptedException ie)
-//            {
-//                System.out.println("Thread interrupted? Should not happen.");
-//            }
-//        }
-//    }
-
     public void connect(String location, int delay) {
         try {
             // Load Database driver
@@ -152,14 +110,14 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-20s %-50s %-50s %-50s %-50s %-30s", "Code","Name","Continent","Region","Population","Capital"));
+        System.out.println(String.format("%-10s %-30s %-30s %-30s %-30s %-20s", "Code","Name","Continent","Region","Population","Capital"));
         // Loop over all countries in the list
         for (Country c : countries)
         {
             if (c == null)
                 continue;
             String ctr_string =
-                    String.format("%-20s %-50s %-50s %-50s %-50s %-30s",
+                    String.format("%-10s %-30s %-30s %-30s %-30s %-20s",
                             c.country_code,c.country_name,c.country_cont,c.country_reg,c.country_population,c.country_cap);
             System.out.println(ctr_string);
         }
@@ -201,14 +159,14 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get all the countries in a continent organised by largest population to smallest.");
+            System.out.println("Failed to get all the countries in the Oceania organised by largest population to smallest.");
             return null;
         }
     }
 
     /**
      * 2. All the countries in a continent organised by largest population to smallest.
-     * F
+     *
 
      Su Hnin, [12/25/2022 11:38 PM]
      ormatting the output data from the list.
@@ -222,14 +180,14 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-30s %-30s %-30s %-30s %-30s %-30s","Code","Country Name","Continent","Region","Population","Capital"));
+        System.out.println(String.format("%-10s %-30s %-30s %-30s %-30s %-20s","Code","Country Name","Continent","Region","Population","Capital"));
         // Loop over all continent in the list
         for (Country cont : continent)
         {
             if (cont == null)
                 continue;
             String ctr_string =
-                    String.format("%-30s %-30s %-30s %-30s %-30s %-30s",
+                    String.format("%-10s %-30s %-30s %-30s %-30s %-20s",
                             cont.country_code,cont.country_name,cont.country_cont,cont.country_reg,cont.country_population,cont.country_cap);
             System.out.println(ctr_string);
         }
@@ -270,7 +228,7 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get all the countries in a region organised by largest population to smallest.");
+            System.out.println("Failed to get all the countries in the Caribbean organised by largest population to smallest.");
             return null;
         }
     }
@@ -287,7 +245,7 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-30s %-40s %-30s %-40s %-30s %-30s", "Code","Country Name","Continent","Region","Population","Capital"));
+        System.out.println(String.format("%-10s %-30s %-30s %-30s %-30s %-20s", "Code","Country Name","Continent","Region","Population","Capital"));
         // Loop over all region in the list
         for (Country r : region)
         {
@@ -295,7 +253,7 @@ public class App
             if (r == null)
                 continue;
             String reg_string =
-                    String.format("%-30s %-40s %-30s %-40s %-30s %-30s",
+                    String.format("%-10s %-30s %-30s %-30s %-30s %-20s",
                             r.country_code,r.country_name,r.country_cont,r.country_reg,r.country_population,r.country_cap);
             System.out.println(reg_string);
         }
@@ -337,7 +295,7 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the top N populated countries in the world where N is provided by the user.");
+            System.out.println("Failed to get the top 10 populated countries in the world.");
             return null;
         }
     }
@@ -355,7 +313,7 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-30s %-30s %-30s %-30s %-30s %-30s", "Code", "Country Name", "Continent", "Region", "Population", "Capital"));
+        System.out.println(String.format("%-10s %-30s %-30s %-30s %-30s %-20s", "Code", "Country Name", "Continent", "Region", "Population", "Capital"));
         // Loop over all countries in the list
         for (Country npopc : NPopulatedC)
         {
@@ -363,7 +321,7 @@ public class App
             if (npopc == null)
                 continue;
             String npopctr_string =
-                    String.format("%-30s %-30s %-30s %-30s %-30s %-30s",
+                    String.format("%-10s %-30s %-30s %-30s %-30s %-20s",
                             npopc.country_code, npopc.country_name, npopc.country_cont, npopc.country_reg, npopc.country_population, npopc.country_cap);
             System.out.println(npopctr_string);
         }
@@ -405,7 +363,7 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the top N populated countries in a continent where N is provided by the user.");
+            System.out.println("Failed to get the top 10 populated countries in the Europe.");
             return null;
         }
     }
@@ -423,7 +381,7 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-30s %-30s %-30s %-30s %-30s %-30s","Code","Country Name","Continent","Region","Population","Capital"));
+        System.out.println(String.format("%-10s %-30s %-30s %-30s %-30s %-20s","Code","Country Name","Continent","Region","Population","Capital"));
         // Loop over all continent in the list
         for (Country npopconti : NPopulatedContinents)
         {
@@ -431,7 +389,7 @@ public class App
             if (npopconti == null)
                 continue;
             String npopcont_string =
-                    String.format("%-30s %-30s %-30s %-30s %-30s %-30s",
+                    String.format("%-10s %-30s %-30s %-30s %-30s %-20s",
                             npopconti.country_code,npopconti.country_name,npopconti.country_cont,npopconti.country_reg,npopconti.country_population,npopconti.country_cap);
             System.out.println(npopcont_string);
         }
@@ -473,7 +431,7 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the top N populated countries in a region where N is provided by the user.");
+            System.out.println("Failed to get the top 10 populated countries in the Caribbean.");
             return null;
         }
     }
@@ -491,7 +449,7 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-30s %-30s %-30s %-30s %-30s %-30s","Code","Country Name","Continent","Region","Population","Capital"));
+        System.out.println(String.format("%-10s %-30s %-30s %-30s %-30s %-20s","Code","Country Name","Continent","Region","Population","Capital"));
         // Loop over all region in the list
         for (Country npopreg : NPopulatedRegion)
         {
@@ -499,7 +457,7 @@ public class App
             if (npopreg == null)
                 continue;
             String npopreg_string =
-                    String.format("%-30s %-30s %-30s %-30s %-30s %-30s",
+                    String.format("%-10s %-30s %-30s %-30s %-30s %-20s",
                             npopreg.country_code,npopreg.country_name,npopreg.country_cont,npopreg.country_reg,npopreg.country_population,npopreg.country_cap);
             System.out.println(npopreg_string);
         }
@@ -524,31 +482,31 @@ public class App
         System.out.println("\n");
 
         // Display all the countries in a continent organised by largest population to smallest.
-        System.out.println("2: All the countries in a continent organised by largest population to smallest.\n");
+        System.out.println("2: All the countries in the Oceania organised by largest population to smallest.\n");
         ArrayList<Country> continents = a.getAllContinents("Oceania");
         a.printAllCountries(continents);
         System.out.println("\n");
 
         // Display all the countries in a region organised by largest population to smallest.
-        System.out.println("3: All the countries in a region organised by largest population to smallest.\n");
+        System.out.println("3: All the countries in the Caribbean organised by largest population to smallest.\n");
         ArrayList<Country> regions = a.getAllRegion("Caribbean");
         a.printAllCountries(regions);
         System.out.println("\n");
 
         // Display the top N populated countries in the world where N is provided by the user.
-        System.out.println("4: The top N populated countries in the world where N is provided by the user.\n");
+        System.out.println("4: The top 10 populated countries in the world.\n");
         ArrayList<Country> NPopulatedCountries = a.getAllNPopulatedCountries(10);
         a.printNPopulatedCountries(NPopulatedCountries);
         System.out.println("\n");
 
         // Display all the countries in a continent organised by largest population to smallest.
-        System.out.println("5. The top N populated countries in a continent where N is provided by the user.\n");
+        System.out.println("5. The top 10 populated countries in the Europe.\n");
         ArrayList<Country> NPopulated_Continents = a.getAllNPopulatedContinents("Europe", 10);
         a.printContinent(NPopulated_Continents);
         System.out.println("\n");
 
         // Display the top N populated countries in a region where N is provided by the user.
-        System.out.println("6: The top N populated countries in a region where N is provided by the user.\n");
+        System.out.println("6: The top 10 populated countries in the Caribbean.\n");
         ArrayList<Country> NPopulated_Region = a.getAllNPopulatedRegion("Caribbean", 10);
         a.printNPopulatedRegion(NPopulated_Region);
         System.out.println("\n");
