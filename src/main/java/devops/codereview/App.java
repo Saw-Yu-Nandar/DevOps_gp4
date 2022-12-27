@@ -680,6 +680,73 @@ public class App
             System.out.println(language_string);
         }
     }
+
+    //start
+    /**
+     * 34. List the population of people who speak Spanish in descending order
+     * Query execution by user input and pass the array list to format the return value.
+     * Function is called in ma
+     **/
+    public ArrayList<CountryLanguage> getCountryLanguage4(String input_language)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            //Query 33. List the population of people who speak Spanish in descending order
+            String strQueryLanguage4 =
+                    "SELECT countrylanguage.Language, countrylanguage.Percentage, country.Population FROM countrylanguage INNER JOIN country WHERE countrylanguage.CountryCode = country.Code AND countrylanguage.Language='"+input_language+"' ORDER BY countrylanguage.Percentage DESC;";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strQueryLanguage4);
+            // Extract countries information
+            ArrayList<CountryLanguage> countryLanguage4 = new ArrayList<CountryLanguage>();
+            while (rset.next())
+            {
+                CountryLanguage language4 = new CountryLanguage();
+                language4.language       = rset.getString("Language");
+                language4.percentage        = rset.getString("Percentage");
+                language4.population        = rset.getString("Population");
+                countryLanguage4.add(language4);
+            }
+            return countryLanguage4;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get list the population of people who speak Spanish in descending order.");
+            return null;
+        }
+    }
+
+    /**
+     * 33. List the population of people who speak Spanish in descending order
+     * Formatting the output data from the list.
+     **/
+    public void printCountryLanguage4(ArrayList<CountryLanguage> country_language4)
+    {
+        // Check country language is not null
+        if (country_language4 == null)
+        {
+            System.out.println("No Spanish");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-30s %-30s %-30s", "Language", "Percentage", "Population"));
+        // Loop over all countries in the list
+        for (CountryLanguage cl4 : country_language4)
+        {
+            //print language to check if a language is null
+            if (cl4 == null)
+                continue;
+            String language_string =
+                    String.format("%-30s %-30s %-30s",
+                            cl4.language, cl4.percentage, cl4.population);
+            System.out.println(language_string);
+        }
+    }
+
     //end
 
     public static void main(String[] args)
@@ -747,6 +814,12 @@ public class App
         System.out.println("33: List the population of people who speak Hindi in descending order.\n");
         ArrayList<CountryLanguage> countLanguage3 = a.getCountryLanguage3("Hindi");
         a.printCountryLanguage3(countLanguage3);
+        System.out.println("\n");
+
+        // List the population of people who speak Spanish in descending order.
+        System.out.println("34: List the population of people who speak Spanish in descending order.\n");
+        ArrayList<CountryLanguage> countLanguage4 = a.getCountryLanguage4("Spanish");
+        a.printCountryLanguage4(countLanguage4);
         System.out.println("\n");
 
         // Disconnect from database
