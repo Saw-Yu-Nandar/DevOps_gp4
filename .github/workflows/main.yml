@@ -25,6 +25,7 @@ jobs:
           mvn test -Dtest=devops.codereview.QueryTwentyTwoTest
           mvn test -Dtest=devops.codereview.QueryChineseLanguageTest
           mvn test -Dtest=devops.codereview.QueryEnglishLanguageTest
+          mvn test -Dtest=devops.codereview.QueryHindiLanguageTest
 
   IntegrationTests:
     name: Integration Tests
