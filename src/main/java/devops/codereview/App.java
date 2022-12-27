@@ -308,7 +308,7 @@ public class App
             // Create string for SQL statement
             //Query 20.The top N populated capital cities in the world where N is provided by the user.
             String strQueryNineteen =
-                    "SELECT city.Name as 'CityName', country.Name as 'CountryName', country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode ORDER BY country.Population DESC LIMIT '"+input_limited+"';";
+                    "SELECT city.Name as 'CityName', country.Name as 'CountryName', country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode ORDER BY country.Population DESC LIMIT "+input_limited+";";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryNineteen);
@@ -358,6 +358,70 @@ public class App
         }
     }
     //start
+    /**
+     * 21.The top N populated capital cities in a continent where N is provided by the user.
+     * Query execution and pass the array list to format the return value.
+     * Function is called in main.
+     **/
+    public ArrayList<CapitalCities> getTopNCapCities_cont(int input_limited)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            //Query 20.The top N populated capital cities in a continent where N is provided by the user.
+            String strQueryNineteen =
+                    "SELECT city.Name as 'CityName', country.Name as 'CountryName', country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode ORDER BY country.Population DESC LIMIT "+input_limited+";";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strQueryNineteen);
+            // Extract region information
+            ArrayList<CapitalCities> cap_cont = new ArrayList<CapitalCities>();
+            while (rset.next())
+            {
+                CapitalCities cap_cnt          = new CapitalCities();
+                cap_cnt.cap_cit_name           = rset.getString("CityName");
+                cap_cnt.cap_cit_country        = rset.getString("CountryName");
+                cap_cnt.cap_cit_population     = rset.getString("Population");
+                cap_cont.add(cap_cnt);
+            }
+            return cap_cont;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get the top N populated capital cities in a continent where N is provided by the user.");
+            return null;
+        }
+    }
+    /**
+     * 20. The top N populated capital cities in a continent where N is provided by the user.
+     * Formatting the output data from the list.
+     **/
+    public void printTopNCapCities_cont(ArrayList<CapitalCities> cap_cont)
+    {
+        // Check region is not null
+        if (cap_cont == null)
+        {
+            System.out.println("There is no Capital City in the world");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-30s %-30s %-30s", "Capital City Name","Country Name", "Population"));
+        // Loop over all capital cities in a continent
+        for (CapitalCities ccr : cap_cont)
+        {
+            //print the list to check if capital cities in a continent is null
+            if (ccr == null)
+                continue;
+            String reg_string =
+                    String.format("%-30s %-30s %-30s",
+                            ccr.cap_cit_name,ccr.cap_cit_country, ccr.cap_cit_population);
+            System.out.println(reg_string);
+        }
+    }
+
     //end
 
     /**
