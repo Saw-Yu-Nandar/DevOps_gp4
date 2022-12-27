@@ -33,7 +33,7 @@ public class QueryTwentyTest
     }
 
     @Test
-    void printTopNCapCities_WorldRegion()
+    void printTopNCapCities_World()
     {
         ArrayList<CapitalCities> cap_world = new ArrayList<CapitalCities>();
         CapitalCities capWld            = new CapitalCities();
@@ -41,6 +41,6 @@ public class QueryTwentyTest
         capWld.cap_cit_country          = "China";
         capWld.cap_cit_population       = "1277558000";
         cap_world.add(capWld);
-        app.printAllCapitalCityRegion(cap_world);
+        app.printTopNCapCities_World(cap_world);
     }
 }
