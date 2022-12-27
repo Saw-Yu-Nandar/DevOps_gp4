@@ -243,7 +243,7 @@ public class App
             // Create string for SQL statement
             //Query 19.All the capital cities in a region organised by largest to smallest.
             String strQueryNineteen =
-                    "SELECT city.Name as 'CapitalCity', country.Name as 'CityName', country.Region, country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode AND country.Region = '"+input_region+"' ORDER BY country.Population DESC;";
+                    "SELECT city.Name as 'CapitalCity', country.Name as 'CountryName', country.Region, country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode AND country.Region = '"+input_region+"' ORDER BY country.Population DESC;";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryNineteen);
