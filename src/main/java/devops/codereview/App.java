@@ -335,10 +335,10 @@ public class App
      * 20. The top N populated capital cities in the world where N is provided by the user.
      * Formatting the output data from the list.
      **/
-    public void printTopNCapCities_World(ArrayList<CapitalCities> cap_world)
+    public void printTopNCapCities_World(ArrayList<CapitalCities> Cap_Wor)
     {
         // Check region is not null
-        if (cap_world == null)
+        if (Cap_Wor == null)
         {
             System.out.println("There is no Capital City in the world");
             return;
@@ -346,7 +346,7 @@ public class App
         // Print header
         System.out.println(String.format("%-30s %-30s %-30s", "Capital City Name","Country Name", "Population"));
         // Loop over all capital cities in the list
-        for (CapitalCities ccr : cap_world)
+        for (CapitalCities ccr : Cap_Wor)
         {
             //print the list to check if capital cities in the world is null
             if (ccr == null)
