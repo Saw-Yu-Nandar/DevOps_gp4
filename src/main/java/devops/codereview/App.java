@@ -616,72 +616,71 @@ public class App
         }
     }
 
-    //start
-//    /**
-//     * 33. List the population of people who speak English in descending order
-//     * Query execution by user input and pass the array list to format the return value.
-//     * Function is called in ma
-//     **/
-//    public ArrayList<CountryLanguage> getCountryLanguage3(String input_language)
-//    {
-//        try
-//        {
-//            // Create an SQL statement
-//            Statement stmt = con.createStatement();
-//            // Create string for SQL statement
-//            //Query 31. List the population of people who speak Chinese in descending order
-//            String strQueryFour =
-//                    "SELECT countrylanguage.Language, countrylanguage.Percentage, country.Population FROM countrylanguage INNER JOIN country WHERE countrylanguage.CountryCode = country.Code AND countrylanguage.Language='"+input_language+"' ORDER BY countrylanguage.Percentage DESC;";
-//
-//            // Execute SQL statement
-//            ResultSet rset = stmt.executeQuery(strQueryFour);
-//            // Extract countries information
-//            ArrayList<CountryLanguage> countrylanguage2 = new ArrayList<CountryLanguage>();
-//            while (rset.next())
-//            {
-//                CountryLanguage language2 = new CountryLanguage();
-//                language2.language       = rset.getString("Language");
-//                language2.percentage        = rset.getString("Percentage");
-//                language2.population        = rset.getString("Population");
-//                countrylanguage2.add(language2);
-//            }
-//            return countrylanguage2;
-//        }
-//        catch (Exception e)
-//        {
-//            System.out.println(e.getMessage());
-//            System.out.println("Failed to get the top N populated countries in the world where N is provided by the user.");
-//            return null;
-//        }
-//    }
-//
-//    /**
-//     * 33. List the population of people who speak Chinese in descending order
-//     * Formatting the output data from the list.
-//     **/
-//    public void printCountryLanguage2(ArrayList<CountryLanguage> countrylanguage2)
-//    {
-//        // Check country language is not null
-//        if (countrylanguage2 == null)
-//        {
-//            System.out.println("No English");
-//            return;
-//        }
-//        // Print header
-//        System.out.println(String.format("%-30s %-30s %-30s", "Language", "Percentage", "Population"));
-//        // Loop over all countries in the list
-//        for (CountryLanguage cl2 : countrylanguage2)
-//        {
-//            //print language to check if an language is null
-//            if (cl2 == null)
-//                continue;
-//            String language_string =
-//                    String.format("%-30s %-30s %-30s",
-//                            cl2.language, cl2.percentage, cl2.population);
-//            System.out.println(language_string);
-//        }
-//    }
-//    //end
+    /**
+     * 33. List the population of people who speak Hindi in descending order
+     * Query execution by user input and pass the array list to format the return value.
+     * Function is called in ma
+     **/
+    public ArrayList<CountryLanguage> getCountryLanguage3(String input_language)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            //Query 33. List the population of people who speak Hindi in descending order
+            String strQueryLanguage3 =
+                    "SELECT countrylanguage.Language, countrylanguage.Percentage, country.Population FROM countrylanguage INNER JOIN country WHERE countrylanguage.CountryCode = country.Code AND countrylanguage.Language='"+input_language+"' ORDER BY countrylanguage.Percentage DESC;";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strQueryLanguage3);
+            // Extract countries information
+            ArrayList<CountryLanguage> countryLanguage3 = new ArrayList<CountryLanguage>();
+            while (rset.next())
+            {
+                CountryLanguage language3 = new CountryLanguage();
+                language3.language       = rset.getString("Language");
+                language3.percentage        = rset.getString("Percentage");
+                language3.population        = rset.getString("Population");
+                countryLanguage3.add(language3);
+            }
+            return countryLanguage3;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get list the population of people who speak Hindi in descending order.");
+            return null;
+        }
+    }
+
+    /**
+     * 33. List the population of people who speak Hindi in descending order
+     * Formatting the output data from the list.
+     **/
+    public void printCountryLanguage3(ArrayList<CountryLanguage> country_language3)
+    {
+        // Check country language is not null
+        if (country_language3 == null)
+        {
+            System.out.println("No Hindi");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-30s %-30s %-30s", "Language", "Percentage", "Population"));
+        // Loop over all countries in the list
+        for (CountryLanguage cl3 : country_language3)
+        {
+            //print language to check if a language is null
+            if (cl3 == null)
+                continue;
+            String language_string =
+                    String.format("%-30s %-30s %-30s",
+                            cl3.language, cl3.percentage, cl3.population);
+            System.out.println(language_string);
+        }
+    }
+    //end
 
     public static void main(String[] args)
     {
@@ -744,11 +743,11 @@ public class App
         a.printCountryLanguage2(countrylanguage2);
         System.out.println("\n");
 
-        // List the population of people who speak English in descending order.
-//        System.out.println("33: List the population of people who speak English in descending order.\n");
-//        ArrayList<CountryLanguage> countrylanguage2 = a.getCountryLanguage2("English");
-//        a.printCountryLanguage2(countrylanguage2);
-//        System.out.println("\n");
+        // List the population of people who speak Hindi in descending order.
+        System.out.println("33: List the population of people who speak Hindi in descending order.\n");
+        ArrayList<CountryLanguage> countLanguage3 = a.getCountryLanguage3("Hindi");
+        a.printCountryLanguage3(countLanguage3);
+        System.out.println("\n");
 
         // Disconnect from database
         a.disconnect();
