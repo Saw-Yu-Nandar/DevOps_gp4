@@ -114,7 +114,7 @@ public class App
             // Create string for SQL statement
             //Query 17.All the capital cities in the world organised by largest population to smallest.
             String strQuerySeventeen =
-                    "SELECT city.Name as CapitalCity, country.Name as CountryName, country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode ORDER BY country.Population DESC;";
+                    "SELECT city.Name as 'CapitalCity', country.Name as 'CountryName', country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode ORDER BY country.Population DESC;";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQuerySeventeen);
@@ -178,7 +178,7 @@ public class App
             // Create string for SQL statement
             //Query 18.All the capital cities in a continent organised by largest population to smallest.
             String strQueryEighteen =
-                    "SELECT city.Name as CapitalCity, country.Name as CountryName, country.Continent, country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode AND country.Continent = '"+input_continent+"' ORDER BY country.Population DESC;";
+                    "SELECT city.Name as 'CapitalCity', country.Name as 'CountryName', country.Continent, country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode AND country.Continent = '"+input_continent+"' ORDER BY country.Population DESC;";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryEighteen);
@@ -243,7 +243,7 @@ public class App
             // Create string for SQL statement
             //Query 19.All the capital cities in a region organised by largest to smallest.
             String strQueryNineteen =
-                    "SELECT city.Name as CapitalCity, country.Name as CityName, country.Region, country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode AND country.Region = '"+input_region+"' ORDER BY country.Population DESC;";
+                    "SELECT city.Name as 'CapitalCity', country.Name as 'CityName', country.Region, country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode AND country.Region = '"+input_region+"' ORDER BY country.Population DESC;";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryNineteen);
@@ -251,11 +251,11 @@ public class App
             ArrayList<CapitalCities> capcit_region = new ArrayList<CapitalCities>();
             while (rset.next())
             {
-                CapitalCities capcitreg           = new CapitalCities();
-                capcitreg.cap_cit_name        = rset.getString("CapitalCity");
+                CapitalCities capcitreg          = new CapitalCities();
+                capcitreg.cap_cit_name           = rset.getString("CapitalCity");
                 capcitreg.cap_cit_country        = rset.getString("CountryName");
-                capcitreg.cap_cit_region        = rset.getString("Region");
-                capcitreg.cap_cit_population        = rset.getString("Population");
+                capcitreg.cap_cit_region         = rset.getString("Region");
+                capcitreg.cap_cit_population     = rset.getString("Population");
                 capcit_region.add(capcitreg);
             }
             return capcit_region;
@@ -439,7 +439,7 @@ public class App
 
         // All the capital cities in the world organised by largest population to smallest.
         System.out.println("17: All the capital cities in the world organised by largest population to smallest.\n");
-        ArrayList<CapitalCities> capital_cities = new ArrayList<CapitalCities>();
+        ArrayList<CapitalCities> capital_cities = a.getAllCapitalCities();
         a.printAllCapitalCities(capital_cities);
         System.out.println("\n");
 
@@ -462,8 +462,8 @@ public class App
         System.out.println("\n");
 
         // List the population of people who speak English in descending order.
-        System.out.println("31: List the population of people who speak Chinese in descending order.\n");
-        ArrayList<CountryLanguage> countrylanguage2 = a.getCountryLanguage2("Chinese");
+        System.out.println("31: List the population of people who speak English in descending order.\n");
+        ArrayList<CountryLanguage> countrylanguage2 = a.getCountryLanguage2("English");
         a.printCountryLanguage2(countrylanguage2);
         System.out.println("\n");
 
