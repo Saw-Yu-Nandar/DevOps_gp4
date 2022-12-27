@@ -53,4 +53,37 @@ public class AppIntegrationTestCapitalCities {
         assertEquals(capitalCities.getCap_cit_region(), "Caribbean");
         assertEquals(Integer.parseInt(capitalCities.getCap_cit_population()), 11201000);
     }
+    /*
+     * Query 20: The top N populated capital cities in the world where N is provided by the user.
+     */
+    @Test
+    void testGetTopNCapCities_World() {
+        ArrayList<CapitalCities> CapWld = app.getTopNCapCities_World(10);
+        CapitalCities cap_world = CapWld.get(0);
+        assertEquals(cap_world.getCap_cit_name(), "Peking");
+        assertEquals(cap_world.getCap_cit_country(), "China");
+        assertEquals(Integer.parseInt(cap_world.getCap_cit_population()), 1277558000);
+    }
+    /*
+     * Query 21: The top N populated capital cities in a continent where N is provided by the user.
+     */
+    @Test
+    void testGetTopNCapCities_cont() {
+        ArrayList<CapitalCities> cont_capital = app.getTopNCapCities_cont("North America",10);
+        CapitalCities Cont_cap = cont_capital.get(0);
+        assertEquals(Cont_cap.getCap_cit_name(), "Washington");
+        assertEquals(Cont_cap.getCap_cit_country(), "United States");
+        assertEquals(Integer.parseInt(Cont_cap.getCap_cit_population()), 278357000);
+    }
+    /*
+     * Query 23: The top N populated capital cities in a region where N is provided by the user.
+     */
+    @Test
+    void testGetTopNCapCities_Reg() {
+        ArrayList<CapitalCities> RegWld = app.getTopNCapCities_Reg("Middle East",10);
+        CapitalCities reg_cap = RegWld.get(0);
+        assertEquals(reg_cap.getCap_cit_name(), "Ankara");
+        assertEquals(reg_cap.getCap_cit_country(), "Turkey");
+        assertEquals(Integer.parseInt(reg_cap.getCap_cit_population()), 66591000);
+    }
 }
