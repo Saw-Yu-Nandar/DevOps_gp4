@@ -1,6 +1,6 @@
 package devops.codereview;
 
-//Unit testing for all the capital cities in a region organised by largest population to smallest.
+//Unit testing for the top N populated capital cities in the world where N is provided by the user.
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
