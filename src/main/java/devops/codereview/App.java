@@ -352,7 +352,7 @@ public class App
             if (ccr == null)
                 continue;
             String reg_string =
-                    String.format("%-25s %-25s %-25s %-25s",
+                    String.format("%-30s %-30s %-30s",
                             ccr.cap_cit_name,ccr.cap_cit_country, ccr.cap_cit_population);
             System.out.println(reg_string);
         }
