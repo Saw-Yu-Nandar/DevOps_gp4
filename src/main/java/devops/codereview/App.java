@@ -372,7 +372,7 @@ public class App
             // Create string for SQL statement
             //Query 20.The top N populated capital cities in a continent where N is provided by the user.
             String strQueryTwentyOne =
-                    "SELECT city.Name as 'CityName', country.Name as 'CountryName', country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode AND country.Continent = "+input_continent+" ORDER BY country.Population DESC LIMIT "+input_limited+";";
+                    "SELECT city.Name as 'CityName', country.Name as 'CountryName', country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode AND country.Continent = '"+input_continent+"' ORDER BY country.Population DESC LIMIT "+input_limited+";";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryTwentyOne);
@@ -436,7 +436,7 @@ public class App
             // Create string for SQL statement
             //Query 20.The top N populated capital cities in a region where N is provided by the user.
             String strQueryTwentyTwo =
-                    "SELECT city.Name as 'CityName', country.Name as 'CountryName', country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode AND country.Continent = "+input_region+" ORDER BY country.Population DESC LIMIT "+input_limited+";";
+                    "SELECT city.Name, country.Name, country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode AND country.Region='"+input_region+"' ORDER BY country.Population DESC LIMIT "+input_limited+";";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryTwentyTwo);
@@ -655,13 +655,13 @@ public class App
 
         // The top N populated capital cities in a continent where N is provided by the user.
         System.out.println("21.The top 10 populated capital cities in North America \n");
-        ArrayList<CapitalCities> cont_wld = a.getTopNCapCities_cont("North America",10);
-        a.printTopNCapCities_cont(cont_wld);
+        ArrayList<CapitalCities> cont_capital = a.getTopNCapCities_cont("North America",10);
+        a.printTopNCapCities_cont(cont_capital);
         System.out.println("\n");
 
-        // The top N populated capital cities in a continent where N is provided by the user.
-        System.out.println("22.The top 10 populated capital cities in Southern Europe \n");
-        ArrayList<CapitalCities> RegWld = a.getTopNCapCities_Reg("Southern Europe",10);
+        // The top N populated capital cities in a region where N is provided by the user.
+        System.out.println("22.The top 10 populated capital cities in Middle East \n");
+        ArrayList<CapitalCities> RegWld = a.getTopNCapCities_Reg("Middle East",10);
         a.printTopNCapCities_Reg(RegWld);
         System.out.println("\n");
 
