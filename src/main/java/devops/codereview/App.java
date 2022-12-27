@@ -295,6 +295,70 @@ public class App
     }
 
     /**
+     * 20.The top N populated capital cities in the world where N is provided by the user.
+     * Query execution and pass the array list to format the return value.
+     * Function is called in main.
+     **/
+    public ArrayList<CapitalCities> getTopNCapCities_World(int input_limited)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            //Query 20.The top N populated capital cities in the world where N is provided by the user.
+            String strQueryNineteen =
+                    "SELECT city.Name as 'CityName', country.Name as 'CountryName', country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode ORDER BY country.Population DESC LIMIT '"+input_limited+"';";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strQueryNineteen);
+            // Extract region information
+            ArrayList<CapitalCities> cap_world = new ArrayList<CapitalCities>();
+            while (rset.next())
+            {
+                CapitalCities cap_wld          = new CapitalCities();
+                cap_wld.cap_cit_name           = rset.getString("CityName");
+                cap_wld.cap_cit_country        = rset.getString("CountryName");
+                cap_wld.cap_cit_population     = rset.getString("Population");
+                cap_world.add(cap_wld);
+            }
+            return cap_world;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get the top N populated capital cities in the world where N is provided by the user.");
+            return null;
+        }
+    }
+    /**
+     * 20. The top N populated capital cities in the world where N is provided by the user.
+     * Formatting the output data from the list.
+     **/
+    public void printTopNCapCities_World(ArrayList<CapitalCities> cap_world)
+    {
+        // Check region is not null
+        if (cap_world == null)
+        {
+            System.out.println("There is no Capital City in the world");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-30s %-30s %-30s", "Capital City Name","Country Name", "Population"));
+        // Loop over all capital cities in the list
+        for (CapitalCities ccr : cap_world)
+        {
+            //print the list to check if capital cities in the world is null
+            if (ccr == null)
+                continue;
+            String reg_string =
+                    String.format("%-25s %-25s %-25s %-25s",
+                            ccr.cap_cit_name,ccr.cap_cit_country, ccr.cap_cit_population);
+            System.out.println(reg_string);
+        }
+    }
+
+    /**
      * 31. List the population of people who speak Chinese in descending order
      * Query execution by user input and pass the array list to format the return value.
      * Function is called in ma
