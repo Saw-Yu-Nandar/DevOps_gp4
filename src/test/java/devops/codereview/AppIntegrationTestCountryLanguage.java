@@ -29,7 +29,7 @@ public class AppIntegrationTestCountryLanguage {
     }
 
     /*
-     * Query 31: List the population of people who speak English in descending order
+     * Query 32: List the population of people who speak English in descending order
      */
     @Test
     void testGetAllCountryLanguage2() {
@@ -38,6 +38,30 @@ public class AppIntegrationTestCountryLanguage {
         assertEquals(countryLanguage2.getLanguage(), "English");
         assertEquals(countryLanguage2.getPercentage(), "100.0");
         assertEquals(Integer.parseInt(countryLanguage2.getPopulation()), 65000);
+    }
+
+    /*
+     * Query 33: List the population of people who speak Hindi in descending order
+     */
+    @Test
+    void testGetAllCountryLanguage3() {
+        ArrayList<CountryLanguage> countLanguage3 = app.getCountryLanguage3("Hindi");
+        CountryLanguage countryLanguage3 = countLanguage3.get(0);
+        assertEquals(countryLanguage3.getLanguage(), "Hindi");
+        assertEquals(countryLanguage3.getPercentage(), "43.7");
+        assertEquals(Integer.parseInt(countryLanguage3.getPopulation()), 817000);
+    }
+
+    /*
+     * Query 34: List the population of people who speak Spanish in descending order
+     */
+    @Test
+    void testGetAllCountryLanguage4() {
+        ArrayList<CountryLanguage> countLanguage4 = app.getCountryLanguage4("Spanish");
+        CountryLanguage countryLanguage4 = countLanguage4.get(0);
+        assertEquals(countryLanguage4.getLanguage(), "Spanish");
+        assertEquals(countryLanguage4.getPercentage(), "100.0");
+        assertEquals(Integer.parseInt(countryLanguage4.getPopulation()), 11201000);
     }
 
 }
