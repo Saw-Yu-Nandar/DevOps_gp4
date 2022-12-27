@@ -307,11 +307,11 @@ public class App
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             //Query 20.The top N populated capital cities in the world where N is provided by the user.
-            String strQueryNineteen =
+            String strQueryTwenty =
                     "SELECT city.Name as 'CityName', country.Name as 'CountryName', country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode ORDER BY country.Population DESC LIMIT "+input_limited+";";
 
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strQueryNineteen);
+            ResultSet rset = stmt.executeQuery(strQueryTwenty);
             // Extract region information
             ArrayList<CapitalCities> cap_world = new ArrayList<CapitalCities>();
             while (rset.next())
@@ -357,13 +357,13 @@ public class App
             System.out.println(reg_string);
         }
     }
-    //start
+
     /**
      * 21.The top N populated capital cities in a continent where N is provided by the user.
      * Query execution and pass the array list to format the return value.
      * Function is called in main.
      **/
-    public ArrayList<CapitalCities> getTopNCapCities_cont(int input_limited)
+    public ArrayList<CapitalCities> getTopNCapCities_cont(String input_continent,int input_limited)
     {
         try
         {
@@ -371,11 +371,11 @@ public class App
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             //Query 20.The top N populated capital cities in a continent where N is provided by the user.
-            String strQueryNineteen =
-                    "SELECT city.Name as 'CityName', country.Name as 'CountryName', country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode ORDER BY country.Population DESC LIMIT "+input_limited+";";
+            String strQueryTwentyOne =
+                    "SELECT city.Name, country.Name, country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode AND country.Continent = "+input_continent+" ORDER BY country.Population DESC LIMIT "+input_limited+";";
 
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strQueryNineteen);
+            ResultSet rset = stmt.executeQuery(strQueryTwentyOne);
             // Extract region information
             ArrayList<CapitalCities> cap_cont = new ArrayList<CapitalCities>();
             while (rset.next())
@@ -396,7 +396,7 @@ public class App
         }
     }
     /**
-     * 20. The top N populated capital cities in a continent where N is provided by the user.
+     * 21. The top N populated capital cities in a continent where N is provided by the user.
      * Formatting the output data from the list.
      **/
     public void printTopNCapCities_cont(ArrayList<CapitalCities> Cap_Conti)
@@ -422,6 +422,70 @@ public class App
         }
     }
 
+    //start
+    /**
+     * 22.The top N populated capital cities in a region where N is provided by the user.
+     * Query execution and pass the array list to format the return value.
+     * Function is called in main.
+     **/
+    public ArrayList<CapitalCities> getTopNCapCities_Reg(String input_region,int input_limited)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            //Query 20.The top N populated capital cities in a region where N is provided by the user.
+            String strQueryTwentyTwo =
+                    "SELECT city.Name, country.Name, country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode AND country.Continent = "+input_region+" ORDER BY country.Population DESC LIMIT "+input_limited+";";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strQueryTwentyTwo);
+            // Extract region information
+            ArrayList<CapitalCities> cap_region = new ArrayList<CapitalCities>();
+            while (rset.next())
+            {
+                CapitalCities cap_reg          = new CapitalCities();
+                cap_reg.cap_cit_name           = rset.getString("CityName");
+                cap_reg.cap_cit_country        = rset.getString("CountryName");
+                cap_reg.cap_cit_population     = rset.getString("Population");
+                cap_region.add(cap_reg);
+            }
+            return cap_region;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get the top N populated capital cities in a region where N is provided by the user.");
+            return null;
+        }
+    }
+    /**
+     * 22. The top N populated capital cities in a continent where N is provided by the user.
+     * Formatting the output data from the list.
+     **/
+    public void printTopNCapCities_Reg(ArrayList<CapitalCities> Reg_Cap)
+    {
+        // Check region is not null
+        if (Reg_Cap == null)
+        {
+            System.out.println("There is no Capital City in the world");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-30s %-30s %-30s", "Capital City Name","Country Name", "Population"));
+        // Loop over all capital cities in a continent
+        for (CapitalCities ccr : Reg_Cap)
+        {
+            //print the list to check if capital cities in a region is null
+            if (ccr == null)
+                continue;
+            String reg_string =
+                    String.format("%-30s %-30s %-30s",
+                            ccr.cap_cit_name,ccr.cap_cit_country, ccr.cap_cit_population);
+            System.out.println(reg_string);
+        }
+    }
     //end
 
     /**
@@ -587,14 +651,20 @@ public class App
 
         // The top N populated capital cities in the world where N is provided by the user.
         System.out.println("20.The top 10 populated capital cities in the world \n");
-        ArrayList<CapitalCities> Capwld = a.getTopNCapCities_World(10);
-        a.printTopNCapCities_World(Capwld);
+        ArrayList<CapitalCities> CapWld = a.getTopNCapCities_World(10);
+        a.printTopNCapCities_World(CapWld);
         System.out.println("\n");
 
         // The top N populated capital cities in a continent where N is provided by the user.
-        System.out.println("21.The top 10 populated capital cities in a continent \n");
-        ArrayList<CapitalCities> cont_wld = a.getTopNCapCities_cont(10);
+        System.out.println("21.The top 10 populated capital cities in North America \n");
+        ArrayList<CapitalCities> cont_wld = a.getTopNCapCities_cont("North America",10);
         a.printTopNCapCities_cont(cont_wld);
+        System.out.println("\n");
+
+        // The top N populated capital cities in a continent where N is provided by the user.
+        System.out.println("22.The top 10 populated capital cities in Southern Europe \n");
+        ArrayList<CapitalCities> RegWld = a.getTopNCapCities_Reg("Southern Europe",10);
+        a.printTopNCapCities_Reg(RegWld);
         System.out.println("\n");
 
         // List the population of people who speak Chinese in descending order.
