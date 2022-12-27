@@ -109,14 +109,14 @@ public class App
             System.out.println("There is no city in the world!");
         }
         // Print header
-        System.out.println(String.format("%-40s %-40s %-30s %-30s","City Name","Country Name","District","Population"));
+        System.out.println(String.format("%-20s %-25s %-25s %-25s","City Name","Country Name","District","Population"));
         // Loop over all cities in the list
         for (City cit : cities)
         {
             if (cit == null)
                 continue;
             String cit_string =
-                    String.format("%-40s %-40s %-30s %-30s",
+                    String.format("%-20s %-25s %-25s %-25s",
                             cit.cit_name,cit.country_name,cit.cit_district,cit.cit_population);
             System.out.println(cit_string);
         }
@@ -154,7 +154,7 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get all the cities in a continent organised by largest population to smallest.");
+            System.out.println("Failed to get all the cities in the Asia organised by largest population to smallest.");
             return null;
         }
     }
@@ -169,14 +169,14 @@ public class App
             System.out.println("There is no city in a continent!");
         }
         // Print header
-        System.out.println(String.format("%-20s %-40s %-20s %-20s","City Name","Country Name","District","Population"));
+        System.out.println(String.format("%-20s %-25s %-25s %-25s","City Name","Country Name","District","Population"));
         // Loop over all cities in the list
         for (City c : continent)
         {
             if (c == null)
                 continue;
             String conti_string =
-                    String.format("%-20s %-40s %-20s %-20s",
+                    String.format("%-20s %-25s %-25s %-25s",
                             c.cit_name,c.country_name,c.cit_district,c.cit_population);
             System.out.println(conti_string);
         }
@@ -214,7 +214,7 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get all the cities in a region organised by largest population to smallest.");
+            System.out.println("Failed to get all the cities in the Caribbean organised by largest population to smallest.");
             return null;
         }
     }
@@ -229,14 +229,14 @@ public class App
             System.out.println("There is no city in a region!");
         }
         // Print header
-        System.out.println(String.format("%-30s %-30s %-50s %-30s","City Name","Country Name","District","Population"));
+        System.out.println(String.format("%-20s %-25s %-25s %-25s","City Name","Country Name","District","Population"));
         // Loop over all cities in the list
         for (City r : regions)
         {
             if (r == null)
                 continue;
             String reg_string =
-                    String.format("%-30s %-30s %-50s %-30s",
+                    String.format("%-20s %-25s %-25s %-25s",
                             r.cit_name,r.country_name,r.cit_district,r.cit_population);
             System.out.println(reg_string);
         }
@@ -274,7 +274,7 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get all the cities in a country organised by largest population to smallest.");
+            System.out.println("Failed to get all the cities in the Myanmar organised by largest population to smallest.");
             return null;
         }
     }
@@ -289,14 +289,14 @@ public class App
             System.out.println("There is no city in a country!");
         }
         // Print header
-        System.out.println(String.format("%-30s %-30s %-50s %-30s","City Name","Country Name","District","Population"));
+        System.out.println(String.format("%-20s %-25s %-25s %-25s","City Name","Country Name","District","Population"));
         // Loop over all cities in the list
         for (City cou : countries)
         {
             if (cou == null)
                 continue;
             String c_string =
-                    String.format("%-30s %-30s %-50s %-30s",
+                    String.format("%-20s %-25s %-25s %-25s",
                             cou.cit_name,cou.country_name,cou.cit_district,cou.cit_population);
             System.out.println(c_string);
         }
@@ -334,7 +334,7 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get all the cities in a district organised by largest population to smallest.");
+            System.out.println("Failed to get all the cities in the Queensland organised by largest population to smallest.");
             return null;
         }
     }
@@ -349,14 +349,14 @@ public class App
             System.out.println("There is no cities in a district!");
         }
         // Print header
-        System.out.println(String.format("%-30s %-50s %-50s %-30s","City Name","Country Name","District","Population"));
+        System.out.println(String.format("%-20s %-25s %-25s %-25s","City Name","Country Name","District","Population"));
         // Loop over all cities in the list
         for (City di : district)
         {
             if (di == null)
                 continue;
             String d_string =
-                    String.format("%-30s %-50s %-50s %-30s",
+                    String.format("%-20s %-25s %-25s %-25s",
                             di.cit_name,di.country_name,di.cit_district,di.cit_population);
             System.out.println(d_string);
         }
@@ -394,7 +394,7 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the top N populated cities in the world where N is provided by the user.");
+            System.out.println("Failed to get the top 10 populated cities in the world.");
             return null;
         }
     }
@@ -408,14 +408,14 @@ public class App
             System.out.println("There is no top N populated cities in the world!");
         }
         // Print header
-        System.out.println(String.format("%-30s %-50s %-50s %-30s","City Name","Country Name","District","Population"));
+        System.out.println(String.format("%-20s %-25s %-25s %-25s","City Name","Country Name","District","Population"));
         // Loop over all cities in the list
         for (City w : wld)
         {
             if (w == null)
                 continue;
             String w_string =
-                    String.format("%-30s %-50s %-50s %-30s",
+                    String.format("%-20s %-25s %-25s %-25s",
                             w.cit_name,w.country_name,w.cit_district,w.cit_population);
             System.out.println(w_string);
         }
@@ -453,7 +453,7 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the top N populated cities in the continent where N is provided by the user.");
+            System.out.println("Failed to get the top N populated cities in the Europe.");
             return null;
         }
     }
@@ -468,14 +468,14 @@ public class App
             System.out.println("No cities in a continent");
         }
         // Print header
-        System.out.println(String.format("%-30s %-30s %-30s %-30s","City Name","Country Name","District","Population"));
+        System.out.println(String.format("%-20s %-25s %-25s %-25s","City Name","Country Name","District","Population"));
         // Loop over all cities in the list
         for (City cont : cnt)
         {
             if (cont == null)
                 continue;
             String cont_string =
-                    String.format("%-30s %-30s %-30s %-30s",
+                    String.format("%-20s %-25s %-25s %-25s",
                             cont.cit_name,cont.country_name,cont.cit_district,cont.cit_population);
             System.out.println(cont_string);
         }
@@ -513,7 +513,7 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the top N populated cities in a region where N is provided by the user.");
+            System.out.println("Failed to get the top 10 populated cities in the Caribbean.");
             return null;
         }
     }
@@ -528,14 +528,14 @@ public class App
             System.out.println("No cities in a region");
         }
         // Print header
-        System.out.println(String.format("%-40s %-40s %-40s %-30s","City Name","Country Name","District","Population"));
+        System.out.println(String.format("%-20s %-25s %-25s %-25s","City Name","Country Name","District","Population"));
         // Loop over all cities in the list
         for (City cont : regn)
         {
             if (cont == null)
                 continue;
             String cont_string =
-                    String.format("%-40s %-40s %-40s %-30s",
+                    String.format("%-20s %-25s %-25s %-25s",
                             cont.cit_name,cont.country_name,cont.cit_district,cont.cit_population);
             System.out.println(cont_string);
         }
@@ -574,7 +574,7 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the top N populated cities in a country where N is provided by the user.");
+            System.out.println("Failed to get the top 10 populated cities in the Argentina.");
             return null;
         }
     }
@@ -588,14 +588,14 @@ public class App
             System.out.println("No cities in a country");
         }
         // Print header
-        System.out.println(String.format("%-20s %-35s %-35s %-30s","Country","City Name","District","Population"));
+        System.out.println(String.format("%-20s %-25s %-25s %-30s","Country","City Name","District","Population"));
         // Loop over all cities in the list
         for (City cont : count)
         {
             if (cont == null)
                 continue;
             String cont_string =
-                    String.format("%-20s %-35s %-35s %-30s",
+                    String.format("%-20s %-25s %-25s %-30s",
                             cont.cit_name,cont.country_name,cont.cit_district,cont.cit_population);
             System.out.println(cont_string);
         }
@@ -634,7 +634,7 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the top N populated cities in a district where N is provided by the user.");
+            System.out.println("Failed to get the top 10 populated cities in the Zuid-Holland.");
             return null;
         }
     }
@@ -649,14 +649,14 @@ public class App
             System.out.println("No cities in a region");
         }
         // Print header
-        System.out.println(String.format("%-30s %-20s %-20s %-30s","City Name","Country Name","District","Population"));
+        System.out.println(String.format("%-30s %-25s %-25s %-30s","City Name","Country Name","District","Population"));
         // Loop over all cities in the list
         for (City cont : dists)
         {
             if (cont == null)
                 continue;
             String cont_string =
-                    String.format("%-30s %-20s %-20s %-30s",
+                    String.format("%-30s %-25s %-25s %-30s",
                             cont.cit_name,cont.country_name,cont.cit_district,cont.cit_population);
             System.out.println(cont_string);
         }
@@ -677,64 +677,64 @@ public class App
         }
 
         // Display all the cities in the world organised by largest population to smallest.
-         System.out.println("7: All the cities in the world organised by largest population to smallest.\n");
-         ArrayList<City> cou = a.getAllCities();
-         a.printCities(cou);
-         System.out.println("\n");
+        System.out.println("7: All the cities in the world organised by largest population to smallest.\n");
+        ArrayList<City> cou = a.getAllCities();
+        a.printCities(cou);
+        System.out.println("\n");
 
         // Display all the cities in a continent organised by largest population to smallest.
-         System.out.println("8. All the cities in a continent organised by largest population to smallest.\n");
-         ArrayList<City> continent = a.getAllCitiesContinent("Asia");
-         a.printContinents(continent);
-         System.out.println("\n");
+        System.out.println("8. All the cities in the Asia organised by largest population to smallest.\n");
+        ArrayList<City> continent = a.getAllCitiesContinent("Asia");
+        a.printContinents(continent);
+        System.out.println("\n");
 
         // Display all the cities in a region organised by largest population to smallest.
-         System.out.println("9: All the cities in a region organised by largest population to smallest.\n");
-         ArrayList<City> regions = a.getAllCitiesRegions("Caribbean");
-         a.printRegions(regions);
-         System.out.println("\n");
+        System.out.println("9: All the cities in the Caribbean organised by largest population to smallest.\n");
+        ArrayList<City> regions = a.getAllCitiesRegions("Caribbean");
+        a.printRegions(regions);
+        System.out.println("\n");
 
         // Display all the cities in a country organised by largest population to smallest.
-         System.out.println("10: All the cities in a country organised by largest population to smallest.\n");
-         ArrayList<City> countries = a.getAllCitiesCountries("Myanmar");
-         a.printCountries(countries);
-         System.out.println("\n");
+        System.out.println("10: All the cities in the Myanmar organised by largest population to smallest.\n");
+        ArrayList<City> countries = a.getAllCitiesCountries("Myanmar");
+        a.printCountries(countries);
+        System.out.println("\n");
 
         // Diaplay all the cities in a country organised by largest population to smallest.
-         System.out.println("11: All the cities in a district organised by largest population to smallest.\n");
-         ArrayList<City> dist = a.getAllCitiesDistrict("Queensland");
-         a.printDistrict(dist);
-         System.out.println("\n");
+        System.out.println("11: All the cities in the Queensland organised by largest population to smallest.\n");
+        ArrayList<City> dist = a.getAllCitiesDistrict("Queensland");
+        a.printDistrict(dist);
+        System.out.println("\n");
 
         // Display the top N populated cities in the world where N is provided by the user.
-         System.out.println("12: the top N populated cities in the world where N is provided by the user.\n");
-         ArrayList<City> city = a.getTopNPopulatedCities(10);
-         a.printTopNWorlds(city);
-         System.out.println("\n");
+        System.out.println("12: the top 10 populated cities in the world.\n");
+        ArrayList<City> city = a.getTopNPopulatedCities(10);
+        a.printTopNWorlds(city);
+        System.out.println("\n");
 
         // Display the top N populated cities in a continent where N is provided by the user.
-         System.out.println("13. The top N populated cities in a continent where N is provided by the user.\n");
-         ArrayList<City> topcnt = a.getTopNPopulatedContinent("Europe",10);
-         a.printTopNContinent(topcnt);
-         System.out.println("\n");
+        System.out.println("13. The top 10 populated cities in the Europe.\n");
+        ArrayList<City> topcnt = a.getTopNPopulatedContinent("Europe",10);
+        a.printTopNContinent(topcnt);
+        System.out.println("\n");
 
         // Display the top N populated cities in a region where N is provided by the user.
-         System.out.println("14: The top N populated cities in a region where N is provided by the user.\n");
-         ArrayList<City> regs = a.getTopNPopulatedRegion("Caribbean",10);
-         a.printTopNRegion(regs);
-         System.out.println("\n");
+        System.out.println("14: The top 10 populated cities in the Caribbean.\n");
+        ArrayList<City> regs = a.getTopNPopulatedRegion("Caribbean",10);
+        a.printTopNRegion(regs);
+        System.out.println("\n");
 
         // Display the top N populated cities in a country where N is provided by the user.
-         System.out.println("15: The top N populated cities in a country where N is provided by the user.\n");
-         ArrayList<City> ctys = a.getTopNPopulatedCountries("Argentina",10);
-         a.printTopNCountries(ctys);
-         System.out.println("\n");
+        System.out.println("15: The top 10 populated cities in the Argentina.\n");
+        ArrayList<City> ctys = a.getTopNPopulatedCountries("Argentina",10);
+        a.printTopNCountries(ctys);
+        System.out.println("\n");
 
         // Display the top N populated cities in a district where N is provided by the user.
-         System.out.println("16: The top N populated cities in a district where N is provided by the user.\n");
-         ArrayList<City> district = a.getTopNPopulatedDistrict("Zuid-Holland",10);
-         a.printTopNDistrict(district);
-         System.out.println("\n");
+        System.out.println("16: The top 10 populated cities in the Zuid-Holland.\n");
+        ArrayList<City> district = a.getTopNPopulatedDistrict("Zuid-Holland",10);
+        a.printTopNDistrict(district);
+        System.out.println("\n");
 
         // Disconnect from database
         a.disconnect();
