@@ -7,6 +7,12 @@ public class PeoplePopulation {
     public String cap_cit_population;
     public String cap_cit_continent;
     public String cap_cit_region;
+    public String world_population;
+    public String continent_population;
+    public String regions_population;
+    public String countries_population;
+    public String district_population;
+    public String city_population;
 
     public String getCap_cit_name() {
         return cap_cit_name;
@@ -46,5 +52,37 @@ public class PeoplePopulation {
 
     public void setCap_cit_region(String cap_cit_region) {
         this.cap_cit_region = cap_cit_region;
+    }
+
+    public String getWorld_population() {
+        return world_population;
+    }
+
+    public void setWorld_population(String world_population) {
+        this.world_population = world_population;
+    }
+
+    public String getContinent_population() {
+        return continent_population;
+    }
+
+    public void setContinent_population(String continent_population) {
+        this.continent_population = continent_population;
+    }
+
+    public String getRegions_population() {
+        return regions_population;
+    }
+
+    public void setRegions_population(String regions_population) {
+        this.regions_population = regions_population;
+    }
+
+    public String getCountries_population() {
+        return countries_population;
+    }
+
+    public void setCountries_population(String countries_population) {
+        this.countries_population = countries_population;
     }
 }
