@@ -301,14 +301,14 @@ public class App
         System.out.println(String.format("%-40s %-30s", "Name", "Population"));
         // Loop over all capital cities in a country
         int total_word_pop = 0;
-        for (PeoplePopulation world_population : pop_world) {
-            total_word_pop = Integer.parseInt(world_population.world_population) + total_word_pop;
+        for (PeoplePopulation wpop : pop_world) {
+            total_word_pop = Integer.parseInt(wpop.world_population) + total_word_pop;
             //print the list to check if capital cities in a country is null
-            if (world_population == null)
+            if (wpop == null)
                 continue;
             String pworld_string =
                     String.format("%-40s %-30s",
-                            world_population.cap_cit_country, world_population.world_population);
+                            wpop.cap_cit_country, wpop.world_population);
             System.out.println(pworld_string);
         }
         NumberFormat world_res_format = NumberFormat.getInstance();
