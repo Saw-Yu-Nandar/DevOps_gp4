@@ -671,22 +671,22 @@ public class App
         System.out.println("\n");
 
         // The population of people, people living in cities, and people not living in cities in each continent.
-        //System.out.println("23.The population of people, people living in cities, and people not living in cities in each continent. \n");
-        //ArrayList<PeoplePopulation> PopCont = a.getPopulatedPeopleContinent("Europe",10);
-        //a.printPopulatedPeopleConitnent(PopCont);
-        //System.out.println("\n");
+        System.out.println("23.The population of people, people living in cities, and people not living in cities in each continent. \n");
+        ArrayList<PeoplePopulation> PopCont = a.getPopulatedPeopleContinent("Europe",10);
+        a.printPopulatedPeopleConitnent(PopCont);
+        System.out.println("\n");
 
         // The population of people, people living in cities, and people not living in cities in each region.
-        //System.out.println("24.The population of people, people living in cities, and people not living in cities in each region. \n");
-        //ArrayList<PeoplePopulation> PopReg = a.getPopulatedPeopleRegions("Southern Europe",10);
-        //a.printPopulatedPeopleRegions(PopReg);
-        //System.out.println("\n");
+        System.out.println("24.The population of people, people living in cities, and people not living in cities in each region. \n");
+        ArrayList<PeoplePopulation> PopReg = a.getPopulatedPeopleRegions("Southern Europe",10);
+        a.printPopulatedPeopleRegions(PopReg);
+        System.out.println("\n");
 
         // The population of people, people living in cities, and people not living in cities in each country.
-        //System.out.println("25.The population of people, people living in cities, and people not living in cities in each country. \n");
-        //ArrayList<PeoplePopulation> PopCoun = a.getPopulatedPeopleCountry("Myanmar",10);
-        //a.printPopulatedPeopleCountry(PopCoun);
-        //System.out.println("\n");
+        System.out.println("25.The population of people, people living in cities, and people not living in cities in each country. \n");
+        ArrayList<PeoplePopulation> PopCoun = a.getPopulatedPeopleCountry("Myanmar",10);
+        a.printPopulatedPeopleCountry(PopCoun);
+        System.out.println("\n");
 
         // The population of the world.
         System.out.println("26. The population of the world.");
