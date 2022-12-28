@@ -17,22 +17,10 @@ jobs:
           distribution: 'adopt'
       - name: Unit Tests
         run: |
-          mvn test -Dtest=devops.codereview.QueryOneTest
-          mvn test -Dtest=devops.codereview.QueryTwoTest
-          mvn test -Dtest=devops.codereview.QueryThreeTest
-          mvn test -Dtest=devops.codereview.QueryFourTest
-          mvn test -Dtest=devops.codereview.QueryFiveTest
-          mvn test -Dtest=devops.codereview.QuerySixTest
-          mvn test -Dtest=devops.codereview.QuerySevenTest
-          mvn test -Dtest=devops.codereview.QueryEightTest
-          mvn test -Dtest=devops.codereview.QueryNineTest
-          mvn test -Dtest=devops.codereview.QueryTenTest
-          mvn test -Dtest=devops.codereview.QueryElevenTest
-          mvn test -Dtest=devops.codereview.QueryTwelveTest
-          mvn test -Dtest=devops.codereview.QueryThirteenTest
-          mvn test -Dtest=devops.codereview.QueryForteenTest
-          mvn test -Dtest=devops.codereview.QueryFifteenTest
-          mvn test -Dtest=devops.codereview.QuerySixteenTest
+          mvn test -Dtest=devops.codereview.QueryTwentyThreeTest
+          mvn test -Dtest=devops.codereview.QueryTwentyFourTest
+          mvn test -Dtest=devops.codereview.QueryTwentyFiveTest
+
   IntegrationTests:
     name: Integration Tests
     runs-on: ubuntu-20.04
@@ -50,8 +38,7 @@ jobs:
         run: |
           docker build -t database ./db 
           docker run --name world -dp 33060:3306 database
-          mvn test -Dtest=devops.codereview.AppIntegrationTestCountry 
-          mvn test -Dtest=devops.codereview.AppIntegrationTestCity 
+          mvn test -Dtest=devops.codereview.AppIntegrationTestPeoplePopulation
           docker stop world
           docker rm world
           docker image rm database
