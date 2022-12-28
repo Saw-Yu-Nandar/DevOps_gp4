@@ -27,7 +27,7 @@ jobs:
           mvn test -Dtest=devops.codereview.QueryEnglishLanguageTest
           mvn test -Dtest=devops.codereview.QueryHindiLanguageTest
           mvn test -Dtest=devops.codereview.QuerySpanishLanguageTest
-
+          mvn test -Dtest=devops.codereview.QueryArabicLanguageTest
   IntegrationTests:
     name: Integration Tests
     runs-on: ubuntu-20.04
