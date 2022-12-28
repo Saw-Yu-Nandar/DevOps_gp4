@@ -7,11 +7,17 @@ public class PeoplePopulation {
     public String cap_cit_population;
     public String cap_cit_continent;
     public String cap_cit_region;
+    public String world_name;
     public String world_population;
+    public String continent_name;
     public String continent_population;
+    public String regions_name;
     public String regions_population;
+    public String countries_name;
     public String countries_population;
+    public String district_name;
     public String district_population;
+    public String city_name;
     public String city_population;
 
     public String getCap_cit_name() {
@@ -84,5 +90,69 @@ public class PeoplePopulation {
 
     public void setCountries_population(String countries_population) {
         this.countries_population = countries_population;
+    }
+
+    public String getWorld_name() {
+        return world_name;
+    }
+
+    public void setWorld_name(String world_name) {
+        this.world_name = world_name;
+    }
+
+    public String getContinent_name() {
+        return continent_name;
+    }
+
+    public void setContinent_name(String continent_name) {
+        this.continent_name = continent_name;
+    }
+
+    public String getRegions_name() {
+        return regions_name;
+    }
+
+    public void setRegions_name(String regions_name) {
+        this.regions_name = regions_name;
+    }
+
+    public String getCountries_name() {
+        return countries_name;
+    }
+
+    public void setCountries_name(String countries_name) {
+        this.countries_name = countries_name;
+    }
+
+    public String getDistrict_name() {
+        return district_name;
+    }
+
+    public void setDistrict_name(String district_name) {
+        this.district_name = district_name;
+    }
+
+    public String getDistrict_population() {
+        return district_population;
+    }
+
+    public void setDistrict_population(String district_population) {
+        this.district_population = district_population;
+    }
+
+    public String getCity_name() {
+        return city_name;
+    }
+
+    public void setCity_name(String city_name) {
+        this.city_name = city_name;
+    }
+
+    public String getCity_population() {
+        return city_population;
+    }
+
+    public void setCity_population(String city_population) {
+        this.city_population = city_population;
     }
 }

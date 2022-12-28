@@ -35,8 +35,8 @@ public class QueryThirtyOneTest {
     {
         ArrayList<PeoplePopulation> pop_city_prinnt = new ArrayList<PeoplePopulation>();
         PeoplePopulation pop_city_p   = new PeoplePopulation();
-        pop_city_p.cap_cit_name       = "London";
-        pop_city_p.continent_population    = "7285000";
+        pop_city_p.city_name       = "London";
+        pop_city_p.city_population    = "7285000";
         pop_city_prinnt.add(pop_city_p);
         app.printCityPopulation(pop_city_prinnt);
     }

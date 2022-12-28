@@ -46,4 +46,70 @@ public class AppIntegrationTestPeoplePopulation {
         assertEquals(population_country.getCap_cit_country(), "Myanmar");
         assertEquals(Integer.parseInt(population_country.getCap_cit_population()), 45611000);
     }
+
+    /*
+     * Query 26: The population of the world.
+     */
+    @Test
+    void testGetPopWorld() {
+        ArrayList<PeoplePopulation> pop_wld = app.getWorldPopulation();
+        PeoplePopulation population_wld = pop_wld.get(0);
+        assertEquals(population_wld.getWorld_name(), "Aruba");
+        assertEquals(population_wld.getWorld_population(), "103000");
+    }
+
+    /*
+     * Query 27: The population of the continent.
+     */
+    @Test
+    void testGetPopContinent() {
+        ArrayList<PeoplePopulation> pop_con = app.getContinentPopulation("Asia");
+        PeoplePopulation population_con = pop_con.get(0);
+        assertEquals(population_con.getContinent_name(), "Afghanistan");
+        assertEquals(population_con.getContinent_population(), "22720000");
+    }
+
+    /*
+     * Query 28: The population of the regions.
+     */
+    @Test
+    void testGetPopRegions() {
+        ArrayList<PeoplePopulation> pop_reg = app.getRegionsPopulation("Middle East");
+        PeoplePopulation population_reg = pop_reg.get(0);
+        assertEquals(population_reg.getRegions_name(), "Abu Dhabi");
+        assertEquals(population_reg.getRegions_population(), "2441000");
+    }
+
+    /*
+     * Query 29: The population of the countries.
+     */
+    @Test
+    void testGetPopCountries() {
+        ArrayList<PeoplePopulation> pop_countr = app.getCountriesPopulation("Myanmar");
+        PeoplePopulation population_countr = pop_countr.get(0);
+        assertEquals(population_countr.getCountries_name(), "Rangoon (Yangon)");
+        assertEquals(population_countr.getCountries_population(), "3361700");
+    }
+
+    /*
+     * Query 30: The population of the districts.
+     */
+    @Test
+    void testGetPopDistricts() {
+        ArrayList<PeoplePopulation> pop_dst = app.getDistrictPopulation("Gelderland");
+        PeoplePopulation population_dist = pop_dst.get(0);
+        assertEquals(population_dist.getDistrict_name(), "Apeldoorn");
+        assertEquals(population_dist.getDistrict_population(), "153491");
+    }
+
+    /*
+     * Query 31: The population of the cities.
+     */
+    @Test
+    void testGetPopCity() {
+        ArrayList<PeoplePopulation> pop_st = app.getCityPopulation("London");
+        PeoplePopulation population_city = pop_st.get(0);
+        assertEquals(population_city.getCity_name(), "London");
+        assertEquals(population_city.getCity_population(), "7285000");
+    }
 }

@@ -272,7 +272,7 @@ public class App
             while (rset.next())
             {
                 PeoplePopulation pop_world    = new PeoplePopulation();
-                pop_world.cap_cit_country      = rset.getString("Name");
+                pop_world.world_name      = rset.getString("Name");
                 pop_world.world_population      = rset.getString("Population");
                 population_world.add(pop_world);
             }
@@ -302,14 +302,14 @@ public class App
         // Loop over all capital cities in a country
         int total_word_pop = 0;
         for (PeoplePopulation wpop : pop_world) {
-            total_word_pop = Integer.parseInt(wpop.world_population) + total_word_pop;
             //print the list to check if capital cities in a country is null
             if (wpop == null)
                 continue;
             String pworld_string =
                     String.format("%-40s %-30s",
-                            wpop.cap_cit_country, wpop.world_population);
+                            wpop.world_name, wpop.world_population);
             System.out.println(pworld_string);
+            total_word_pop = Integer.parseInt(wpop.world_population) + total_word_pop;
         }
         NumberFormat world_res_format = NumberFormat.getInstance();
         world_res_format.setGroupingUsed(true);
@@ -339,7 +339,7 @@ public class App
             while (rset.next())
             {
                 PeoplePopulation pop_continent   = new PeoplePopulation();
-                pop_continent.cap_cit_country      = rset.getString("Name");
+                pop_continent.continent_name      = rset.getString("Name");
                 pop_continent.continent_population      = rset.getString("Population");
                 population_cont.add(pop_continent);
             }
@@ -370,14 +370,14 @@ public class App
         int total_cont_pop = 0;
         for (PeoplePopulation continent_population : pop_conti)
         {
-            total_cont_pop = Integer.parseInt(continent_population.continent_population) + total_cont_pop;
             //print the list to check if capital cities in a country is null
             if (continent_population == null)
                 continue;
             String pworld_string =
                     String.format("%-40s %-30s",
-                            continent_population.cap_cit_country, continent_population.continent_population);
+                            continent_population.continent_name, continent_population.continent_population);
             System.out.println(pworld_string);
+            total_cont_pop = Integer.parseInt(continent_population.continent_population) + total_cont_pop;
         }
         NumberFormat conti_res_format = NumberFormat.getInstance();
         conti_res_format.setGroupingUsed(true);
@@ -407,7 +407,7 @@ public class App
             while (rset.next())
             {
                 PeoplePopulation pop_regions   = new PeoplePopulation();
-                pop_regions.cap_cit_name      = rset.getString("Name");
+                pop_regions.regions_name      = rset.getString("Name");
                 pop_regions.regions_population     = rset.getString("Population");
                 population_regions.add(pop_regions);
             }
@@ -438,14 +438,14 @@ public class App
         int total_reg_pop = 0;
         for (PeoplePopulation regions_population : pop_regs)
         {
-            total_reg_pop = Integer.parseInt(regions_population.regions_population) + total_reg_pop;
             //print the list to check if capital cities in a country is null
             if (regions_population == null)
                 continue;
             String pworld_string =
                     String.format("%-40s %-30s",
-                            regions_population.cap_cit_name, regions_population.regions_population);
+                            regions_population.regions_name, regions_population.regions_population);
             System.out.println(pworld_string);
+            total_reg_pop = Integer.parseInt(regions_population.regions_population) + total_reg_pop;
         }
         NumberFormat reg_res_format = NumberFormat.getInstance();
         reg_res_format.setGroupingUsed(true);
@@ -475,7 +475,7 @@ public class App
             while (rset.next())
             {
                 PeoplePopulation pop_country   = new PeoplePopulation();
-                pop_country.cap_cit_name      = rset.getString("Name");
+                pop_country.countries_name      = rset.getString("Name");
                 pop_country.countries_population     = rset.getString("Population");
                 population_countries.add(pop_country);
             }
@@ -506,14 +506,14 @@ public class App
         int total_con_pop = 0;
         for (PeoplePopulation countr_population : pop_contr)
         {
-            total_con_pop = Integer.parseInt(countr_population.countries_population) + total_con_pop;
             //print the list to check if capital cities in a country is null
             if (countr_population == null)
                 continue;
             String pworld_string =
                     String.format("%-40s %-30s",
-                            countr_population.cap_cit_name, countr_population.countries_population);
+                            countr_population.countries_name, countr_population.countries_population);
             System.out.println(pworld_string);
+            total_con_pop = Integer.parseInt(countr_population.countries_population) + total_con_pop;
         }
         NumberFormat con_res_format = NumberFormat.getInstance();
         con_res_format.setGroupingUsed(true);
@@ -543,7 +543,7 @@ public class App
             while (rset.next())
             {
                 PeoplePopulation population_district   = new PeoplePopulation();
-                population_district.cap_cit_name      = rset.getString("Name");
+                population_district.district_name      = rset.getString("Name");
                 population_district.district_population     = rset.getString("Population");
                 population_districts.add(population_district);
             }
@@ -574,14 +574,14 @@ public class App
         int total_dist_pop = 0;
         for (PeoplePopulation dst_population : pop_dist)
         {
-            total_dist_pop = Integer.parseInt(dst_population.district_population) + total_dist_pop;
             //print the list to check if capital cities in a country is null
             if (dst_population == null)
                 continue;
             String pworld_string =
                     String.format("%-40s %-30s",
-                            dst_population.cap_cit_name, dst_population.district_population);
+                            dst_population.district_name, dst_population.district_population);
             System.out.println(pworld_string);
+            total_dist_pop = Integer.parseInt(dst_population.district_population) + total_dist_pop;
         }
         NumberFormat dis_res_format = NumberFormat.getInstance();
         dis_res_format.setGroupingUsed(true);
@@ -611,7 +611,7 @@ public class App
             while (rset.next())
             {
                 PeoplePopulation population_city   = new PeoplePopulation();
-                population_city.cap_cit_name      = rset.getString("Name");
+                population_city.city_name      = rset.getString("Name");
                 population_city.city_population     = rset.getString("Population");
                 population_cities.add(population_city);
             }
@@ -642,14 +642,14 @@ public class App
         int total_city_pop = 0;
         for (PeoplePopulation city_population : pop_city)
         {
-            total_city_pop = Integer.parseInt(city_population.city_population) + total_city_pop;
             //print the list to check if capital cities in a country is null
             if (city_population == null)
                 continue;
             String pworld_string =
                     String.format("%-40s %-30s",
-                            city_population.cap_cit_name, city_population.city_population);
+                            city_population.city_name, city_population.city_population);
             System.out.println(pworld_string);
+            total_city_pop = Integer.parseInt(city_population.city_population) + total_city_pop;
         }
         NumberFormat city_res_format = NumberFormat.getInstance();
         city_res_format.setGroupingUsed(true);

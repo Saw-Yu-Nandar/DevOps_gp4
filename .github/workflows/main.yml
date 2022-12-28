@@ -20,6 +20,12 @@ jobs:
           mvn test -Dtest=devops.codereview.QueryTwentyThreeTest
           mvn test -Dtest=devops.codereview.QueryTwentyFourTest
           mvn test -Dtest=devops.codereview.QueryTwentyFiveTest
+          mvn test -Dtest=devops.codereview.QueryTwentySixTest
+          mvn test -Dtest=devops.codereview.QueryTwentySevenTest
+          mvn test -Dtest=devops.codereview.QueryTwentyEightTest
+          mvn test -Dtest=devops.codereview.QueryTwentyNineTest
+          mvn test -Dtest=devops.codereview.QueryThirtyTest
+          mvn test -Dtest=devops.codereview.QueryThirtyOneTest
 
   IntegrationTests:
     name: Integration Tests

@@ -35,8 +35,8 @@ public class QueryThirtyTest {
     {
         ArrayList<PeoplePopulation> pop_dst_print = new ArrayList<PeoplePopulation>();
         PeoplePopulation pop_dst_p   = new PeoplePopulation();
-        pop_dst_p.cap_cit_name       = "Apeldoorn";
-        pop_dst_p.continent_population    = "153491";
+        pop_dst_p.district_name       = "Apeldoorn";
+        pop_dst_p.district_population    = "153491";
         pop_dst_print.add(pop_dst_p);
         app.printDistrictsPopulation(pop_dst_print);
     }
