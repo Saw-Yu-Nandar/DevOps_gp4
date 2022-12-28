@@ -721,7 +721,7 @@ public class App
     }
 
     /**
-     * 33. List the population of people who speak Spanish in descending order
+     * 34. List the population of people who speak Spanish in descending order
      * Formatting the output data from the list.
      **/
     public void printCountryLanguage4(ArrayList<CountryLanguage> country_language4)
@@ -746,9 +746,72 @@ public class App
             System.out.println(language_string);
         }
     }
-
     //end
+    /** start
+     * 35. List the population of people who speak Arabic in descending order.
+     * Query execution by user input and pass the array list to format the return value.
+     * Function is called in ma
+     **/
+    public ArrayList<CountryLanguage> getArabicLanguage(String input_language)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            //Query 35. List the population of people who speak Arabic in descending order
+            String strQueryLanguage5 =
+                    "SELECT countrylanguage.Language, countrylanguage.Percentage, country.Population FROM countrylanguage INNER JOIN country WHERE countrylanguage.CountryCode = country.Code AND countrylanguage.Language='"+input_language+"' ORDER BY countrylanguage.Percentage DESC;";
 
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strQueryLanguage5);
+            // Extract countries information
+            ArrayList<CountryLanguage> country_lan = new ArrayList<CountryLanguage>();
+            while (rset.next())
+            {
+                CountryLanguage language5 = new CountryLanguage();
+                language5.language       = rset.getString("Language");
+                language5.percentage        = rset.getString("Percentage");
+                language5.population        = rset.getString("Population");
+                country_lan.add(language5);
+            }
+            return country_lan;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get the list the population of people who speak Abrabic in descending order.");
+            return null;
+        }
+    }
+
+    /**
+     * 35. List the population of people who speak Arabic in descending order
+     * Formatting the output data from the list.
+     **/
+    public void printArabicLanguage(ArrayList<CountryLanguage> country_lang)
+    {
+        // Check country language is not null
+        if (country_lang == null)
+        {
+            System.out.println("There is no one who speak Abrabic.");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-30s %-30s %-30s", "Language", "Percentage", "Population"));
+        // Loop over all countries in the list
+        for (CountryLanguage cl5 : country_lang)
+        {
+            //print language to check if an language is null
+            if (cl5 == null)
+                continue;
+            String lan_string =
+                    String.format("%-30s %-30s %-30s",
+                            cl5.language, cl5.percentage, cl5.population);
+            System.out.println(lan_string);
+        }
+    }
+    //end
     public static void main(String[] args)
     {
         // Create new Application
@@ -820,6 +883,12 @@ public class App
         System.out.println("34: List the population of people who speak Spanish in descending order.\n");
         ArrayList<CountryLanguage> countLanguage4 = a.getCountryLanguage4("Spanish");
         a.printCountryLanguage4(countLanguage4);
+        System.out.println("\n");
+
+        // List the population of people who speak Arabic in descending order.
+        System.out.println("35: List the population of people who speak Arabic in descending order.\n");
+        ArrayList<CountryLanguage> countLanguage5 = a.getArabicLanguage("Arabic");
+        a.printArabicLanguage(countLanguage5);
         System.out.println("\n");
 
         // Disconnect from database
