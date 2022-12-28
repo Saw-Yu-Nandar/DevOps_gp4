@@ -63,5 +63,15 @@ public class AppIntegrationTestCountryLanguage {
         assertEquals(countryLanguage4.getPercentage(), "100.0");
         assertEquals(Integer.parseInt(countryLanguage4.getPopulation()), 11201000);
     }
-
+    /*
+     * Query 35: List the population of people who speak Arabic in descending order
+     */
+    @Test
+    void testGetAllCountryLanguage5() {
+        ArrayList<CountryLanguage> countLanguage5 = app.getArabicLanguage("Arabic");
+        CountryLanguage countryLan5 = countLanguage5.get(0);
+        assertEquals(countryLan5.getLanguage(), "Arabic");
+        assertEquals(countryLan5.getPercentage(), "100.0");
+        assertEquals(Integer.parseInt(countryLan5.getPopulation()), 293000);
+    }
 }
