@@ -264,7 +264,7 @@ public class App
             // Create string for SQL statement
             //Query 26.The population of the world.
             String strQueryTwentySix =
-                    "SELECT country.Name, country.Population FROM country;";
+                    "SELECT SUM(country.Population) as 'Population' FROM country;";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryTwentySix);
             // Extract country information
@@ -272,7 +272,7 @@ public class App
             while (rset.next())
             {
                 PeoplePopulation pop_world    = new PeoplePopulation();
-                pop_world.world_name      = rset.getString("Name");
+                //pop_world.world_name      = rset.getString("Name");
                 pop_world.world_population      = rset.getString("Population");
                 population_world.add(pop_world);
             }
@@ -298,23 +298,25 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-40s %-30s", "Name", "Population"));
+        //System.out.println(String.format("%-40s", "Population"));
         // Loop over all capital cities in a country
-        int total_word_pop = 0;
+        // int total_word_pop = 0;
+        //NumberFormat world_res_format = NumberFormat.getInstance();
         for (PeoplePopulation wpop : pop_world) {
             //print the list to check if capital cities in a country is null
             if (wpop == null)
                 continue;
             String pworld_string =
-                    String.format("%-40s %-30s",
-                            wpop.world_name, wpop.world_population);
-            System.out.println(pworld_string);
-            total_word_pop = Integer.parseInt(wpop.world_population) + total_word_pop;
+                String.format("%-40s",
+                           wpop.world_population);
+            System.out.println("Total World Population: "+pworld_string);
+            //System.out.println("Total World Population: "+world_res_format.format(pworld_string));
+            //total_word_pop = Integer.parseInt(wpop.world_population) + total_word_pop;
         }
-        NumberFormat world_res_format = NumberFormat.getInstance();
-        world_res_format.setGroupingUsed(true);
-        String result_world = String.format("The total number of world population: "+world_res_format.format(total_word_pop));
-        System.out.println(result_world);
+        //NumberFormat world_res_format = NumberFormat.getInstance();
+        ///world_res_format.setGroupingUsed(true);
+        //String result_world = String.format("The total number of world population: "+world_res_format.format(total_word_pop));
+        //System.out.println(result_world);
     }
 
     /**
@@ -322,7 +324,7 @@ public class App
      * Query execution and pass the array list to format the return value.
      * Function is called in main.
      **/
-    public ArrayList<PeoplePopulation> getContinentPopulation(String pop_cont)
+    public ArrayList<PeoplePopulation> getContinentPopulation()
     {
         try
         {
@@ -331,7 +333,7 @@ public class App
             // Create string for SQL statement
             //Query 27.The population of the continent.
             String strQueryTwentySeven =
-                    "SELECT country.Name, country.Population FROM country WHERE country.Continent = '"+pop_cont+"';";
+                    "SELECT country.Continent, SUM(country.Population) AS 'Population' FROM country GROUP BY country.Continent";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryTwentySeven);
             // Extract continent information
@@ -339,7 +341,7 @@ public class App
             while (rset.next())
             {
                 PeoplePopulation pop_continent   = new PeoplePopulation();
-                pop_continent.continent_name      = rset.getString("Name");
+                pop_continent.continent_name = rset.getString("Continent");
                 pop_continent.continent_population      = rset.getString("Population");
                 population_cont.add(pop_continent);
             }
@@ -365,24 +367,24 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-40s %-30s", "Name", "Population"));
+        System.out.println(String.format("%-40s %-40s", "Continent Name", "Population"));
         // Loop over all capital cities in a country
-        int total_cont_pop = 0;
+        //int total_cont_pop = 0;
         for (PeoplePopulation continent_population : pop_conti)
         {
             //print the list to check if capital cities in a country is null
             if (continent_population == null)
                 continue;
             String pworld_string =
-                    String.format("%-40s %-30s",
+                    String.format("%-40s %-40s",
                             continent_population.continent_name, continent_population.continent_population);
             System.out.println(pworld_string);
-            total_cont_pop = Integer.parseInt(continent_population.continent_population) + total_cont_pop;
+            //total_cont_pop = Integer.parseInt(continent_population.continent_population) + total_cont_pop;
         }
-        NumberFormat conti_res_format = NumberFormat.getInstance();
-        conti_res_format.setGroupingUsed(true);
-        String result_conti = String.format("The total number of continent population: "+conti_res_format.format(total_cont_pop));
-        System.out.println(result_conti);
+        //NumberFormat conti_res_format = NumberFormat.getInstance();
+        //conti_res_format.setGroupingUsed(true);
+        //String result_conti = String.format("The total number of continent population: "+conti_res_format.format(total_cont_pop));
+        //System.out.println(result_conti);
     }
 
     /**
@@ -390,7 +392,7 @@ public class App
      * Query execution and pass the array list to format the return value.
      * Function is called in main.
      **/
-    public ArrayList<PeoplePopulation> getRegionsPopulation(String pop_reg)
+    public ArrayList<PeoplePopulation> getRegionsPopulation()
     {
         try
         {
@@ -399,7 +401,7 @@ public class App
             // Create string for SQL statement
             //Query 27.The population of the continent.
             String strQueryTwentyEight =
-                    "SELECT city.Name, country.Population FROM country INNER JOIN city WHERE country.Code=city.CountryCode AND country.Capital=city.ID AND country.Region='"+pop_reg+"';";
+                    "SELECT country.Region, SUM(country.Population) AS 'Population' FROM country GROUP BY country.Region;";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryTwentyEight);
             // Extract regions information
@@ -407,7 +409,7 @@ public class App
             while (rset.next())
             {
                 PeoplePopulation pop_regions   = new PeoplePopulation();
-                pop_regions.regions_name      = rset.getString("Name");
+                pop_regions.regions_name      = rset.getString("Region");
                 pop_regions.regions_population     = rset.getString("Population");
                 population_regions.add(pop_regions);
             }
@@ -433,24 +435,24 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-40s %-30s", "Name", "Population"));
+        System.out.println(String.format("%-40s %-40s", "Region Name", "Population"));
         // Loop over population from region
-        int total_reg_pop = 0;
+        //int total_reg_pop = 0;
         for (PeoplePopulation regions_population : pop_regs)
         {
             //print the list to check if capital cities in a country is null
             if (regions_population == null)
                 continue;
             String pworld_string =
-                    String.format("%-40s %-30s",
+                    String.format("%-40s %-40s",
                             regions_population.regions_name, regions_population.regions_population);
             System.out.println(pworld_string);
-            total_reg_pop = Integer.parseInt(regions_population.regions_population) + total_reg_pop;
+            //total_reg_pop = Integer.parseInt(regions_population.regions_population) + total_reg_pop;
         }
-        NumberFormat reg_res_format = NumberFormat.getInstance();
-        reg_res_format.setGroupingUsed(true);
-        String result_conti = String.format("The total number of continent population: "+reg_res_format.format(total_reg_pop));
-        System.out.println(result_conti);
+        //NumberFormat reg_res_format = NumberFormat.getInstance();
+        //reg_res_format.setGroupingUsed(true);
+        //String result_conti = String.format("The total number of continent population: "+reg_res_format.format(total_reg_pop));
+        //System.out.println(result_conti);
     }
 
     /**
@@ -458,7 +460,7 @@ public class App
      * Query execution and pass the array list to format the return value.
      * Function is called in main.
      **/
-    public ArrayList<PeoplePopulation> getCountriesPopulation(String pop_coun)
+    public ArrayList<PeoplePopulation> getCountriesPopulation()
     {
         try
         {
@@ -467,7 +469,7 @@ public class App
             // Create string for SQL statement
             //Query 29.The population of the country.
             String strQueryTwentyNine =
-                    "SELECT city.Name, city.Population FROM city INNER JOIN country WHERE country.Code=city.CountryCode AND country.Name='"+pop_coun+"';";
+                    "SELECT country.Name, SUM(country.Population) AS 'Population' FROM country GROUP BY country.Name;";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryTwentyNine);
             // Extract countries information
@@ -501,24 +503,24 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-40s %-30s", "Name", "Population"));
+        System.out.println(String.format("%-40s %-40s", "Name", "Population"));
         // Loop over population from region
-        int total_con_pop = 0;
+        //int total_con_pop = 0;
         for (PeoplePopulation countr_population : pop_contr)
         {
             //print the list to check if capital cities in a country is null
             if (countr_population == null)
                 continue;
             String pworld_string =
-                    String.format("%-40s %-30s",
+                    String.format("%-40s %-40s",
                             countr_population.countries_name, countr_population.countries_population);
             System.out.println(pworld_string);
-            total_con_pop = Integer.parseInt(countr_population.countries_population) + total_con_pop;
+            //total_con_pop = Integer.parseInt(countr_population.countries_population) + total_con_pop;
         }
-        NumberFormat con_res_format = NumberFormat.getInstance();
-        con_res_format.setGroupingUsed(true);
-        String result_conti = String.format("The total number of country population: "+con_res_format.format(total_con_pop));
-        System.out.println(result_conti);
+        //NumberFormat con_res_format = NumberFormat.getInstance();
+        //con_res_format.setGroupingUsed(true);
+        //String result_conti = String.format("The total number of country population: "+con_res_format.format(total_con_pop));
+        //System.out.println(result_conti);
     }
 
     /**
@@ -526,7 +528,7 @@ public class App
      * Query execution and pass the array list to format the return value.
      * Function is called in main.
      **/
-    public ArrayList<PeoplePopulation> getDistrictPopulation(String pop_district)
+    public ArrayList<PeoplePopulation> getDistrictPopulation()
     {
         try
         {
@@ -535,7 +537,7 @@ public class App
             // Create string for SQL statement
             //Query 29.The population of the country.
             String strQueryThirty =
-                    "SELECT city.Name, city.District, city.Population FROM city WHERE city.District='"+pop_district+"';";
+                    "SELECT city.District, SUM(city.Population) AS 'Population' FROM city GROUP BY city.District";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryThirty);
             // Extract countries information
@@ -543,7 +545,7 @@ public class App
             while (rset.next())
             {
                 PeoplePopulation population_district   = new PeoplePopulation();
-                population_district.district_name      = rset.getString("Name");
+                population_district.district_name      = rset.getString("District");
                 population_district.district_population     = rset.getString("Population");
                 population_districts.add(population_district);
             }
@@ -569,24 +571,24 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-40s %-30s", "Name", "Population"));
+        System.out.println(String.format("%-40s %-40s", "District Name", "Population"));
         // Loop over population from region
-        int total_dist_pop = 0;
+        //int total_dist_pop = 0;
         for (PeoplePopulation dst_population : pop_dist)
         {
             //print the list to check if capital cities in a country is null
             if (dst_population == null)
                 continue;
             String pworld_string =
-                    String.format("%-40s %-30s",
+                    String.format("%-40s %-40s",
                             dst_population.district_name, dst_population.district_population);
             System.out.println(pworld_string);
-            total_dist_pop = Integer.parseInt(dst_population.district_population) + total_dist_pop;
+            //total_dist_pop = Integer.parseInt(dst_population.district_population) + total_dist_pop;
         }
-        NumberFormat dis_res_format = NumberFormat.getInstance();
-        dis_res_format.setGroupingUsed(true);
-        String result_dist = String.format("The total number of district population: "+dis_res_format.format(total_dist_pop));
-        System.out.println(result_dist);
+        //NumberFormat dis_res_format = NumberFormat.getInstance();
+        //dis_res_format.setGroupingUsed(true);
+        //String result_dist = String.format("The total number of district population: "+dis_res_format.format(total_dist_pop));
+        //System.out.println(result_dist);
     }
 
     /**
@@ -594,7 +596,7 @@ public class App
      * Query execution and pass the array list to format the return value.
      * Function is called in main.
      **/
-    public ArrayList<PeoplePopulation> getCityPopulation(String pop_city)
+    public ArrayList<PeoplePopulation> getCityPopulation()
     {
         try
         {
@@ -603,7 +605,7 @@ public class App
             // Create string for SQL statement
             //Query 31.The population of the city.
             String strQueryThirtyOne =
-                    "SELECT city.Name, city.Population FROM city WHERE city.Name='"+pop_city+"';";
+                    "SELECT city.Name, SUM(city.Population) AS 'Population' FROM city GROUP BY city.Name;";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryThirtyOne);
             // Extract city information
@@ -637,24 +639,24 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-40s %-30s", "Name", "Population"));
+        System.out.println(String.format("%-40s %-40s", "City Name", "Population"));
         // Loop over population from region
-        int total_city_pop = 0;
+        //int total_city_pop = 0;
         for (PeoplePopulation city_population : pop_city)
         {
             //print the list to check if capital cities in a country is null
             if (city_population == null)
                 continue;
             String pworld_string =
-                    String.format("%-40s %-30s",
+                    String.format("%-40s %-40s",
                             city_population.city_name, city_population.city_population);
             System.out.println(pworld_string);
-            total_city_pop = Integer.parseInt(city_population.city_population) + total_city_pop;
+            //total_city_pop = Integer.parseInt(city_population.city_population) + total_city_pop;
         }
-        NumberFormat city_res_format = NumberFormat.getInstance();
-        city_res_format.setGroupingUsed(true);
-        String result_city = String.format("The total number of city population: "+city_res_format.format(total_city_pop));
-        System.out.println(result_city);
+        //NumberFormat city_res_format = NumberFormat.getInstance();
+        //city_res_format.setGroupingUsed(true);
+        //String result_city = String.format("The total number of city population: "+city_res_format.format(total_city_pop));
+        //System.out.println(result_city);
     }
 
     public static void main(String[] args)
@@ -696,31 +698,31 @@ public class App
 
         // The population of the continent.
         System.out.println("27. The population of the continent.");
-        ArrayList<PeoplePopulation> pop_contin = a.getContinentPopulation("Asia");
+        ArrayList<PeoplePopulation> pop_contin = a.getContinentPopulation();
         a.printContinentPopulation(pop_contin);
         System.out.println("\n");
 
         // The population of the regions.
         System.out.println("28. The population of the regions.");
-        ArrayList<PeoplePopulation> pop_regions = a.getRegionsPopulation("Middle East");
+        ArrayList<PeoplePopulation> pop_regions = a.getRegionsPopulation();
         a.printRegionsPopulation(pop_regions);
         System.out.println("\n");
 
         // The population of the countries.
         System.out.println("29. The population of the countries.");
-        ArrayList<PeoplePopulation> pop_countries = a.getCountriesPopulation("Myanmar");
+        ArrayList<PeoplePopulation> pop_countries = a.getCountriesPopulation();
         a.printCountriesPopulation(pop_countries);
         System.out.println("\n");
 
         // The population of the districts.
         System.out.println("30. The population of the districts.");
-        ArrayList<PeoplePopulation> pop_disct = a.getDistrictPopulation("Gelderland");
+        ArrayList<PeoplePopulation> pop_disct = a.getDistrictPopulation();
         a.printDistrictsPopulation(pop_disct);
         System.out.println("\n");
 
         // The population of the cities.
         System.out.println("31. The population of the cities.");
-        ArrayList<PeoplePopulation> pop_cities = a.getCityPopulation("London");
+        ArrayList<PeoplePopulation> pop_cities = a.getCityPopulation();
         a.printCityPopulation(pop_cities);
         System.out.println("\n");
 

@@ -54,8 +54,7 @@ public class AppIntegrationTestPeoplePopulation {
     void testGetPopWorld() {
         ArrayList<PeoplePopulation> pop_wld = app.getWorldPopulation();
         PeoplePopulation population_wld = pop_wld.get(0);
-        assertEquals(population_wld.getWorld_name(), "Aruba");
-        assertEquals(population_wld.getWorld_population(), "103000");
+        assertEquals(population_wld.getWorld_population(), "6078749450");
     }
 
     /*
@@ -63,10 +62,10 @@ public class AppIntegrationTestPeoplePopulation {
      */
     @Test
     void testGetPopContinent() {
-        ArrayList<PeoplePopulation> pop_con = app.getContinentPopulation("Asia");
+        ArrayList<PeoplePopulation> pop_con = app.getContinentPopulation();
         PeoplePopulation population_con = pop_con.get(0);
-        assertEquals(population_con.getContinent_name(), "Afghanistan");
-        assertEquals(population_con.getContinent_population(), "22720000");
+        assertEquals(population_con.getContinent_name(), "North America");
+        assertEquals(population_con.getContinent_population(), "482993000");
     }
 
     /*
@@ -74,10 +73,10 @@ public class AppIntegrationTestPeoplePopulation {
      */
     @Test
     void testGetPopRegions() {
-        ArrayList<PeoplePopulation> pop_reg = app.getRegionsPopulation("Middle East");
+        ArrayList<PeoplePopulation> pop_reg = app.getRegionsPopulation();
         PeoplePopulation population_reg = pop_reg.get(0);
-        assertEquals(population_reg.getRegions_name(), "Abu Dhabi");
-        assertEquals(population_reg.getRegions_population(), "2441000");
+        assertEquals(population_reg.getRegions_name(), "Caribbean");
+        assertEquals(population_reg.getRegions_population(), "38140000");
     }
 
     /*
@@ -85,10 +84,10 @@ public class AppIntegrationTestPeoplePopulation {
      */
     @Test
     void testGetPopCountries() {
-        ArrayList<PeoplePopulation> pop_countr = app.getCountriesPopulation("Myanmar");
+        ArrayList<PeoplePopulation> pop_countr = app.getCountriesPopulation();
         PeoplePopulation population_countr = pop_countr.get(0);
-        assertEquals(population_countr.getCountries_name(), "Rangoon (Yangon)");
-        assertEquals(population_countr.getCountries_population(), "3361700");
+        assertEquals(population_countr.getCountries_name(), "Aruba");
+        assertEquals(population_countr.getCountries_population(), "103000");
     }
 
     /*
@@ -96,10 +95,10 @@ public class AppIntegrationTestPeoplePopulation {
      */
     @Test
     void testGetPopDistricts() {
-        ArrayList<PeoplePopulation> pop_dst = app.getDistrictPopulation("Gelderland");
+        ArrayList<PeoplePopulation> pop_dst = app.getDistrictPopulation();
         PeoplePopulation population_dist = pop_dst.get(0);
-        assertEquals(population_dist.getDistrict_name(), "Apeldoorn");
-        assertEquals(population_dist.getDistrict_population(), "153491");
+        assertEquals(population_dist.getDistrict_name(), "Kabol");
+        assertEquals(population_dist.getDistrict_population(), "1780000");
     }
 
     /*
@@ -107,9 +106,9 @@ public class AppIntegrationTestPeoplePopulation {
      */
     @Test
     void testGetPopCity() {
-        ArrayList<PeoplePopulation> pop_st = app.getCityPopulation("London");
+        ArrayList<PeoplePopulation> pop_st = app.getCityPopulation();
         PeoplePopulation population_city = pop_st.get(0);
-        assertEquals(population_city.getCity_name(), "London");
-        assertEquals(population_city.getCity_population(), "7285000");
+        assertEquals(population_city.getCity_name(), "Kabul");
+        assertEquals(population_city.getCity_population(), "1780000");
     }
 }
