@@ -117,14 +117,15 @@ public class App
         // Loop over all capital cities in a continent
         for (PeoplePopulation pcon : Popu_Conti)
         {
+            //print the list to check if capital cities in a continent is null
+            if (pcon == null)
+                continue;
             float ccp = Integer.parseInt(pcon.cap_cit_population);
             float finalnotres = 100 * (ccp / worldpop);
             float finalres = 100 - finalnotres;
             String resString = finalres+"%";
             String resNotString = finalnotres+"%";
-            //print the list to check if capital cities in a continent is null
-            if (pcon == null)
-                continue;
+
             String pcon_string =
                     String.format("%-30s %-30s %-30s %30s %30s",
                             pcon.cap_cit_name, pcon.cap_cit_country, pcon.cap_cit_population, resNotString, resString);
@@ -181,16 +182,24 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-30s %-30s %-30s", "Capital City Name","Country Name", "Population"));
+        System.out.println(String.format("%-30s %-30s %-30s %-30s %-30s", "Capital City Name","Country Name", "Population", "People Not Living (%)", "People Living (%)"));
+        ArrayList<PeoplePopulation> contient_pop_arr = getRegionsPopulation();
+        PeoplePopulation conpop = contient_pop_arr.get(3);
+        float continentpop = Float.parseFloat(conpop.regions_population);
         // Loop over all capital cities in a region
         for (PeoplePopulation preg : Popu_Regs)
         {
             //print the list to check if capital cities in a region is null
             if (preg == null)
                 continue;
+            float rp = Integer.parseInt(preg.cap_cit_population);
+            float finalresregion = 100 * (rp / continentpop);
+            float finalnotresregions = 100 - finalresregion;
+            String resNotStringRegion = finalresregion+"%";
+            String resStringRegion = finalnotresregions+"%";
             String preg_string =
-                    String.format("%-30s %-30s %-30s",
-                            preg.cap_cit_name,preg.cap_cit_country, preg.cap_cit_population);
+                    String.format("%-30s %-30s %-30s %-30s %-30s",
+                            preg.cap_cit_name,preg.cap_cit_country, preg.cap_cit_population, resNotStringRegion, resStringRegion);
             System.out.println(preg_string);
         }
     }
@@ -244,16 +253,24 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-30s %-30s %-30s", "Capital City Name","Country Name", "Population"));
+        System.out.println(String.format("%-30s %-30s %-30s %-30s %-30s", "Capital City Name","Country Name", "Population", "People Not Living(%)", "People Living(%)"));
+        ArrayList<PeoplePopulation> country_pop_arr = getCountriesPopulation();
+        PeoplePopulation counpop = country_pop_arr.get(140);
+        float countrypop = Float.parseFloat(counpop.countries_population);
         // Loop over all capital cities in a country
         for (PeoplePopulation pcou : Popu_Coun)
         {
             //print the list to check if capital cities in a country is null
             if (pcou == null)
                 continue;
+            float conunp = Integer.parseInt(pcou.cap_cit_population);
+            float finalrescountry = 100 * (conunp / countrypop);
+            float finalnotrescountry = 100 - finalrescountry;
+            String resNotStringCountry = finalrescountry+"%";
+            String resStringCountry = finalnotrescountry+"%";
             String pcou_string =
-                    String.format("%-30s %-30s %-30s",
-                            pcou.cap_cit_name,pcou.cap_cit_country, pcou.cap_cit_population);
+                    String.format("%-30s %-30s %-30s %-30s %-30s",
+                            pcou.cap_cit_name,pcou.cap_cit_country, pcou.cap_cit_population, resNotStringCountry, resStringCountry);
             System.out.println(pcou_string);
         }
     }

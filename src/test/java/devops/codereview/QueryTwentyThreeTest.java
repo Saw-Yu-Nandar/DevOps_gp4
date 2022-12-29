@@ -41,4 +41,3 @@ public class QueryTwentyThreeTest {
         app.printPopulatedPeopleConitnent(popu_cont);
     }
 }
-
