@@ -1106,719 +1106,629 @@ public class App
         }
     }
 
-    /**
-     * 17.All the capital cities in the world organised by largest population to smallest.
-     * Query execution and pass the array list to format the return value.
-     * Function is called in main.
-     **/
-    public ArrayList<CapitalCities> getAllCapitalCities()
+/**    23.The population of people, people living in cities, and people not living in cities in each continent.
+      Query execution and pass the array list to format the return value.
+     Function is called in main.**/
+
+    public ArrayList<PeoplePopulation> getPopulatedPeopleContinent(String intput_pop_conti, int input_limited)
     {
         try
         {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            //Query 17.All the capital cities in the world organised by largest population to smallest.
-            String strQuerySeventeen =
-                    "SELECT city.Name as 'CapitalCity', country.Name as 'CountryName', country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode ORDER BY country.Population DESC;";
+            //Query 23.The population of people, people living in cities, and people not living in cities in each continent.
+            String strQueryTwentyThree =
+                    "SELECT city.Name as 'CityName', country.Name as 'CountryName', country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode AND country.Continent='"+intput_pop_conti+"' ORDER BY country.Population DESC LIMIT "+input_limited+";";
 
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strQuerySeventeen);
-            // Extract capitalcities information
-            ArrayList<CapitalCities> capital_cities = new ArrayList<CapitalCities>();
-            while (rset.next())
-            {
-                CapitalCities capcit = new CapitalCities();
-                capcit.cap_cit_name        = rset.getString("CapitalCity");
-                capcit.cap_cit_country        = rset.getString("CountryName");
-                capcit.cap_cit_population        = rset.getString("Population");
-                capital_cities.add(capcit);
-            }
-            return capital_cities;
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get all the capital cities in the world organised by largest population to smallest.");
-            return null;
-        }
-    }
-    /**
-     * 17.All the capital cities in the world organised by largest population to smallest.
-     * Formatting the output data from the list.
-     **/
-    public void printAllCapitalCities(ArrayList<CapitalCities> capital_cities)
-    {
-        // Check countries is not null
-        if (capital_cities == null)
-        {
-            System.out.println("No Capital Cities");
-            return;
-        }
-        // Print header
-        System.out.println(String.format("%-25s %-25s %-25s", "CapitalCity","Country","Population"));
-        // Loop over all countries in the list
-        for (CapitalCities cc : capital_cities)
-        {
-            if (cc == null)
-                continue;
-
-            String ctr_string =
-                    String.format("%-25s %-25s %-25s",
-                            cc.cap_cit_name,cc.cap_cit_country,cc.cap_cit_population);
-            System.out.println(ctr_string);
-        }
-    }
-
-    /**
-     * 18.All the capital cities in a continent organised by largest population to smallest.
-     * Query execution and pass the array list to format the return value.
-     * Function is called in main.
-     **/
-    public ArrayList<CapitalCities> getAllCapitalCitiesContinents(String input_continent)
-    {
-        try
-        {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            //Query 18.All the capital cities in a continent organised by largest population to smallest.
-            String strQueryEighteen =
-                    "SELECT city.Name as 'CapitalCity', country.Name as 'CountryName', country.Continent, country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode AND country.Continent = '"+input_continent+"' ORDER BY country.Population DESC;";
-
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strQueryEighteen);
+            ResultSet rset = stmt.executeQuery(strQueryTwentyThree);
             // Extract continent information
-            ArrayList<CapitalCities> capcit_continent = new ArrayList<CapitalCities>();
+            ArrayList<PeoplePopulation> population_cont = new ArrayList<PeoplePopulation>();
             while (rset.next())
             {
-                CapitalCities capcitCont = new CapitalCities();
-                capcitCont.cap_cit_name         = rset.getString("CapitalCity");
-                capcitCont.cap_cit_country         = rset.getString("CountryName");
-                capcitCont.cap_cit_continent       = rset.getString("Continent");
-                capcitCont.cap_cit_population         = rset.getString("Population");
-                capcit_continent.add(capcitCont);
+                PeoplePopulation pop_cont   = new PeoplePopulation();
+                pop_cont.cap_cit_name       = rset.getString("CityName");
+                pop_cont.cap_cit_country    = rset.getString("CountryName");
+                pop_cont.cap_cit_population = rset.getString("Population");
+                population_cont.add(pop_cont);
             }
-            return capcit_continent;
+            return population_cont;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get all the capitalcities in a Asia organised by largest population to smallest.");
+            System.out.println("Failed to get the population of people, people living in cities, and people not living in cities in each continent.");
             return null;
         }
     }
-
     /**
-     * 18.All the capital cities in a continent organised by largest population to smallest.
+     * 23. The population of people, people living in cities, and people not living in cities in each continent.
      * Formatting the output data from the list.
      **/
-    public void printAllCapitalCityContinent(ArrayList<CapitalCities> capcit_continent)
+    public void printPopulatedPeopleConitnent(ArrayList<PeoplePopulation> Popu_Conti)
     {
         // Check continent is not null
-        if (capcit_continent == null)
+        if (Popu_Conti == null)
         {
-            System.out.println("No Capital City Continent");
+            System.out.println("There is no population of people, people living in cities, and people not living in cities in each continent.");
             return;
         }
         // Print header
-        System.out.println(String.format("%-25s %-25s %-25s %-25s", "CapitalCity", "Country", "Continent", "Population"));
-        // Loop over all continent in the list
-        for (CapitalCities cccon : capcit_continent)
-        {
-            if (cccon == null)
-                continue;
-            String ctr_string =
-                    String.format("%-25s %-25s %-25s %-25s",
-                            cccon.cap_cit_name, cccon.cap_cit_country, cccon.cap_cit_continent, cccon.cap_cit_population);
-            System.out.println(ctr_string);
-        }
-    }
-
-    /**
-     * 19.All the capital cities in a region organised by largest to smallest.
-     * Query execution and pass the array list to format the return value.
-     * Function is called in main.
-     **/
-    public ArrayList<CapitalCities> getAllCapitalCitiesRegions(String input_region)
-    {
-        try
-        {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            //Query 19.All the capital cities in a region organised by largest to smallest.
-            String strQueryNineteen =
-                    "SELECT city.Name as 'CapitalCity', country.Name as 'CountryName', country.Region, country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode AND country.Region = '"+input_region+"' ORDER BY country.Population DESC;";
-
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strQueryNineteen);
-            // Extract region information
-            ArrayList<CapitalCities> capcit_region = new ArrayList<CapitalCities>();
-            while (rset.next())
-            {
-                CapitalCities capcitreg          = new CapitalCities();
-                capcitreg.cap_cit_name           = rset.getString("CapitalCity");
-                capcitreg.cap_cit_country        = rset.getString("CountryName");
-                capcitreg.cap_cit_region         = rset.getString("Region");
-                capcitreg.cap_cit_population     = rset.getString("Population");
-                capcit_region.add(capcitreg);
-            }
-            return capcit_region;
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get all the capitalcities in a Caribbean organised by largest population to smallest.");
-            return null;
-        }
-    }
-    /**
-     * 19. All the capital cities in a region organised by largest to smallest.
-     * Formatting the output data from the list.
-     **/
-    public void printAllCapitalCityRegion(ArrayList<CapitalCities> capcit_region)
-    {
-        // Check region is not null
-        if (capcit_region == null)
-        {
-            System.out.println("No CapitalCity region");
-            return;
-        }
-        // Print header
-        System.out.println(String.format("%-25s %-25s %-25s %-25s", "CapitalCity","Country","Region", "Population"));
-        // Loop over all region in the list
-        for (CapitalCities ccr : capcit_region)
-        {
-            //printRegion to check if an region is null
-            if (ccr == null)
-                continue;
-            String reg_string =
-                    String.format("%-25s %-25s %-25s %-25s",
-                            ccr.cap_cit_name,ccr.cap_cit_country,ccr.cap_cit_region, ccr.cap_cit_population);
-            System.out.println(reg_string);
-        }
-    }
-
-    /**
-     * 20.The top N populated capital cities in the world where N is provided by the user.
-     * Query execution and pass the array list to format the return value.
-     * Function is called in main.
-     **/
-    public ArrayList<CapitalCities> getTopNCapCities_World(int input_limited)
-    {
-        try
-        {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            //Query 20.The top N populated capital cities in the world where N is provided by the user.
-            String strQueryTwenty =
-                    "SELECT city.Name as 'CityName', country.Name as 'CountryName', country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode ORDER BY country.Population DESC LIMIT "+input_limited+";";
-
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strQueryTwenty);
-            // Extract region information
-            ArrayList<CapitalCities> cap_world = new ArrayList<CapitalCities>();
-            while (rset.next())
-            {
-                CapitalCities cap_wld          = new CapitalCities();
-                cap_wld.cap_cit_name           = rset.getString("CityName");
-                cap_wld.cap_cit_country        = rset.getString("CountryName");
-                cap_wld.cap_cit_population     = rset.getString("Population");
-                cap_world.add(cap_wld);
-            }
-            return cap_world;
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get the top N populated capital cities in the world where N is provided by the user.");
-            return null;
-        }
-    }
-    /**
-     * 20. The top N populated capital cities in the world where N is provided by the user.
-     * Formatting the output data from the list.
-     **/
-    public void printTopNCapCities_World(ArrayList<CapitalCities> Cap_Wor)
-    {
-        // Check region is not null
-        if (Cap_Wor == null)
-        {
-            System.out.println("There is no Capital City in the world");
-            return;
-        }
-        // Print header
-        System.out.println(String.format("%-30s %-30s %-30s", "Capital City Name","Country Name", "Population"));
-        // Loop over all capital cities in the world
-        for (CapitalCities ccr : Cap_Wor)
-        {
-            //print the list to check if capital cities in the world is null
-            if (ccr == null)
-                continue;
-            String reg_string =
-                    String.format("%-30s %-30s %-30s",
-                            ccr.cap_cit_name,ccr.cap_cit_country, ccr.cap_cit_population);
-            System.out.println(reg_string);
-        }
-    }
-
-    /**
-     * 21.The top N populated capital cities in a continent where N is provided by the user.
-     * Query execution and pass the array list to format the return value.
-     * Function is called in main.
-     **/
-    public ArrayList<CapitalCities> getTopNCapCities_cont(String input_continent,int input_limited)
-    {
-        try
-        {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            //Query 20.The top N populated capital cities in a continent where N is provided by the user.
-            String strQueryTwentyOne =
-                    "SELECT city.Name as 'CityName', country.Name as 'CountryName', country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode AND country.Continent = '"+input_continent+"' ORDER BY country.Population DESC LIMIT "+input_limited+";";
-
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strQueryTwentyOne);
-            // Extract region information
-            ArrayList<CapitalCities> cap_cont = new ArrayList<CapitalCities>();
-            while (rset.next())
-            {
-                CapitalCities cap_cnt          = new CapitalCities();
-                cap_cnt.cap_cit_name           = rset.getString("CityName");
-                cap_cnt.cap_cit_country        = rset.getString("CountryName");
-                cap_cnt.cap_cit_population     = rset.getString("Population");
-                cap_cont.add(cap_cnt);
-            }
-            return cap_cont;
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get the top N populated capital cities in a continent where N is provided by the user.");
-            return null;
-        }
-    }
-    /**
-     * 21. The top N populated capital cities in a continent where N is provided by the user.
-     * Formatting the output data from the list.
-     **/
-    public void printTopNCapCities_cont(ArrayList<CapitalCities> Cont_Cap)
-    {
-        // Check region is not null
-        if (Cont_Cap == null)
-        {
-            System.out.println("There is no Capital City in the world");
-            return;
-        }
-        // Print header
-        System.out.println(String.format("%-30s %-30s %-30s", "Capital City Name","Country Name", "Population"));
+        System.out.println(String.format("%-30s %-30s %-30s %30s %30s", "Capital City Name","Country Name", "Population", "People Not Living (%)", "People Living (%)"));
+        ArrayList<PeoplePopulation> world_pop_arr = getWorldPopulation();
+        PeoplePopulation wpop = world_pop_arr.get(0);
+        float worldpop = Float.parseFloat(wpop.world_population);
         // Loop over all capital cities in a continent
-        for (CapitalCities ccr : Cont_Cap)
+        for (PeoplePopulation pcon : Popu_Conti)
         {
             //print the list to check if capital cities in a continent is null
-            if (ccr == null)
+            if (pcon == null)
                 continue;
-            String reg_string =
-                    String.format("%-30s %-30s %-30s",
-                            ccr.cap_cit_name,ccr.cap_cit_country, ccr.cap_cit_population);
-            System.out.println(reg_string);
+            float ccp = Integer.parseInt(pcon.cap_cit_population);
+            float finalnotres = 100 * (ccp / worldpop);
+            float finalres = 100 - finalnotres;
+            String resString = finalres+"%";
+            String resNotString = finalnotres+"%";
+
+            String pcon_string =
+                    String.format("%-30s %-30s %-30s %30s %30s",
+                            pcon.cap_cit_name, pcon.cap_cit_country, pcon.cap_cit_population, resNotString, resString);
+            System.out.println(pcon_string);
         }
     }
 
     /**
-     * 22.The top N populated capital cities in a region where N is provided by the user.
+     * 24.The population of people, people living in cities, and people not living in cities in each region.
      * Query execution and pass the array list to format the return value.
      * Function is called in main.
      **/
-    public ArrayList<CapitalCities> getTopNCapCities_Reg(String input_region,int input_limited)
+    public ArrayList<PeoplePopulation> getPopulatedPeopleRegions(String intput_pop_reg, int input_limited)
     {
         try
         {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            //Query 20.The top N populated capital cities in a region where N is provided by the user.
-            String strQueryTwentyTwo =
-                    "SELECT city.Name as 'CityName', country.Name as 'CountryName', country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode AND country.Region='"+input_region+"' ORDER BY country.Population DESC LIMIT "+input_limited+";";
-
+            //Query 24.The population of people, people living in cities, and people not living in cities in each region.
+            String strQueryTwentyFour =
+                    "SELECT city.Name as 'CityName', country.Name as 'CountryName', country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode AND country.Region='"+intput_pop_reg+"' ORDER BY country.Population DESC LIMIT "+input_limited+";";
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strQueryTwentyTwo);
+            ResultSet rset = stmt.executeQuery(strQueryTwentyFour);
             // Extract region information
-            ArrayList<CapitalCities> cap_region = new ArrayList<CapitalCities>();
+            ArrayList<PeoplePopulation> population_reg = new ArrayList<PeoplePopulation>();
             while (rset.next())
             {
-                CapitalCities cap_reg          = new CapitalCities();
-                cap_reg.cap_cit_name           = rset.getString("CityName");
-                cap_reg.cap_cit_country        = rset.getString("CountryName");
-                cap_reg.cap_cit_population     = rset.getString("Population");
-                cap_region.add(cap_reg);
+                PeoplePopulation pop_reg    = new PeoplePopulation();
+                pop_reg.cap_cit_name        = rset.getString("CityName");
+                pop_reg.cap_cit_country     = rset.getString("CountryName");
+                pop_reg.cap_cit_population  = rset.getString("Population");
+                population_reg.add(pop_reg);
             }
-            return cap_region;
+            return population_reg;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the top N populated capital cities in a region where N is provided by the user.");
+            System.out.println("Failed to get the population of people, people living in cities, and people not living in cities in each region.");
             return null;
         }
     }
     /**
-     * 22. The top N populated capital cities in a continent where N is provided by the user.
+     * 24. The population of people, people living in cities, and people not living in cities in each region.
      * Formatting the output data from the list.
      **/
-    public void printTopNCapCities_Reg(ArrayList<CapitalCities> Reg_Cap)
+    public void printPopulatedPeopleRegions(ArrayList<PeoplePopulation> Popu_Regs)
     {
         // Check region is not null
-        if (Reg_Cap == null)
+        if (Popu_Regs == null)
         {
-            System.out.println("There is no Capital City in the world");
+            System.out.println("There is no population of people, people living in cities, and people not living in cities in each region.");
             return;
         }
         // Print header
-        System.out.println(String.format("%-30s %-30s %-30s", "Capital City Name","Country Name", "Population"));
-        // Loop over all capital cities in a continent
-        for (CapitalCities ccr : Reg_Cap)
+        System.out.println(String.format("%-30s %-30s %-30s %-30s %-30s", "Capital City Name","Country Name", "Population", "People Not Living (%)", "People Living (%)"));
+        ArrayList<PeoplePopulation> contient_pop_arr = getRegionsPopulation();
+        PeoplePopulation conpop = contient_pop_arr.get(3);
+        float continentpop = Float.parseFloat(conpop.regions_population);
+        // Loop over all capital cities in a region
+        for (PeoplePopulation preg : Popu_Regs)
         {
             //print the list to check if capital cities in a region is null
-            if (ccr == null)
+            if (preg == null)
                 continue;
-            String reg_string =
-                    String.format("%-30s %-30s %-30s",
-                            ccr.cap_cit_name,ccr.cap_cit_country, ccr.cap_cit_population);
-            System.out.println(reg_string);
+            float rp = Integer.parseInt(preg.cap_cit_population);
+            float finalresregion = 100 * (rp / continentpop);
+            float finalnotresregions = 100 - finalresregion;
+            String resNotStringRegion = finalresregion+"%";
+            String resStringRegion = finalnotresregions+"%";
+            String preg_string =
+                    String.format("%-30s %-30s %-30s %-30s %-30s",
+                            preg.cap_cit_name,preg.cap_cit_country, preg.cap_cit_population, resNotStringRegion, resStringRegion);
+            System.out.println(preg_string);
         }
     }
 
     /**
-     * 31. List the population of people who speak Chinese in descending order
-     * Query execution by user input and pass the array list to format the return value.
-     * Function is called in ma
+     * 25.The population of people, people living in cities, and people not living in cities in each country.
+     * Query execution and pass the array list to format the return value.
+     * Function is called in main.
      **/
-    public ArrayList<CountryLanguage> getCountryLanguage1(String input_language)
+    public ArrayList<PeoplePopulation> getPopulatedPeopleCountry(String intput_pop_cou, int input_limited)
     {
         try
         {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            //Query 31. List the population of people who speak Chinese in descending order
-            String strQuerylanguage1 =
-                    "SELECT countrylanguage.Language, countrylanguage.Percentage, country.Population FROM countrylanguage INNER JOIN country WHERE countrylanguage.CountryCode = country.Code AND countrylanguage.Language='"+input_language+"' ORDER BY countrylanguage.Percentage DESC;";
-
+            //Query 25.The population of people, people living in cities, and people not living in cities in each country.
+            String strQueryTwentyFive =
+                    "SELECT city.Name as 'CityName', country.Name as 'CountryName', country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode AND country.Name='"+intput_pop_cou+"' ORDER BY country.Population DESC LIMIT "+input_limited+";";
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strQuerylanguage1);
-            // Extract countries information
-            ArrayList<CountryLanguage> countrylanguage1 = new ArrayList<CountryLanguage>();
+            ResultSet rset = stmt.executeQuery(strQueryTwentyFive);
+            // Extract country information
+            ArrayList<PeoplePopulation> population_cou = new ArrayList<PeoplePopulation>();
             while (rset.next())
             {
-                CountryLanguage language1 = new CountryLanguage();
-                language1.language       = rset.getString("Language");
-                language1.percentage        = rset.getString("Percentage");
-                language1.population        = rset.getString("Population");
-                countrylanguage1.add(language1);
+                PeoplePopulation pop_cou    = new PeoplePopulation();
+                pop_cou.cap_cit_name        = rset.getString("CityName");
+                pop_cou.cap_cit_country     = rset.getString("CountryName");
+                pop_cou.cap_cit_population  = rset.getString("Population");
+                population_cou.add(pop_cou);
             }
-            return countrylanguage1;
+            return population_cou;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the top N populated countries in the world where N is provided by the user.");
+            System.out.println("Failed to get the population of people, people living in cities, and people not living in cities in each country.");
             return null;
         }
     }
-
     /**
-     * 31. List the population of people who speak Chinese in descending order
+     * 25. The population of people, people living in cities, and people not living in cities in each country.
      * Formatting the output data from the list.
      **/
-    public void printCountryLanguage1(ArrayList<CountryLanguage> countrylanguage1)
+    public void printPopulatedPeopleCountry(ArrayList<PeoplePopulation> Popu_Coun)
     {
-        // Check country language is not null
-        if (countrylanguage1 == null)
+        // Check country is not null
+        if (Popu_Coun == null)
         {
-            System.out.println("No Chinese");
+            System.out.println("There is no population of people, people living in cities, and people not living in cities in each country.");
             return;
         }
         // Print header
-        System.out.println(String.format("%-30s %-30s %-30s", "Language", "Percentage", "Population"));
-        // Loop over all countries in the list
-        for (CountryLanguage cl1 : countrylanguage1)
+        System.out.println(String.format("%-30s %-30s %-30s %-30s %-30s", "Capital City Name","Country Name", "Population", "People Not Living(%)", "People Living(%)"));
+        ArrayList<PeoplePopulation> country_pop_arr = getCountriesPopulation();
+        PeoplePopulation counpop = country_pop_arr.get(140);
+        float countrypop = Float.parseFloat(counpop.countries_population);
+        // Loop over all capital cities in a country
+        for (PeoplePopulation pcou : Popu_Coun)
         {
-            //print language to check if an language is null
-            if (cl1 == null)
+            //print the list to check if capital cities in a country is null
+            if (pcou == null)
                 continue;
-            String language_string =
-                    String.format("%-30s %-30s %-30s",
-                            cl1.language, cl1.percentage, cl1.population);
-            System.out.println(language_string);
+            float conunp = Integer.parseInt(pcou.cap_cit_population);
+            float finalrescountry = 100 * (conunp / countrypop);
+            float finalnotrescountry = 100 - finalrescountry;
+            String resStringCountry = finalrescountry+"%";
+            String resNotStringCountry = finalnotrescountry+"%";
+            String pcou_string =
+                    String.format("%-30s %-30s %-30s %-30s %-30s",
+                            pcou.cap_cit_name,pcou.cap_cit_country, pcou.cap_cit_population, resNotStringCountry, resStringCountry);
+            System.out.println(pcou_string);
         }
     }
 
     /**
-     * 32. List the population of people who speak English in descending order
-     * Query execution by user input and pass the array list to format the return value.
-     * Function is called in ma
+     * 26.The population of the world.
+     * Query execution and pass the array list to format the return value.
+     * Function is called in main.
      **/
-    public ArrayList<CountryLanguage> getCountryLanguage2(String input_language)
+    public ArrayList<PeoplePopulation> getWorldPopulation()
     {
         try
         {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            //Query 31. List the population of people who speak Chinese in descending order
-            String strQueryFour =
-                    "SELECT countrylanguage.Language, countrylanguage.Percentage, country.Population FROM countrylanguage INNER JOIN country WHERE countrylanguage.CountryCode = country.Code AND countrylanguage.Language='"+input_language+"' ORDER BY countrylanguage.Percentage DESC;";
-
+            //Query 26.The population of the world.
+            String strQueryTwentySix =
+                    "SELECT SUM(country.Population) as 'Population' FROM country;";
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strQueryFour);
-            // Extract countries information
-            ArrayList<CountryLanguage> countrylanguage2 = new ArrayList<CountryLanguage>();
+            ResultSet rset = stmt.executeQuery(strQueryTwentySix);
+            // Extract country information
+            ArrayList<PeoplePopulation> population_world = new ArrayList<PeoplePopulation>();
             while (rset.next())
             {
-                CountryLanguage language2 = new CountryLanguage();
-                language2.language       = rset.getString("Language");
-                language2.percentage        = rset.getString("Percentage");
-                language2.population        = rset.getString("Population");
-                countrylanguage2.add(language2);
+                PeoplePopulation pop_world    = new PeoplePopulation();
+                //pop_world.world_name      = rset.getString("Name");
+                pop_world.world_population      = rset.getString("Population");
+                population_world.add(pop_world);
             }
-            return countrylanguage2;
+            return population_world;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the top N populated countries in the world where N is provided by the user.");
+            System.out.println("Failed to get the population of the world.");
             return null;
         }
     }
-
     /**
-     * 32. List the population of people who speak Chinese in descending order
+     * 26. The population of the world.
      * Formatting the output data from the list.
      **/
-    public void printCountryLanguage2(ArrayList<CountryLanguage> countrylanguage2)
+    public void printWorldPopulation(ArrayList<PeoplePopulation> pop_world)
     {
-        // Check country language is not null
-        if (countrylanguage2 == null)
-        {
-            System.out.println("No English");
+
+        // Check country is not null
+        if (pop_world == null) {
+            System.out.println("There is no population of the world.");
             return;
         }
         // Print header
-        System.out.println(String.format("%-30s %-30s %-30s", "Language", "Percentage", "Population"));
-        // Loop over all countries in the list
-        for (CountryLanguage cl2 : countrylanguage2)
-        {
-            //print language to check if an language is null
-            if (cl2 == null)
+        //System.out.println(String.format("%-40s", "Population"));
+        // Loop over all capital cities in a country
+        // int total_word_pop = 0;
+        //NumberFormat world_res_format = NumberFormat.getInstance();
+        for (PeoplePopulation wpop : pop_world) {
+            //print the list to check if capital cities in a country is null
+            if (wpop == null)
                 continue;
-            String language_string =
-                    String.format("%-30s %-30s %-30s",
-                            cl2.language, cl2.percentage, cl2.population);
-            System.out.println(language_string);
+            String pworld_string =
+                    String.format("%-40s",
+                            wpop.world_population);
+            System.out.println("Total World Population: "+pworld_string);
+            //System.out.println("Total World Population: "+world_res_format.format(pworld_string));
+            //total_word_pop = Integer.parseInt(wpop.world_population) + total_word_pop;
         }
+        //NumberFormat world_res_format = NumberFormat.getInstance();
+        ///world_res_format.setGroupingUsed(true);
+        //String result_world = String.format("The total number of world population: "+world_res_format.format(total_word_pop));
+        //System.out.println(result_world);
     }
 
     /**
-     * 33. List the population of people who speak Hindi in descending order
-     * Query execution by user input and pass the array list to format the return value.
-     * Function is called in ma
+     * 27.The population of the continent.
+     * Query execution and pass the array list to format the return value.
+     * Function is called in main.
      **/
-    public ArrayList<CountryLanguage> getCountryLanguage3(String input_language)
+    public ArrayList<PeoplePopulation> getContinentPopulation()
     {
         try
         {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            //Query 33. List the population of people who speak Hindi in descending order
-            String strQueryLanguage3 =
-                    "SELECT countrylanguage.Language, countrylanguage.Percentage, country.Population FROM countrylanguage INNER JOIN country WHERE countrylanguage.CountryCode = country.Code AND countrylanguage.Language='"+input_language+"' ORDER BY countrylanguage.Percentage DESC;";
-
+            //Query 27.The population of the continent.
+            String strQueryTwentySeven =
+                    "SELECT country.Continent, SUM(country.Population) AS 'Population' FROM country GROUP BY country.Continent";
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strQueryLanguage3);
-            // Extract countries information
-            ArrayList<CountryLanguage> countryLanguage3 = new ArrayList<CountryLanguage>();
+            ResultSet rset = stmt.executeQuery(strQueryTwentySeven);
+            // Extract continent information
+            ArrayList<PeoplePopulation> population_cont = new ArrayList<PeoplePopulation>();
             while (rset.next())
             {
-                CountryLanguage language3 = new CountryLanguage();
-                language3.language       = rset.getString("Language");
-                language3.percentage        = rset.getString("Percentage");
-                language3.population        = rset.getString("Population");
-                countryLanguage3.add(language3);
+                PeoplePopulation pop_continent   = new PeoplePopulation();
+                pop_continent.continent_name = rset.getString("Continent");
+                pop_continent.continent_population      = rset.getString("Population");
+                population_cont.add(pop_continent);
             }
-            return countryLanguage3;
+            return population_cont;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get list the population of people who speak Hindi in descending order.");
+            System.out.println("Failed to get the population of the continent.");
             return null;
         }
     }
-
     /**
-     * 33. List the population of people who speak Hindi in descending order
+     * 27. The population of the continent.
      * Formatting the output data from the list.
      **/
-    public void printCountryLanguage3(ArrayList<CountryLanguage> country_language3)
+    public void printContinentPopulation(ArrayList<PeoplePopulation> pop_conti)
     {
-        // Check country language is not null
-        if (country_language3 == null)
-        {
-            System.out.println("No Hindi");
+
+        // Check country is not null
+        if (pop_conti == null) {
+            System.out.println("There is no population of the continent.");
             return;
         }
         // Print header
-        System.out.println(String.format("%-30s %-30s %-30s", "Language", "Percentage", "Population"));
-        // Loop over all countries in the list
-        for (CountryLanguage cl3 : country_language3)
+        System.out.println(String.format("%-40s %-40s", "Continent Name", "Population"));
+        // Loop over all capital cities in a country
+        //int total_cont_pop = 0;
+        for (PeoplePopulation continent_population : pop_conti)
         {
-            //print language to check if a language is null
-            if (cl3 == null)
+            //print the list to check if capital cities in a country is null
+            if (continent_population == null)
                 continue;
-            String language_string =
-                    String.format("%-30s %-30s %-30s",
-                            cl3.language, cl3.percentage, cl3.population);
-            System.out.println(language_string);
+            String pworld_string =
+                    String.format("%-40s %-40s",
+                            continent_population.continent_name, continent_population.continent_population);
+            System.out.println(pworld_string);
+            //total_cont_pop = Integer.parseInt(continent_population.continent_population) + total_cont_pop;
         }
+        //NumberFormat conti_res_format = NumberFormat.getInstance();
+        //conti_res_format.setGroupingUsed(true);
+        //String result_conti = String.format("The total number of continent population: "+conti_res_format.format(total_cont_pop));
+        //System.out.println(result_conti);
     }
 
-    //start
     /**
-     * 34. List the population of people who speak Spanish in descending order
-     * Query execution by user input and pass the array list to format the return value.
-     * Function is called in ma
+     * 28.The population of the regions.
+     * Query execution and pass the array list to format the return value.
+     * Function is called in main.
      **/
-    public ArrayList<CountryLanguage> getCountryLanguage4(String input_language)
+    public ArrayList<PeoplePopulation> getRegionsPopulation()
     {
         try
         {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            //Query 33. List the population of people who speak Spanish in descending order
-            String strQueryLanguage4 =
-                    "SELECT countrylanguage.Language, countrylanguage.Percentage, country.Population FROM countrylanguage INNER JOIN country WHERE countrylanguage.CountryCode = country.Code AND countrylanguage.Language='"+input_language+"' ORDER BY countrylanguage.Percentage DESC;";
-
+            //Query 27.The population of the continent.
+            String strQueryTwentyEight =
+                    "SELECT country.Region, SUM(country.Population) AS 'Population' FROM country GROUP BY country.Region;";
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strQueryLanguage4);
-            // Extract countries information
-            ArrayList<CountryLanguage> countryLanguage4 = new ArrayList<CountryLanguage>();
+            ResultSet rset = stmt.executeQuery(strQueryTwentyEight);
+            // Extract regions information
+            ArrayList<PeoplePopulation> population_regions = new ArrayList<PeoplePopulation>();
             while (rset.next())
             {
-                CountryLanguage language4 = new CountryLanguage();
-                language4.language       = rset.getString("Language");
-                language4.percentage        = rset.getString("Percentage");
-                language4.population        = rset.getString("Population");
-                countryLanguage4.add(language4);
+                PeoplePopulation pop_regions   = new PeoplePopulation();
+                pop_regions.regions_name      = rset.getString("Region");
+                pop_regions.regions_population     = rset.getString("Population");
+                population_regions.add(pop_regions);
             }
-            return countryLanguage4;
+            return population_regions;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get list the population of people who speak Spanish in descending order.");
+            System.out.println("Failed to get the population of the continent.");
             return null;
         }
     }
-
     /**
-     * 34. List the population of people who speak Spanish in descending order
+     * 28. The population of the regions.
      * Formatting the output data from the list.
      **/
-    public void printCountryLanguage4(ArrayList<CountryLanguage> country_language4)
+    public void printRegionsPopulation(ArrayList<PeoplePopulation> pop_regs)
     {
-        // Check country language is not null
-        if (country_language4 == null)
-        {
-            System.out.println("No Spanish");
+
+        // Check country is not null
+        if (pop_regs == null) {
+            System.out.println("There is no population of the regions.");
             return;
         }
         // Print header
-        System.out.println(String.format("%-30s %-30s %-30s", "Language", "Percentage", "Population"));
-        // Loop over all countries in the list
-        for (CountryLanguage cl4 : country_language4)
+        System.out.println(String.format("%-40s %-40s", "Region Name", "Population"));
+        // Loop over population from region
+        //int total_reg_pop = 0;
+        for (PeoplePopulation regions_population : pop_regs)
         {
-            //print language to check if a language is null
-            if (cl4 == null)
+            //print the list to check if capital cities in a country is null
+            if (regions_population == null)
                 continue;
-            String language_string =
-                    String.format("%-30s %-30s %-30s",
-                            cl4.language, cl4.percentage, cl4.population);
-            System.out.println(language_string);
+            String pworld_string =
+                    String.format("%-40s %-40s",
+                            regions_population.regions_name, regions_population.regions_population);
+            System.out.println(pworld_string);
+            //total_reg_pop = Integer.parseInt(regions_population.regions_population) + total_reg_pop;
         }
+        //NumberFormat reg_res_format = NumberFormat.getInstance();
+        //reg_res_format.setGroupingUsed(true);
+        //String result_conti = String.format("The total number of continent population: "+reg_res_format.format(total_reg_pop));
+        //System.out.println(result_conti);
     }
-    //end
-    /** start
-     * 35. List the population of people who speak Arabic in descending order.
-     * Query execution by user input and pass the array list to format the return value.
-     * Function is called in ma
+
+    /**
+     * 29.The population of the country.
+     * Query execution and pass the array list to format the return value.
+     * Function is called in main.
      **/
-    public ArrayList<CountryLanguage> getArabicLanguage(String input_language)
+    public ArrayList<PeoplePopulation> getCountriesPopulation()
     {
         try
         {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            //Query 35. List the population of people who speak Arabic in descending order
-            String strQueryLanguage5 =
-                    "SELECT countrylanguage.Language, countrylanguage.Percentage, country.Population FROM countrylanguage INNER JOIN country WHERE countrylanguage.CountryCode = country.Code AND countrylanguage.Language='"+input_language+"' ORDER BY countrylanguage.Percentage DESC;";
-
+            //Query 29.The population of the country.
+            String strQueryTwentyNine =
+                    "SELECT country.Name, SUM(country.Population) AS 'Population' FROM country GROUP BY country.Name;";
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strQueryLanguage5);
+            ResultSet rset = stmt.executeQuery(strQueryTwentyNine);
             // Extract countries information
-            ArrayList<CountryLanguage> country_lan = new ArrayList<CountryLanguage>();
+            ArrayList<PeoplePopulation> population_countries = new ArrayList<PeoplePopulation>();
             while (rset.next())
             {
-                CountryLanguage language5 = new CountryLanguage();
-                language5.language       = rset.getString("Language");
-                language5.percentage        = rset.getString("Percentage");
-                language5.population        = rset.getString("Population");
-                country_lan.add(language5);
+                PeoplePopulation pop_country   = new PeoplePopulation();
+                pop_country.countries_name      = rset.getString("Name");
+                pop_country.countries_population     = rset.getString("Population");
+                population_countries.add(pop_country);
             }
-            return country_lan;
+            return population_countries;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the list the population of people who speak Abrabic in descending order.");
+            System.out.println("Failed to get the population of the continent.");
             return null;
         }
     }
-
     /**
-     * 35. List the population of people who speak Arabic in descending order
+     * 29. The population of the countries.
      * Formatting the output data from the list.
      **/
-    public void printArabicLanguage(ArrayList<CountryLanguage> country_lang)
+    public void printCountriesPopulation(ArrayList<PeoplePopulation> pop_contr)
     {
-        // Check country language is not null
-        if (country_lang == null)
-        {
-            System.out.println("There is no one who speak Abrabic.");
+
+        // Check country is not null
+        if (pop_contr == null) {
+            System.out.println("There is no population of the countries.");
             return;
         }
         // Print header
-        System.out.println(String.format("%-30s %-30s %-30s", "Language", "Percentage", "Population"));
-        // Loop over all countries in the list
-        for (CountryLanguage cl5 : country_lang)
+        System.out.println(String.format("%-40s %-40s", "Name", "Population"));
+        // Loop over population from region
+        //int total_con_pop = 0;
+        for (PeoplePopulation countr_population : pop_contr)
         {
-            //print language to check if an language is null
-            if (cl5 == null)
+            //print the list to check if capital cities in a country is null
+            if (countr_population == null)
                 continue;
-            String lan_string =
-                    String.format("%-30s %-30s %-30s",
-                            cl5.language, cl5.percentage, cl5.population);
-            System.out.println(lan_string);
+            String pworld_string =
+                    String.format("%-40s %-40s",
+                            countr_population.countries_name, countr_population.countries_population);
+            System.out.println(pworld_string);
+            //total_con_pop = Integer.parseInt(countr_population.countries_population) + total_con_pop;
         }
+        //NumberFormat con_res_format = NumberFormat.getInstance();
+        //con_res_format.setGroupingUsed(true);
+        //String result_conti = String.format("The total number of country population: "+con_res_format.format(total_con_pop));
+        //System.out.println(result_conti);
     }
 
-    //end
+    /**
+     * 30.The population of the district.
+     * Query execution and pass the array list to format the return value.
+     * Function is called in main.
+     **/
+    public ArrayList<PeoplePopulation> getDistrictPopulation()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            //Query 29.The population of the country.
+            String strQueryThirty =
+                    "SELECT city.District, SUM(city.Population) AS 'Population' FROM city GROUP BY city.District";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strQueryThirty);
+            // Extract countries information
+            ArrayList<PeoplePopulation> population_districts = new ArrayList<PeoplePopulation>();
+            while (rset.next())
+            {
+                PeoplePopulation population_district   = new PeoplePopulation();
+                population_district.district_name      = rset.getString("District");
+                population_district.district_population     = rset.getString("Population");
+                population_districts.add(population_district);
+            }
+            return population_districts;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get the population of the districts.");
+            return null;
+        }
+    }
+    /**
+     * 30. The population of the districts.
+     * Formatting the output data from the list.
+     **/
+    public void printDistrictsPopulation(ArrayList<PeoplePopulation> pop_dist)
+    {
+
+        // Check country is not null
+        if (pop_dist == null) {
+            System.out.println("There is no population of the districts.");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-40s %-40s", "District Name", "Population"));
+        // Loop over population from region
+        //int total_dist_pop = 0;
+        for (PeoplePopulation dst_population : pop_dist)
+        {
+            //print the list to check if capital cities in a country is null
+            if (dst_population == null)
+                continue;
+            String pworld_string =
+                    String.format("%-40s %-40s",
+                            dst_population.district_name, dst_population.district_population);
+            System.out.println(pworld_string);
+            //total_dist_pop = Integer.parseInt(dst_population.district_population) + total_dist_pop;
+        }
+        //NumberFormat dis_res_format = NumberFormat.getInstance();
+        //dis_res_format.setGroupingUsed(true);
+        //String result_dist = String.format("The total number of district population: "+dis_res_format.format(total_dist_pop));
+        //System.out.println(result_dist);
+    }
+
+    /**
+     * 31.The population of the city.
+     * Query execution and pass the array list to format the return value.
+     * Function is called in main.
+     **/
+    public ArrayList<PeoplePopulation> getCityPopulation()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            //Query 31.The population of the city.
+            String strQueryThirtyOne =
+                    "SELECT city.Name, SUM(city.Population) AS 'Population' FROM city GROUP BY city.Name;";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strQueryThirtyOne);
+            // Extract city information
+            ArrayList<PeoplePopulation> population_cities = new ArrayList<PeoplePopulation>();
+            while (rset.next())
+            {
+                PeoplePopulation population_city   = new PeoplePopulation();
+                population_city.city_name      = rset.getString("Name");
+                population_city.city_population     = rset.getString("Population");
+                population_cities.add(population_city);
+            }
+            return population_cities;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get the population of the city.");
+            return null;
+        }
+    }
+    /**
+     * 31. The population of the cities.
+     * Formatting the output data from the list.
+     **/
+    public void printCityPopulation(ArrayList<PeoplePopulation> pop_city)
+    {
+
+        // Check country is not null
+        if (pop_city == null) {
+            System.out.println("There is no population of the cities.");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-40s %-40s", "City Name", "Population"));
+        // Loop over population from region
+        //int total_city_pop = 0;
+        for (PeoplePopulation city_population : pop_city)
+        {
+            //print the list to check if capital cities in a country is null
+            if (city_population == null)
+                continue;
+            String pworld_string =
+                    String.format("%-40s %-40s",
+                            city_population.city_name, city_population.city_population);
+            System.out.println(pworld_string);
+            //total_city_pop = Integer.parseInt(city_population.city_population) + total_city_pop;
+        }
+        //NumberFormat city_res_format = NumberFormat.getInstance();
+        //city_res_format.setGroupingUsed(true);
+        //String result_city = String.format("The total number of city population: "+city_res_format.format(total_city_pop));
+        //System.out.println(result_city);
+    }
+
     public static void main(String[] args)
     {
         // Create new Application
@@ -1928,77 +1838,62 @@ public class App
         a.printTopNDistrict(district);
         System.out.println("\n");
 
-        // All the capital cities in the world organised by largest population to smallest.
-        System.out.println("17: All the capital cities in the world organised by largest population to smallest.\n");
-        ArrayList<CapitalCities> capital_cities = a.getAllCapitalCities();
-        a.printAllCapitalCities(capital_cities);
+        // The population of people, people living in cities, and people not living in cities in each continent.
+        System.out.println("23.The population of people, people living in cities, and people not living in cities in each continent. \n");
+        ArrayList<PeoplePopulation> PopCont = a.getPopulatedPeopleContinent("Europe",10);
+        a.printPopulatedPeopleConitnent(PopCont);
         System.out.println("\n");
 
-        // All the capital cities in a continent organised by largest population to smallest.
-        System.out.println("18: All the capital cities in a Oceania continent organised by largest population to smallest.\n");
-        ArrayList<CapitalCities> capcit_continent = a.getAllCapitalCitiesContinents("Asia");
-        a.printAllCapitalCityContinent(capcit_continent);
+        // The population of people, people living in cities, and people not living in cities in each region.
+        System.out.println("24.The population of people, people living in cities, and people not living in cities in each region. \n");
+        ArrayList<PeoplePopulation> PopReg = a.getPopulatedPeopleRegions("Southern Europe",10);
+        a.printPopulatedPeopleRegions(PopReg);
         System.out.println("\n");
 
-        // All the capital cities in a region organised by largest to smallest.
-        System.out.println("19.All the capital cities in a Caribbean region organised by largest to smallest.\n");
-        ArrayList<CapitalCities> capcit_region = a.getAllCapitalCitiesRegions("Caribbean");
-        a.printAllCapitalCityRegion(capcit_region);
+        // The population of people, people living in cities, and people not living in cities in each country.
+        System.out.println("25.The population of people, people living in cities, and people not living in cities in each country. \n");
+        ArrayList<PeoplePopulation> PopCoun = a.getPopulatedPeopleCountry("Myanmar",10);
+        a.printPopulatedPeopleCountry(PopCoun);
         System.out.println("\n");
 
-        // The top N populated capital cities in the world where N is provided by the user.
-        System.out.println("20.The top 10 populated capital cities in the world \n");
-        ArrayList<CapitalCities> CapWld = a.getTopNCapCities_World(10);
-        a.printTopNCapCities_World(CapWld);
+        // The population of the world.
+        System.out.println("26. The population of the world.");
+        ArrayList<PeoplePopulation> pop_world = a.getWorldPopulation();
+        a.printWorldPopulation(pop_world);
         System.out.println("\n");
 
-        // The top N populated capital cities in a continent where N is provided by the user.
-        System.out.println("21.The top 10 populated capital cities in North America \n");
-        ArrayList<CapitalCities> cont_capital = a.getTopNCapCities_cont("North America",10);
-        a.printTopNCapCities_cont(cont_capital);
+        // The population of the continent.
+        System.out.println("27. The population of the continent.");
+        ArrayList<PeoplePopulation> pop_contin = a.getContinentPopulation();
+        a.printContinentPopulation(pop_contin);
         System.out.println("\n");
 
-        // The top N populated capital cities in a region where N is provided by the user.
-        System.out.println("22.The top 10 populated capital cities in Middle East \n");
-        ArrayList<CapitalCities> RegWld = a.getTopNCapCities_Reg("Middle East",10);
-        a.printTopNCapCities_Reg(RegWld);
+        // The population of the regions.
+        System.out.println("28. The population of the regions.");
+        ArrayList<PeoplePopulation> pop_regions = a.getRegionsPopulation();
+        a.printRegionsPopulation(pop_regions);
         System.out.println("\n");
 
-        // List the population of people who speak Chinese in descending order.
-        System.out.println("31: List the population of people who speak Chinese in descending order.\n");
-        ArrayList<CountryLanguage> countrylanguage1 = a.getCountryLanguage1("Chinese");
-        a.printCountryLanguage1(countrylanguage1);
+        // The population of the countries.
+        System.out.println("29. The population of the countries.");
+        ArrayList<PeoplePopulation> pop_countries = a.getCountriesPopulation();
+        a.printCountriesPopulation(pop_countries);
         System.out.println("\n");
 
-        // List the population of people who speak English in descending order.
-        System.out.println("32: List the population of people who speak English in descending order.\n");
-        ArrayList<CountryLanguage> countrylanguage2 = a.getCountryLanguage2("English");
-        a.printCountryLanguage2(countrylanguage2);
+        // The population of the districts.
+        System.out.println("30. The population of the districts.");
+        ArrayList<PeoplePopulation> pop_disct = a.getDistrictPopulation();
+        a.printDistrictsPopulation(pop_disct);
         System.out.println("\n");
 
-        // List the population of people who speak Hindi in descending order.
-        System.out.println("33: List the population of people who speak Hindi in descending order.\n");
-        ArrayList<CountryLanguage> countLanguage3 = a.getCountryLanguage3("Hindi");
-        a.printCountryLanguage3(countLanguage3);
+        // The population of the cities.
+        System.out.println("31. The population of the cities.");
+        ArrayList<PeoplePopulation> pop_cities = a.getCityPopulation();
+        a.printCityPopulation(pop_cities);
         System.out.println("\n");
 
-        // List the population of people who speak Spanish in descending order.
-        System.out.println("34: List the population of people who speak Spanish in descending order.\n");
-        ArrayList<CountryLanguage> countLanguage4 = a.getCountryLanguage4("Spanish");
-        a.printCountryLanguage4(countLanguage4);
-        System.out.println("\n");
-
-        // List the population of people who speak Arabic in descending order.
-        System.out.println("35: List the population of people who speak Arabic in descending order.\n");
-        ArrayList<CountryLanguage> countLanguage5 = a.getArabicLanguage("Arabic");
-        a.printArabicLanguage(countLanguage5);
-        System.out.println("\n");
 
         // Disconnect from database
-        a.disconnect();
-    }
-
-    // Disconnect from database
         a.disconnect();
     }
 }
