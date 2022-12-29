@@ -2,7 +2,7 @@
 name: Bug report
 about: Create a report to help us improve
 title: Not connected to docker.
-labels: bug
+labels: good first issue
 assignees: YoonShweZin
 
 ---
