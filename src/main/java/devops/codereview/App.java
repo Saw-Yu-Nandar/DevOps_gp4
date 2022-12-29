@@ -110,16 +110,24 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-30s %-30s %-30s", "Capital City Name","Country Name", "Population"));
+        System.out.println(String.format("%-30s %-30s %-30s %30s %30s", "Capital City Name","Country Name", "Population", "People Not Living (%)", "People Living (%)"));
+        ArrayList<PeoplePopulation> world_pop_arr = getWorldPopulation();
+        PeoplePopulation wpop = world_pop_arr.get(0);
+        float worldpop = Float.parseFloat(wpop.world_population);
         // Loop over all capital cities in a continent
         for (PeoplePopulation pcon : Popu_Conti)
         {
+            float ccp = Integer.parseInt(pcon.cap_cit_population);
+            float finalnotres = 100 * (ccp / worldpop);
+            float finalres = 100 - finalnotres;
+            String resString = finalres+"%";
+            String resNotString = finalnotres+"%";
             //print the list to check if capital cities in a continent is null
             if (pcon == null)
                 continue;
             String pcon_string =
-                    String.format("%-30s %-30s %-30s",
-                            pcon.cap_cit_name,pcon.cap_cit_country, pcon.cap_cit_population);
+                    String.format("%-30s %-30s %-30s %30s %30s",
+                            pcon.cap_cit_name, pcon.cap_cit_country, pcon.cap_cit_population, resNotString, resString);
             System.out.println(pcon_string);
         }
     }
