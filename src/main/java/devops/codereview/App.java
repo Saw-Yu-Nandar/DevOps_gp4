@@ -266,8 +266,8 @@ public class App
             float conunp = Integer.parseInt(pcou.cap_cit_population);
             float finalrescountry = 100 * (conunp / countrypop);
             float finalnotrescountry = 100 - finalrescountry;
-            String resNotStringCountry = finalrescountry+"%";
-            String resStringCountry = finalnotrescountry+"%";
+            String resStringCountry = finalrescountry+"%";
+            String resNotStringCountry = finalnotrescountry+"%";
             String pcou_string =
                     String.format("%-30s %-30s %-30s %-30s %-30s",
                             pcou.cap_cit_name,pcou.cap_cit_country, pcou.cap_cit_population, resNotStringCountry, resStringCountry);
