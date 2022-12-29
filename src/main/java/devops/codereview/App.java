@@ -332,8 +332,8 @@ public class App
             if (wpop == null)
                 continue;
             String pworld_string =
-                String.format("%-40s",
-                           wpop.world_population);
+                    String.format("%-40s",
+                            wpop.world_population);
             System.out.println("Total World Population: "+pworld_string);
             //System.out.println("Total World Population: "+world_res_format.format(pworld_string));
             //total_word_pop = Integer.parseInt(wpop.world_population) + total_word_pop;

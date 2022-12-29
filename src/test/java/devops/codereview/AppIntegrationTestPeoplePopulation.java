@@ -101,11 +101,12 @@ public class AppIntegrationTestPeoplePopulation {
         assertEquals(population_dist.getDistrict_population(), "1780000");
     }
 
-    /*
-     * Query 31: The population of the cities.
-     */
+        /*
+         * Query 31: The population of the cities.
+         */
     @Test
-    void testGetPopCity() {
+    void testGetPopCity ()
+    {
         ArrayList<PeoplePopulation> pop_st = app.getCityPopulation();
         PeoplePopulation population_city = pop_st.get(0);
         assertEquals(population_city.getCity_name(), "Kabul");
