@@ -3,9 +3,7 @@ SET09623 2022-2023 TR2 001 - DevOps
 
 #Team Members: Saw Yu Nandar, Yoon Ei Shwe Zin, Su Hnin Lwin, Nang Shwe Sin Win
 
-CodeReview 1: project workflow is set-up and try one of the feature requirements.
-CodeReview 2: Check for task management set-up and initial requirements gathering via user stories and use cases.
-CodeReview 3: Check the testing has been correctly specified.
+CodeReview 1: project workflow is set-up and try one of the feature requirements
 
 
 
@@ -13,7 +11,11 @@ CodeReview 3: Check the testing has been correctly specified.
 
 [![LICENSE](https://img.shields.io/github/license/Saw-Yu-Nandar/DevOps_gp4.svg?style=flat-square)](https://github.com/Saw-Yu-Nandar/DevOps_gp_project/blob/master/LICENSE)
 
-[![Releases](https://img.shields.io/github/release/Saw-Yu-Nandar/DevOps_gp4/all.svg?style=flat-square)](https://github.com/Saw-Yu-Nandar/DevOps_gp4/releases)
+[![Releases](https://img.shields.io/github/release/Saw-Yu-Nandar/DevOps_gp4/all.svg?style=flat-square)](https://github.com/Saw-Yu-Nandar/DevOps_gp_project/releases)
 
 # Software Engineering Methods
 ![workflow](https://img.shields.io/github/workflow/status/Saw-Yu-Nandar/DevOps_gp4/main.yml/main?style=flat-square)
+
+
+#Code Coverage
+[![codecov](https://codecov.io/gh/Saw-Yu-Nandar/DevOps_gp4/branch/master/graph/badge.svg?token=C6W4ALVTNI)](https://codecov.io/gh/Saw-Yu-Nandar/DevOps_gp4)
