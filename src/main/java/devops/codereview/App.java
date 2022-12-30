@@ -1864,6 +1864,71 @@ public class App
     }
 
     /**
+     * 31. List the population of people who speak Chinese in descending order
+     * Query execution by user input and pass the array list to format the return value.
+     * Function is called in ma
+     **/
+    public ArrayList<CountryLanguage> getCountryLanguage1(String input_language)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            //Query 31. List the population of people who speak Chinese in descending order
+            String strQuerylanguage1 =
+                    "SELECT countrylanguage.Language, countrylanguage.Percentage, country.Population FROM countrylanguage INNER JOIN country WHERE countrylanguage.CountryCode = country.Code AND countrylanguage.Language='"+input_language+"' ORDER BY countrylanguage.Percentage DESC;";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strQuerylanguage1);
+            // Extract countries information
+            ArrayList<CountryLanguage> countrylanguage1 = new ArrayList<CountryLanguage>();
+            while (rset.next())
+            {
+                CountryLanguage language1 = new CountryLanguage();
+                language1.setLanguage(rset.getString("Language"));
+                language1.setPercentage(rset.getString("Percentage"));
+                language1.setPopulation(rset.getString("Population"));
+                countrylanguage1.add(language1);
+            }
+            return countrylanguage1;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get the top N populated countries in the world where N is provided by the user.");
+            return null;
+        }
+    }
+
+    /**
+     * 31. List the population of people who speak Chinese in descending order
+     * Formatting the output data from the list.
+     **/
+    public void printCountryLanguage1(ArrayList<CountryLanguage> countrylanguage1)
+    {
+        // Check country language is not null
+        if (countrylanguage1 == null)
+        {
+            System.out.println("No Chinese");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-30s %-30s %-30s", "Language", "Percentage", "Population"));
+        // Loop over all countries in the list
+        for (CountryLanguage cl1 : countrylanguage1)
+        {
+            //print language to check if an language is null
+            if (cl1 == null)
+                continue;
+            String language_string =
+                    String.format("%-30s %-30s %-30s",
+                            cl1.getLanguage(), cl1.getPercentage(), cl1.getPopulation());
+            System.out.println(language_string);
+        }
+    }
+
+    /**
      * 32. List the population of people who speak English in descending order
      * Query execution by user input and pass the array list to format the return value.
      * Function is called in ma
@@ -2306,6 +2371,11 @@ public class App
         a.printCityPopulation(pop_cities);
         System.out.println("\n");
 
+        // List the population of people who speak Chinese in descending order.
+        System.out.println("31: List the population of people who speak Chinese in descending order.\n");
+        ArrayList<CountryLanguage> countrylanguage1 = a.getCountryLanguage1("Chinese");
+        a.printCountryLanguage1(countrylanguage1);
+        System.out.println("\n");
 
         // List the population of people who speak English in descending order.
         System.out.println("32: List the population of people who speak English in descending order.\n");
