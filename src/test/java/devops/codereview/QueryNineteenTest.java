@@ -37,10 +37,10 @@ public class QueryNineteenTest
     {
         ArrayList<CapitalCities> capcit_region = new ArrayList<CapitalCities>();
         CapitalCities capcit            = new CapitalCities();
-        capcit.cap_cit_name             = "La Habana";
-        capcit.cap_cit_country          = "Cuba";
-        capcit.cap_cit_region           = "Caribbean";
-        capcit.cap_cit_population       = "11201000";
+        capcit.setCap_cit_name("La Habana");
+        capcit.setCap_cit_country("Cuba");
+        capcit.setCap_cit_region("Caribbean");
+        capcit.setCap_cit_population("11201000");
         capcit_region.add(capcit);
         app.printAllCapitalCityRegion(capcit_region);
     }

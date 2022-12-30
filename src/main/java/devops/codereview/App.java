@@ -9,48 +9,6 @@ public class App
      * Connection to MySQL database.
      */
     private Connection con = null;
-
-    /**
-     * Connect to the MySQL database.
-     */
-//    public void connect()
-//    {
-//        try
-//        {
-//            // Load Database driver
-//            Class.forName("com.mysql.cj.jdbc.Driver");
-//        }
-//        catch (ClassNotFoundException e)
-//        {
-//            System.out.println("Could not load SQL driver");
-//            System.exit(-1);
-//        }
-//
-//        int retries = 10;
-//        for (int i = 0; i < retries; ++i)
-//        {
-//            System.out.println("Connecting to database...");
-//            try
-//            {
-//                // Wait a bit for db to start
-//                Thread.sleep(30000);
-//                // Connect to database
-//                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "Team_4");
-//                System.out.println("Successfully connected");
-//                break;
-//            }
-//            catch (SQLException sqle)
-//            {
-//                System.out.println("Failed to connect to database attempt " + Integer.toString(i));
-//                System.out.println(sqle.getMessage());
-//            }
-//            catch (InterruptedException ie)
-//            {
-//                System.out.println("Thread interrupted? Should not happen.");
-//            }
-//        }
-//    }
-
     public void connect(String location, int delay) {
         try {
             // Load Database driver
@@ -123,9 +81,9 @@ public class App
             while (rset.next())
             {
                 CapitalCities capcit = new CapitalCities();
-                capcit.cap_cit_name        = rset.getString("CapitalCity");
-                capcit.cap_cit_country        = rset.getString("CountryName");
-                capcit.cap_cit_population        = rset.getString("Population");
+                capcit.setCap_cit_name(rset.getString("CapitalCity"));
+                capcit.setCap_cit_country(rset.getString("CountryName"));
+                capcit.setCap_cit_population(rset.getString("Population"));
                 capital_cities.add(capcit);
             }
             return capital_cities;
@@ -159,7 +117,7 @@ public class App
 
             String ctr_string =
                     String.format("%-25s %-25s %-25s",
-                            cc.cap_cit_name,cc.cap_cit_country,cc.cap_cit_population);
+                            cc.getCap_cit_name(),cc.getCap_cit_country(),cc.getCap_cit_population());
             System.out.println(ctr_string);
         }
     }
@@ -187,10 +145,10 @@ public class App
             while (rset.next())
             {
                 CapitalCities capcitCont = new CapitalCities();
-                capcitCont.cap_cit_name         = rset.getString("CapitalCity");
-                capcitCont.cap_cit_country         = rset.getString("CountryName");
-                capcitCont.cap_cit_continent       = rset.getString("Continent");
-                capcitCont.cap_cit_population         = rset.getString("Population");
+                capcitCont.setCap_cit_name(rset.getString("CapitalCity"));
+                capcitCont.setCap_cit_country(rset.getString("CountryName"));
+                capcitCont.setCap_cit_continent(rset.getString("Continent"));
+                capcitCont.setCap_cit_population(rset.getString("Population"));
                 capcit_continent.add(capcitCont);
             }
             return capcit_continent;
@@ -224,7 +182,7 @@ public class App
                 continue;
             String ctr_string =
                     String.format("%-25s %-25s %-25s %-25s",
-                            cccon.cap_cit_name, cccon.cap_cit_country, cccon.cap_cit_continent, cccon.cap_cit_population);
+                            cccon.getCap_cit_name(), cccon.getCap_cit_country(), cccon.getCap_cit_continent(), cccon.getCap_cit_population());
             System.out.println(ctr_string);
         }
     }
@@ -252,10 +210,10 @@ public class App
             while (rset.next())
             {
                 CapitalCities capcitreg          = new CapitalCities();
-                capcitreg.cap_cit_name           = rset.getString("CapitalCity");
-                capcitreg.cap_cit_country        = rset.getString("CountryName");
-                capcitreg.cap_cit_region         = rset.getString("Region");
-                capcitreg.cap_cit_population     = rset.getString("Population");
+                capcitreg.setCap_cit_name(rset.getString("CapitalCity"));
+                capcitreg.setCap_cit_country(rset.getString("CountryName"));
+                capcitreg.setCap_cit_region(rset.getString("Region"));
+                capcitreg.setCap_cit_population(rset.getString("Population"));
                 capcit_region.add(capcitreg);
             }
             return capcit_region;
@@ -289,7 +247,7 @@ public class App
                 continue;
             String reg_string =
                     String.format("%-25s %-25s %-25s %-25s",
-                            ccr.cap_cit_name,ccr.cap_cit_country,ccr.cap_cit_region, ccr.cap_cit_population);
+                            ccr.getCap_cit_name(),ccr.getCap_cit_country(),ccr.getCap_cit_region(), ccr.getCap_cit_population());
             System.out.println(reg_string);
         }
     }
@@ -317,9 +275,9 @@ public class App
             while (rset.next())
             {
                 CapitalCities cap_wld          = new CapitalCities();
-                cap_wld.cap_cit_name           = rset.getString("CityName");
-                cap_wld.cap_cit_country        = rset.getString("CountryName");
-                cap_wld.cap_cit_population     = rset.getString("Population");
+                cap_wld.setCap_cit_name(rset.getString("CityName"));
+                cap_wld.setCap_cit_country(rset.getString("CountryName"));
+                cap_wld.setCap_cit_population(rset.getString("Population"));
                 cap_world.add(cap_wld);
             }
             return cap_world;
@@ -353,7 +311,7 @@ public class App
                 continue;
             String reg_string =
                     String.format("%-30s %-30s %-30s",
-                            ccr.cap_cit_name,ccr.cap_cit_country, ccr.cap_cit_population);
+                            ccr.getCap_cit_name(),ccr.getCap_cit_country(), ccr.getCap_cit_population());
             System.out.println(reg_string);
         }
     }
@@ -381,9 +339,9 @@ public class App
             while (rset.next())
             {
                 CapitalCities cap_cnt          = new CapitalCities();
-                cap_cnt.cap_cit_name           = rset.getString("CityName");
-                cap_cnt.cap_cit_country        = rset.getString("CountryName");
-                cap_cnt.cap_cit_population     = rset.getString("Population");
+                cap_cnt.setCap_cit_name(rset.getString("CityName"));
+                cap_cnt.setCap_cit_country(rset.getString("CountryName"));
+                cap_cnt.setCap_cit_population(rset.getString("Population"));
                 cap_cont.add(cap_cnt);
             }
             return cap_cont;
@@ -417,7 +375,7 @@ public class App
                 continue;
             String reg_string =
                     String.format("%-30s %-30s %-30s",
-                            ccr.cap_cit_name,ccr.cap_cit_country, ccr.cap_cit_population);
+                            ccr.getCap_cit_name(),ccr.getCap_cit_country(), ccr.getCap_cit_population());
             System.out.println(reg_string);
         }
     }
@@ -445,9 +403,9 @@ public class App
             while (rset.next())
             {
                 CapitalCities cap_reg          = new CapitalCities();
-                cap_reg.cap_cit_name           = rset.getString("CityName");
-                cap_reg.cap_cit_country        = rset.getString("CountryName");
-                cap_reg.cap_cit_population     = rset.getString("Population");
+                cap_reg.setCap_cit_name(rset.getString("CityName"));
+                cap_reg.setCap_cit_country(rset.getString("CountryName"));
+                cap_reg.setCap_cit_population(rset.getString("Population"));
                 cap_region.add(cap_reg);
             }
             return cap_region;
@@ -481,7 +439,7 @@ public class App
                 continue;
             String reg_string =
                     String.format("%-30s %-30s %-30s",
-                            ccr.cap_cit_name,ccr.cap_cit_country, ccr.cap_cit_population);
+                            ccr.getCap_cit_name(),ccr.getCap_cit_country(), ccr.getCap_cit_population());
             System.out.println(reg_string);
         }
     }
@@ -509,9 +467,9 @@ public class App
             while (rset.next())
             {
                 CountryLanguage language1 = new CountryLanguage();
-                language1.language       = rset.getString("Language");
-                language1.percentage        = rset.getString("Percentage");
-                language1.population        = rset.getString("Population");
+                language1.setLanguage(rset.getString("Language"));
+                language1.setPercentage(rset.getString("Percentage"));
+                language1.setPopulation(rset.getString("Population"));
                 countrylanguage1.add(language1);
             }
             return countrylanguage1;
@@ -546,7 +504,7 @@ public class App
                 continue;
             String language_string =
                     String.format("%-30s %-30s %-30s",
-                            cl1.language, cl1.percentage, cl1.population);
+                            cl1.getLanguage(), cl1.getPercentage(), cl1.getPopulation());
             System.out.println(language_string);
         }
     }
@@ -574,9 +532,9 @@ public class App
             while (rset.next())
             {
                 CountryLanguage language2 = new CountryLanguage();
-                language2.language       = rset.getString("Language");
-                language2.percentage        = rset.getString("Percentage");
-                language2.population        = rset.getString("Population");
+                language2.setLanguage(rset.getString("Language"));
+                language2.setPercentage(rset.getString("Percentage"));
+                language2.setPopulation(rset.getString("Population"));
                 countrylanguage2.add(language2);
             }
             return countrylanguage2;
@@ -611,7 +569,7 @@ public class App
                 continue;
             String language_string =
                     String.format("%-30s %-30s %-30s",
-                            cl2.language, cl2.percentage, cl2.population);
+                            cl2.getLanguage(), cl2.getPercentage(), cl2.getPopulation());
             System.out.println(language_string);
         }
     }
@@ -639,9 +597,9 @@ public class App
             while (rset.next())
             {
                 CountryLanguage language3 = new CountryLanguage();
-                language3.language       = rset.getString("Language");
-                language3.percentage        = rset.getString("Percentage");
-                language3.population        = rset.getString("Population");
+                language3.setLanguage(rset.getString("Language"));
+                language3.setPercentage(rset.getString("Percentage"));
+                language3.setPopulation(rset.getString("Population"));
                 countryLanguage3.add(language3);
             }
             return countryLanguage3;
@@ -676,7 +634,7 @@ public class App
                 continue;
             String language_string =
                     String.format("%-30s %-30s %-30s",
-                            cl3.language, cl3.percentage, cl3.population);
+                            cl3.getLanguage(), cl3.getPercentage(), cl3.getPopulation());
             System.out.println(language_string);
         }
     }
@@ -705,9 +663,9 @@ public class App
             while (rset.next())
             {
                 CountryLanguage language4 = new CountryLanguage();
-                language4.language       = rset.getString("Language");
-                language4.percentage        = rset.getString("Percentage");
-                language4.population        = rset.getString("Population");
+                language4.setLanguage(rset.getString("Language"));
+                language4.setPercentage(rset.getString("Percentage"));
+                language4.setPopulation(rset.getString("Population"));
                 countryLanguage4.add(language4);
             }
             return countryLanguage4;
@@ -742,7 +700,7 @@ public class App
                 continue;
             String language_string =
                     String.format("%-30s %-30s %-30s",
-                            cl4.language, cl4.percentage, cl4.population);
+                            cl4.getLanguage(), cl4.getPercentage(), cl4.getPopulation());
             System.out.println(language_string);
         }
     }
@@ -770,9 +728,9 @@ public class App
             while (rset.next())
             {
                 CountryLanguage language5 = new CountryLanguage();
-                language5.language       = rset.getString("Language");
-                language5.percentage        = rset.getString("Percentage");
-                language5.population        = rset.getString("Population");
+                language5.setLanguage(rset.getString("Language"));
+                language5.setPercentage(rset.getString("Percentage"));
+                language5.setPopulation(rset.getString("Population"));
                 country_lan.add(language5);
             }
             return country_lan;
@@ -807,7 +765,7 @@ public class App
                 continue;
             String lan_string =
                     String.format("%-30s %-30s %-30s",
-                            cl5.language, cl5.percentage, cl5.population);
+                            cl5.getLanguage(), cl5.getPercentage(), cl5.getPercentage());
             System.out.println(lan_string);
         }
     }

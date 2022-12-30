@@ -35,9 +35,9 @@ public class QueryArabicLanguageTest
     {
         ArrayList<CountryLanguage> countrylanguage5 = new ArrayList<CountryLanguage>();
         CountryLanguage arabic_lan                  = new CountryLanguage();
-        arabic_lan.language                         = "Arabic";
-        arabic_lan.percentage                       = "100.0";
-        arabic_lan.population                       = "293000";
+        arabic_lan.setLanguage("Arabic");
+        arabic_lan.setPercentage("100.0");
+        arabic_lan.setPopulation("293000");
         countrylanguage5.add(arabic_lan);
         app.printCountryLanguage1(countrylanguage5);
     }

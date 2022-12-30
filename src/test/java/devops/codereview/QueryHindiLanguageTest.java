@@ -36,9 +36,9 @@ public class QueryHindiLanguageTest
     {
         ArrayList<CountryLanguage> countryLanguage3 = new ArrayList<CountryLanguage>();
         CountryLanguage clanguage3            = new CountryLanguage();
-        clanguage3.language             = "Hindi";
-        clanguage3.percentage          = "43.7";
-        clanguage3.population       = "817000";
+        clanguage3.setLanguage("Hindi");
+        clanguage3.setPercentage("43.7");
+        clanguage3.setPopulation("817000");
         countryLanguage3.add(clanguage3);
         app.printCountryLanguage3(countryLanguage3);
     }
