@@ -37,10 +37,10 @@ public class QueryEighteenTest
     {
         ArrayList<CapitalCities> capital_cities = new ArrayList<CapitalCities>();
         CapitalCities capcit            = new CapitalCities();
-        capcit.cap_cit_name             = "Peking";
-        capcit.cap_cit_country          = "China";
-        capcit.cap_cit_continent        = "Asia";
-        capcit.cap_cit_population       = "1277558000";
+        capcit.setCap_cit_name("Peking");
+        capcit.setCap_cit_country("China");
+        capcit.setCap_cit_continent("Asia");
+        capcit.setCap_cit_population("1277558000");
         capital_cities.add(capcit);
         app.printAllCapitalCityContinent(capital_cities);
     }

@@ -37,9 +37,9 @@ public class QueryTwentyOneTest
     {
         ArrayList<CapitalCities> cap_cont = new ArrayList<CapitalCities>();
         CapitalCities capCont            = new CapitalCities();
-        capCont.cap_cit_name             = "Washington";
-        capCont.cap_cit_country          = "United States";
-        capCont.cap_cit_population       = "278357000";
+        capCont.setCap_cit_name("Washington");
+        capCont.setCap_cit_country("United States");
+        capCont.setCap_cit_population("278357000");
         cap_cont.add(capCont);
         app.printTopNCapCities_cont(cap_cont);
     }

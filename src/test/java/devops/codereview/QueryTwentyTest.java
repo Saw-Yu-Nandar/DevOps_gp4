@@ -37,9 +37,9 @@ public class QueryTwentyTest
     {
         ArrayList<CapitalCities> cap_world = new ArrayList<CapitalCities>();
         CapitalCities capWld            = new CapitalCities();
-        capWld.cap_cit_name             = "Peking";
-        capWld.cap_cit_country          = "China";
-        capWld.cap_cit_population       = "1277558000";
+        capWld.setCap_cit_name("Peking");
+        capWld.setCap_cit_country("China");
+        capWld.setCap_cit_population("1277558000");
         cap_world.add(capWld);
         app.printTopNCapCities_World(cap_world);
     }
