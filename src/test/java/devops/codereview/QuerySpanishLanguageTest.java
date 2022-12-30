@@ -36,9 +36,9 @@ public class QuerySpanishLanguageTest
     {
         ArrayList<CountryLanguage> countryLanguage4 = new ArrayList<CountryLanguage>();
         CountryLanguage clanguage4            = new CountryLanguage();
-        clanguage4.language             = "Spanish";
-        clanguage4.percentage          = "100.0";
-        clanguage4.population       = "11201000";
+        clanguage4.setLanguage("Spanish");
+        clanguage4.setPercentage("100.0");
+        clanguage4.setPopulation("11201000");
         countryLanguage4.add(clanguage4);
         app.printCountryLanguage4(countryLanguage4);
     }

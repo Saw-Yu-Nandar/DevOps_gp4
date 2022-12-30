@@ -35,10 +35,10 @@ public class QueryThirteenTest
     {
         ArrayList<City> continent = new ArrayList<City>();
         City conti = new City();
-        conti.cit_name = "Moscow";
-        conti.country_name = "Russian Federation";
-        conti.cit_district = "Moscow (City)";
-        conti.cit_population = "8389200";
+        conti.setCit_name("Moscow");
+        conti.setCountry_name("Russian Federation");
+        conti.setCit_district("Moscow (City)");
+        conti.setCit_population("8389200");
         continent.add(conti);
         app.printTopNContinent(continent);
     }

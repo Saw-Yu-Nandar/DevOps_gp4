@@ -35,8 +35,8 @@ public class QueryTwoTest
     {
         ArrayList<Country> continent = new ArrayList<Country>();
         Country cont = new Country();
-        cont.country_cont = "North America";
-        cont.country_population = "103000";
+        cont.setCountry_cont("North America");
+        cont.setCountry_population("103000");
         continent.add(cont);
         app.printContinent(continent);
     }

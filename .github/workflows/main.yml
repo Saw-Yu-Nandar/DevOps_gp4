@@ -44,9 +44,6 @@ jobs:
           mvn test -Dtest=devops.codereview.QueryHindiLanguageTest
           mvn test -Dtest=devops.codereview.QuerySpanishLanguageTest
           mvn test -Dtest=devops.codereview.QueryArabicLanguageTest               
-          mvn test -Dtest=devops.codereview.QueryTwentyThreeTest
-          mvn test -Dtest=devops.codereview.QueryTwentyFourTest
-          mvn test -Dtest=devops.codereview.QueryTwentyFiveTest
           mvn test -Dtest=devops.codereview.QueryTwentySixTest
           mvn test -Dtest=devops.codereview.QueryTwentySevenTest
           mvn test -Dtest=devops.codereview.QueryTwentyEightTest

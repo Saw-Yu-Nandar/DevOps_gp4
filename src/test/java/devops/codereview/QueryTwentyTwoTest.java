@@ -37,9 +37,9 @@ public class QueryTwentyTwoTest
     {
         ArrayList<CapitalCities> cap_region = new ArrayList<CapitalCities>();
         CapitalCities capReg            = new CapitalCities();
-        capReg.cap_cit_name             = "Ankara";
-        capReg.cap_cit_country          = "Turkey";
-        capReg.cap_cit_population       = "66591000";
+        capReg.setCap_cit_name("Ankara");
+        capReg.setCap_cit_country("Turkey");
+        capReg.setCap_cit_population("66591000");
         cap_region.add(capReg);
         app.printTopNCapCities_Reg(cap_region);
     }

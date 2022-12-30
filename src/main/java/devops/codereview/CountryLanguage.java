@@ -1,9 +1,9 @@
 package devops.codereview;
 
 public class CountryLanguage {
-    public String language;
-    public String percentage;
-    public String population;
+    private String language;
+    private String percentage;
+    private String population;
 
     public String getLanguage() {
         return language;

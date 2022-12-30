@@ -2,11 +2,11 @@ package devops.codereview;
 
 public class CapitalCities {
     //Variables for capital cities table in world database
-    public String cap_cit_name;
-    public String cap_cit_country;
-    public String cap_cit_population;
-    public String cap_cit_continent;
-    public String cap_cit_region;
+    private String cap_cit_name;
+    private String cap_cit_country;
+    private String cap_cit_population;
+    private String cap_cit_continent;
+    private String cap_cit_region;
 
     public String getCap_cit_name() {
         return cap_cit_name;

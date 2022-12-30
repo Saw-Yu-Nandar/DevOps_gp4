@@ -35,10 +35,10 @@ public class QuerySevenTest
     {
         ArrayList<City> cities    = new ArrayList<City>();
         City cit                  = new City();
-        cit.cit_name                = "Seoul";
-        cit.country_name            = "South Korea";
-        cit.cit_district            = "Seoul";
-        cit.cit_population          = "9981619";
+        cit.setCit_name("Seoul");
+        cit.setCountry_name("South Korea");
+        cit.setCit_district("Seoul");
+        cit.setCit_population("9981619");
         cities.add(cit);
         app.printCities(cities);
     }
