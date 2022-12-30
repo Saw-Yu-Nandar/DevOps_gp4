@@ -34,10 +34,10 @@ public class QueryTenTest
     {
         ArrayList<City> countries = new ArrayList<City>();
         City co                   = new City();
-        co.cit_name                 = "Europe";
-        co.country_name             = "Greece";
-        co.cit_district             = "Southern Europe";
-        co.cit_population           = "94000";
+        co.setCit_name("Europe");
+        co.setCountry_name("Greece");
+        co.setCit_district("Southern Europe");
+        co.setCit_population("94000");
         countries.add(co);
         app.printCountries(countries);
     }

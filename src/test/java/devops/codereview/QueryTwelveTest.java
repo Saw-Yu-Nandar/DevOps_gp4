@@ -35,10 +35,10 @@ public class QueryTwelveTest
     {
         ArrayList<City> worlds = new ArrayList<City>();
         City world = new City();
-        world.cit_name = "Moscow";
-        world.country_name = "Russian Federation";
-        world.cit_district = "Moscow (City)";
-        world.cit_population = "8389200";
+        world.setCit_name("Moscow");
+        world.setCountry_name("Russian Federation");
+        world.setCit_district("Moscow (City)");
+        world.setCit_population("8389200");
         worlds.add(world);
         app.printTopNWorlds(worlds);
     }

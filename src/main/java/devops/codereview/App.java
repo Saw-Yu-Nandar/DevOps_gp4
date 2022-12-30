@@ -486,10 +486,10 @@ public class App
             while (rset.next())
             {
                 City cit = new City();
-                cit.cit_name        = rset.getString("CityName");
-                cit.country_name    = rset.getString("CountryName");
-                cit.cit_district    = rset.getString("District");
-                cit.cit_population  = rset.getString("Population");
+                cit.setCit_name(rset.getString("CityName"));
+                cit.setCountry_name(rset.getString("CountryName"));
+                cit.setCit_district(rset.getString("District"));
+                cit.setCit_population(rset.getString("Population"));
                 cities.add(cit);
             }
             return cities;
@@ -519,7 +519,7 @@ public class App
                 continue;
             String cit_string =
                     String.format("%-20s %-25s %-25s %-25s",
-                            cit.cit_name,cit.country_name,cit.cit_district,cit.cit_population);
+                            cit.getCit_name(),cit.getCountry_name(),cit.getCit_district(),cit.getCit_population());
             System.out.println(cit_string);
         }
     }
@@ -545,10 +545,10 @@ public class App
             while (rset.next())
             {
                 City conti = new City();
-                conti.cit_name          = rset.getString("CityName");
-                conti.country_name      = rset.getString("CountryName");
-                conti.cit_district      = rset.getString("District");
-                conti.cit_population    = rset.getString("Population");
+                conti.setCit_name(rset.getString("CityName"));
+                conti.setCountry_name(rset.getString("CountryName"));
+                conti.setCit_district(rset.getString("District"));
+                conti.setCit_population(rset.getString("Population"));
                 continent.add(conti);
             }
             return continent;
@@ -579,7 +579,7 @@ public class App
                 continue;
             String conti_string =
                     String.format("%-20s %-25s %-25s %-25s",
-                            c.cit_name,c.country_name,c.cit_district,c.cit_population);
+                            c.getCit_name(),c.getCountry_name(),c.getCit_district(),c.getCit_population());
             System.out.println(conti_string);
         }
     }
@@ -605,10 +605,10 @@ public class App
             while (rset.next())
             {
                 City reg          = new City();
-                reg.cit_name        = rset.getString("CityName");
-                reg.country_name    = rset.getString("CountryName");
-                reg.cit_district    = rset.getString("District");
-                reg.cit_population  = rset.getString("Population");
+                reg.setCit_name(rset.getString("CityName"));
+                reg.setCountry_name(rset.getString("CountryName"));
+                reg.setCit_district(rset.getString("District"));
+                reg.setCit_population(rset.getString("Population"));
                 regions.add(reg);
             }
             return regions;
@@ -639,7 +639,7 @@ public class App
                 continue;
             String reg_string =
                     String.format("%-20s %-25s %-25s %-25s",
-                            r.cit_name,r.country_name,r.cit_district,r.cit_population);
+                            r.getCit_name(),r.getCountry_name(),r.getCit_district(),r.getCit_population());
             System.out.println(reg_string);
         }
     }
@@ -665,10 +665,10 @@ public class App
             while (rset.next())
             {
                 City c1           = new City();
-                c1.cit_name         = rset.getString("CityName");
-                c1.country_name     = rset.getString("CountryName");
-                c1.cit_district     = rset.getString("District");
-                c1.cit_population   = rset.getString("Population");
+                c1.setCit_name(rset.getString("CityName"));
+                c1.setCountry_name(rset.getString("CountryName"));
+                c1.setCit_district(rset.getString("District"));
+                c1.setCit_population(rset.getString("Population"));
                 countries.add(c1);
             }
             return countries;
@@ -699,7 +699,7 @@ public class App
                 continue;
             String c_string =
                     String.format("%-20s %-25s %-25s %-25s",
-                            cou.cit_name,cou.country_name,cou.cit_district,cou.cit_population);
+                            cou.getCit_name(),cou.getCountry_name(),cou.getCit_district(),cou.getCit_population());
             System.out.println(c_string);
         }
     }
@@ -725,10 +725,10 @@ public class App
             while (rset.next())
             {
                 City dist         = new City();
-                dist.cit_name       = rset.getString("CityName");
-                dist.country_name   = rset.getString("CountryName");
-                dist.cit_district   = rset.getString("District");
-                dist.cit_population = rset.getString("Population");
+                dist.setCit_name(rset.getString("CityName"));
+                dist.setCountry_name(rset.getString("CountryName"));
+                dist.setCit_district(rset.getString("District"));
+                dist.setCit_population(rset.getString("Population"));
                 district.add(dist);
             }
             return district;
@@ -759,7 +759,7 @@ public class App
                 continue;
             String d_string =
                     String.format("%-20s %-25s %-25s %-25s",
-                            di.cit_name,di.country_name,di.cit_district,di.cit_population);
+                            di.getCit_name(),di.getCountry_name(),di.getCit_district(),di.getCit_population());
             System.out.println(d_string);
         }
     }
@@ -785,10 +785,10 @@ public class App
             while (rset.next())
             {
                 City world = new City();
-                world.cit_name = rset.getString("Cityname");
-                world.country_name = rset.getString("Countryname");
-                world.cit_district = rset.getString("District");
-                world.cit_population = rset.getString("Population");
+                world.setCit_name(rset.getString("Cityname"));
+                world.setCountry_name(rset.getString("Countryname"));
+                world.setCit_district(rset.getString("District"));
+                world.setCit_population(rset.getString("Population"));
                 worlds.add(world);
             }
             return worlds;
@@ -818,7 +818,7 @@ public class App
                 continue;
             String w_string =
                     String.format("%-20s %-25s %-25s %-25s",
-                            w.cit_name,w.country_name,w.cit_district,w.cit_population);
+                            w.getCit_name(),w.getCountry_name(),w.getCit_district(),w.getCit_population());
             System.out.println(w_string);
         }
     }
@@ -844,10 +844,10 @@ public class App
             while (rset.next())
             {
                 City conti            = new City();
-                conti.cit_name          = rset.getString("CityName");
-                conti.country_name      = rset.getString("CountryName");
-                conti.cit_district      = rset.getString("District");
-                conti.cit_population    = rset.getString("Population");
+                conti.setCit_name(rset.getString("Cityname"));
+                conti.setCountry_name(rset.getString("Countryname"));
+                conti.setCit_district(rset.getString("District"));
+                conti.setCit_population(rset.getString("Population"));
                 continent.add(conti);
             }
             return continent;
@@ -878,7 +878,7 @@ public class App
                 continue;
             String cont_string =
                     String.format("%-20s %-25s %-25s %-25s",
-                            cont.cit_name,cont.country_name,cont.cit_district,cont.cit_population);
+                            cont.getCit_name(),cont.getCountry_name(),cont.getCit_district(),cont.getCit_population());
             System.out.println(cont_string);
         }
     }
@@ -904,10 +904,10 @@ public class App
             while (rset.next())
             {
                 City reg          = new City();
-                reg.cit_name        = rset.getString("CityName");
-                reg.country_name    = rset.getString("CountryName");
-                reg.cit_district    = rset.getString("District");
-                reg.cit_population  = rset.getString("Population");
+                reg.setCit_name(rset.getString("Cityname"));
+                reg.setCountry_name(rset.getString("Countryname"));
+                reg.setCit_district(rset.getString("District"));
+                reg.setCit_population(rset.getString("Population"));
                 region.add(reg);
             }
             return region;
@@ -938,7 +938,7 @@ public class App
                 continue;
             String cont_string =
                     String.format("%-20s %-25s %-25s %-25s",
-                            cont.cit_name,cont.country_name,cont.cit_district,cont.cit_population);
+                            cont.getCit_name(),cont.getCountry_name(),cont.getCit_district(),cont.getCit_population());
             System.out.println(cont_string);
         }
     }
@@ -965,10 +965,10 @@ public class App
             while (rset.next())
             {
                 City cty = new City();
-                cty.cit_name        = rset.getString("CityName");
-                cty.country_name    = rset.getString("CountryName");
-                cty.cit_district    = rset.getString("District");
-                cty.cit_population  = rset.getString("Population");
+                cty.setCit_name(rset.getString("Cityname"));
+                cty.setCountry_name(rset.getString("Countryname"));
+                cty.setCit_district(rset.getString("District"));
+                cty.setCit_population(rset.getString("Population"));
                 country.add(cty);
             }
             return country;
@@ -998,7 +998,7 @@ public class App
                 continue;
             String cont_string =
                     String.format("%-20s %-25s %-25s %-30s",
-                            cont.cit_name,cont.country_name,cont.cit_district,cont.cit_population);
+                            cont.getCit_name(),cont.getCountry_name(),cont.getCit_district(),cont.getCit_population());
             System.out.println(cont_string);
         }
     }
@@ -1025,10 +1025,10 @@ public class App
             while (rset.next())
             {
                 City dis = new City();
-                dis.cit_name = rset.getString("CityName");
-                dis.country_name = rset.getString("CountryName");
-                dis.cit_district = rset.getString("District");
-                dis.cit_population = rset.getString("Population");
+                dis.setCit_name(rset.getString("Cityname"));
+                dis.setCountry_name(rset.getString("Countryname"));
+                dis.setCit_district(rset.getString("District"));
+                dis.setCit_population(rset.getString("Population"));
                 dist.add(dis);
             }
             return dist;
@@ -1059,7 +1059,7 @@ public class App
                 continue;
             String cont_string =
                     String.format("%-30s %-25s %-25s %-30s",
-                            cont.cit_name,cont.country_name,cont.cit_district,cont.cit_population);
+                            cont.getCit_name(),cont.getCountry_name(),cont.getCit_district(),cont.getCit_population());
             System.out.println(cont_string);
         }
 
