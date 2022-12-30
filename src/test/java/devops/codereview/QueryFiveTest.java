@@ -36,8 +36,8 @@ public class QueryFiveTest
     {
         ArrayList<Country> NPopulated_Continents = new ArrayList<Country>();
         Country npopcont = new Country();
-        npopcont.country_name = "South America";
-        npopcont.country_population = "170115000";
+        npopcont.setCountry_name("South America");
+        npopcont.setCountry_population("170115000");
         NPopulated_Continents.add(npopcont);
         app.printNPopulatedContinents(NPopulated_Continents);
     }
