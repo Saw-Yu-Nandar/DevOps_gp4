@@ -35,8 +35,8 @@ public class QueryTwentySevenTest {
     {
         ArrayList<PeoplePopulation> pop_conti_print = new ArrayList<PeoplePopulation>();
         PeoplePopulation pop_conti_p   = new PeoplePopulation();
-        pop_conti_p.continent_name       = "Afghanistan";
-        pop_conti_p.continent_population    = "22720000";
+        pop_conti_p.setContinent_name("Afghanistan");
+        pop_conti_p.setContinent_population("22720000");
         pop_conti_print.add(pop_conti_p);
         app.printContinentPopulation(pop_conti_print);
     }

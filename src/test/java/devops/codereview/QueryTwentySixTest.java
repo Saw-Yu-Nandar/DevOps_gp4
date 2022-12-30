@@ -34,8 +34,9 @@ public class QueryTwentySixTest {
     {
         ArrayList<PeoplePopulation> pop_world_print = new ArrayList<PeoplePopulation>();
         PeoplePopulation pop_world_p   = new PeoplePopulation();
-        pop_world_p.world_name       = "Africa";
-        pop_world_p.world_population    = "10925000";
+        pop_world_p.setWorld_population("Africa");
+        pop_world_p.setWorld_population("10925000");
+        //pop_world_p.world_population    = "10925000";
         pop_world_print.add(pop_world_p);
         app.printWorldPopulation(pop_world_print);
     }
