@@ -29,16 +29,15 @@ public class QueryTwentyFourTest {
         app.printPopulatedPeopleRegions(null);
     }
 
-//    @Test
-//    void printPopulatedPeopleRegion()
-//    {
-//        ArrayList<PeoplePopulation> popu_reg = new ArrayList<PeoplePopulation>();
-//        PeoplePopulation reg   = new PeoplePopulation();
-//        reg.cap_cit_name       = "Roma";
-//        reg.cap_cit_country    = "Italy";
-//        reg.cap_cit_population = "57680000";
-//        popu_reg.add(reg);
-//        app.printPopulatedPeopleRegions(popu_reg);
-//    }
+    @Test
+    void printPopulatedPeopleRegion()
+    {
+        ArrayList<PeoplePopulation> popu_reg = new ArrayList<PeoplePopulation>();
+        PeoplePopulation reg   = new PeoplePopulation();
+        reg.setCap_cit_region("Roma");
+        reg.setCap_cit_population("57680000");
+        popu_reg.add(reg);
+        app.printPopulatedPeopleRegions(popu_reg);
+    }
 }
 

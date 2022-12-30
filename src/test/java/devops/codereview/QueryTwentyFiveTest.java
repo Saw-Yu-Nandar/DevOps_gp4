@@ -29,16 +29,15 @@ public class QueryTwentyFiveTest {
         app.printPopulatedPeopleCountry(null);
     }
 
-//    @Test
-//    void printPopulatedPeopleCountry()
-//    {
-//        ArrayList<PeoplePopulation> popu_cou = new ArrayList<PeoplePopulation>();
-//        PeoplePopulation cou   = new PeoplePopulation();
-//        cou.cap_cit_name       = "Rangoon (Yangon)";
-//        cou.cap_cit_country    = "Myanmar";
-//        cou.cap_cit_population = "45611000";
-//        popu_cou.add(cou);
-//        app.printPopulatedPeopleCountry(popu_cou);
-//    }
+    @Test
+    void printPopulatedPeopleCountry()
+    {
+        ArrayList<PeoplePopulation> popu_cou = new ArrayList<PeoplePopulation>();
+        PeoplePopulation cou   = new PeoplePopulation();
+        cou.setCap_cit_country("Myanmar");
+        cou.setCap_cit_population("45611000");
+        popu_cou.add(cou);
+        app.printPopulatedPeopleCountry(popu_cou);
+    }
 }
 

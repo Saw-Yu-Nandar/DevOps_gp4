@@ -35,8 +35,8 @@ public class QueryTwentyNineTest {
     {
         ArrayList<PeoplePopulation> pop_coun_print = new ArrayList<PeoplePopulation>();
         PeoplePopulation pop_coun_p   = new PeoplePopulation();
-        pop_coun_p.countries_name       = "Rangoon (Yangon)";
-        pop_coun_p.countries_population    = "3361700";
+        pop_coun_p.setCountries_name("Rangoon (Yangon)");
+        pop_coun_p.setCountries_population("3361700");
         pop_coun_print.add(pop_coun_p);
         app.printCountriesPopulation(pop_coun_print);
     }
