@@ -36,8 +36,8 @@ public class QuerySixTest
     {
         ArrayList<Country> NPopulated_Region = new ArrayList<Country>();
         Country npopreg = new Country();
-        npopreg.country_name = "Eastern Asia";
-        npopreg.country_population = "1277558000";
+        npopreg.setCountry_name("Eastern Asia");
+        npopreg.setCountry_population("1277558000");
         NPopulated_Region.add(npopreg);
         app.printNPopulatedRegion(NPopulated_Region);
     }

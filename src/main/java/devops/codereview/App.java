@@ -80,12 +80,12 @@ public class App
             while (rset.next())
             {
                 Country ctr = new Country();
-                ctr.country_code        = rset.getString("Code");
-                ctr.country_name        = rset.getString("CountryName");
-                ctr.country_cont        = rset.getString("Continent");
-                ctr.country_reg         = rset.getString("Region");
-                ctr.country_population  = rset.getString("Population");
-                ctr.country_cap         = rset.getString("CityName");
+                ctr.setCountry_code(rset.getString("Code"));
+                ctr.setCountry_name(rset.getString("CountryName"));
+                ctr.setCountry_cont(rset.getString("Continent"));
+                ctr.setCountry_reg(rset.getString("Region"));
+                ctr.setCountry_population(rset.getString("Population"));
+                ctr.setCountry_cap(rset.getString("CityName"));
                 countries.add(ctr);
             }
             return countries;
@@ -118,7 +118,7 @@ public class App
                 continue;
             String ctr_string =
                     String.format("%-10s %-30s %-30s %-30s %-30s %-20s",
-                            c.country_code,c.country_name,c.country_cont,c.country_reg,c.country_population,c.country_cap);
+                            c.getCountry_code(),c.getCountry_name(),c.getCountry_cont(),c.getCountry_reg(),c.getCountry_population(),c.getCountry_cap());
             System.out.println(ctr_string);
         }
     }
@@ -146,12 +146,12 @@ public class App
             while (rset.next())
             {
                 Country contnt = new Country();
-                contnt.country_code         = rset.getString("Code");
-                contnt.country_name         = rset.getString("CountryName");
-                contnt.country_cont         = rset.getString("Continent");
-                contnt.country_reg          = rset.getString("Region");
-                contnt.country_population   = rset.getString("Population");
-                contnt.country_cap          = rset.getString("CityName");
+                contnt.setCountry_code(rset.getString("Code"));
+                contnt.setCountry_name(rset.getString("CountryName"));
+                contnt.setCountry_cont(rset.getString("Continent"));
+                contnt.setCountry_reg(rset.getString("Region"));
+                contnt.setCountry_population(rset.getString("Population"));
+                contnt.setCountry_cap(rset.getString("CityName"));
                 continent.add(contnt);
             }
             return continent;
@@ -188,7 +188,7 @@ public class App
                 continue;
             String ctr_string =
                     String.format("%-10s %-30s %-30s %-30s %-30s %-20s",
-                            cont.country_code,cont.country_name,cont.country_cont,cont.country_reg,cont.country_population,cont.country_cap);
+                            cont.getCountry_code(),cont.getCountry_name(),cont.getCountry_cont(),cont.getCountry_reg(),cont.getCountry_population(),cont.getCountry_cap());
             System.out.println(ctr_string);
         }
     }
@@ -215,12 +215,12 @@ public class App
             while (rset.next())
             {
                 Country reg           = new Country();
-                reg.country_code        = rset.getString("Code");
-                reg.country_name        = rset.getString("CountryName");
-                reg.country_cont        = rset.getString("Continent");
-                reg.country_reg         = rset.getString("Region");
-                reg.country_population  = rset.getString("Population");
-                reg.country_cap         = rset.getString("CityName");
+                reg.setCountry_code(rset.getString("Code"));
+                reg.setCountry_name(rset.getString("CountryName"));
+                reg.setCountry_cont(rset.getString("Continent"));
+                reg.setCountry_reg(rset.getString("Region"));
+                reg.setCountry_population(rset.getString("Population"));
+                reg.setCountry_cap(rset.getString("CityName"));
                 regions.add(reg);
             }
             return regions;
@@ -254,7 +254,7 @@ public class App
                 continue;
             String reg_string =
                     String.format("%-10s %-30s %-30s %-30s %-30s %-20s",
-                            r.country_code,r.country_name,r.country_cont,r.country_reg,r.country_population,r.country_cap);
+                            r.getCountry_code(),r.getCountry_name(),r.getCountry_cont(),r.getCountry_reg(),r.getCountry_population(),r.getCountry_cap());
             System.out.println(reg_string);
         }
     }
@@ -282,12 +282,12 @@ public class App
             while (rset.next())
             {
                 Country npopctr = new Country();
-                npopctr.country_code        = rset.getString("Code");
-                npopctr.country_name        = rset.getString("CountryName");
-                npopctr.country_cont        = rset.getString("Continent");
-                npopctr.country_reg         = rset.getString("Region");
-                npopctr.country_population  = rset.getString("Population");
-                npopctr.country_cap         = rset.getString("CityName");
+                npopctr.setCountry_code(rset.getString("Code"));
+                npopctr.setCountry_name(rset.getString("CountryName"));
+                npopctr.setCountry_cont(rset.getString("Continent"));
+                npopctr.setCountry_reg(rset.getString("Region"));
+                npopctr.setCountry_population(rset.getString("Population"));
+                npopctr.setCountry_cap(rset.getString("CityName"));
                 NPopulatedCountries.add(npopctr);
             }
             return NPopulatedCountries;
@@ -322,7 +322,7 @@ public class App
                 continue;
             String npopctr_string =
                     String.format("%-10s %-30s %-30s %-30s %-30s %-20s",
-                            npopc.country_code, npopc.country_name, npopc.country_cont, npopc.country_reg, npopc.country_population, npopc.country_cap);
+                            npopc.getCountry_code(), npopc.getCountry_name(), npopc.getCountry_cont(), npopc.getCountry_reg(), npopc.getCountry_population(), npopc.getCountry_cap());
             System.out.println(npopctr_string);
         }
     }
@@ -350,12 +350,12 @@ public class App
             while (rset.next())
             {
                 Country npopcont = new Country();
-                npopcont.country_code       = rset.getString("Code");
-                npopcont.country_name       = rset.getString("CountryName");
-                npopcont.country_cont       = rset.getString("Continent");
-                npopcont.country_reg        = rset.getString("Region");
-                npopcont.country_population = rset.getString("Population");
-                npopcont.country_cap        = rset.getString("CityName");
+                npopcont.setCountry_code(rset.getString("Code"));
+                npopcont.setCountry_name(rset.getString("CountryName"));
+                npopcont.setCountry_cont(rset.getString("Continent"));
+                npopcont.setCountry_reg(rset.getString("Region"));
+                npopcont.setCountry_population(rset.getString("Population"));
+                npopcont.setCountry_cap(rset.getString("CityName"));
                 NPopulated_Continents.add(npopcont);
             }
             return NPopulated_Continents;
@@ -390,7 +390,7 @@ public class App
                 continue;
             String npopcont_string =
                     String.format("%-10s %-30s %-30s %-30s %-30s %-20s",
-                            npopconti.country_code,npopconti.country_name,npopconti.country_cont,npopconti.country_reg,npopconti.country_population,npopconti.country_cap);
+                            npopconti.getCountry_code(),npopconti.getCountry_name(),npopconti.getCountry_cont(),npopconti.getCountry_reg(),npopconti.getCountry_population(),npopconti.getCountry_cap());
             System.out.println(npopcont_string);
         }
     }
@@ -418,12 +418,12 @@ public class App
             while (rset.next())
             {
                 Country npopreg           = new Country();
-                npopreg.country_code        = rset.getString("Code");
-                npopreg.country_name        = rset.getString("CountryName");
-                npopreg.country_cont        = rset.getString("Continent");
-                npopreg.country_reg         = rset.getString("Region");
-                npopreg.country_population  = rset.getString("Population");
-                npopreg.country_cap         = rset.getString("CityName");
+                npopreg.setCountry_code(rset.getString("Code"));
+                npopreg.setCountry_name(rset.getString("CountryName"));
+                npopreg.setCountry_cont(rset.getString("Continent"));
+                npopreg.setCountry_reg(rset.getString("Region"));
+                npopreg.setCountry_population(rset.getString("Population"));
+                npopreg.setCountry_cap(rset.getString("CityName"));
                 NPopulated_Region.add(npopreg);
             }
             return NPopulated_Region;
@@ -458,7 +458,7 @@ public class App
                 continue;
             String npopreg_string =
                     String.format("%-10s %-30s %-30s %-30s %-30s %-20s",
-                            npopreg.country_code,npopreg.country_name,npopreg.country_cont,npopreg.country_reg,npopreg.country_population,npopreg.country_cap);
+                            npopreg.getCountry_code(),npopreg.getCountry_name(),npopreg.getCountry_cont(),npopreg.getCountry_reg(),npopreg.getCountry_population(),npopreg.getCountry_cap());
             System.out.println(npopreg_string);
         }
     }

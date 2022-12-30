@@ -35,8 +35,8 @@ public class QueryThreeTest
     {
         ArrayList<Country> regions = new ArrayList<Country>();
         Country reg = new Country();
-        reg.country_reg = "British Islands";
-        reg.country_population = "59623400";
+        reg.setCountry_reg("British Islands");
+        reg.setCountry_population("59623400");
         regions.add(reg);
         app.printRegion(regions);
     }
