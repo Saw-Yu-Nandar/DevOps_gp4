@@ -44,15 +44,13 @@ jobs:
           mvn test -Dtest=devops.codereview.QueryHindiLanguageTest
           mvn test -Dtest=devops.codereview.QuerySpanishLanguageTest
           mvn test -Dtest=devops.codereview.QueryArabicLanguageTest               
-          mvn test -Dtest=devops.codereview.QueryTwentyThreeTest
-          mvn test -Dtest=devops.codereview.QueryTwentyFourTest
-          mvn test -Dtest=devops.codereview.QueryTwentyFiveTest
           mvn test -Dtest=devops.codereview.QueryTwentySixTest
           mvn test -Dtest=devops.codereview.QueryTwentySevenTest
           mvn test -Dtest=devops.codereview.QueryTwentyEightTest
           mvn test -Dtest=devops.codereview.QueryTwentyNineTest
           mvn test -Dtest=devops.codereview.QueryThirtyTest
           mvn test -Dtest=devops.codereview.QueryThirtyOneTest
+
   IntegrationTests:
     name: Integration Tests
     runs-on: ubuntu-20.04
@@ -87,7 +85,7 @@ jobs:
           verbose: true # optional (default = false)
 
   build:
-    name: Build Run in Docker and Deploy Release
+    name: Build and Start Using docker-compose
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout

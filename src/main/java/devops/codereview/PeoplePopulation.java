@@ -2,23 +2,23 @@ package devops.codereview;
 
 public class PeoplePopulation {
     //Variables for capital cities table in world database
-    public String cap_cit_name;
-    public String cap_cit_country;
-    public String cap_cit_population;
-    public String cap_cit_continent;
-    public String cap_cit_region;
-    public String world_name;
-    public String world_population;
-    public String continent_name;
-    public String continent_population;
-    public String regions_name;
-    public String regions_population;
-    public String countries_name;
-    public String countries_population;
-    public String district_name;
-    public String district_population;
-    public String city_name;
-    public String city_population;
+    private String cap_cit_name;
+    private String cap_cit_country;
+    private String cap_cit_population;
+    private String cap_cit_continent;
+    private String cap_cit_region;
+    private String world_name;
+    private String world_population;
+    private String continent_name;
+    private String continent_population;
+    private String regions_name;
+    private String regions_population;
+    private String countries_name;
+    private String countries_population;
+    private String district_name;
+    private String district_population;
+    private String city_name;
+    private String city_population;
 
     public String getCap_cit_name() {
         return cap_cit_name;
@@ -60,44 +60,20 @@ public class PeoplePopulation {
         this.cap_cit_region = cap_cit_region;
     }
 
-    public String getWorld_population() {
-        return world_population;
-    }
-
-    public void setWorld_population(String world_population) {
-        this.world_population = world_population;
-    }
-
-    public String getContinent_population() {
-        return continent_population;
-    }
-
-    public void setContinent_population(String continent_population) {
-        this.continent_population = continent_population;
-    }
-
-    public String getRegions_population() {
-        return regions_population;
-    }
-
-    public void setRegions_population(String regions_population) {
-        this.regions_population = regions_population;
-    }
-
-    public String getCountries_population() {
-        return countries_population;
-    }
-
-    public void setCountries_population(String countries_population) {
-        this.countries_population = countries_population;
-    }
-
     public String getWorld_name() {
         return world_name;
     }
 
     public void setWorld_name(String world_name) {
         this.world_name = world_name;
+    }
+
+    public String getWorld_population() {
+        return world_population;
+    }
+
+    public void setWorld_population(String world_population) {
+        this.world_population = world_population;
     }
 
     public String getContinent_name() {
@@ -108,6 +84,14 @@ public class PeoplePopulation {
         this.continent_name = continent_name;
     }
 
+    public String getContinent_population() {
+        return continent_population;
+    }
+
+    public void setContinent_population(String continent_population) {
+        this.continent_population = continent_population;
+    }
+
     public String getRegions_name() {
         return regions_name;
     }
@@ -116,12 +100,28 @@ public class PeoplePopulation {
         this.regions_name = regions_name;
     }
 
+    public String getRegions_population() {
+        return regions_population;
+    }
+
+    public void setRegions_population(String regions_population) {
+        this.regions_population = regions_population;
+    }
+
     public String getCountries_name() {
         return countries_name;
     }
 
     public void setCountries_name(String countries_name) {
         this.countries_name = countries_name;
+    }
+
+    public String getCountries_population() {
+        return countries_population;
+    }
+
+    public void setCountries_population(String countries_population) {
+        this.countries_population = countries_population;
     }
 
     public String getDistrict_name() {
