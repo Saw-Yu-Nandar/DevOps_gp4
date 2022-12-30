@@ -35,10 +35,10 @@ public class QueryFifteenTest
     {
         ArrayList<City> country = new ArrayList<City>();
         City cty = new City();
-        cty.cit_name = "Moscow";
-        cty.country_name = "Russian Federation";
-        cty.cit_district = "Moscow (City)";
-        cty.cit_population = "8389200";
+        cty.setCit_name("Moscow");
+        cty.setCountry_name("Russian Federation");
+        cty.setCit_district("Moscow (City)");
+        cty.setCit_population("8389200");
         country.add(cty);
         app.printTopNCountries(country);
     }
