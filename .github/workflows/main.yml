@@ -17,9 +17,6 @@ jobs:
           distribution: 'adopt'
       - name: Unit Tests
         run: |
-          mvn test -Dtest=devops.codereview.QueryTwentyThreeTest
-          mvn test -Dtest=devops.codereview.QueryTwentyFourTest
-          mvn test -Dtest=devops.codereview.QueryTwentyFiveTest
           mvn test -Dtest=devops.codereview.QueryTwentySixTest
           mvn test -Dtest=devops.codereview.QueryTwentySevenTest
           mvn test -Dtest=devops.codereview.QueryTwentyEightTest
