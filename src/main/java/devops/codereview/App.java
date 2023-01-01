@@ -61,7 +61,6 @@ public class App
             }
         }
     }
-
     /**
      * 7. All the cities in the world organised by largest population to smallest.
      * Query execution and pass the array list to format the return value.
@@ -663,6 +662,7 @@ public class App
 
     }
 
+
     public static void main(String[] args)
     {
         // Create new Application
@@ -675,7 +675,6 @@ public class App
         }else{
             a.connect("db:3306", 30000);
         }
-
         // Display all the cities in the world organised by largest population to smallest.
         System.out.println("7: All the cities in the world organised by largest population to smallest.\n");
         ArrayList<City> cou = a.getAllCities();
@@ -735,7 +734,6 @@ public class App
         ArrayList<City> district = a.getTopNPopulatedDistrict("Zuid-Holland",10);
         a.printTopNDistrict(district);
         System.out.println("\n");
-
         // Disconnect from database
         a.disconnect();
     }
