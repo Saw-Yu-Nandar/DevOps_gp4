@@ -34,11 +34,11 @@ public class QueryArabicLanguageTest
     void printArabicLanguage()
     {
         ArrayList<CountryLanguage> countrylanguage5 = new ArrayList<CountryLanguage>();
-        CountryLanguage arabic_lan                  = new CountryLanguage();
-        arabic_lan.setLanguage("Arabic");
-        arabic_lan.setPercentage("100.0");
-        arabic_lan.setPopulation("293000");
-        countrylanguage5.add(arabic_lan);
+        CountryLanguage arabicLang = new CountryLanguage();
+        arabicLang.setLanguage("Arabic");
+        arabicLang.setPercentage("100.0");
+        arabicLang.setPopulation("293000");
+        countrylanguage5.add(arabicLang);
         app.printCountryLanguage1(countrylanguage5);
     }
 }

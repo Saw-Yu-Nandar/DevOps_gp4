@@ -19,29 +19,29 @@ public class QueryEighteenTest
     @Test
     void printCapitalCitiesContinentTestEmpty()
     {
-        ArrayList<CapitalCities> capcit_continent = new ArrayList<CapitalCities>();
-        app.printAllCapitalCityContinent(capcit_continent);
+        ArrayList<CapitalCity> capcitContinent = new ArrayList<CapitalCity>();
+        app.printAllCapitalCityContinent(capcitContinent);
     }
 
     //print a list with a null value
     @Test
     void printAllContinentTestContainsNull()
     {
-        ArrayList<CapitalCities> capcit_continent = new ArrayList<CapitalCities>();
-        capcit_continent.add(null);
-        app.printAllCapitalCityContinent(capcit_continent);
+        ArrayList<CapitalCity> capcitContinent = new ArrayList<CapitalCity>();
+        capcitContinent.add(null);
+        app.printAllCapitalCityContinent(capcitContinent);
     }
 
     @Test
     void printAllCapiticalCitiesContinent()
     {
-        ArrayList<CapitalCities> capital_cities = new ArrayList<CapitalCities>();
-        CapitalCities capcit            = new CapitalCities();
-        capcit.setCap_cit_name("Peking");
-        capcit.setCap_cit_country("China");
-        capcit.setCap_cit_continent("Asia");
-        capcit.setCap_cit_population("1277558000");
-        capital_cities.add(capcit);
-        app.printAllCapitalCityContinent(capital_cities);
+        ArrayList<CapitalCity> capitalCities = new ArrayList<CapitalCity>();
+        CapitalCity capcit            = new CapitalCity();
+        capcit.setCapCityName("Peking");
+        capcit.setCapCityCountry("China");
+        capcit.setCapCityContinent("Asia");
+        capcit.setCapCityPopulation("1277558000");
+        capitalCities.add(capcit);
+        app.printAllCapitalCityContinent(capitalCities);
     }
 }

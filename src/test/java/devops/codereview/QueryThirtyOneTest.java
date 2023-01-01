@@ -17,27 +17,27 @@ public class QueryThirtyOneTest {
     @Test
     void printPopCityTestEmpty()
     {
-        ArrayList<PeoplePopulation> pop_city_empt = new ArrayList<PeoplePopulation>();
-        app.printCityPopulation(pop_city_empt);
+        ArrayList<PeoplePopulation> popCityEmp = new ArrayList<PeoplePopulation>();
+        app.printCityPopulation(popCityEmp);
     }
 
     //print a list with a null value
     @Test
     void printPopCityNull()
     {
-        ArrayList<PeoplePopulation> pop_city_null = new ArrayList<PeoplePopulation>();
-        pop_city_null.add(null);
-        app.printCityPopulation(pop_city_null);
+        ArrayList<PeoplePopulation> popCityNull = new ArrayList<PeoplePopulation>();
+        popCityNull.add(null);
+        app.printCityPopulation(popCityNull);
     }
 
     @Test
     void printPopCity()
     {
-        ArrayList<PeoplePopulation> pop_city_prinnt = new ArrayList<PeoplePopulation>();
-        PeoplePopulation pop_city_p   = new PeoplePopulation();
-        pop_city_p.setCity_name("London");
-        pop_city_p.setCity_population("7285000");
-        pop_city_prinnt.add(pop_city_p);
-        app.printCityPopulation(pop_city_prinnt);
+        ArrayList<PeoplePopulation> popCityPrint = new ArrayList<PeoplePopulation>();
+        PeoplePopulation popCity   = new PeoplePopulation();
+        popCity.setCityName("London");
+        popCity.setCityPopulation("7285000");
+        popCityPrint.add(popCity);
+        app.printCityPopulation(popCityPrint);
     }
 }

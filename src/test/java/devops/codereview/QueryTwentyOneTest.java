@@ -17,30 +17,30 @@ public class QueryTwentyOneTest
     }
 
     @Test
-    void printTopNCapCities_contTestEmpty()
+    void printTopNCapCitiesContTestEmpty()
     {
-        ArrayList<CapitalCities> cap_cont = new ArrayList<CapitalCities>();
-        app.printTopNCapCities_cont(cap_cont);
+        ArrayList<CapitalCity> capContEmp = new ArrayList<CapitalCity>();
+        app.printTopNCapCitiesCont(capContEmp);
     }
 
     //print a list with a null value
     @Test
-    void printTopNCapCities_contNull()
+    void printTopNCapCitiesContNull()
     {
-        ArrayList<CapitalCities> cap_cont = new ArrayList<CapitalCities>();
-        cap_cont.add(null);
-        app.printTopNCapCities_cont(cap_cont);
+        ArrayList<CapitalCity> capContNull = new ArrayList<CapitalCity>();
+        capContNull.add(null);
+        app.printTopNCapCitiesCont(capContNull);
     }
 
     @Test
-    void printTopNCapCities_cont()
+    void printTopNCapCitiesCont()
     {
-        ArrayList<CapitalCities> cap_cont = new ArrayList<CapitalCities>();
-        CapitalCities capCont            = new CapitalCities();
-        capCont.setCap_cit_name("Washington");
-        capCont.setCap_cit_country("United States");
-        capCont.setCap_cit_population("278357000");
-        cap_cont.add(capCont);
-        app.printTopNCapCities_cont(cap_cont);
+        ArrayList<CapitalCity> capContPrint = new ArrayList<CapitalCity>();
+        CapitalCity capCont            = new CapitalCity();
+        capCont.setCapCityName("Washington");
+        capCont.setCapCityCountry("United States");
+        capCont.setCapCityPopulation("278357000");
+        capContPrint.add(capCont);
+        app.printTopNCapCitiesCont(capContPrint);
     }
 }

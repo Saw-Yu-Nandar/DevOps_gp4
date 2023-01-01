@@ -17,27 +17,27 @@ public class QueryTwentySevenTest {
     @Test
     void printPopContiTestEmpty()
     {
-        ArrayList<PeoplePopulation> pop_conti_empt = new ArrayList<PeoplePopulation>();
-        app.printContinentPopulation(pop_conti_empt);
+        ArrayList<PeoplePopulation> popContiEmpt = new ArrayList<PeoplePopulation>();
+        app.printContinentPopulation(popContiEmpt);
     }
 
     //print a list with a null value
     @Test
     void printPopContiNull()
     {
-        ArrayList<PeoplePopulation> pop_conti_null = new ArrayList<PeoplePopulation>();
-        pop_conti_null.add(null);
-        app.printContinentPopulation(pop_conti_null);
+        ArrayList<PeoplePopulation> popContiNull = new ArrayList<PeoplePopulation>();
+        popContiNull.add(null);
+        app.printContinentPopulation(popContiNull);
     }
 
     @Test
     void printPopConti()
     {
-        ArrayList<PeoplePopulation> pop_conti_print = new ArrayList<PeoplePopulation>();
-        PeoplePopulation pop_conti_p   = new PeoplePopulation();
-        pop_conti_p.setContinent_name("Afghanistan");
-        pop_conti_p.setContinent_population("22720000");
-        pop_conti_print.add(pop_conti_p);
-        app.printContinentPopulation(pop_conti_print);
+        ArrayList<PeoplePopulation> popContiPrint = new ArrayList<PeoplePopulation>();
+        PeoplePopulation popConti   = new PeoplePopulation();
+        popConti.setContinentName("Afghanistan");
+        popConti.setContinentPopulation("22720000");
+        popContiPrint.add(popConti);
+        app.printContinentPopulation(popContiPrint);
     }
 }

@@ -19,29 +19,29 @@ public class QueryNineteenTest
     @Test
     void printCapitalCitiesRegionTestEmpty()
     {
-        ArrayList<CapitalCities> capcit_region = new ArrayList<CapitalCities>();
-        app.printAllCapitalCityContinent(capcit_region);
+        ArrayList<CapitalCity> capCitReg = new ArrayList<CapitalCity>();
+        app.printAllCapitalCityContinent(capCitReg);
     }
 
     //print a list with a null value
     @Test
     void printAllRegionTestContainsNull()
     {
-        ArrayList<CapitalCities> capcit_region = new ArrayList<CapitalCities>();
-        capcit_region.add(null);
-        app.printAllCapitalCityRegion(capcit_region);
+        ArrayList<CapitalCity> capCitReg = new ArrayList<CapitalCity>();
+        capCitReg.add(null);
+        app.printAllCapitalCityRegion(capCitReg);
     }
 
     @Test
     void printAllCapiticalCitiesRegion()
     {
-        ArrayList<CapitalCities> capcit_region = new ArrayList<CapitalCities>();
-        CapitalCities capcit            = new CapitalCities();
-        capcit.setCap_cit_name("La Habana");
-        capcit.setCap_cit_country("Cuba");
-        capcit.setCap_cit_region("Caribbean");
-        capcit.setCap_cit_population("11201000");
-        capcit_region.add(capcit);
-        app.printAllCapitalCityRegion(capcit_region);
+        ArrayList<CapitalCity> capCitRegi = new ArrayList<CapitalCity>();
+        CapitalCity capcit            = new CapitalCity();
+        capcit.setCapCityName("La Habana");
+        capcit.setCapCityCountry("Cuba");
+        capcit.setCapCityRegion("Caribbean");
+        capcit.setCapCityPopulation("11201000");
+        capCitRegi.add(capcit);
+        app.printAllCapitalCityRegion(capCitRegi);
     }
 }

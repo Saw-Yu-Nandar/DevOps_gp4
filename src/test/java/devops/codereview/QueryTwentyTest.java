@@ -17,30 +17,30 @@ public class QueryTwentyTest
     }
 
     @Test
-    void printTopNCapCities_WorldTestEmpty()
+    void printTopNCapCitiesWorldTestEmpty()
     {
-        ArrayList<CapitalCities> cap_world = new ArrayList<CapitalCities>();
-        app.printTopNCapCities_World(cap_world);
+        ArrayList<CapitalCity> capWorldEmp = new ArrayList<CapitalCity>();
+        app.printTopNCapCitiesWorld(capWorldEmp);
     }
 
     //print a list with a null value
     @Test
-    void printTopNCapCities_WorldNull()
+    void printTopNCapCitiesWorldNull()
     {
-        ArrayList<CapitalCities> cap_world = new ArrayList<CapitalCities>();
-        cap_world.add(null);
-        app.printTopNCapCities_World(cap_world);
+        ArrayList<CapitalCity> capWorldNull = new ArrayList<CapitalCity>();
+        capWorldNull.add(null);
+        app.printTopNCapCitiesWorld(capWorldNull);
     }
 
     @Test
-    void printTopNCapCities_World()
+    void printTopNCapCitiesWorld()
     {
-        ArrayList<CapitalCities> cap_world = new ArrayList<CapitalCities>();
-        CapitalCities capWld            = new CapitalCities();
-        capWld.setCap_cit_name("Peking");
-        capWld.setCap_cit_country("China");
-        capWld.setCap_cit_population("1277558000");
-        cap_world.add(capWld);
-        app.printTopNCapCities_World(cap_world);
+        ArrayList<CapitalCity> capWorld = new ArrayList<CapitalCity>();
+        CapitalCity capWld            = new CapitalCity();
+        capWld.setCapCityName("Peking");
+        capWld.setCapCityCountry("China");
+        capWld.setCapCityPopulation("1277558000");
+        capWorld.add(capWld);
+        app.printTopNCapCitiesWorld(capWorld);
     }
 }
