@@ -41,7 +41,7 @@ jobs:
         run: |
           docker build -t database ./db 
           docker run --name world -dp 33060:3306 database
-          mvn test -Dtest=devops.codereview.AppIntegrationTestCountry  
+          mvn test -Dtest=devops.codereview.CountryIntegrationTest  
           docker stop world
           docker rm world
           docker image rm database

@@ -33,8 +33,8 @@ public class QueryOneTest
     {
         ArrayList<Country> countries = new ArrayList<Country>();
         Country info = new Country();
-        info.setCountry_name("Brazil");
-        info.setCountry_population("170115000");
+        info.setCountryName("Brazil");
+        info.setCountryPopulation("170115000");
         countries.add(info);
         app.printAllCountries(countries);
     }
