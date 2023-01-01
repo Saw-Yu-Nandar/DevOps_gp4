@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class AppIntegrationTestCountryLanguage {
+public class CountryLanguageIntegrationTest {
     static App app;
 
     @BeforeAll
