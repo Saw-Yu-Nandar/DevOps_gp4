@@ -30,7 +30,7 @@ jobs:
           mvn test -Dtest=devops.codereview.QueryElevenTest
           mvn test -Dtest=devops.codereview.QueryTwelveTest
           mvn test -Dtest=devops.codereview.QueryThirteenTest
-          mvn test -Dtest=devops.codereview.QueryForteenTest
+          mvn test -Dtest=devops.codereview.QueryFourteenTest
           mvn test -Dtest=devops.codereview.QueryFifteenTest
           mvn test -Dtest=devops.codereview.QuerySixteenTest
           mvn test -Dtest=devops.codereview.QuerySeventeenTest
