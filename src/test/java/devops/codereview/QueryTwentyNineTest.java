@@ -17,27 +17,27 @@ public class QueryTwentyNineTest {
     @Test
     void printPopCountryTestEmpty()
     {
-        ArrayList<PeoplePopulation> pop_coun_empt = new ArrayList<PeoplePopulation>();
-        app.printCountriesPopulation(pop_coun_empt);
+        ArrayList<PeoplePopulation> popCounEmp = new ArrayList<PeoplePopulation>();
+        app.printCountriesPopulation(popCounEmp);
     }
 
     //print a list with a null value
     @Test
     void printPopCountryNull()
     {
-        ArrayList<PeoplePopulation> pop_coun_null = new ArrayList<PeoplePopulation>();
-        pop_coun_null.add(null);
-        app.printCountriesPopulation(pop_coun_null);
+        ArrayList<PeoplePopulation> popCounNull = new ArrayList<PeoplePopulation>();
+        popCounNull.add(null);
+        app.printCountriesPopulation(popCounNull);
     }
 
     @Test
     void printPopCountry()
     {
-        ArrayList<PeoplePopulation> pop_coun_print = new ArrayList<PeoplePopulation>();
-        PeoplePopulation pop_coun_p   = new PeoplePopulation();
-        pop_coun_p.setCountries_name("Rangoon (Yangon)");
-        pop_coun_p.setCountries_population("3361700");
-        pop_coun_print.add(pop_coun_p);
-        app.printCountriesPopulation(pop_coun_print);
+        ArrayList<PeoplePopulation> popCounPrint = new ArrayList<PeoplePopulation>();
+        PeoplePopulation popCoun  = new PeoplePopulation();
+        popCoun.setCountriesName("Rangoon (Yangon)");
+        popCoun.setCountriesPopulation("3361700");
+        popCounPrint.add(popCoun);
+        app.printCountriesPopulation(popCounPrint);
     }
 }

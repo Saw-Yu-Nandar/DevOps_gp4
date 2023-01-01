@@ -17,27 +17,27 @@ public class QueryTwentyEightTest {
     @Test
     void printPopRegionsTestEmpty()
     {
-        ArrayList<PeoplePopulation> pop_reg_empt = new ArrayList<PeoplePopulation>();
-        app.printRegionsPopulation(pop_reg_empt);
+        ArrayList<PeoplePopulation> popRegEmp = new ArrayList<PeoplePopulation>();
+        app.printRegionsPopulation(popRegEmp);
     }
 
     //print a list with a null value
     @Test
     void printPopRegionsNull()
     {
-        ArrayList<PeoplePopulation> pop_reg_null = new ArrayList<PeoplePopulation>();
-        pop_reg_null.add(null);
-        app.printRegionsPopulation(pop_reg_null);
+        ArrayList<PeoplePopulation> popRegNull = new ArrayList<PeoplePopulation>();
+        popRegNull.add(null);
+        app.printRegionsPopulation(popRegNull);
     }
 
     @Test
     void printPopRegions()
     {
-        ArrayList<PeoplePopulation> pop_reg_print = new ArrayList<PeoplePopulation>();
-        PeoplePopulation pop_reg_p   = new PeoplePopulation();
-        pop_reg_p.setRegions_name("Yerevan");
-        pop_reg_p.setRegions_population("3520000");
-        pop_reg_print.add(pop_reg_p);
-        app.printRegionsPopulation(pop_reg_print);
+        ArrayList<PeoplePopulation> popRegPrint = new ArrayList<PeoplePopulation>();
+        PeoplePopulation popReg   = new PeoplePopulation();
+        popReg.setRegionsName("Yerevan");
+        popReg.setRegionsPopulation("3520000");
+        popRegPrint.add(popReg);
+        app.printRegionsPopulation(popRegPrint);
     }
 }

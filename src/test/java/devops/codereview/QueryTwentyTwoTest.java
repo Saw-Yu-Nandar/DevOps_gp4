@@ -17,30 +17,30 @@ public class QueryTwentyTwoTest
     }
 
     @Test
-    void printTopNCapCities_RegTestEmpty()
+    void printTopNCapCitiesRegTestEmpty()
     {
-        ArrayList<CapitalCities> cap_region = new ArrayList<CapitalCities>();
-        app.printTopNCapCities_Reg(cap_region);
+        ArrayList<CapitalCity> capRegionEmp = new ArrayList<CapitalCity>();
+        app.printTopNCapCitiesReg(capRegionEmp);
     }
 
     //print a list with a null value
     @Test
-    void printTopNCapCities_contNull()
+    void printTopNCapCitiesContNull()
     {
-        ArrayList<CapitalCities> cap_region = new ArrayList<CapitalCities>();
-        cap_region.add(null);
-        app.printTopNCapCities_Reg(cap_region);
+        ArrayList<CapitalCity> capRegionNull = new ArrayList<CapitalCity>();
+        capRegionNull.add(null);
+        app.printTopNCapCitiesReg(capRegionNull);
     }
 
     @Test
-    void printTopNCapCities_cont()
+    void printTopNCapCitiesCont()
     {
-        ArrayList<CapitalCities> cap_region = new ArrayList<CapitalCities>();
-        CapitalCities capReg            = new CapitalCities();
-        capReg.setCap_cit_name("Ankara");
-        capReg.setCap_cit_country("Turkey");
-        capReg.setCap_cit_population("66591000");
-        cap_region.add(capReg);
-        app.printTopNCapCities_Reg(cap_region);
+        ArrayList<CapitalCity> capRegion = new ArrayList<CapitalCity>();
+        CapitalCity capReg            = new CapitalCity();
+        capReg.setCapCityName("Ankara");
+        capReg.setCapCityCountry("Turkey");
+        capReg.setCapCityPopulation("66591000");
+        capRegion.add(capReg);
+        app.printTopNCapCitiesReg(capRegion);
     }
 }

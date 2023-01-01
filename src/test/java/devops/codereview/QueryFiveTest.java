@@ -5,40 +5,35 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-public class QueryFiveTest
-{
+public class QueryFiveTest {
     static App app;
 
     @BeforeAll
-    static void init()
-    {
+    static void init() {
         app = new App();
     }
 
     @Test
-    void printNPopulatedContinentsTestEmpty()
-    {
-        ArrayList<Country> NPopulated_Continents = new ArrayList<Country>();
-        app.printNPopulatedContinents(NPopulated_Continents);
+    void printNPopulatedContinentsTestEmpty() {
+        ArrayList<Country> nPopulatedContinents = new ArrayList<Country>();
+        app.printNPopulatedContinents(nPopulatedContinents);
     }
 
     //print a list with a null value
     @Test
-    void printNPopulatedContinentsTestContainsNull()
-    {
-        ArrayList<Country> NPopulated_Continents = new ArrayList<Country>();
-        NPopulated_Continents.add(null);
-        app.printNPopulatedContinents(NPopulated_Continents);
+    void printNPopulatedContinentsTestContainsNull() {
+        ArrayList<Country> nPopulatedContinents = new ArrayList<Country>();
+        nPopulatedContinents.add(null);
+        app.printNPopulatedContinents(nPopulatedContinents);
     }
 
     @Test
-    void printNPopulatedContinents()
-    {
-        ArrayList<Country> NPopulated_Continents = new ArrayList<Country>();
+    void printNPopulatedContinents() {
+        ArrayList<Country> nPopulatedContinents = new ArrayList<Country>();
         Country npopcont = new Country();
-        npopcont.setCountry_name("South America");
-        npopcont.setCountry_population("170115000");
-        NPopulated_Continents.add(npopcont);
-        app.printNPopulatedContinents(NPopulated_Continents);
+        npopcont.setCountryName("South America");
+        npopcont.setCountryPopulation("170115000");
+        nPopulatedContinents.add(npopcont);
+        app.printNPopulatedContinents(nPopulatedContinents);
     }
 }

@@ -1,6 +1,6 @@
 package devops.codereview;
 
-//Unit testing for Hindi language Percentage, Population
+//Unit testing for Spanish language Percentage, Population
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 

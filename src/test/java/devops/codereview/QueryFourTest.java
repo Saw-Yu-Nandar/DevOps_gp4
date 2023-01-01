@@ -18,26 +18,26 @@ public class QueryFourTest
     @Test
     void printNPopulatedCountriesTestEmpty()
     {
-        ArrayList<Country> NPopulatedCountries = new ArrayList<Country>();
-        app.printNPopulatedCountries(NPopulatedCountries);
+        ArrayList<Country> nPopulatedCountries = new ArrayList<Country>();
+        app.printNPopulatedCountries(nPopulatedCountries);
     }
 
     //print a list with a null value
     @Test
     void printNPopulatedCountriesTestContainsNull()
     {
-        ArrayList<Country> NPopulatedCountries = new ArrayList<Country>();
-        NPopulatedCountries.add(null);
-        app.printNPopulatedCountries(NPopulatedCountries);
+        ArrayList<Country> nPopulatedCountries = new ArrayList<Country>();
+        nPopulatedCountries.add(null);
+        app.printNPopulatedCountries(nPopulatedCountries);
     }
     @Test
     void printNPopulatedCountries()
     {
-        ArrayList<Country> NPopulatedCountries = new ArrayList<Country>();
+        ArrayList<Country> nPopulatedCountries = new ArrayList<Country>();
         Country npopctr = new Country();
-        npopctr.setCountry_name("China");
-        npopctr.setCountry_population("1277558000");
-        NPopulatedCountries.add(npopctr);
-        app.printNPopulatedCountries(NPopulatedCountries);
+        npopctr.setCountryName("China");
+        npopctr.setCountryPopulation("1277558000");
+        nPopulatedCountries.add(npopctr);
+        app.printNPopulatedCountries(nPopulatedCountries);
     }
 }

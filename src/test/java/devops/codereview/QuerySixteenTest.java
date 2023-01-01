@@ -35,10 +35,10 @@ public class QuerySixteenTest
     {
         ArrayList<City> dist = new ArrayList<City>();
         City dis = new City();
-        dis.setCit_name("Moscow");
-        dis.setCountry_name("Russian Federation");
-        dis.setCit_district("Moscow (City)");
-        dis.setCit_population("8389200");
+        dis.setCityName("Moscow");
+        dis.setCountryName("Russian Federation");
+        dis.setCityDistrict("Moscow (City)");
+        dis.setCityPopulation("8389200");
         dist.add(dis);
         app.printTopNDistrict(dist);
     }

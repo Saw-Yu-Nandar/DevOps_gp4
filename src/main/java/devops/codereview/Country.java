@@ -2,58 +2,58 @@ package devops.codereview;
 
 public class Country {
     //Variables for countries table in world database
-    private String country_code;
-    private String country_name;
-    private String country_cont;
-    private String country_reg;
-    private String country_population;
-    private String country_cap;
+    private String countryCode;
+    private String countryName;
+    private String countryCont;
+    private String countryReg;
+    private String countryPopulation;
+    private String countryCap;
 
-    public String getCountry_code() {
-        return country_code;
+    public String getCountryCode() {
+        return countryCode;
     }
 
-    public void setCountry_code(String country_code) {
-        this.country_code = country_code;
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
     }
 
-    public String getCountry_name() {
-        return country_name;
+    public String getCountryName() {
+        return countryName;
     }
 
-    public void setCountry_name(String country_name) {
-        this.country_name = country_name;
+    public void setCountryName(String countryName) {
+        this.countryName = countryName;
     }
 
-    public String getCountry_cont() {
-        return country_cont;
+    public String getCountryCont() {
+        return countryCont;
     }
 
-    public void setCountry_cont(String country_cont) {
-        this.country_cont = country_cont;
+    public void setCountryCont(String countryCont) {
+        this.countryCont = countryCont;
     }
 
-    public String getCountry_reg() {
-        return country_reg;
+    public String getCountryReg() {
+        return countryReg;
     }
 
-    public void setCountry_reg(String country_reg) {
-        this.country_reg = country_reg;
+    public void setCountryReg(String countryReg) {
+        this.countryReg = countryReg;
     }
 
-    public String getCountry_population() {
-        return country_population;
+    public String getCountryPopulation() {
+        return countryPopulation;
     }
 
-    public void setCountry_population(String country_population) {
-        this.country_population = country_population;
+    public void setCountryPopulation(String countryPopulation) {
+        this.countryPopulation = countryPopulation;
     }
 
-    public String getCountry_cap() {
-        return country_cap;
+    public String getCountryCap() {
+        return countryCap;
     }
 
-    public void setCountry_cap(String country_cap) {
-        this.country_cap = country_cap;
+    public void setCountryCap(String countryCap) {
+        this.countryCap = countryCap;
     }
 }

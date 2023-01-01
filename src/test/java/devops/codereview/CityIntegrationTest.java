@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class AppIntegrationTestCity {
+public class CityIntegrationTest {
     static App app;
     @BeforeAll
     static void init()
@@ -21,10 +21,10 @@ public class AppIntegrationTestCity {
     {
         ArrayList<City> city = app.getAllCities();
         City cit = city.get(0);
-        assertEquals(cit.getCit_name(), "Mumbai (Bombay)");
-        assertEquals(cit.getCountry_name(), "India");
-        assertEquals(cit.getCit_district(),"Maharashtra");
-        assertEquals(Integer.parseInt(cit.getCit_population()),10500000);
+        assertEquals(cit.getCityName(), "Mumbai (Bombay)");
+        assertEquals(cit.getCountryName(), "India");
+        assertEquals(cit.getCityDistrict(),"Maharashtra");
+        assertEquals(Integer.parseInt(cit.getCityPopulation()),10500000);
     }
     /*
      * Query 8: All the cities in a continent organised by largest population to smallest.
@@ -34,10 +34,10 @@ public class AppIntegrationTestCity {
     {
         ArrayList<City> city = app.getAllCitiesContinent("Asia");
         City cit = city.get(0);
-        assertEquals(cit.getCit_name(), "Mumbai (Bombay)");
-        assertEquals(cit.getCountry_name(), "India");
-        assertEquals(cit.getCit_district(),"Maharashtra");
-        assertEquals(Integer.parseInt(cit.getCit_population()),10500000);
+        assertEquals(cit.getCityName(), "Mumbai (Bombay)");
+        assertEquals(cit.getCountryName(), "India");
+        assertEquals(cit.getCityDistrict(),"Maharashtra");
+        assertEquals(Integer.parseInt(cit.getCityPopulation()),10500000);
     }
     /*
      * Query 9: All the cities in a region organised by largest population to smallest.
@@ -47,10 +47,10 @@ public class AppIntegrationTestCity {
     {
         ArrayList<City> city = app.getAllCitiesRegions("Caribbean");
         City cit = city.get(0);
-        assertEquals(cit.getCit_name(), "La Habana");
-        assertEquals(cit.getCountry_name(), "Cuba");
-        assertEquals(cit.getCit_district(),"La Habana");
-        assertEquals(Integer.parseInt(cit.getCit_population()),2256000);
+        assertEquals(cit.getCityName(), "La Habana");
+        assertEquals(cit.getCountryName(), "Cuba");
+        assertEquals(cit.getCityDistrict(),"La Habana");
+        assertEquals(Integer.parseInt(cit.getCityPopulation()),2256000);
     }
     /*
      * Query 10: All the cities in a country organised by largest population to smallest.
@@ -60,10 +60,10 @@ public class AppIntegrationTestCity {
     {
         ArrayList<City> city = app.getAllCitiesCountries("Myanmar");
         City cit = city.get(0);
-        assertEquals(cit.getCit_name(), "Rangoon (Yangon)");
-        assertEquals(cit.getCountry_name(), "Myanmar");
-        assertEquals(cit.getCit_district(),"Rangoon [Yangon]");
-        assertEquals(Integer.parseInt(cit.getCit_population()),3361700);
+        assertEquals(cit.getCityName(), "Rangoon (Yangon)");
+        assertEquals(cit.getCountryName(), "Myanmar");
+        assertEquals(cit.getCityDistrict(),"Rangoon [Yangon]");
+        assertEquals(Integer.parseInt(cit.getCityPopulation()),3361700);
     }
     /*
      * Query 11: All the cities in a district organised by largest population to smallest.
@@ -73,10 +73,10 @@ public class AppIntegrationTestCity {
     {
         ArrayList<City> city = app.getAllCitiesDistrict("Queensland");
         City cit = city.get(0);
-        assertEquals(cit.getCit_name(), "Brisbane");
-        assertEquals(cit.getCountry_name(), "Australia");
-        assertEquals(cit.getCit_district(),"Queensland");
-        assertEquals(Integer.parseInt(cit.getCit_population()),1291117);
+        assertEquals(cit.getCityName(), "Brisbane");
+        assertEquals(cit.getCountryName(), "Australia");
+        assertEquals(cit.getCityDistrict(),"Queensland");
+        assertEquals(Integer.parseInt(cit.getCityPopulation()),1291117);
     }
     /*
      * Query 12: The top N populated cities in the world where N is provided by the user.
@@ -86,10 +86,10 @@ public class AppIntegrationTestCity {
     {
         ArrayList<City> worlds = app.getTopNPopulatedCities(10);
         City wld = worlds.get(0);
-        assertEquals(wld.getCit_name(), "Mumbai (Bombay)");
-        assertEquals(wld.getCountry_name(), "India");
-        assertEquals(wld.getCit_district(),"Maharashtra");
-        assertEquals(Integer.parseInt(wld.getCit_population()),10500000);
+        assertEquals(wld.getCityName(), "Mumbai (Bombay)");
+        assertEquals(wld.getCountryName(), "India");
+        assertEquals(wld.getCityDistrict(),"Maharashtra");
+        assertEquals(Integer.parseInt(wld.getCityPopulation()),10500000);
     }
     /*
      * Query 13: The top N populated cities in a continent where N is provided by the user.
@@ -99,10 +99,10 @@ public class AppIntegrationTestCity {
     {
         ArrayList<City> continent = app.getTopNPopulatedContinent("Europe",10);
         City cnt = continent.get(0);
-        assertEquals(cnt.getCit_name(), "Moscow");
-        assertEquals(cnt.getCountry_name(), "Russian Federation");
-        assertEquals(cnt.getCit_district(),"Moscow (City)");
-        assertEquals(Integer.parseInt(cnt.getCit_population()),8389200);
+        assertEquals(cnt.getCityName(), "Moscow");
+        assertEquals(cnt.getCountryName(), "Russian Federation");
+        assertEquals(cnt.getCityDistrict(),"Moscow (City)");
+        assertEquals(Integer.parseInt(cnt.getCityPopulation()),8389200);
     }
     /*
      * Query 14: The top N populated cities in a region where N is provided by the user.
@@ -112,10 +112,10 @@ public class AppIntegrationTestCity {
     {
         ArrayList<City> region = app.getTopNPopulatedRegion("Caribbean",10);
         City reg = region.get(0);
-        assertEquals(reg.getCit_name(), "La Habana");
-        assertEquals(reg.getCountry_name(), "Cuba");
-        assertEquals(reg.getCit_district(),"La Habana");
-        assertEquals(Integer.parseInt(reg.getCit_population()),2256000);
+        assertEquals(reg.getCityName(), "La Habana");
+        assertEquals(reg.getCountryName(), "Cuba");
+        assertEquals(reg.getCityDistrict(),"La Habana");
+        assertEquals(Integer.parseInt(reg.getCityPopulation()),2256000);
     }
     /*
      * Query 15: The top N populated cities in a country where N is provided by the user.
@@ -125,10 +125,10 @@ public class AppIntegrationTestCity {
     {
         ArrayList<City> countries = app.getTopNPopulatedCountries("Argentina",10);
         City count = countries.get(0);
-        assertEquals(count.getCit_name(), "Buenos Aires");
-        assertEquals(count.getCountry_name(), "Argentina");
-        assertEquals(count.getCit_district(),"Distrito Federal");
-        assertEquals(Integer.parseInt(count.getCit_population()),2982146);
+        assertEquals(count.getCityName(), "Buenos Aires");
+        assertEquals(count.getCountryName(), "Argentina");
+        assertEquals(count.getCityDistrict(),"Distrito Federal");
+        assertEquals(Integer.parseInt(count.getCityPopulation()),2982146);
     }
     /*
      * Query 16: The top N populated cities in a district where N is provided by the user.
@@ -138,9 +138,9 @@ public class AppIntegrationTestCity {
     {
         ArrayList<City> district = app.getTopNPopulatedDistrict("Zuid-Holland",10);
         City dist = district.get(0);
-        assertEquals(dist.getCit_name(), "Rotterdam");
-        assertEquals(dist.getCountry_name(), "Netherlands");
-        assertEquals(dist.getCit_district(),"Zuid-Holland");
-        assertEquals(Integer.parseInt(dist.getCit_population()),593321);
+        assertEquals(dist.getCityName(), "Rotterdam");
+        assertEquals(dist.getCountryName(), "Netherlands");
+        assertEquals(dist.getCityDistrict(),"Zuid-Holland");
+        assertEquals(Integer.parseInt(dist.getCityPopulation()),593321);
     }
 }

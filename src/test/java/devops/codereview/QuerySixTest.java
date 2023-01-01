@@ -18,27 +18,27 @@ public class QuerySixTest
     @Test
     void printNPopulatedRegionTestEmpty()
     {
-        ArrayList<Country> NPopulated_Region = new ArrayList<Country>();
-        app.printNPopulatedRegion(NPopulated_Region);
+        ArrayList<Country> nPopulatedRegion = new ArrayList<Country>();
+        app.printNPopulatedRegion(nPopulatedRegion);
     }
 
     //print a list with a null value
     @Test
     void printNPopulatedRegionTestContainsNull()
     {
-        ArrayList<Country> NPopulated_Region = new ArrayList<Country>();
-        NPopulated_Region.add(null);
-        app.printNPopulatedRegion(NPopulated_Region);
+        ArrayList<Country> nPopulatedRegion = new ArrayList<Country>();
+        nPopulatedRegion.add(null);
+        app.printNPopulatedRegion(nPopulatedRegion);
     }
 
     @Test
     void printNPopulatedRegion()
     {
-        ArrayList<Country> NPopulated_Region = new ArrayList<Country>();
+        ArrayList<Country> nPopulatedRegion = new ArrayList<Country>();
         Country npopreg = new Country();
-        npopreg.setCountry_name("Eastern Asia");
-        npopreg.setCountry_population("1277558000");
-        NPopulated_Region.add(npopreg);
-        app.printNPopulatedRegion(NPopulated_Region);
+        npopreg.setCountryName("Eastern Asia");
+        npopreg.setCountryPopulation("1277558000");
+        nPopulatedRegion.add(npopreg);
+        app.printNPopulatedRegion(nPopulatedRegion);
     }
 }
