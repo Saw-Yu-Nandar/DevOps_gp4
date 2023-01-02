@@ -108,14 +108,14 @@ public class App
             System.out.println("There is no city in the world!");
         }
         // Print header
-        System.out.println(String.format("%-20s %-25s %-25s %-25s","City Name","Country Name","District","Population"));
+        System.out.println(String.format("%-35s %-40s %-25s %-25s","City Name","Country Name","District","Population"));
         // Loop over all cities in the list
         for (City cit : cities)
         {
             if (cit == null)
                 continue;
             String cit_string =
-                    String.format("%-20s %-25s %-25s %-25s",
+                    String.format("%-35s %-40s %-25s %-25s",
                             cit.getCit_name(),cit.getCountry_name(),cit.getCit_district(),cit.getCit_population());
             System.out.println(cit_string);
         }
@@ -168,14 +168,14 @@ public class App
             System.out.println("There is no city in a continent!");
         }
         // Print header
-        System.out.println(String.format("%-20s %-25s %-25s %-25s","City Name","Country Name","District","Population"));
+        System.out.println(String.format("%-35s %-40s %-25s %-25s","City Name","Country Name","District","Population"));
         // Loop over all cities in the list
         for (City c : continent)
         {
             if (c == null)
                 continue;
             String conti_string =
-                    String.format("%-20s %-25s %-25s %-25s",
+                    String.format("%-35s %-40s %-25s %-25s",
                             c.getCit_name(),c.getCountry_name(),c.getCit_district(),c.getCit_population());
             System.out.println(conti_string);
         }
@@ -228,14 +228,14 @@ public class App
             System.out.println("There is no city in a region!");
         }
         // Print header
-        System.out.println(String.format("%-20s %-25s %-25s %-25s","City Name","Country Name","District","Population"));
+        System.out.println(String.format("%-35s %-40s %-25s %-25s","City Name","Country Name","District","Population"));
         // Loop over all cities in the list
         for (City r : regions)
         {
             if (r == null)
                 continue;
             String reg_string =
-                    String.format("%-20s %-25s %-25s %-25s",
+                    String.format("%-35s %-40s %-25s %-25s",
                             r.getCit_name(),r.getCountry_name(),r.getCit_district(),r.getCit_population());
             System.out.println(reg_string);
         }
@@ -288,14 +288,14 @@ public class App
             System.out.println("There is no city in a country!");
         }
         // Print header
-        System.out.println(String.format("%-20s %-25s %-25s %-25s","City Name","Country Name","District","Population"));
+        System.out.println(String.format("%-35s %-40s %-25s %-25s","City Name","Country Name","District","Population"));
         // Loop over all cities in the list
         for (City cou : countries)
         {
             if (cou == null)
                 continue;
             String c_string =
-                    String.format("%-20s %-25s %-25s %-25s",
+                    String.format("%-35s %-40s %-25s %-25s",
                             cou.getCit_name(),cou.getCountry_name(),cou.getCit_district(),cou.getCit_population());
             System.out.println(c_string);
         }
@@ -348,14 +348,14 @@ public class App
             System.out.println("There is no cities in a district!");
         }
         // Print header
-        System.out.println(String.format("%-20s %-25s %-25s %-25s","City Name","Country Name","District","Population"));
+        System.out.println(String.format("%-35s %-40s %-25s %-25s","City Name","Country Name","District","Population"));
         // Loop over all cities in the list
         for (City di : district)
         {
             if (di == null)
                 continue;
             String d_string =
-                    String.format("%-20s %-25s %-25s %-25s",
+                    String.format("%-35s %-40s %-25s %-25s",
                             di.getCit_name(),di.getCountry_name(),di.getCit_district(),di.getCit_population());
             System.out.println(d_string);
         }
@@ -407,14 +407,14 @@ public class App
             System.out.println("There is no top N populated cities in the world!");
         }
         // Print header
-        System.out.println(String.format("%-20s %-25s %-25s %-25s","City Name","Country Name","District","Population"));
+        System.out.println(String.format("%-35s %-40s %-25s %-25s","City Name","Country Name","District","Population"));
         // Loop over all cities in the list
         for (City w : wld)
         {
             if (w == null)
                 continue;
             String w_string =
-                    String.format("%-20s %-25s %-25s %-25s",
+                    String.format("%-35s %-40s %-25s %-25s",
                             w.getCit_name(),w.getCountry_name(),w.getCit_district(),w.getCit_population());
             System.out.println(w_string);
         }
@@ -467,14 +467,14 @@ public class App
             System.out.println("No cities in a continent");
         }
         // Print header
-        System.out.println(String.format("%-20s %-25s %-25s %-25s","City Name","Country Name","District","Population"));
+        System.out.println(String.format("%-35s %-40s %-25s %-25s","City Name","Country Name","District","Population"));
         // Loop over all cities in the list
         for (City cont : cnt)
         {
             if (cont == null)
                 continue;
             String cont_string =
-                    String.format("%-20s %-25s %-25s %-25s",
+                    String.format("%-35s %-40s %-25s %-25s",
                             cont.getCit_name(),cont.getCountry_name(),cont.getCit_district(),cont.getCit_population());
             System.out.println(cont_string);
         }
@@ -527,14 +527,14 @@ public class App
             System.out.println("No cities in a region");
         }
         // Print header
-        System.out.println(String.format("%-20s %-25s %-25s %-25s","City Name","Country Name","District","Population"));
+        System.out.println(String.format("%-35s %-40s %-25s %-25s","City Name","Country Name","District","Population"));
         // Loop over all cities in the list
         for (City cont : regn)
         {
             if (cont == null)
                 continue;
             String cont_string =
-                    String.format("%-20s %-25s %-25s %-25s",
+                    String.format("%-35s %-40s %-25s %-25s",
                             cont.getCit_name(),cont.getCountry_name(),cont.getCit_district(),cont.getCit_population());
             System.out.println(cont_string);
         }
@@ -587,14 +587,14 @@ public class App
             System.out.println("No cities in a country");
         }
         // Print header
-        System.out.println(String.format("%-20s %-25s %-25s %-30s","Country","City Name","District","Population"));
+        System.out.println(String.format("%-35s %-40s %-25s %-30s","Country","City Name","District","Population"));
         // Loop over all cities in the list
         for (City cont : count)
         {
             if (cont == null)
                 continue;
             String cont_string =
-                    String.format("%-20s %-25s %-25s %-30s",
+                    String.format("%-35s %-40s %-25s %-30s",
                             cont.getCit_name(),cont.getCountry_name(),cont.getCit_district(),cont.getCit_population());
             System.out.println(cont_string);
         }
@@ -648,14 +648,14 @@ public class App
             System.out.println("No cities in a region");
         }
         // Print header
-        System.out.println(String.format("%-30s %-25s %-25s %-30s","City Name","Country Name","District","Population"));
+        System.out.println(String.format("%-30s %-40s %-25s %-30s","City Name","Country Name","District","Population"));
         // Loop over all cities in the list
         for (City cont : dists)
         {
             if (cont == null)
                 continue;
             String cont_string =
-                    String.format("%-30s %-25s %-25s %-30s",
+                    String.format("%-30s %-40s %-25s %-30s",
                             cont.getCit_name(),cont.getCountry_name(),cont.getCit_district(),cont.getCit_population());
             System.out.println(cont_string);
         }
