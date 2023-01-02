@@ -117,7 +117,7 @@ public class App
             if (c == null)
                 continue;
             String allctrString =
-                    String.format("%-10s %-30s %-30s %-30s %-30s %-20s",
+                    String.format("%-10s %-40s %-30s %-30s %-30s %-20s",
                             c.getCountryCode(),c.getCountryName(),c.getCountryCont(),c.getCountryReg(),c.getCountryPopulation(),c.getCountryCap());
             System.out.println(allctrString);
         }
@@ -186,7 +186,7 @@ public class App
             if (cont == null)
                 continue;
             String contString =
-                    String.format("%-10s %-30s %-30s %-30s %-30s %-20s",
+                    String.format("%-10s %-40s %-30s %-30s %-30s %-30s",
                             cont.getCountryCode(),cont.getCountryName(),cont.getCountryCont(),cont.getCountryReg(),cont.getCountryPopulation(),cont.getCountryCap());
             System.out.println(contString);
         }
@@ -252,7 +252,7 @@ public class App
             if (r == null)
                 continue;
             String regString =
-                    String.format("%-10s %-30s %-30s %-30s %-30s %-20s",
+                    String.format("%-10s %-40s %-30s %-30s %-30s %-30s",
                             r.getCountryCode(),r.getCountryName(),r.getCountryCont(),r.getCountryReg(),r.getCountryPopulation(),r.getCountryCap());
             System.out.println(regString);
         }
@@ -320,7 +320,7 @@ public class App
             if (npopc == null)
                 continue;
             String npopctrString =
-                    String.format("%-10s %-30s %-30s %-30s %-30s %-20s",
+                    String.format("%-10s %-40s %-30s %-30s %-30s %-30s",
                             npopc.getCountryCode(), npopc.getCountryName(), npopc.getCountryCont(), npopc.getCountryReg(), npopc.getCountryPopulation(), npopc.getCountryCap());
             System.out.println(npopctrString);
         }
@@ -388,7 +388,7 @@ public class App
             if (npopconti == null)
                 continue;
             String npopcontString =
-                    String.format("%-10s %-30s %-30s %-30s %-30s %-20s",
+                    String.format("%-10s %-40s %-30s %-30s %-30s %-30s",
                             npopconti.getCountryCode(),npopconti.getCountryName(),npopconti.getCountryCont(),npopconti.getCountryReg(),npopconti.getCountryPopulation(),npopconti.getCountryCap());
             System.out.println(npopcontString);
         }
@@ -456,7 +456,7 @@ public class App
             if (npopreg == null)
                 continue;
             String npopregString =
-                    String.format("%-10s %-30s %-30s %-30s %-30s %-20s",
+                    String.format("%-10s %-40s %-30s %-30s %-30s %-30s",
                             npopreg.getCountryCode(),npopreg.getCountryName(),npopreg.getCountryCont(),npopreg.getCountryReg(),npopreg.getCountryPopulation(),npopreg.getCountryCap());
             System.out.println(npopregString);
         }
