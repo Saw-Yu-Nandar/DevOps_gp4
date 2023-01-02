@@ -107,7 +107,7 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-30s %-40s %-25s", "CapitalCity","Country","Population"));
+        System.out.println(String.format("%-40s %-40s %-25s", "CapitalCity","Country","Population"));
         // Loop over all countries in the list
         for (CapitalCity cc : capitalCities)
         {
@@ -115,7 +115,7 @@ public class App
                 continue;
 
             String capctrString =
-                    String.format("%-30s %-40s %-25s",
+                    String.format("%-40s %-40s %-25s",
                             cc.getCapCityName(),cc.getCapCityCountry(),cc.getCapCityPopulation());
             System.out.println(capctrString);
         }
