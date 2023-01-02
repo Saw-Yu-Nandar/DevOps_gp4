@@ -107,7 +107,7 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-30s %-30s %-25s", "CapitalCity","Country","Population"));
+        System.out.println(String.format("%-30s %-40s %-25s", "CapitalCity","Country","Population"));
         // Loop over all countries in the list
         for (CapitalCity cc : capitalCities)
         {
@@ -115,7 +115,7 @@ public class App
                 continue;
 
             String capctrString =
-                    String.format("%-30s %-30s %-25s",
+                    String.format("%-30s %-40s %-25s",
                             cc.getCapCityName(),cc.getCapCityCountry(),cc.getCapCityPopulation());
             System.out.println(capctrString);
         }
@@ -173,14 +173,14 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-30s %-30s %-30s %-25s", "CapitalCity", "Country", "Continent", "Population"));
+        System.out.println(String.format("%-30s %-40s %-30s %-25s", "CapitalCity", "Country", "Continent", "Population"));
         // Loop over all continent in the list
         for (CapitalCity cccon : capcitContinent)
         {
             if (cccon == null)
                 continue;
             String capconString =
-                    String.format("%-30s %-30s %-30s %-25s",
+                    String.format("%-30s %-40s %-30s %-25s",
                             cccon.getCapCityName(), cccon.getCapCityCountry(), cccon.getCapCityContinent(), cccon.getCapCityPopulation());
             System.out.println(capconString);
         }
@@ -301,7 +301,7 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-30s %-30s %-30s", "Capital City Name","Country Name", "Population"));
+        System.out.println(String.format("%-30s %-40s %-30s", "Capital City Name","Country Name", "Population"));
         // Loop over all capital cities in the world
         for (CapitalCity ccr : capWorld)
         {
@@ -309,7 +309,7 @@ public class App
             if (ccr == null)
                 continue;
             String wString =
-                    String.format("%-30s %-30s %-30s",
+                    String.format("%-30s %-40s %-30s",
                             ccr.getCapCityName(),ccr.getCapCityCountry(), ccr.getCapCityPopulation());
             System.out.println(wString);
         }
@@ -365,7 +365,7 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-30s %-30s %-30s", "Capital City Name","Country Name", "Population"));
+        System.out.println(String.format("%-30s %-40s %-30s", "Capital City Name","Country Name", "Population"));
         // Loop over all capital cities in a continent
         for (CapitalCity ccr : ncontCap)
         {
@@ -373,7 +373,7 @@ public class App
             if (ccr == null)
                 continue;
             String coString =
-                    String.format("%-30s %-30s %-30s",
+                    String.format("%-30s %-40s %-30s",
                             ccr.getCapCityName(),ccr.getCapCityCountry(), ccr.getCapCityPopulation());
             System.out.println(coString);
         }
@@ -429,7 +429,7 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-30s %-30s %-30s", "Capital City Name","Country Name", "Population"));
+        System.out.println(String.format("%-30s %-40s %-30s", "Capital City Name","Country Name", "Population"));
         // Loop over all capital cities in a continent
         for (CapitalCity ccr : regCap)
         {
@@ -437,7 +437,7 @@ public class App
             if (ccr == null)
                 continue;
             String reString =
-                    String.format("%-30s %-30s %-30s",
+                    String.format("%-30s %-40s %-30s",
                             ccr.getCapCityName(),ccr.getCapCityCountry(), ccr.getCapCityPopulation());
             System.out.println(reString);
         }
