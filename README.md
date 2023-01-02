@@ -1,11 +1,16 @@
 SET09623 2022-2023 TR2 001 - DevOps
 -----------------------------------
 
-#Team Members: Saw Yu Nandar, Yoon Ei Shwe Zin, Su Hnin Lwin, Nang Shwe Sin Win
+#Team Members
+
+|  Saw Yu Nandar |  Yoon Ei Shwe Zin | Su Hnin Lwin  | Nang Shwe Sin Win  |   
+|----------------|-------------------|---------------|--------------------|
+|    40516606    |     40516568      |    40516571   |      40516595      | 
+
+
+
 
 CodeReview 1: project workflow is set-up and try one of the feature requirements
-
-
 
 ![workflow](https://github.com/Saw-Yu-Nandar/DevOps_gp4/actions/workflows/main.yml/badge.svg)
 
