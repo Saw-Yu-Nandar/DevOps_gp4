@@ -107,7 +107,7 @@ public class App
         if (cities == null){
             System.out.println("There is no city in the world!");
         }
-        System.out.println("7. All the cities in the world organised by largest population to smallest.");
+        //System.out.println("7. All the cities in the world organised by largest population to smallest.");
         // Print header
         System.out.println(String.format("%-35s %-40s %-25s %-25s","City Name","Country Name","District","Population"));
         // Loop over all cities in the list
