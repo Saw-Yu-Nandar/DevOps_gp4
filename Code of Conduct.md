@@ -4,6 +4,8 @@ As there are rules, the team members must follow the rules wholeheartedly.
 
 Code of Conduct for Group 
 ----------------------------
+|                                              Code of Conduct                                                                                         |
+|------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Rule 1  |Everyone must attend the team meeting on time.                                                                                              |
 | Penalty |Only 2nd time and no next time. Buy a meal for the whole team.                                                                              |
 | Rule 2  |The team members need to discuss the idea actively in the team meeting.                                                                     |
