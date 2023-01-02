@@ -110,7 +110,7 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-10s %-30s %-30s %-30s %-30s %-20s", "Code","Name","Continent","Region","Population","Capital"));
+        System.out.println(String.format("%-10s %-40s %-30s %-30s %-30s %-20s", "Code","Name","Continent","Region","Population","Capital"));
         // Loop over all countries in the list
         for (Country c : countries)
         {
@@ -179,7 +179,7 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-10s %-30s %-30s %-30s %-30s %-20s","Code","Country Name","Continent","Region","Population","Capital"));
+        System.out.println(String.format("%-10s %-40s %-30s %-30s %-30s %-30s","Code","Country Name","Continent","Region","Population","Capital"));
         // Loop over all continent in the list
         for (Country cont : continent)
         {
@@ -244,7 +244,7 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-10s %-30s %-30s %-30s %-30s %-20s", "Code","Country Name","Continent","Region","Population","Capital"));
+        System.out.println(String.format("%-10s %-40s %-30s %-30s %-30s %-30s", "Code","Country Name","Continent","Region","Population","Capital"));
         // Loop over all region in the list
         for (Country r : region)
         {
@@ -312,7 +312,7 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-10s %-30s %-30s %-30s %-30s %-20s", "Code", "Country Name", "Continent", "Region", "Population", "Capital"));
+        System.out.println(String.format("%-10s %-40s %-30s %-30s %-30s %-30s", "Code", "Country Name", "Continent", "Region", "Population", "Capital"));
         // Loop over all countries in the list
         for (Country npopc : nPopulatedCountry)
         {
@@ -380,7 +380,7 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-10s %-30s %-30s %-30s %-30s %-20s","Code","Country Name","Continent","Region","Population","Capital"));
+        System.out.println(String.format("%-10s %-40s %-30s %-30s %-30s %-30s","Code","Country Name","Continent","Region","Population","Capital"));
         // Loop over all continent in the list
         for (Country npopconti : nPopulatedContinents)
         {
@@ -448,7 +448,7 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-10s %-30s %-30s %-30s %-30s %-20s","Code","Country Name","Continent","Region","Population","Capital"));
+        System.out.println(String.format("%-10s %-40s %-30s %-30s %-30s %-30s","Code","Country Name","Continent","Region","Population","Capital"));
         // Loop over all region in the list
         for (Country npopreg : nPopulatedRegion)
         {
