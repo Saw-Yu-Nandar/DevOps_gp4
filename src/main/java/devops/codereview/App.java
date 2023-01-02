@@ -168,7 +168,7 @@ public class App
         if (continent == null){
             System.out.println("There is no city in a continent!");
         }
-        System.out.println("8. All the cities in a continent organised by largest population to smallest.");
+        //System.out.println("8. All the cities in a continent organised by largest population to smallest.");
         // Print header
         System.out.println(String.format("%-35s %-40s %-25s %-25s","City Name","Country Name","District","Population"));
         // Loop over all cities in the list
@@ -229,7 +229,7 @@ public class App
         if (regions == null){
             System.out.println("There is no city in a region!");
         }
-        System.out.println("9. All the cities in a region organised by largest population to smallest.");
+        //System.out.println("9. All the cities in a region organised by largest population to smallest.");
         // Print header
         System.out.println(String.format("%-35s %-40s %-25s %-25s","City Name","Country Name","District","Population"));
         // Loop over all cities in the list
@@ -290,7 +290,7 @@ public class App
         if (countries == null){
             System.out.println("There is no city in a country!");
         }
-        System.out.println("10. All the cities in a country organised by largest population to smallest.");
+        //System.out.println("10. All the cities in a country organised by largest population to smallest.");
         // Print header
         System.out.println(String.format("%-35s %-40s %-25s %-25s","City Name","Country Name","District","Population"));
         // Loop over all cities in the list
@@ -351,7 +351,7 @@ public class App
         if (district == null){
             System.out.println("There is no cities in a district!");
         }
-        System.out.println("11. All the cities in a district organised by largest population to smallest.");
+        //System.out.println("11. All the cities in a district organised by largest population to smallest.");
         // Print header
         System.out.println(String.format("%-35s %-40s %-25s %-25s","City Name","Country Name","District","Population"));
         // Loop over all cities in the list
@@ -411,7 +411,7 @@ public class App
         if (wld == null){
             System.out.println("There is no top N populated cities in the world!");
         }
-        System.out.println("12. The top N populated cities in the world where N is provided by the user.");
+        //System.out.println("12. The top N populated cities in the world where N is provided by the user.");
         // Print header
         System.out.println(String.format("%-35s %-40s %-25s %-25s","City Name","Country Name","District","Population"));
         // Loop over all cities in the list
@@ -472,7 +472,7 @@ public class App
         if (cnt == null){
             System.out.println("No cities in a continent");
         }
-        System.out.println("13. The top N populated cities in a continent where N is provided by the user.");
+        //System.out.println("13. The top N populated cities in a continent where N is provided by the user.");
         // Print header
         System.out.println(String.format("%-35s %-40s %-25s %-25s","City Name","Country Name","District","Population"));
         // Loop over all cities in the list
@@ -533,7 +533,7 @@ public class App
         if (regn == null){
             System.out.println("No cities in a region");
         }
-        System.out.println("14. The top N populated cities in a region where N is provided by the user.");
+        //System.out.println("14. The top N populated cities in a region where N is provided by the user.");
         // Print header
         System.out.println(String.format("%-35s %-40s %-25s %-25s","City Name","Country Name","District","Population"));
         // Loop over all cities in the list
@@ -594,7 +594,7 @@ public class App
         if (count == null){
             System.out.println("No cities in a country");
         }
-        System.out.println("15. The top N populated cities in a country where N is provided by the user.");
+        //System.out.println("15. The top N populated cities in a country where N is provided by the user.");
         // Print header
         System.out.println(String.format("%-35s %-40s %-25s %-30s","Country","City Name","District","Population"));
         // Loop over all cities in the list
@@ -656,7 +656,7 @@ public class App
         if (dists == null){
             System.out.println("No cities in a region");
         }
-        System.out.println("16. The top N populated cities in a district where N is provided by the user.");
+        //System.out.println("16. The top N populated cities in a district where N is provided by the user.");
         // Print header
         System.out.println(String.format("%-30s %-40s %-25s %-30s","City Name","Country Name","District","Population"));
         // Loop over all cities in the list
