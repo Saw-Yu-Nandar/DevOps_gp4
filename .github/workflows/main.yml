@@ -52,7 +52,13 @@ jobs:
           directory: ./target/site/jacoco
           flags: IntegrationTests # optional
           verbose: true # optional (default = false)
-
+      - name: Copy Output
+        run: docker container cp allcountries_app_1:./tmp/reports ./
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4.2.5
+        with:
+          branch: reports # The branch the action should deploy to.
+          folder: reports # The folder we are copying
   build:
     name: Build and Start Using docker-compose
     runs-on: ubuntu-20.04
