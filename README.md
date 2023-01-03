@@ -23,4 +23,4 @@ CodeReview 1: project workflow is set-up and try one of the feature requirements
 
 
 #Code Coverage
-[![codecov](https://codecov.io/gh/Saw-Yu-Nandar/DevOps_gp4/branch/master/graph/badge.svg?token=C6W4ALVTNI)](https://codecov.io/gh/Saw-Yu-Nandar/DevOps_gp4)
+[![codecov](https://codecov.io/gh/Saw-Yu-Nandar/DevOps_gp4/branch/master/graph/badge.svg?token=7bac09a3-3bef-4d1e-b19b-5d9f397183a7)](https://codecov.io/gh/Saw-Yu-Nandar/DevOps_gp4) 
