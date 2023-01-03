@@ -2,157 +2,112 @@ package devops.codereview;
 
 public class PeoplePopulation {
     //Variables for capital cities table in world database
-    private String cap_cit_name;
-    private String cap_cit_country;
-    private String cap_cit_population;
-    private String cap_cit_continent;
-    private String cap_cit_region;
-    private String world_name;
-    private String world_population;
-    private String continent_name;
-    private String continent_population;
-    private String regions_name;
-    private String regions_population;
-    private String countries_name;
-    private String countries_population;
-    private String district_name;
-    private String district_population;
-    private String city_name;
-    private String city_population;
+    private String worldName;
+    private String worldPopulation;
+    private String continentName;
+    private String continentPopulation;
+    private String regionsName;
+    private String regionsPopulation;
+    private String countriesName;
+    private String countriesPopulation;
+    private String districtName;
+    private String districtPopulation;
+    private String cityName;
+    private String cityPopulation;
 
-    public String getCap_cit_name() {
-        return cap_cit_name;
+    public String getWorldName() {
+        return worldName;
     }
 
-    public void setCap_cit_name(String cap_cit_name) {
-        this.cap_cit_name = cap_cit_name;
+    public void setWorldName(String worldName) {
+        this.worldName = worldName;
     }
 
-    public String getCap_cit_country() {
-        return cap_cit_country;
+    public String getWorldPopulation() {
+        return worldPopulation;
     }
 
-    public void setCap_cit_country(String cap_cit_country) {
-        this.cap_cit_country = cap_cit_country;
+    public void setWorldPopulation(String worldPopulation) {
+        this.worldPopulation = worldPopulation;
     }
 
-    public String getCap_cit_population() {
-        return cap_cit_population;
+    public String getContinentName() {
+        return continentName;
     }
 
-    public void setCap_cit_population(String cap_cit_population) {
-        this.cap_cit_population = cap_cit_population;
+    public void setContinentName(String continentName) {
+        this.continentName = continentName;
     }
 
-    public String getCap_cit_continent() {
-        return cap_cit_continent;
+    public String getContinentPopulation() {
+        return continentPopulation;
     }
 
-    public void setCap_cit_continent(String cap_cit_continent) {
-        this.cap_cit_continent = cap_cit_continent;
+    public void setContinentPopulation(String continentPopulation) {
+        this.continentPopulation = continentPopulation;
     }
 
-    public String getCap_cit_region() {
-        return cap_cit_region;
+    public String getRegionsName() {
+        return regionsName;
     }
 
-    public void setCap_cit_region(String cap_cit_region) {
-        this.cap_cit_region = cap_cit_region;
+    public void setRegionsName(String regionsName) {
+        this.regionsName = regionsName;
     }
 
-    public String getWorld_name() {
-        return world_name;
+    public String getRegionsPopulation() {
+        return regionsPopulation;
     }
 
-    public void setWorld_name(String world_name) {
-        this.world_name = world_name;
+    public void setRegionsPopulation(String regionsPopulation) {
+        this.regionsPopulation = regionsPopulation;
     }
 
-    public String getWorld_population() {
-        return world_population;
+    public String getCountriesName() {
+        return countriesName;
     }
 
-    public void setWorld_population(String world_population) {
-        this.world_population = world_population;
+    public void setCountriesName(String countriesName) {
+        this.countriesName = countriesName;
     }
 
-    public String getContinent_name() {
-        return continent_name;
+    public String getCountriesPopulation() {
+        return countriesPopulation;
     }
 
-    public void setContinent_name(String continent_name) {
-        this.continent_name = continent_name;
+    public void setCountriesPopulation(String countriesPopulation) {
+        this.countriesPopulation = countriesPopulation;
     }
 
-    public String getContinent_population() {
-        return continent_population;
+    public String getDistrictName() {
+        return districtName;
     }
 
-    public void setContinent_population(String continent_population) {
-        this.continent_population = continent_population;
+    public void setDistrictName(String districtName) {
+        this.districtName = districtName;
     }
 
-    public String getRegions_name() {
-        return regions_name;
+    public String getDistrictPopulation() {
+        return districtPopulation;
     }
 
-    public void setRegions_name(String regions_name) {
-        this.regions_name = regions_name;
+    public void setDistrictPopulation(String districtPopulation) {
+        this.districtPopulation = districtPopulation;
     }
 
-    public String getRegions_population() {
-        return regions_population;
+    public String getCityName() {
+        return cityName;
     }
 
-    public void setRegions_population(String regions_population) {
-        this.regions_population = regions_population;
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
     }
 
-    public String getCountries_name() {
-        return countries_name;
+    public String getCityPopulation() {
+        return cityPopulation;
     }
 
-    public void setCountries_name(String countries_name) {
-        this.countries_name = countries_name;
-    }
-
-    public String getCountries_population() {
-        return countries_population;
-    }
-
-    public void setCountries_population(String countries_population) {
-        this.countries_population = countries_population;
-    }
-
-    public String getDistrict_name() {
-        return district_name;
-    }
-
-    public void setDistrict_name(String district_name) {
-        this.district_name = district_name;
-    }
-
-    public String getDistrict_population() {
-        return district_population;
-    }
-
-    public void setDistrict_population(String district_population) {
-        this.district_population = district_population;
-    }
-
-    public String getCity_name() {
-        return city_name;
-    }
-
-    public void setCity_name(String city_name) {
-        this.city_name = city_name;
-    }
-
-    public String getCity_population() {
-        return city_population;
-    }
-
-    public void setCity_population(String city_population) {
-        this.city_population = city_population;
+    public void setCityPopulation(String cityPopulation) {
+        this.cityPopulation = cityPopulation;
     }
 }

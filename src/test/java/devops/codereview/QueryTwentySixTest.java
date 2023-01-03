@@ -16,28 +16,26 @@ public class QueryTwentySixTest {
     @Test
     void printPopWorldTestEmpty()
     {
-        ArrayList<PeoplePopulation> pop_world_empt = new ArrayList<PeoplePopulation>();
-        app.printWorldPopulation(pop_world_empt);
+        ArrayList<PeoplePopulation> popWorldEmpt = new ArrayList<PeoplePopulation>();
+        app.printWorldPopulation(popWorldEmpt);
     }
 
     //print a list with a null value
     @Test
     void printPopWorldNull()
     {
-        ArrayList<PeoplePopulation> popworld = new ArrayList<PeoplePopulation>();
-        popworld.add(null);
-        app.printWorldPopulation(popworld);
+        ArrayList<PeoplePopulation> popWorld = new ArrayList<PeoplePopulation>();
+        popWorld.add(null);
+        app.printWorldPopulation(popWorld);
     }
 
     @Test
     void printPopWorld()
     {
-        ArrayList<PeoplePopulation> pop_world_print = new ArrayList<PeoplePopulation>();
-        PeoplePopulation pop_world_p   = new PeoplePopulation();
-        pop_world_p.setWorld_population("Africa");
-        pop_world_p.setWorld_population("10925000");
-        //pop_world_p.world_population    = "10925000";
-        pop_world_print.add(pop_world_p);
-        app.printWorldPopulation(pop_world_print);
+        ArrayList<PeoplePopulation> popWorldPrint = new ArrayList<PeoplePopulation>();
+        PeoplePopulation popWorldp   = new PeoplePopulation();
+        popWorldp.setWorldPopulation("10925000");
+        popWorldPrint.add(popWorldp);
+        app.printWorldPopulation(popWorldPrint);
     }
 }

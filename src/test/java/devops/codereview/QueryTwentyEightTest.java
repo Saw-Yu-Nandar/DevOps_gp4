@@ -17,27 +17,27 @@ public class QueryTwentyEightTest {
     @Test
     void printPopRegionsTestEmpty()
     {
-        ArrayList<PeoplePopulation> pop_reg_empt = new ArrayList<PeoplePopulation>();
-        app.printRegionsPopulation(pop_reg_empt);
+        ArrayList<PeoplePopulation> popRegEmpt = new ArrayList<PeoplePopulation>();
+        app.printRegionsPopulation(popRegEmpt);
     }
 
     //print a list with a null value
     @Test
     void printPopRegionsNull()
     {
-        ArrayList<PeoplePopulation> pop_reg_null = new ArrayList<PeoplePopulation>();
-        pop_reg_null.add(null);
-        app.printRegionsPopulation(pop_reg_null);
+        ArrayList<PeoplePopulation> popRegNull = new ArrayList<PeoplePopulation>();
+        popRegNull.add(null);
+        app.printRegionsPopulation(popRegNull);
     }
 
     @Test
     void printPopRegions()
     {
-        ArrayList<PeoplePopulation> pop_reg_print = new ArrayList<PeoplePopulation>();
-        PeoplePopulation pop_reg_p   = new PeoplePopulation();
-        pop_reg_p.setRegions_name("Yerevan");
-        pop_reg_p.setRegions_population("3520000");
-        pop_reg_print.add(pop_reg_p);
-        app.printRegionsPopulation(pop_reg_print);
+        ArrayList<PeoplePopulation> popRegPrint = new ArrayList<PeoplePopulation>();
+        PeoplePopulation popRegp   = new PeoplePopulation();
+        popRegp.setRegionsName("Western Europe");
+        popRegp.setRegionsPopulation("183247600");
+        popRegPrint.add(popRegp);
+        app.printRegionsPopulation(popRegPrint);
     }
 }

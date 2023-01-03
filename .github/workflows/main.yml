@@ -17,13 +17,16 @@ jobs:
           distribution: 'adopt'
       - name: Unit Tests
         run: |
+          mvn test -Dtest=devops.codereview.QueryTwentyThreeTest
+          mvn test -Dtest=devops.codereview.QueryTwentyFourTest
+          mvn test -Dtest=devops.codereview.QueryTwentyFiveTest
           mvn test -Dtest=devops.codereview.QueryTwentySixTest
           mvn test -Dtest=devops.codereview.QueryTwentySevenTest
           mvn test -Dtest=devops.codereview.QueryTwentyEightTest
           mvn test -Dtest=devops.codereview.QueryTwentyNineTest
           mvn test -Dtest=devops.codereview.QueryThirtyTest
           mvn test -Dtest=devops.codereview.QueryThirtyOneTest
-
+          mvn test -Dtest=devops.codereview.QueryThirtyTwoTest
   IntegrationTests:
     name: Integration Tests
     runs-on: ubuntu-20.04
@@ -41,7 +44,7 @@ jobs:
         run: |
           docker build -t database ./db 
           docker run --name world -dp 33060:3306 database
-          mvn test -Dtest=devops.codereview.AppIntegrationTestPeoplePopulation
+          mvn test -Dtest=devops.codereview.PeoplePopulationIntegrationTest
           docker stop world
           docker rm world
           docker image rm database

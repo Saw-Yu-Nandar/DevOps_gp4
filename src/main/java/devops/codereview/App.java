@@ -1,8 +1,8 @@
 package devops.codereview;
 
+import java.math.BigInteger;
 import java.sql.*;
 import java.util.ArrayList;
-import java.text.NumberFormat;
 
 public class App
 {
@@ -33,7 +33,7 @@ public class App
                 System.out.println("Successfully connected");
                 break;
             } catch (SQLException sqle) {
-                System.out.println("Failed to connect to database attempt " +                                  Integer.toString(i));
+                System.out.println("Failed to connect to database attempt " + Integer.toString(i));
                 System.out.println(sqle.getMessage());
             } catch (InterruptedException ie) {
                 System.out.println("Thread interrupted? Should not happen.");
@@ -59,7 +59,242 @@ public class App
             }
         }
     }
+    /**
+     * 23.The population of people, people living in cities, and people not living in cities in each continent.
+     * Query execution and pass the array list to format the return value.
+     * Function is called in main.
+     **/
+    public ArrayList<PeoplePopulation> getPopulatedPeopleContinent()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            //Query 23.The population of people, people living in cities, and people not living in cities in each continent.
+            String strQueryTwentyThree =
+                    "SELECT country.Continent, SUM(country.Population) as 'ContinentPopulation', SUM((SELECT SUM(city.Population) FROM city WHERE city.CountryCode=country.Code)) as 'CityPopulation' FROM country GROUP BY country.Continent;";
 
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strQueryTwentyThree);
+            // Extract continent information
+            ArrayList<PeoplePopulation> populationCont = new ArrayList<PeoplePopulation>();
+            while (rset.next())
+            {
+                PeoplePopulation popCont = new PeoplePopulation();
+                popCont.setContinentName(rset.getString("Continent"));
+                popCont.setContinentPopulation(rset.getString("ContinentPopulation"));
+                popCont.setCityPopulation(rset.getString("CityPopulation"));
+                populationCont.add(popCont);
+            }
+            return populationCont;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get the population of people, people living in cities, and people not living in cities in each continent.");
+            return null;
+        }
+    }
+    /**
+     * 23. The population of people, people living in cities, and people not living in cities in each continent.
+     * Formatting the output data from the list.
+     **/
+    public void printPopulatedPeopleConitnent(ArrayList<PeoplePopulation> popuConti)
+    {
+        // Check continent is not null
+        if (popuConti == null)
+        {
+            System.out.println("There is no population of people, people living in cities, and people not living in cities in each continent.");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-20s %-28s %-25s %-25s %-25s", "Continent","Continent Total Population","City Total Population","People Not Living (%)","People Living (%)"));
+        // Loop over all capital cities in a continent
+
+        for (PeoplePopulation pcon : popuConti)
+        {
+            //print the list to check if capital cities in a continent is null
+            if (pcon == null)
+                continue;
+            if (pcon.getCityPopulation() == null){
+                pcon.setCityPopulation("0");
+            }
+            float conpopulation = Float.parseFloat(pcon.getContinentPopulation());
+            float concitypopulation = Float.parseFloat(pcon.getCityPopulation());
+            float livingconper = 100 * (concitypopulation/conpopulation);
+            float notlivingcon = 100 - livingconper;
+            String nan = "NaN";
+            if(String.valueOf(livingconper) == nan){
+                livingconper = 0.0F;
+            }
+            if(String.valueOf(notlivingcon) == nan){
+                notlivingcon = 0.0F;
+            }
+            String strnotlivingconper = notlivingcon+"%";
+            String strlivingconper = livingconper+"%";
+            String pconString =
+                    String.format("%-20s %-28s %-25s %-25s %-25s",
+                            pcon.getContinentName(),pcon.getContinentPopulation(), pcon.getCityPopulation(), strnotlivingconper, strlivingconper);
+            System.out.println(pconString);
+        }
+    }
+    /**
+     * 24.The population of people, people living in cities, and people not living in cities in each region.
+     * Query execution and pass the array list to format the return value.
+     * Function is called in main.
+     **/
+    public ArrayList<PeoplePopulation> getPopulatedPeopleRegions()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            //Query 24.The population of people, people living in cities, and people not living in cities in each region.
+            String strQueryTwentyFour =
+                    "SELECT country.Region, SUM(country.Population) as 'RegionPopulation', SUM((SELECT SUM(city.Population) FROM city WHERE city.CountryCode=country.Code)) as 'CityPopulation' FROM country GROUP BY country.Region;";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strQueryTwentyFour);
+            // Extract region information
+            ArrayList<PeoplePopulation> populationReg = new ArrayList<PeoplePopulation>();
+            while (rset.next())
+            {
+                PeoplePopulation popReg = new PeoplePopulation();
+                popReg.setRegionsName(rset.getString("Region"));
+                popReg.setRegionsPopulation(rset.getString("RegionPopulation"));
+                popReg.setCityPopulation(rset.getString("CityPopulation"));
+                populationReg.add(popReg);
+            }
+            return populationReg;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get the population of people, people living in cities, and people not living in cities in each region.");
+            return null;
+        }
+    }
+    /**
+     * 24. The population of people, people living in cities, and people not living in cities in each region.
+     * Formatting the output data from the list.
+     **/
+    public void printPopulatedPeopleRegions(ArrayList<PeoplePopulation> popuRegs)
+    {
+        // Check region is not null
+        if (popuRegs == null)
+        {
+            System.out.println("There is no population of people, people living in cities, and people not living in cities in each region.");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-30s %-25s %-25s %-25s %-25s", "Region", "Region Total Population","City Total Population", "People Not Living (%)", "People Living (%)"));
+        // Loop over all capital cities in a region
+        for (PeoplePopulation preg : popuRegs)
+        {
+            //print the list to check if capital cities in a region is null
+            if (preg == null)
+                continue;
+            if (preg.getCityPopulation() == null){
+                preg.setCityPopulation("0");
+            }
+            float regpopulation = Float.parseFloat(preg.getRegionsPopulation());
+            float regcitypopulation = Float.parseFloat(preg.getCityPopulation());
+            float livingregper = 100 * (regcitypopulation/regpopulation);
+            float notlivingregper = 100 - livingregper;
+            String nan = "NaN";
+            if(String.valueOf(livingregper) == nan){
+                livingregper = 0.0F;
+            }
+            if(String.valueOf(notlivingregper) == nan){
+                notlivingregper = 0.0F;
+            }
+            String strnotlivingregper = notlivingregper+"%";
+            String strlivingregper = livingregper+"%";
+            String pregString =
+                    String.format("%-30s %-25s %-25s %-25s %-25s",
+                            preg.getRegionsName(),preg.getRegionsPopulation(),preg.getCityPopulation(),strnotlivingregper,strlivingregper);
+            System.out.println(pregString);
+        }
+    }
+
+    /**
+     * 25.The population of people, people living in cities, and people not living in cities in each country.
+     * Query execution and pass the array list to format the return value.
+     * Function is called in main.
+     **/
+    public ArrayList<PeoplePopulation> getPopulatedPeopleCountry()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            //Query 25.The population of people, people living in cities, and people not living in cities in each country.
+            String strQueryTwentyFive =
+                    "SELECT country.Name, SUM(country.Population) as 'CountryPopulation', SUM((SELECT SUM(city.Population) FROM city WHERE city.CountryCode=country.Code)) as 'CityPopulation' FROM country GROUP BY country.Name;";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strQueryTwentyFive);
+            // Extract country information
+            ArrayList<PeoplePopulation> populationCou = new ArrayList<PeoplePopulation>();
+            while (rset.next())
+            {
+                PeoplePopulation popCou = new PeoplePopulation();
+                popCou.setCountriesName(rset.getString("Name"));
+                popCou.setCountriesPopulation(rset.getString("CountryPopulation"));
+                popCou.setCityPopulation(rset.getString("CityPopulation"));
+                populationCou.add(popCou);
+            }
+            return populationCou;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get the population of people, people living in cities, and people not living in cities in each country.");
+            return null;
+        }
+    }
+    /**
+     * 25. The population of people, people living in cities, and people not living in cities in each country.
+     * Formatting the output data from the list.
+     **/
+    public void printPopulatedPeopleCountry(ArrayList<PeoplePopulation> popuCoun)
+    {
+        // Check country is not null
+        if (popuCoun == null)
+        {
+            System.out.println("There is no population of people, people living in cities, and people not living in cities in each country.");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-45s %-28s %-25s %-25s %-25s", "Country Name" ,"Country Total Population" ,"City Total Population", "People Not Living(%)", "People Living(%)"));
+        for (PeoplePopulation pcou : popuCoun)
+        {
+            //print the list to check if capital cities in a country is null
+            if (pcou == null)
+                continue;
+            if (pcou.getCityPopulation() == null){
+                pcou.setCityPopulation("0");
+            }
+            float coupopulation = Float.parseFloat(pcou.getCountriesPopulation());
+            float coucitypopulation = Float.parseFloat(pcou.getCityPopulation());
+            float livingcouper = 100 * (coucitypopulation/coupopulation);
+            float notlivingcouper = 100 - livingcouper;
+            String nan = "NaN";
+            if(String.valueOf(livingcouper) == nan){
+                livingcouper = 0.0F;
+            }
+            if(String.valueOf(notlivingcouper) == nan){
+                notlivingcouper = 0.0F;
+            }
+            String strnotlivingcouper = notlivingcouper+"%";
+            String strlivingcouper = livingcouper+"%";
+            String pcouString =
+                    String.format("%-45s %-28s %-25s %-25s %-25s",
+                            pcou.getCountriesName(), pcou.getCountriesPopulation(), pcou.getCityPopulation(), strnotlivingcouper, strlivingcouper);
+            System.out.println(pcouString);
+        }
+    }
     /**
      * 26.The population of the world.
      * Query execution and pass the array list to format the return value.
@@ -78,16 +313,14 @@ public class App
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryTwentySix);
             // Extract country information
-            ArrayList<PeoplePopulation> population_world = new ArrayList<PeoplePopulation>();
+            ArrayList<PeoplePopulation> populationWorld = new ArrayList<PeoplePopulation>();
             while (rset.next())
             {
-                PeoplePopulation pop_world    = new PeoplePopulation();
-                //pop_world.world_name      = rset.getString("Name");
-                pop_world.setWorld_population(rset.getString("Population"));
-                //pop_world.world_population      = rset.getString("Population");
-                population_world.add(pop_world);
+                PeoplePopulation popWorld = new PeoplePopulation();
+                popWorld.setWorldPopulation(rset.getString("Population"));
+                populationWorld.add(popWorld);
             }
-            return population_world;
+            return populationWorld;
         }
         catch (Exception e)
         {
@@ -100,34 +333,24 @@ public class App
      * 26. The population of the world.
      * Formatting the output data from the list.
      **/
-    public void printWorldPopulation(ArrayList<PeoplePopulation> pop_world)
+    public void printWorldPopulation(ArrayList<PeoplePopulation> popWorld)
     {
 
         // Check country is not null
-        if (pop_world == null) {
+        if (popWorld == null) {
             System.out.println("There is no population of the world.");
             return;
         }
         // Print header
-        //System.out.println(String.format("%-40s", "Population"));
-        // Loop over all capital cities in a country
-        // int total_word_pop = 0;
-        //NumberFormat world_res_format = NumberFormat.getInstance();
-        for (PeoplePopulation wpop : pop_world) {
+        for (PeoplePopulation wpop : popWorld) {
             //print the list to check if capital cities in a country is null
             if (wpop == null)
                 continue;
-            String pworld_string =
+            String pworldString =
                     String.format("%-40s",
-                            wpop.getWorld_population());
-            System.out.println("Total World Population: "+pworld_string);
-            //System.out.println("Total World Population: "+world_res_format.format(pworld_string));
-            //total_word_pop = Integer.parseInt(wpop.world_population) + total_word_pop;
+                            wpop.getWorldPopulation());
+            System.out.println("Total World Population: "+pworldString);
         }
-        //NumberFormat world_res_format = NumberFormat.getInstance();
-        ///world_res_format.setGroupingUsed(true);
-        //String result_world = String.format("The total number of world population: "+world_res_format.format(total_word_pop));
-        //System.out.println(result_world);
     }
 
     /**
@@ -135,7 +358,7 @@ public class App
      * Query execution and pass the array list to format the return value.
      * Function is called in main.
      **/
-    public ArrayList<PeoplePopulation> getContinentPopulation()
+    public ArrayList<PeoplePopulation> getContinentPopulation(String inputTotalCont)
     {
         try
         {
@@ -144,19 +367,19 @@ public class App
             // Create string for SQL statement
             //Query 27.The population of the continent.
             String strQueryTwentySeven =
-                    "SELECT country.Continent, SUM(country.Population) AS 'Population' FROM country GROUP BY country.Continent";
+                    "SELECT country.Continent, SUM(country.Population) AS 'Population' FROM country WHERE country.Continent = '"+inputTotalCont+"';";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryTwentySeven);
             // Extract continent information
-            ArrayList<PeoplePopulation> population_cont = new ArrayList<PeoplePopulation>();
+            ArrayList<PeoplePopulation> populationConti = new ArrayList<PeoplePopulation>();
             while (rset.next())
             {
-                PeoplePopulation pop_continent   = new PeoplePopulation();
-                pop_continent.setContinent_name(rset.getString("Continent"));
-                pop_continent.setContinent_population(rset.getString("Population"));
-                population_cont.add(pop_continent);
+                PeoplePopulation popContinent = new PeoplePopulation();
+                popContinent.setContinentName(rset.getString("Continent"));
+                popContinent.setContinentPopulation(rset.getString("Population"));
+                populationConti.add(popContinent);
             }
-            return population_cont;
+            return populationConti;
         }
         catch (Exception e)
         {
@@ -169,33 +392,27 @@ public class App
      * 27. The population of the continent.
      * Formatting the output data from the list.
      **/
-    public void printContinentPopulation(ArrayList<PeoplePopulation> pop_conti)
+    public void printContinentPopulation(ArrayList<PeoplePopulation> popConti)
     {
 
         // Check country is not null
-        if (pop_conti == null) {
+        if (popConti == null) {
             System.out.println("There is no population of the continent.");
             return;
         }
         // Print header
         System.out.println(String.format("%-40s %-40s", "Continent Name", "Population"));
         // Loop over all capital cities in a country
-        //int total_cont_pop = 0;
-        for (PeoplePopulation continent_population : pop_conti)
+        for (PeoplePopulation continentPopulation : popConti)
         {
             //print the list to check if capital cities in a country is null
-            if (continent_population == null)
+            if (continentPopulation == null)
                 continue;
-            String pworld_string =
+            String pcontString =
                     String.format("%-40s %-40s",
-                            continent_population.getContinent_name(), continent_population.getContinent_population());
-            System.out.println(pworld_string);
-            //total_cont_pop = Integer.parseInt(continent_population.continent_population) + total_cont_pop;
+                            continentPopulation.getContinentName(), continentPopulation.getContinentPopulation());
+            System.out.println(pcontString);
         }
-        //NumberFormat conti_res_format = NumberFormat.getInstance();
-        //conti_res_format.setGroupingUsed(true);
-        //String result_conti = String.format("The total number of continent population: "+conti_res_format.format(total_cont_pop));
-        //System.out.println(result_conti);
     }
 
     /**
@@ -203,7 +420,7 @@ public class App
      * Query execution and pass the array list to format the return value.
      * Function is called in main.
      **/
-    public ArrayList<PeoplePopulation> getRegionsPopulation()
+    public ArrayList<PeoplePopulation> getRegionsPopulation(String inputTotalRegion)
     {
         try
         {
@@ -212,19 +429,19 @@ public class App
             // Create string for SQL statement
             //Query 27.The population of the continent.
             String strQueryTwentyEight =
-                    "SELECT country.Region, SUM(country.Population) AS 'Population' FROM country GROUP BY country.Region;";
+                    "SELECT country.Region, SUM(country.Population) AS 'Population' FROM country WHERE country.Region='"+inputTotalRegion+"';";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryTwentyEight);
             // Extract regions information
-            ArrayList<PeoplePopulation> population_regions = new ArrayList<PeoplePopulation>();
+            ArrayList<PeoplePopulation> populationRegi = new ArrayList<PeoplePopulation>();
             while (rset.next())
             {
-                PeoplePopulation pop_regions   = new PeoplePopulation();
-                pop_regions.setRegions_name(rset.getString("Region"));
-                pop_regions.setRegions_population(rset.getString("Population"));
-                population_regions.add(pop_regions);
+                PeoplePopulation popRegi = new PeoplePopulation();
+                popRegi.setRegionsName(rset.getString("Region"));
+                popRegi.setRegionsPopulation(rset.getString("Population"));
+                populationRegi.add(popRegi);
             }
-            return population_regions;
+            return populationRegi;
         }
         catch (Exception e)
         {
@@ -237,33 +454,27 @@ public class App
      * 28. The population of the regions.
      * Formatting the output data from the list.
      **/
-    public void printRegionsPopulation(ArrayList<PeoplePopulation> pop_regs)
+    public void printRegionsPopulation(ArrayList<PeoplePopulation> popRegs)
     {
 
         // Check country is not null
-        if (pop_regs == null) {
+        if (popRegs == null) {
             System.out.println("There is no population of the regions.");
             return;
         }
         // Print header
         System.out.println(String.format("%-40s %-40s", "Region Name", "Population"));
         // Loop over population from region
-        //int total_reg_pop = 0;
-        for (PeoplePopulation regions_population : pop_regs)
+        for (PeoplePopulation regionsPopulation : popRegs)
         {
             //print the list to check if capital cities in a country is null
-            if (regions_population == null)
+            if (regionsPopulation == null)
                 continue;
-            String pworld_string =
+            String pregiString =
                     String.format("%-40s %-40s",
-                            regions_population.getRegions_name(), regions_population.getRegions_population());
-            System.out.println(pworld_string);
-            //total_reg_pop = Integer.parseInt(regions_population.regions_population) + total_reg_pop;
+                            regionsPopulation.getRegionsName(), regionsPopulation.getRegionsPopulation());
+            System.out.println(pregiString);
         }
-        //NumberFormat reg_res_format = NumberFormat.getInstance();
-        //reg_res_format.setGroupingUsed(true);
-        //String result_conti = String.format("The total number of continent population: "+reg_res_format.format(total_reg_pop));
-        //System.out.println(result_conti);
     }
 
     /**
@@ -271,7 +482,7 @@ public class App
      * Query execution and pass the array list to format the return value.
      * Function is called in main.
      **/
-    public ArrayList<PeoplePopulation> getCountriesPopulation()
+    public ArrayList<PeoplePopulation> getCountriesPopulation(String inputTotalCountry)
     {
         try
         {
@@ -280,19 +491,19 @@ public class App
             // Create string for SQL statement
             //Query 29.The population of the country.
             String strQueryTwentyNine =
-                    "SELECT country.Name, SUM(country.Population) AS 'Population' FROM country GROUP BY country.Name;";
+                    "SELECT country.Name, country.Population FROM country WHERE country.Name='"+inputTotalCountry+"';";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryTwentyNine);
             // Extract countries information
-            ArrayList<PeoplePopulation> population_countries = new ArrayList<PeoplePopulation>();
+            ArrayList<PeoplePopulation> populCountry = new ArrayList<PeoplePopulation>();
             while (rset.next())
             {
-                PeoplePopulation pop_country   = new PeoplePopulation();
-                pop_country.setCountries_name(rset.getString("Name"));
-                pop_country.setCountries_population(rset.getString("Population"));
-                population_countries.add(pop_country);
+                PeoplePopulation pCountry = new PeoplePopulation();
+                pCountry.setCountriesName(rset.getString("Name"));
+                pCountry.setCountriesPopulation(rset.getString("Population"));
+                populCountry.add(pCountry);
             }
-            return population_countries;
+            return populCountry;
         }
         catch (Exception e)
         {
@@ -305,33 +516,27 @@ public class App
      * 29. The population of the countries.
      * Formatting the output data from the list.
      **/
-    public void printCountriesPopulation(ArrayList<PeoplePopulation> pop_contr)
+    public void printCountriesPopulation(ArrayList<PeoplePopulation> popContr)
     {
 
         // Check country is not null
-        if (pop_contr == null) {
+        if (popContr == null) {
             System.out.println("There is no population of the countries.");
             return;
         }
         // Print header
-        System.out.println(String.format("%-40s %-40s", "Country Name", "Population"));
+        System.out.println(String.format("%-50s %-40s", "Country Name", "Population"));
         // Loop over population from region
-        //int total_con_pop = 0;
-        for (PeoplePopulation countr_population : pop_contr)
+        for (PeoplePopulation countrPopulation : popContr)
         {
             //print the list to check if capital cities in a country is null
-            if (countr_population == null)
+            if (countrPopulation == null)
                 continue;
-            String pworld_string =
-                    String.format("%-40s %-40s",
-                            countr_population.getCountries_name(), countr_population.getCountries_population());
-            System.out.println(pworld_string);
-            //total_con_pop = Integer.parseInt(countr_population.countries_population) + total_con_pop;
+            String pcoString =
+                    String.format("%-50s %-40s",
+                            countrPopulation.getCountriesName(), countrPopulation.getCountriesPopulation());
+            System.out.println(pcoString);
         }
-        //NumberFormat con_res_format = NumberFormat.getInstance();
-        //con_res_format.setGroupingUsed(true);
-        //String result_conti = String.format("The total number of country population: "+con_res_format.format(total_con_pop));
-        //System.out.println(result_conti);
     }
 
     /**
@@ -339,7 +544,7 @@ public class App
      * Query execution and pass the array list to format the return value.
      * Function is called in main.
      **/
-    public ArrayList<PeoplePopulation> getDistrictPopulation()
+    public ArrayList<PeoplePopulation> getDistrictPopulation(String inputTotalDistrict)
     {
         try
         {
@@ -348,19 +553,19 @@ public class App
             // Create string for SQL statement
             //Query 29.The population of the country.
             String strQueryThirty =
-                    "SELECT city.District, SUM(city.Population) AS 'Population' FROM city GROUP BY city.District";
+                    "SELECT city.District, city.Population FROM city WHERE city.District='"+inputTotalDistrict+"';";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryThirty);
             // Extract countries information
-            ArrayList<PeoplePopulation> population_districts = new ArrayList<PeoplePopulation>();
+            ArrayList<PeoplePopulation> populationDistr = new ArrayList<PeoplePopulation>();
             while (rset.next())
             {
-                PeoplePopulation population_district   = new PeoplePopulation();
-                population_district.setDistrict_name(rset.getString("District"));
-                population_district.setDistrict_population(rset.getString("Population"));
-                population_districts.add(population_district);
+                PeoplePopulation pDistrict = new PeoplePopulation();
+                pDistrict.setDistrictName(rset.getString("District"));
+                pDistrict.setDistrictPopulation(rset.getString("Population"));
+                populationDistr.add(pDistrict);
             }
-            return population_districts;
+            return populationDistr;
         }
         catch (Exception e)
         {
@@ -373,33 +578,27 @@ public class App
      * 30. The population of the districts.
      * Formatting the output data from the list.
      **/
-    public void printDistrictsPopulation(ArrayList<PeoplePopulation> pop_dist)
+    public void printDistrictsPopulation(ArrayList<PeoplePopulation> popDist)
     {
 
         // Check country is not null
-        if (pop_dist == null) {
+        if (popDist == null) {
             System.out.println("There is no population of the districts.");
             return;
         }
         // Print header
         System.out.println(String.format("%-40s %-40s", "District Name", "Population"));
         // Loop over population from region
-        //int total_dist_pop = 0;
-        for (PeoplePopulation dst_population : pop_dist)
+        for (PeoplePopulation dstPopulation : popDist)
         {
             //print the list to check if capital cities in a country is null
-            if (dst_population == null)
+            if (dstPopulation == null)
                 continue;
-            String pworld_string =
+            String pdiString =
                     String.format("%-40s %-40s",
-                            dst_population.getDistrict_name(), dst_population.getDistrict_population());
-            System.out.println(pworld_string);
-            //total_dist_pop = Integer.parseInt(dst_population.district_population) + total_dist_pop;
+                            dstPopulation.getDistrictName(), dstPopulation.getDistrictPopulation());
+            System.out.println(pdiString);
         }
-        //NumberFormat dis_res_format = NumberFormat.getInstance();
-        //dis_res_format.setGroupingUsed(true);
-        //String result_dist = String.format("The total number of district population: "+dis_res_format.format(total_dist_pop));
-        //System.out.println(result_dist);
     }
 
     /**
@@ -407,7 +606,7 @@ public class App
      * Query execution and pass the array list to format the return value.
      * Function is called in main.
      **/
-    public ArrayList<PeoplePopulation> getCityPopulation()
+    public ArrayList<PeoplePopulation> getCityPopulation(String inputTotalCity)
     {
         try
         {
@@ -416,19 +615,19 @@ public class App
             // Create string for SQL statement
             //Query 31.The population of the city.
             String strQueryThirtyOne =
-                    "SELECT city.Name, SUM(city.Population) AS 'Population' FROM city GROUP BY city.Name;";
+                    "SELECT city.Name, city.Population FROM city WHERE city.Name='"+inputTotalCity+"';";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryThirtyOne);
             // Extract city information
-            ArrayList<PeoplePopulation> population_cities = new ArrayList<PeoplePopulation>();
+            ArrayList<PeoplePopulation> populatCities = new ArrayList<PeoplePopulation>();
             while (rset.next())
             {
-                PeoplePopulation population_city   = new PeoplePopulation();
-                population_city.setCity_name(rset.getString("Name"));
-                population_city.setCity_population(rset.getString("Population"));
-                population_cities.add(population_city);
+                PeoplePopulation poCity   = new PeoplePopulation();
+                poCity.setCityName(rset.getString("Name"));
+                poCity.setCityPopulation(rset.getString("Population"));
+                populatCities.add(poCity);
             }
-            return population_cities;
+            return populatCities;
         }
         catch (Exception e)
         {
@@ -441,35 +640,103 @@ public class App
      * 31. The population of the cities.
      * Formatting the output data from the list.
      **/
-    public void printCityPopulation(ArrayList<PeoplePopulation> pop_city)
+    public void printCityPopulation(ArrayList<PeoplePopulation> popCity)
     {
 
         // Check country is not null
-        if (pop_city == null) {
+        if (popCity == null) {
             System.out.println("There is no population of the cities.");
             return;
         }
         // Print header
         System.out.println(String.format("%-40s %-40s", "City Name", "Population"));
         // Loop over population from region
-        //int total_city_pop = 0;
-        for (PeoplePopulation city_population : pop_city)
+        for (PeoplePopulation cityPopul : popCity)
         {
             //print the list to check if capital cities in a country is null
-            if (city_population == null)
+            if (cityPopul == null)
                 continue;
-            String pworld_string =
+            String pcitString =
                     String.format("%-40s %-40s",
-                            city_population.getCity_name(), city_population.getCity_population());
-            System.out.println(pworld_string);
-            //total_city_pop = Integer.parseInt(city_population.city_population) + total_city_pop;
+                            cityPopul.getCityName(), cityPopul.getCityPopulation());
+            System.out.println(pcitString);
         }
-        //NumberFormat city_res_format = NumberFormat.getInstance();
-        //city_res_format.setGroupingUsed(true);
-        //String result_city = String.format("The total number of city population: "+city_res_format.format(total_city_pop));
-        //System.out.println(result_city);
+    }
+    /**
+     * 32. List the population of people who speak different languages in descending order
+     * Query execution by user input and pass the array list to format the return value.
+     * Function is called in ma
+     **/
+    public ArrayList<CountryLanguage> getCountryLanguage(String inputCh,String inputEn,String inputHin,String inputSp, String inputAr)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            //Query 33. List the population of people who speak different language in descending order
+            String strQueryLanguage4 =
+                    "SELECT countrylanguage.Language, SUM(country.Population) as 'countrypop' FROM country, countrylanguage WHERE country.Code=countrylanguage.CountryCode AND countrylanguage.Language='"+ inputCh +"' UNION SELECT countrylanguage.Language, SUM(country.Population) AS countrypop FROM country, countrylanguage WHERE country.Code=countrylanguage.CountryCode AND countrylanguage.Language='"+ inputEn +"' UNION SELECT countrylanguage.Language, SUM(country.Population) AS countrypop FROM country, countrylanguage WHERE country.Code=countrylanguage.CountryCode AND countrylanguage.Language='"+ inputHin +"' UNION SELECT countrylanguage.Language, SUM(country.Population) AS countrypop FROM country, countrylanguage WHERE country.Code=countrylanguage.CountryCode AND countrylanguage.Language='"+ inputSp +"' UNION SELECT countrylanguage.Language, SUM(country.Population) AS countrypop FROM country, countrylanguage WHERE country.Code=countrylanguage.CountryCode AND countrylanguage.Language='"+ inputAr +"' ORDER BY countrypop DESC;";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strQueryLanguage4);
+            // Extract countries information
+            ArrayList<CountryLanguage> countryLanguage4 = new ArrayList<CountryLanguage>();
+            while (rset.next())
+            {
+                CountryLanguage language4 = new CountryLanguage();
+                language4.setCountryLanguage(rset.getString("Language"));
+                language4.setCountryPopulation(rset.getString("countrypop"));
+                countryLanguage4.add(language4);
+            }
+            return countryLanguage4;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get list the population of people who speak different language in descending order.");
+            return null;
+        }
     }
 
+    /**
+     * 32. List the population of people who speak different languages in descending order
+     * Formatting the output data from the list.
+     **/
+    public void printCountryLanguage(ArrayList<CountryLanguage> countryLang)
+    {
+        // Check country language is not null
+        if (countryLang == null)
+        {
+            System.out.println("No languages");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-30s %-30s %-30s", "Language", "Population", "Percent"));
+        // Loop over all languages in the list
+        BigInteger totalpoplan = BigInteger.valueOf(0);
+        for (CountryLanguage lp : countryLang)
+        {
+            if (lp == null)
+                continue;
+            BigInteger counint = new BigInteger(String.format(lp.getCountryPopulation()));
+            totalpoplan = totalpoplan.add(counint);
+        }
+        for (CountryLanguage cl4 : countryLang)
+        {
+            //print language to check if a language is null
+            if (cl4 == null)
+                continue;
+            float totalpoplanfloat = Float.parseFloat(String.valueOf(totalpoplan));
+            float countrpoplan = Float.parseFloat(cl4.getCountryPopulation());
+            float res = 100 * (countrpoplan/totalpoplanfloat);
+            String resStr = res+"%";
+            String langString =
+                    String.format("%-30s %-30s %-30s",
+                            cl4.getCountryLanguage(),cl4.getCountryPopulation(), resStr);
+            System.out.println(langString);
+        }
+    }
     public static void main(String[] args)
     {
         // Create new Application
@@ -483,42 +750,63 @@ public class App
         }
         System.out.println("\n");
 
+        // The population of people, people living in cities, and people not living in cities in each continent.
+        System.out.println("23.The population of people, people living in cities, and people not living in cities in each continent. \n");
+        ArrayList<PeoplePopulation> popCont = a.getPopulatedPeopleContinent();
+        a.printPopulatedPeopleConitnent(popCont);
+        System.out.println("\n");
+
+        // The population of people, people living in cities, and people not living in cities in each region.
+        System.out.println("24.The population of people, people living in cities, and people not living in cities in each region. \n");
+        ArrayList<PeoplePopulation> popReg = a.getPopulatedPeopleRegions();
+        a.printPopulatedPeopleRegions(popReg);
+        System.out.println("\n");
+
+        // The population of people, people living in cities, and people not living in cities in each country.
+        System.out.println("25.The population of people, people living in cities, and people not living in cities in each country. \n");
+        ArrayList<PeoplePopulation> popCoun = a.getPopulatedPeopleCountry();
+        a.printPopulatedPeopleCountry(popCoun);
+        System.out.println("\n");
         // The population of the world.
         System.out.println("26. The population of the world.");
-        ArrayList<PeoplePopulation> pop_world = a.getWorldPopulation();
-        a.printWorldPopulation(pop_world);
+        ArrayList<PeoplePopulation> popWorld = a.getWorldPopulation();
+        a.printWorldPopulation(popWorld);
         System.out.println("\n");
 
         // The population of the continent.
         System.out.println("27. The population of the continent.");
-        ArrayList<PeoplePopulation> pop_contin = a.getContinentPopulation();
-        a.printContinentPopulation(pop_contin);
+        ArrayList<PeoplePopulation> popContin = a.getContinentPopulation("Asia");
+        a.printContinentPopulation(popContin);
         System.out.println("\n");
 
         // The population of the regions.
         System.out.println("28. The population of the regions.");
-        ArrayList<PeoplePopulation> pop_regions = a.getRegionsPopulation();
-        a.printRegionsPopulation(pop_regions);
+        ArrayList<PeoplePopulation> popRegions = a.getRegionsPopulation("Caribbean");
+        a.printRegionsPopulation(popRegions);
         System.out.println("\n");
 
         // The population of the countries.
         System.out.println("29. The population of the countries.");
-        ArrayList<PeoplePopulation> pop_countries = a.getCountriesPopulation();
-        a.printCountriesPopulation(pop_countries);
+        ArrayList<PeoplePopulation> popCountries = a.getCountriesPopulation("Austria");
+        a.printCountriesPopulation(popCountries);
         System.out.println("\n");
 
         // The population of the districts.
         System.out.println("30. The population of the districts.");
-        ArrayList<PeoplePopulation> pop_disct = a.getDistrictPopulation();
-        a.printDistrictsPopulation(pop_disct);
+        ArrayList<PeoplePopulation> popDisct = a.getDistrictPopulation("Kabol");
+        a.printDistrictsPopulation(popDisct);
         System.out.println("\n");
 
         // The population of the cities.
         System.out.println("31. The population of the cities.");
-        ArrayList<PeoplePopulation> pop_cities = a.getCityPopulation();
-        a.printCityPopulation(pop_cities);
+        ArrayList<PeoplePopulation> popCities = a.getCityPopulation("Haag");
+        a.printCityPopulation(popCities);
         System.out.println("\n");
 
+        // List the population of people who speak language in descending order.
+        System.out.println("32: List the population of people who speak language in descending order.\n");
+        ArrayList<CountryLanguage> countLanguage = a.getCountryLanguage("Chinese", "English","Hindi", "Spanish", "Arabic");
+        a.printCountryLanguage(countLanguage);
         // Disconnect from database
         a.disconnect();
     }

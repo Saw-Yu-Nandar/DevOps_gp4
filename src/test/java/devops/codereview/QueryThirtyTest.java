@@ -17,27 +17,27 @@ public class QueryThirtyTest {
     @Test
     void printPopDistrictTestEmpty()
     {
-        ArrayList<PeoplePopulation> pop_dst_empt = new ArrayList<PeoplePopulation>();
-        app.printDistrictsPopulation(pop_dst_empt);
+        ArrayList<PeoplePopulation> popDstEmpt = new ArrayList<PeoplePopulation>();
+        app.printDistrictsPopulation(popDstEmpt);
     }
 
     //print a list with a null value
     @Test
     void printPopDistrictNull()
     {
-        ArrayList<PeoplePopulation> pop_dst_null = new ArrayList<PeoplePopulation>();
-        pop_dst_null.add(null);
-        app.printDistrictsPopulation(pop_dst_null);
+        ArrayList<PeoplePopulation> popDstNull = new ArrayList<PeoplePopulation>();
+        popDstNull.add(null);
+        app.printDistrictsPopulation(popDstNull);
     }
 
     @Test
     void printPopDistrict()
     {
-        ArrayList<PeoplePopulation> pop_dst_print = new ArrayList<PeoplePopulation>();
-        PeoplePopulation pop_dst_p   = new PeoplePopulation();
-        pop_dst_p.setDistrict_name("Apeldoorn");
-        pop_dst_p.setDistrict_population("153491");
-        pop_dst_print.add(pop_dst_p);
-        app.printDistrictsPopulation(pop_dst_print);
+        ArrayList<PeoplePopulation> popDstPrint = new ArrayList<PeoplePopulation>();
+        PeoplePopulation popDstp   = new PeoplePopulation();
+        popDstp.setDistrictName("Dubai");
+        popDstp.setDistrictPopulation("669181");
+        popDstPrint.add(popDstp);
+        app.printDistrictsPopulation(popDstPrint);
     }
 }
