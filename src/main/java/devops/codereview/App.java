@@ -246,6 +246,7 @@ public class App {
             System.out.println("No continents");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int i = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -257,7 +258,7 @@ public class App {
             if (cont == null) continue;
             sb.append("| " + i + "| " + cont.getCountryCode() + " | " +
                     cont.getCountryName() + " | " + cont.getCountryCont() + " | " +
-                    cont.getCountryReg() + " | " + cont.getCountryPopulation() + " | "
+                    cont.getCountryReg() + " | " + numFormat.format(Integer.parseInt(cont.getCountryPopulation())) + " | "
                     + cont.getCountryCap() + "|\r\n");
         }
         try {
@@ -348,6 +349,7 @@ public class App {
             System.out.println("No regions");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int i = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -360,7 +362,7 @@ public class App {
             if (regs == null) continue;
             sb.append("| " + i + "| " + regs.getCountryCode() + " | " +
                     regs.getCountryName() + " | " + regs.getCountryCont() + " | " +
-                    regs.getCountryReg() + " | " + regs.getCountryPopulation() + " | "
+                    regs.getCountryReg() + " | " + numFormat.format(Integer.parseInt(regs.getCountryPopulation())) + " | "
                     + regs.getCountryCap() + "|\r\n");
         }
         try
