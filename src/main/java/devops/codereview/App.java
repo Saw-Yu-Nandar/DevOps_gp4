@@ -1902,7 +1902,7 @@ public class App {
             if (popregion == null) continue;
             sb.append("| " + popregion.getRegionsName() + " | " +
                     popregion.getRegionsPopulation() + " | " + popregion.getCityPopulation() + " | " +
-                    popregion.getNotLivingPopRegion() + " | " + popregion.getLivingPopContinent() + " | "
+                    popregion.getNotLivingPopRegion() + " | " + popregion.getLivingPopRegion() + " | "
                     + "|\r\n");
         }
         try {
