@@ -2803,9 +2803,9 @@ public class App {
         sb.append("| --- | --- | --- |\r\n");
         // Loop over all population in the list
         for (PeoplePopulation popofregion : populationOfRegion) {
-
+            idnum += 1;
             if (popofregion == null) continue;
-            sb.append("| " + popofregion.getRegionsName() + " | " +
+            sb.append("| " + idnum + "| " + popofregion.getRegionsName() + " | " +
                     popofregion.getRegionsPopulation() + " | " + "|\r\n");
         }
         try {
