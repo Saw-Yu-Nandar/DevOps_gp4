@@ -1735,7 +1735,37 @@ public class App {
             System.out.println(coString);
         }
     }
+    /**
+     * Outputs to Markdown
+     * 21. The top 10 populated capital cities in a continent where N is provided by the user.
+     * @param top10capitalcitycont
+     */
+    public void outputTop10CapitalCityCont(ArrayList<CapitalCity> top10capitalcitycont, String Top10CapitalCityContTable) {
+        // Check continent is not null
+        if (top10capitalcitycont == null) {
+            System.out.println("No top 10 capital city in continent.");
+            return;
+        }
 
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("| Capital City Name | Country | Continent | Population |\r\n");
+        sb.append("| --- | --- | --- | --- |\r\n");
+        // Loop over top 10 continent in the list
+        for (CapitalCity topcapcitcon : top10capitalcitycont) {
+            if (topcapcitcon == null) continue;
+            sb.append("| " + topcapcitcon.getCapCityName() + " | " + topcapcitcon.getCapCityCountry() + " | " +
+                    topcapcitcon.getCapCityContinent() + " | " + topcapcitcon.getCapCityPopulation() + "|\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + Top10CapitalCityContTable)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     /**
      * 22.The top N populated capital cities in a region where N is provided by the user.
      * Query execution and pass the array list to format the return value.
@@ -2959,6 +2989,7 @@ public class App {
         System.out.println("21.The top 10 populated capital cities in North America \n");
         ArrayList<CapitalCity> contCapital = a.getTopNCapCitiesCont("North America",10);
         a.printTopNCapCitiesCont(contCapital);
+        a.outputTop10CapitalCityCont(contCapital, "Top 10 Capital Cities in Continent.md");
         System.out.println("\n");
 
         // The top N populated capital cities in a region where N is provided by the user.
