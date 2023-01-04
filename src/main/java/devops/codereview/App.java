@@ -457,6 +457,7 @@ public class App {
             System.out.println("No N Countries");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int i = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -468,7 +469,7 @@ public class App {
             if (ncont == null) continue;
             sb.append("| " + i + "| " + ncont.getCountryCode() + " | " +
                     ncont.getCountryName() + " | " + ncont.getCountryCont() + " | " +
-                    ncont.getCountryReg() + " | " + ncont.getCountryPopulation() + " | "
+                    ncont.getCountryReg() + " | " + numFormat.format(Integer.parseInt(ncont.getCountryPopulation())) + " | "
                     + ncont.getCountryCap() + "|\r\n");
         }
         try {
@@ -561,6 +562,7 @@ public class App {
             System.out.println("No N Countries");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int i = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -572,7 +574,7 @@ public class App {
             if (ncont == null) continue;
             sb.append("| " + i + "| " + ncont.getCountryCode() + " | " +
                     ncont.getCountryName() + " | " + ncont.getCountryCont() + " | " +
-                    ncont.getCountryReg() + " | " + ncont.getCountryPopulation() + " | "
+                    ncont.getCountryReg() + " | " + numFormat.format(Integer.parseInt(ncont.getCountryPopulation())) + " | "
                     + ncont.getCountryCap() + "|\r\n");
         }
         try {
@@ -664,6 +666,7 @@ public class App {
             System.out.println("No N Countries");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int i = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -675,7 +678,7 @@ public class App {
             if (nreg == null) continue;
             sb.append("| " + i + "| " + nreg.getCountryCode() + " | " +
                     nreg.getCountryName() + " | " + nreg.getCountryCont() + " | " +
-                    nreg.getCountryReg() + " | " + nreg.getCountryPopulation() + " | "
+                    nreg.getCountryReg() + " | " + numFormat.format(Integer.parseInt(nreg.getCountryPopulation())) + " | "
                     + nreg.getCountryCap() + "|\r\n");
         }
         try {
@@ -761,6 +764,7 @@ public class App {
             System.out.println("No City");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -772,7 +776,7 @@ public class App {
             if (cit == null) continue;
             sb.append("| " + id + "| " + cit.getCit_name() + " | " +
                     cit.getCountry_name() + " | " +
-                    cit.getCit_district() + " | " + cit.getCit_population() + " |\r\n");
+                    cit.getCit_district() + " | " + numFormat.format(Integer.parseInt(cit.getCit_population())) + " |\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -857,6 +861,7 @@ public class App {
             System.out.println("No City in a continent");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -868,7 +873,7 @@ public class App {
             if (cont == null) continue;
             sb.append("| " + id + "| " + cont.getCit_name() + " | " +
                     cont.getCountry_name() + " | " +
-                    cont.getCit_district() + " | " + cont.getCit_population() + " |\r\n");
+                    cont.getCit_district() + " | " + numFormat.format(Integer.parseInt(cont.getCit_population())) + " |\r\n");
         }
         try {
             new File("./reports/").mkdir();
