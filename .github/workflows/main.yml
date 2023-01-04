@@ -67,6 +67,7 @@ jobs:
           mvn test -Dtest=devops.codereview.CountryIntegrationTest
           mvn test -Dtest=devops.codereview.CityIntegrationTest 
           mvn test -Dtest=devops.codereview.PeoplePopulationIntegrationTest
+          mvn -Dtest=devops.codereview.CityIntegrationTest test 
           docker stop world
           docker rm world
           docker image rm database
