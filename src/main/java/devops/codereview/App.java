@@ -753,13 +753,14 @@ public class App {
 
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| City Name | Country Name | Population |\r\n");
-        sb.append("| --- | --- | --- |\r\n");
+        sb.append("| City Name | Country Name | District | Population |\r\n");
+        sb.append("| --- | --- | --- | --- |\r\n");
         // Loop over all cities in the list
         for (City cit : allCity) {
             if (cit == null) continue;
             sb.append("| " + cit.getCit_name() + " | " +
-                    cit.getCountry_name() + " | " + cit.getCit_population() + " |\r\n");
+                    cit.getCountry_name() + " | " +
+                    cit.getCit_district() + " | " + cit.getCit_population() + " |\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -927,6 +928,40 @@ public class App {
             System.out.println(reg_string);
         }
     }
+
+    /**
+     * Outputs to Markdown
+     * 9. All the cities in a region organised by largest population to smallest.
+     * @param region
+     */
+    public void outputcityregion(ArrayList<City> region, String reg) {
+        // Check cities is not null
+        if (region == null) {
+            System.out.println("No City in a continent");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("| City Name | Country Name | District | Population |\r\n");
+        sb.append("| --- | --- | --- | --- |\r\n");
+        // Loop over all cities in the list
+        for (City citReg : region) {
+            if (citReg == null) continue;
+            sb.append("| " + citReg.getCit_name() + " | " +
+                    citReg.getCountry_name() + " | " +
+                    citReg.getCit_district() + " | " + citReg.getCit_population() + " |\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + reg)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * 10. All the cities in a country organised by largest population to smallest.
      * Query execution and pass the array list to format the return value.
@@ -2996,20 +3031,21 @@ public class App {
         System.out.println("7: All the cities in the world organised by largest population to smallest.\n");
         ArrayList<City> cou = a.getAllCities();
         a.printCities(cou);
-        a.outputCities(cou,"All cities.md");
+        a.outputCities(cou,"Cities in world.md");
         System.out.println("\n");
 
         // Display all the cities in a continent organised by largest population to smallest.
         System.out.println("8. All the cities in the Asia organised by largest population to smallest.\n");
         ArrayList<City> continent = a.getAllCitiesContinent("Asia");
         a.printContinents(continent);
-        a.outputcitycontinent(continent,"City in Continent.md");
+        a.outputcitycontinent(continent,"Cities in Continent.md");
         System.out.println("\n");
 
         // Display all the cities in a region organised by largest population to smallest.
         System.out.println("9: All the cities in the Caribbean organised by largest population to smallest.\n");
         ArrayList<City> regi = a.getAllCitiesRegions("Caribbean");
         a.printRegions(regi);
+        a.outputcityregion(regi,"Cities in Region.md");
         System.out.println("\n");
 
         // Display all the cities in a country organised by largest population to smallest.
