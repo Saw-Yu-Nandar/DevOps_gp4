@@ -35,10 +35,10 @@ public class QueryFourteenTest
     {
         ArrayList<City> region = new ArrayList<City>();
         City reg = new City();
-        reg.setCityName("Moscow");
-        reg.setCountryName("Russian Federation");
-        reg.setCityDistrict("Moscow (City)");
-        reg.setCityPopulation("8389200");
+        reg.setCit_name("Moscow");
+        reg.setCountry_name("Russian Federation");
+        reg.setCit_district("Moscow (City)");
+        reg.setCit_population("8389200");
         region.add(reg);
         app.printTopNRegion(region);
     }

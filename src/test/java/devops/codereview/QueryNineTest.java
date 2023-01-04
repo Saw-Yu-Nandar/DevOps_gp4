@@ -34,10 +34,10 @@ public class QueryNineTest
     {
         ArrayList<City> regions   = new ArrayList<City>();
         City reg                  = new City();
-        reg.setCityName("Luanda");
-        reg.setCountryName("Angola");
-        reg.setCityDistrict("Luanda");
-        reg.setCityPopulation("12878000");
+        reg.setCit_name("Luanda");
+        reg.setCountry_name("Angola");
+        reg.setCit_district("Luanda");
+        reg.setCit_population("12878000");
         regions.add(reg);
         app.printRegions(regions);
     }

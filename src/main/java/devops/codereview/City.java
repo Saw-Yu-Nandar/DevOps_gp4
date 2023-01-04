@@ -1,40 +1,40 @@
 package devops.codereview;
 
 public class City {
-    private String cityName;
-    private String countryName;
-    private String cityDistrict;
-    private String cityPopulation;
+    private String cit_name;
+    private String country_name;
+    private String cit_district;
+    private String cit_population;
 
-    public String getCityName() {
-        return cityName;
+    public String getCit_name() {
+        return cit_name;
     }
 
-    public void setCityName(String cityName) {
-        this.cityName = cityName;
+    public void setCit_name(String cit_name) {
+        this.cit_name = cit_name;
     }
 
-    public String getCountryName() {
-        return countryName;
+    public String getCountry_name() {
+        return country_name;
     }
 
-    public void setCountryName(String countryName) {
-        this.countryName = countryName;
+    public void setCountry_name(String country_name) {
+        this.country_name = country_name;
     }
 
-    public String getCityDistrict() {
-        return cityDistrict;
+    public String getCit_district() {
+        return cit_district;
     }
 
-    public void setCityDistrict(String cityDistrict) {
-        this.cityDistrict = cityDistrict;
+    public void setCit_district(String cit_district) {
+        this.cit_district = cit_district;
     }
 
-    public String getCityPopulation() {
-        return cityPopulation;
+    public String getCit_population() {
+        return cit_population;
     }
 
-    public void setCityPopulation(String cityPopulation) {
-        this.cityPopulation = cityPopulation;
+    public void setCit_population(String cit_population) {
+        this.cit_population = cit_population;
     }
 }

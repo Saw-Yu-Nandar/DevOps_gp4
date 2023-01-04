@@ -34,10 +34,10 @@ public class QueryElevenTest
     {
         ArrayList<City> district  = new ArrayList<City>();
         City cit                  = new City();
-        cit.setCityName("Kabul");
-        cit.setCountryName("Afghanistan");
-        cit.setCityDistrict("Kabol");
-        cit.setCityPopulation("22720000");
+        cit.setCit_name("Kabul");
+        cit.setCountry_name("Afghanistan");
+        cit.setCit_district("Kabol");
+        cit.setCit_population("22720000");
         district.add(cit);
         app.printDistrict(district);
     }
