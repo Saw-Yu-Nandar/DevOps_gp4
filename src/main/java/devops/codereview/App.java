@@ -2456,6 +2456,36 @@ public class App {
             System.out.println(pdiString);
         }
     }
+    /**
+     * Outputs to Markdown
+     * 30. The population of the districts.
+     * @param populationOfDistrict
+     */
+    public void outputPopulationOfDistrict(ArrayList<PeoplePopulation> populationOfDistrict, String populationOfDistrictReport) {
+        // Check employees is not null
+        if (populationOfDistrict == null) {
+            System.out.println("No population");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("| Total District Population <Kabol> |\r\n");
+        sb.append("| --- |\r\n");
+        // Loop over all employees in the list
+        for (PeoplePopulation popofdistrict : populationOfDistrict) {
+            if (popofdistrict == null) continue;
+            sb.append("| " + popofdistrict.getDistrictPopulation() + " | " + "|\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + populationOfDistrictReport)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * 31.The population of the city.
@@ -2798,6 +2828,7 @@ public class App {
         System.out.println("30. The population of the districts.");
         ArrayList<PeoplePopulation> popDisct = a.getDistrictPopulation("Kabol");
         a.printDistrictsPopulation(popDisct);
+        a.outputPopulationOfDistrict(popDisct, "PopulationOfDistrict.md");
         System.out.println("\n");
 
         // The population of the cities.
