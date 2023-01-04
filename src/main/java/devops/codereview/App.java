@@ -2194,7 +2194,7 @@ public class App {
 
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| Total Continent Population |\r\n");
+        sb.append("| Total Continent Population <Asia> |\r\n");
         sb.append("| --- |\r\n");
         // Loop over all employees in the list
         for (PeoplePopulation popofcontinent : populationOfContinent) {
@@ -2270,6 +2270,36 @@ public class App {
                     String.format("%-40s %-40s",
                             regionsPopulation.getRegionsName(), regionsPopulation.getRegionsPopulation());
             System.out.println(pregiString);
+        }
+    }
+    /**
+     * Outputs to Markdown
+     * 28. The population of the regions.
+     * @param populationOfRegion
+     */
+    public void outputPopulationOfRegion(ArrayList<PeoplePopulation> populationOfRegion, String populationOfRegionReport) {
+        // Check employees is not null
+        if (populationOfRegion == null) {
+            System.out.println("No population");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("| Total Region Population <Caribbean> |\r\n");
+        sb.append("| --- |\r\n");
+        // Loop over all employees in the list
+        for (PeoplePopulation popofregion : populationOfRegion) {
+            if (popofregion == null) continue;
+            sb.append("| " + popofregion.getRegionsPopulation() + " | " + "|\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + populationOfRegionReport)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -2724,6 +2754,7 @@ public class App {
         System.out.println("28. The population of the regions.");
         ArrayList<PeoplePopulation> popRegions = a.getRegionsPopulation("Caribbean");
         a.printRegionsPopulation(popRegions);
+        a.outputPopulationOfRegion(popRegions, "PopulationOfRegion.md");
         System.out.println("\n");
 
         // The population of the countries.
