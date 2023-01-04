@@ -2288,15 +2288,16 @@ public class App {
             System.out.println("No population");
             return;
         }
-
+        int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| Continent Name | Continent Total Population | City Total Population | People Not Living (%) | People Living (%) |\r\n");
-        sb.append("| --- | --- | --- | --- | --- |\r\n");
+        sb.append("| No. | Continent Name | Continent Total Population | City Total Population | People Not Living (%) | People Living (%) |\r\n");
+        sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
         // Loop over all employees in the list
         for (PeoplePopulation popcontinent : populationContinent) {
+            id += 1;
             if (popcontinent == null) continue;
-            sb.append("| " + popcontinent.getContinentName() + " | " +
+            sb.append("| " + id + "| " + popcontinent.getContinentName() + " | " +
                     popcontinent.getContinentPopulation() + " | " + popcontinent.getCityPopulation() + " | " +
                     popcontinent.getNotLivingPopContinent() + " | " + popcontinent.getLivingPopContinent() + " | "
                     + "|\r\n");
