@@ -2796,13 +2796,14 @@ public class App {
             System.out.println("No population");
             return;
         }
-
+        int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| Region Name | Total Region Population |\r\n");
-        sb.append("| --- | --- |\r\n");
+        sb.append("| No. | Region Name | Total Region Population |\r\n");
+        sb.append("| --- | --- | --- |\r\n");
         // Loop over all population in the list
         for (PeoplePopulation popofregion : populationOfRegion) {
+
             if (popofregion == null) continue;
             sb.append("| " + popofregion.getRegionsName() + " | " +
                     popofregion.getRegionsPopulation() + " | " + "|\r\n");
@@ -2896,7 +2897,7 @@ public class App {
         sb.append("| --- | --- | --- |\r\n");
         // Loop over all population in the list
         for (PeoplePopulation popofcountry : populationOfCountry) {
-            idnum += 0;
+            idnum += 1;
             if (popofcountry == null) continue;
             sb.append("| " + idnum + "| " + popofcountry.getCountriesName() + " | " +
                     popofcountry.getCountriesPopulation() + " | " + "|\r\n");
