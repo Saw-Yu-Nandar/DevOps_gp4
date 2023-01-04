@@ -2204,7 +2204,7 @@ public class App {
         System.out.println("1: All the countries in the world organised by largest population to smallest.\n");
         ArrayList<Country> country = a.getAllCountries();
         a.printAllCountries(country);
-//        a.outputCountries(country, "AllCountries.md");
+        a.outputCountries(country, "AllCountries.md");
         System.out.println("\n");
 
 
