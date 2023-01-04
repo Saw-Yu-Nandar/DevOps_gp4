@@ -2053,6 +2053,7 @@ public class App {
                 capCnt.setCapCityName(rset.getString("CityName"));
                 capCnt.setCapCityCountry(rset.getString("CountryName"));
                 capCnt.setCapCityPopulation(rset.getString("Population"));
+                capCnt.setContinentName(inputContin);
                 capCont.add(capCnt);
             }
             return capCont;
@@ -2111,7 +2112,7 @@ public class App {
             id += 1;
             if (topcapcitcon == null) continue;
             sb.append("| " + id +  "| " + topcapcitcon.getCapCityName() + " | " + topcapcitcon.getCapCityCountry() + " | " +
-                    topcapcitcon.getCapCityContinent() + " | " + topcapcitcon.getCapCityPopulation() + "|\r\n");
+                    topcapcitcon.getContinentName() + " | " + topcapcitcon.getCapCityPopulation() + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
