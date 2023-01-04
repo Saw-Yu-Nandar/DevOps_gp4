@@ -1829,7 +1829,37 @@ public class App {
             System.out.println(reString);
         }
     }
+    /**
+     * Outputs to Markdown
+     * 22. The top 10 populated capital cities in a region where N is provided by the user.
+     * @param top10capitalcityreg
+     */
+    public void outputTop10CapitalCityReg(ArrayList<CapitalCity> top10capitalcityreg, String Top10CapitalCityRegTable) {
+        // Check region is not null
+        if (top10capitalcityreg == null) {
+            System.out.println("No top 10 capital city in region.");
+            return;
+        }
 
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("| Capital City Name | Country | Region | Population |\r\n");
+        sb.append("| --- | --- | --- | --- |\r\n");
+        // Loop over top 10 region in the list
+        for (CapitalCity topcapcitreg : top10capitalcityreg) {
+            if (topcapcitreg == null) continue;
+            sb.append("| " + topcapcitreg.getCapCityName() + " | " + topcapcitreg.getCapCityCountry() + " | " +
+                    topcapcitreg.getCapCityRegion() + " | " + topcapcitreg.getCapCityPopulation() + "|\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + Top10CapitalCityRegTable)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     /**
      * 23.The population of people, people living in cities, and people not living in cities in each continent.
      * Query execution and pass the array list to format the return value.
@@ -2996,6 +3026,7 @@ public class App {
         System.out.println("22.The top 10 populated capital cities in Middle East \n");
         ArrayList<CapitalCity> regWld = a.getTopNCapCitiesReg("Middle East",10);
         a.printTopNCapCitiesReg(regWld);
+        a.outputTop10CapitalCityReg(regWld,"Top 10 Capital Cities in Region.md");
         System.out.println("\n");
 
         // The population of people, people living in cities, and people not living in cities in each continent.
