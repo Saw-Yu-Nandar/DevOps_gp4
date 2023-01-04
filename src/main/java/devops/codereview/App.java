@@ -2172,15 +2172,16 @@ public class App {
             System.out.println("No top 10 capital city in region.");
             return;
         }
-
+        int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| Capital City Name | Country | Region | Population |\r\n");
-        sb.append("| --- | --- | --- | --- |\r\n");
+        sb.append("| No. | Capital City Name | Country | Region | Population |\r\n");
+        sb.append("| --- | --- | --- | --- | --- |\r\n");
         // Loop over top 10 region in the list
         for (CapitalCity topcapcitreg : top10capitalcityreg) {
+            id += 1;
             if (topcapcitreg == null) continue;
-            sb.append("| " + topcapcitreg.getCapCityName() + " | " + topcapcitreg.getCapCityCountry() + " | " +
+            sb.append("| " + id + "| " + topcapcitreg.getCapCityName() + " | " + topcapcitreg.getCapCityCountry() + " | " +
                     topcapcitreg.getCapCityRegion() + " | " + topcapcitreg.getCapCityPopulation() + "|\r\n");
         }
         try {
