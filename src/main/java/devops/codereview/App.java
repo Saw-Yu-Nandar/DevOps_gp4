@@ -2180,6 +2180,36 @@ public class App {
             System.out.println(pcontString);
         }
     }
+    /**
+     * Outputs to Markdown
+     * 27. The population of the continent.
+     * @param populationOfContinent
+     */
+    public void outputPopulationOfContinent(ArrayList<PeoplePopulation> populationOfContinent, String populationOfContinentReport) {
+        // Check employees is not null
+        if (populationOfContinent == null) {
+            System.out.println("No population");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("| Total Continent Population |\r\n");
+        sb.append("| --- |\r\n");
+        // Loop over all employees in the list
+        for (PeoplePopulation popofcontinent : populationOfContinent) {
+            if (popofcontinent == null) continue;
+            sb.append("| " + popofcontinent.getContinentPopulation() + " | " + "|\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + populationOfContinentReport)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * 28.The population of the regions.
@@ -2687,6 +2717,7 @@ public class App {
         System.out.println("27. The population of the continent.");
         ArrayList<PeoplePopulation> popContin = a.getContinentPopulation("Asia");
         a.printContinentPopulation(popContin);
+        a.outputPopulationOfContinent(popContin, "PopulationOfContinent.md");
         System.out.println("\n");
 
         // The population of the regions.
