@@ -2653,10 +2653,42 @@ public class App {
             float countrpoplan = Float.parseFloat(cl4.getCountryPopulation());
             float res = 100 * (countrpoplan/totalpoplanfloat);
             String resStr = res+"%";
+            cl4.setCountryLanguagePercent(resStr);
             String langString =
                     String.format("%-30s %-30s %-30s",
                             cl4.getCountryLanguage(),cl4.getCountryPopulation(), resStr);
             System.out.println(langString);
+        }
+    }
+    /**
+     * Outputs to Markdown
+     * 32. List the population of people who speak different languages in descending order
+     * @param populationOfLanguage
+     */
+    public void outputPopulationOfLanguage(ArrayList<CountryLanguage> populationOfLanguage, String populationOfLanguageReport) {
+        // Check employees is not null
+        if (populationOfLanguage == null) {
+            System.out.println("No population");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("| Language | Population | Percentage |\r\n");
+        sb.append("| --- | --- | --- |\r\n");
+        // Loop over all employees in the list
+        for (CountryLanguage popoflan : populationOfLanguage) {
+            if (popoflan == null) continue;
+            sb.append("| " + popoflan.getCountryLanguage() + " | " +
+                    popoflan.getCountryPopulation() + " | " + popoflan.getCountryLanguagePercent() + " | " + "|\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + populationOfLanguageReport)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
     public static void main(String[] args)
@@ -2878,7 +2910,7 @@ public class App {
         System.out.println("32: List the population of people who speak language in descending order.\n");
         ArrayList<CountryLanguage> countLanguage = a.getCountryLanguage("Chinese", "English","Hindi", "Spanish", "Arabic");
         a.printCountryLanguage(countLanguage);
-
+        a.outputPopulationOfLanguage(countLanguage, "LanguagesSpoken.md");
 
         // Disconnect from database
         a.disconnect();
