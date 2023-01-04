@@ -1898,11 +1898,11 @@ public class App {
         sb.append("| Region Name | Total Region Population | Total City Population | People Not Living (%) | People Living (%) |\r\n");
         sb.append("| --- | --- | --- | --- | --- |\r\n");
         // Loop over all employees in the list
-        for (PeoplePopulation popregion : populationRegion) {
-            if (popregion == null) continue;
-            sb.append("| " + popregion.getRegionsName() + " | " +
-                    popregion.getRegionsPopulation() + " | " + popregion.getCityPopulation() + " | " +
-                    popregion.getNotLivingPopRegion() + " | " + popregion.getLivingPopRegion() + " | "
+        for (PeoplePopulation poprgn : populationRegion) {
+            if (poprgn == null) continue;
+            sb.append("| " + poprgn.getRegionsName() + " | " +
+                    poprgn.getRegionsPopulation() + " | " + poprgn.getCityPopulation() + " | " +
+                    poprgn.getNotLivingPopRegion() + " | " + poprgn.getLivingPopRegion() + " | "
                     + "|\r\n");
         }
         try {
@@ -1992,6 +1992,7 @@ public class App {
             System.out.println(pcouString);
         }
     }
+
     /**
      * 26.The population of the world.
      * Query execution and pass the array list to format the return value.
@@ -2599,7 +2600,7 @@ public class App {
         System.out.println("24.The population of people, people living in cities, and people not living in cities in each region. \n");
         ArrayList<PeoplePopulation> popReg = a.getPopulatedPeopleRegions();
         a.printPopulatedPeopleRegions(popReg);
-        a.outputPopulationContinent(popReg, "PeoplePopulationRegion.md");
+        a.outputPopulationRegion(popReg, "PeoplePopulationRegion.md");
         System.out.println("\n");
 
         // The population of people, people living in cities, and people not living in cities in each country.
