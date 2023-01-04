@@ -3075,13 +3075,14 @@ public class App {
             System.out.println("No population");
             return;
         }
-
+        int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| City Name | Total City Population |\r\n");
-        sb.append("| --- | --- |\r\n");
+        sb.append("| No. | City Name | Total City Population |\r\n");
+        sb.append("| --- | --- | --- |\r\n");
         // Loop over all population in the list
         for (PeoplePopulation popofcity : populationOfCity) {
+            idnum += 1;
             if (popofcity == null) continue;
             sb.append("| " + popofcity.getCityName() + " | " +
                     popofcity.getCityPopulation() + " | " + "|\r\n");
