@@ -6,7 +6,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.sql.*;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class App {
     /**
@@ -141,6 +143,7 @@ public class App {
             System.out.println("No country");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int i = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -152,7 +155,7 @@ public class App {
             if (cou == null) continue;
             sb.append("| " + i + "| " + cou.getCountryCode() + " | " +
                     cou.getCountryName() + " | " + cou.getCountryCont() + " | " +
-                    cou.getCountryReg() + " | " + cou.getCountryPopulation() + " | "
+                    cou.getCountryReg() + " | " + numFormat.format(cou.getCountryPopulation()) + " | "
                     + cou.getCountryCap() + "|\r\n");
         }
         try {
