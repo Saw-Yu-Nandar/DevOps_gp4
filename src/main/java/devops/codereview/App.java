@@ -1118,6 +1118,40 @@ public class App {
             System.out.println(d_string);
         }
     }
+
+    /**
+     * Outputs to Markdown
+     * 9. All the cities in a district organised by largest population to smallest.
+     * @param citDist
+     */
+    public void outputcityDistrict(ArrayList<City> citDist, String dist) {
+        // Check cities is not null
+        if (citDist == null) {
+            System.out.println("No City in a continent");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("| City Name | Country Name | District | Population |\r\n");
+        sb.append("| --- | --- | --- | --- |\r\n");
+        // Loop over all cities in the list
+        for (City citDt : citDist) {
+            if (citDt == null) continue;
+            sb.append("| " + citDt.getCit_name() + " | " +
+                    citDt.getCountry_name() + " | " +
+                    citDt.getCit_district() + " | " + citDt.getCit_population() + " |\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + dist)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * 12. The top N populated cities in the world where N is provided by the user.
      * Query execution and pass the array list to format the return value.
@@ -3092,6 +3126,7 @@ public class App {
         System.out.println("11: All the cities in the Queensland organised by largest population to smallest.\n");
         ArrayList<City> dist = a.getAllCitiesDistrict("Queensland");
         a.printDistrict(dist);
+        a.outputcityDistrict(dist,"Cities in District.md");
         System.out.println("\n");
 
         // Display the top N populated cities in the world where N is provided by the user.
