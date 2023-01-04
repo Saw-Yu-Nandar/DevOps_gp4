@@ -2982,15 +2982,16 @@ public class App {
             System.out.println("No population");
             return;
         }
-
+        int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| District Name | Total District Population |\r\n");
-        sb.append("| --- | --- |\r\n");
+        sb.append("| No. | District Name | Total District Population |\r\n");
+        sb.append("| --- | --- | --- |\r\n");
         // Loop over all population in the list
         for (PeoplePopulation popofdistrict : populationOfDistrict) {
+            idnum += 1;
             if (popofdistrict == null) continue;
-            sb.append("| " + popofdistrict.getDistrictName() + " | " +
+            sb.append("| " + idnum + "| " + popofdistrict.getDistrictName() + " | " +
                     popofdistrict.getDistrictPopulation() + " | " + "|\r\n");
         }
         try {
