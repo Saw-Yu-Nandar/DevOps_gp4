@@ -1641,7 +1641,37 @@ public class App {
             System.out.println(wString);
         }
     }
+    /**
+     * Outputs to Markdown
+     * 20. The top 10 populated capital cities in the world where N is provided by the user.
+     * @param top10capitalcity
+     */
+    public void outputTop10CapitalCity(ArrayList<CapitalCity> top10capitalcity, String Top10CapitalCityTable) {
+        // Check capital city is not null
+        if (top10capitalcity == null) {
+            System.out.println("No top 10 capital city in world.");
+            return;
+        }
 
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("| Capital City Name | Country | Population |\r\n");
+        sb.append("| --- | --- | --- |\r\n");
+        // Loop over top 10 capital city in the list
+        for (CapitalCity topcapcit : top10capitalcity) {
+            if (topcapcit == null) continue;
+            sb.append("| " + topcapcit.getCapCityName() + " | " + topcapcit.getCapCityCountry() + " | " +
+                    topcapcit.getCapCityPopulation() + "|\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + Top10CapitalCityTable)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     /**
      * 21.The top N populated capital cities in a continent where N is provided by the user.
      * Query execution and pass the array list to format the return value.
@@ -2922,6 +2952,7 @@ public class App {
         System.out.println("20.The top 10 populated capital cities in the world \n");
         ArrayList<CapitalCity> capWld = a.getTopNCapCitiesWorld(10);
         a.printTopNCapCitiesWorld(capWld);
+        a.outputTop10CapitalCity(capWld, "Top 10 Capital Cities in World.md");
         System.out.println("\n");
 
         // The top N populated capital cities in a continent where N is provided by the user.
