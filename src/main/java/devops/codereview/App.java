@@ -3183,15 +3183,16 @@ public class App {
             System.out.println("No population");
             return;
         }
-
+        int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| Language | Population | Percentage |\r\n");
-        sb.append("| --- | --- | --- |\r\n");
+        sb.append("| No. | Language | Population | Percentage |\r\n");
+        sb.append("| --- | --- | --- | --- |\r\n");
         // Loop over all language in the list
         for (CountryLanguage popoflan : populationOfLanguage) {
+            idnum += 1;
             if (popoflan == null) continue;
-            sb.append("| " + popoflan.getCountryLanguage() + " | " +
+            sb.append("| " + idnum + "| " + popoflan.getCountryLanguage() + " | " +
                     popoflan.getCountryPopulation() + " | " + popoflan.getCountryLanguagePercent() + " | " + "|\r\n");
         }
         try {
