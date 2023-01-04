@@ -1,5 +1,9 @@
 package devops.codereview;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.math.BigInteger;
 import java.sql.*;
 import java.util.ArrayList;
@@ -133,12 +137,53 @@ public class App
             }
             String strnotlivingconper = notlivingcon+"%";
             String strlivingconper = livingconper+"%";
+
+            pcon.setLivingPopContinent(strlivingconper);
+            pcon.setNotLivingPopContinent(strnotlivingconper);
+
             String pconString =
                     String.format("%-20s %-28s %-25s %-25s %-25s",
                             pcon.getContinentName(),pcon.getContinentPopulation(), pcon.getCityPopulation(), strnotlivingconper, strlivingconper);
             System.out.println(pconString);
         }
     }
+
+    /**
+     * Outputs to Markdown
+     * 23. The population of people, people living in cities, and people not living in cities in each continent.
+     * @param populationContinent
+     */
+    public void outputPopulationContinent(ArrayList<PeoplePopulation> populationContinent, String AllCountries) {
+        // Check employees is not null
+        if (populationContinent == null) {
+            System.out.println("No population");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("| Continent Name | Continent Total Population | City Total Population | People Not Living (%) | People Living (%) |\r\n");
+        sb.append("| --- | --- | --- | --- | --- |\r\n");
+        // Loop over all employees in the list
+        for (PeoplePopulation popcontinent : populationContinent) {
+            if (popcontinent == null) continue;
+            sb.append("| " + popcontinent.getContinentName() + " | " +
+                    popcontinent.getContinentPopulation() + " | " + popcontinent.getCityPopulation() + " | " +
+                    popcontinent.getLivingPopContinent() + " | " + popcontinent.getNotLivingPopContinent() + " | "
+                    + "|\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + populationContinent)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
     /**
      * 24.The population of people, people living in cities, and people not living in cities in each region.
      * Query execution and pass the array list to format the return value.
@@ -754,6 +799,7 @@ public class App
         System.out.println("23.The population of people, people living in cities, and people not living in cities in each continent. \n");
         ArrayList<PeoplePopulation> popCont = a.getPopulatedPeopleContinent();
         a.printPopulatedPeopleConitnent(popCont);
+        a.outputPopulationContinent(popCont, "PeoplePopulationContinent.md");
         System.out.println("\n");
 
         // The population of people, people living in cities, and people not living in cities in each region.
