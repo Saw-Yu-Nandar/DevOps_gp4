@@ -2194,12 +2194,13 @@ public class App {
 
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| Total Continent Population <Asia> |\r\n");
-        sb.append("| --- |\r\n");
+        sb.append("| Continent Name | Total Continent Population |\r\n");
+        sb.append("| --- | --- |\r\n");
         // Loop over all employees in the list
         for (PeoplePopulation popofcontinent : populationOfContinent) {
             if (popofcontinent == null) continue;
-            sb.append("| " + popofcontinent.getContinentPopulation() + " | " + "|\r\n");
+            sb.append("| " + popofcontinent.getContinentName() + " | " +
+                    popofcontinent.getContinentPopulation() + " | " + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -2286,12 +2287,13 @@ public class App {
 
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| Total Region Population <Caribbean> |\r\n");
-        sb.append("| --- |\r\n");
+        sb.append("| Region Name | Total Region Population |\r\n");
+        sb.append("| --- | --- |\r\n");
         // Loop over all employees in the list
         for (PeoplePopulation popofregion : populationOfRegion) {
             if (popofregion == null) continue;
-            sb.append("| " + popofregion.getRegionsPopulation() + " | " + "|\r\n");
+            sb.append("| " + popofregion.getRegionsName() + " | " +
+                    popofregion.getRegionsPopulation() + " | " + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -2378,12 +2380,13 @@ public class App {
 
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| Total Country Population <Austria> |\r\n");
-        sb.append("| --- |\r\n");
+        sb.append("| Country Name | Total Country Population |\r\n");
+        sb.append("| --- | --- |\r\n");
         // Loop over all employees in the list
         for (PeoplePopulation popofcountry : populationOfCountry) {
             if (popofcountry == null) continue;
-            sb.append("| " + popofcountry.getCountriesPopulation() + " | " + "|\r\n");
+            sb.append("| " + popofcountry.getCountriesName() + " | " +
+                    popofcountry.getCountriesPopulation() + " | " + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -2470,12 +2473,13 @@ public class App {
 
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| Total District Population <Kabol> |\r\n");
-        sb.append("| --- |\r\n");
+        sb.append("| District Name | Total District Population |\r\n");
+        sb.append("| --- | --- |\r\n");
         // Loop over all employees in the list
         for (PeoplePopulation popofdistrict : populationOfDistrict) {
             if (popofdistrict == null) continue;
-            sb.append("| " + popofdistrict.getDistrictPopulation() + " | " + "|\r\n");
+            sb.append("| " + popofdistrict.getDistrictName() + " | " +
+                    popofdistrict.getDistrictPopulation() + " | " + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -2548,6 +2552,38 @@ public class App {
             System.out.println(pcitString);
         }
     }
+    /**
+     * Outputs to Markdown
+     * 31. The population of the cities.
+     * @param populationOfCity
+     */
+    public void outputPopulationOfCity(ArrayList<PeoplePopulation> populationOfCity, String populationOfCityReport) {
+        // Check employees is not null
+        if (populationOfCity == null) {
+            System.out.println("No population");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("| City Name | Total City Population |\r\n");
+        sb.append("| --- | --- |\r\n");
+        // Loop over all employees in the list
+        for (PeoplePopulation popofcity : populationOfCity) {
+            if (popofcity == null) continue;
+            sb.append("| " + popofcity.getCityName() + " | " +
+                    popofcity.getCityPopulation() + " | " + "|\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + populationOfCityReport)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * 32. List the population of people who speak different languages in descending order
      * Query execution by user input and pass the array list to format the return value.
@@ -2835,6 +2871,7 @@ public class App {
         System.out.println("31. The population of the cities.");
         ArrayList<PeoplePopulation> popCities = a.getCityPopulation("Haag");
         a.printCityPopulation(popCities);
+        a.outputPopulationOfCity(popCities, "PopulationOfCity.md");
         System.out.println("\n");
 
         // List the population of people who speak language in descending order.
