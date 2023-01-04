@@ -1452,7 +1452,37 @@ public class App {
             System.out.println(capconString);
         }
     }
+    /**
+     * Outputs to Markdown
+     * 18.All the capital cities in a continent organised by largest population to smallest.
+     * @param allcapitalcitycont
+     */
+    public void outputCapitalCityCont(ArrayList<CapitalCity> allcapitalcitycont, String AllCapitalCitiesContinentTable) {
+        // Check continent is not null
+        if (allcapitalcitycont == null) {
+            System.out.println("No capital city in continent.");
+            return;
+        }
 
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("| Capital City Name | Country | Continent | Population |\r\n");
+        sb.append("| --- | --- | --- | --- |\r\n");
+        // Loop over all continents in the list
+        for (CapitalCity capcitcon : allcapitalcitycont) {
+            if (capcitcon == null) continue;
+            sb.append("| " + capcitcon.getCapCityName() + " | " + capcitcon.getCapCityCountry() + " | " +
+                    capcitcon.getCapCityContinent()+ " | " + capcitcon.getCapCityPopulation() + "|\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + AllCapitalCitiesContinentTable)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     /**
      * 19.All the capital cities in a region organised by largest to smallest.
      * Query execution and pass the array list to format the return value.
@@ -2848,6 +2878,7 @@ public class App {
         System.out.println("18: All the capital cities in a Oceania continent organised by largest population to smallest.\n");
         ArrayList<CapitalCity> capCitContinent = a.getAllCapitalCitiesContinents("Asia");
         a.printAllCapitalCityContinent(capCitContinent);
+        a.outputCapitalCityCont(capCitContinent, "All Capital Cities in Continent.md");
         System.out.println("\n");
 
         // All the capital cities in a region organised by largest to smallest.
