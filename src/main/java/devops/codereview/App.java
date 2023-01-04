@@ -1786,7 +1786,7 @@ public class App {
             if (popcontinent == null) continue;
             sb.append("| " + popcontinent.getContinentName() + " | " +
                     popcontinent.getContinentPopulation() + " | " + popcontinent.getCityPopulation() + " | " +
-                    popcontinent.getLivingPopContinent() + " | " + popcontinent.getNotLivingPopContinent() + " | "
+                    popcontinent.getNotLivingPopContinent() + " | " + popcontinent.getLivingPopContinent() + " | "
                     + "|\r\n");
         }
         try {
@@ -1870,10 +1870,48 @@ public class App {
             }
             String strnotlivingregper = notlivingregper+"%";
             String strlivingregper = livingregper+"%";
+
+            preg.setLivingPopRegion(strlivingregper);
+            preg.setNotLivingPopRegion(strnotlivingregper);
+
             String pregString =
                     String.format("%-30s %-25s %-25s %-25s %-25s",
                             preg.getRegionsName(),preg.getRegionsPopulation(),preg.getCityPopulation(),strnotlivingregper,strlivingregper);
             System.out.println(pregString);
+        }
+    }
+
+    /**
+     * Outputs to Markdown
+     * 24. The population of people, people living in cities, and people not living in cities in each region.
+     * @param populationRegion
+     */
+    public void outputPopulationRegion(ArrayList<PeoplePopulation> populationRegion, String populationRegionReport) {
+        // Check employees is not null
+        if (populationRegion == null) {
+            System.out.println("No population");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("| Region Name | Total Region Population | Total City Population | People Not Living (%) | People Living (%) |\r\n");
+        sb.append("| --- | --- | --- | --- | --- |\r\n");
+        // Loop over all employees in the list
+        for (PeoplePopulation popregion : populationRegion) {
+            if (popregion == null) continue;
+            sb.append("| " + popregion.getRegionsName() + " | " +
+                    popregion.getRegionsPopulation() + " | " + popregion.getCityPopulation() + " | " +
+                    popregion.getNotLivingPopRegion() + " | " + popregion.getLivingPopContinent() + " | "
+                    + "|\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + populationRegionReport)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -2561,6 +2599,7 @@ public class App {
         System.out.println("24.The population of people, people living in cities, and people not living in cities in each region. \n");
         ArrayList<PeoplePopulation> popReg = a.getPopulatedPeopleRegions();
         a.printPopulatedPeopleRegions(popReg);
+        a.outputPopulationContinent(popReg, "PeoplePopulationRegion.md");
         System.out.println("\n");
 
         // The population of people, people living in cities, and people not living in cities in each country.
