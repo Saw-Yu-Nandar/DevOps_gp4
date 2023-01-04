@@ -2347,7 +2347,7 @@ public class App {
             id += 1;
             if (popcontinent == null) continue;
             sb.append("| " + id + "| " + popcontinent.getContinentName() + " | " +
-                    numFormat.format(Long.parseLong(popcontinent.getContinentPopulation())) + " | " + numFormat.format(Long.parseLong(popcontinent.getCityPopulation())) + " | " +
+                    numFormat.format(Integer.parseInt(popcontinent.getContinentPopulation())) + " | " + numFormat.format(Integer.parseInt(popcontinent.getCityPopulation())) + " | " +
                     popcontinent.getNotLivingPopContinent() + " | " + popcontinent.getLivingPopContinent() + " | "
                     + "|\r\n");
         }
