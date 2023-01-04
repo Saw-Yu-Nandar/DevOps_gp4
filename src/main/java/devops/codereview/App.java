@@ -2149,6 +2149,7 @@ public class App {
                 capRegi.setCapCityName(rset.getString("CityName"));
                 capRegi.setCapCityCountry(rset.getString("CountryName"));
                 capRegi.setCapCityPopulation(rset.getString("Population"));
+                capRegi.setRegionName(inputTopRegion);
                 capRegion.add(capRegi);
             }
             return capRegion;
@@ -2207,7 +2208,7 @@ public class App {
             id += 1;
             if (topcapcitreg == null) continue;
             sb.append("| " + id + "| " + topcapcitreg.getCapCityName() + " | " + topcapcitreg.getCapCityCountry() + " | " +
-                    topcapcitreg.getCapCityRegion() + " | " + topcapcitreg.getCapCityPopulation() + "|\r\n");
+                    topcapcitreg.getRegionName() + " | " + topcapcitreg.getCapCityPopulation() + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();

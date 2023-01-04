@@ -8,6 +8,7 @@ public class CapitalCity {
     private String capCityContinent;
     private String capCityRegion;
     private String continentName;
+    private String regionName;
 
     public String getCapCityName() {
         return capCityName;
@@ -55,5 +56,13 @@ public class CapitalCity {
 
     public void setContinentName(String continentName) {
         this.continentName = continentName;
+    }
+
+    public String getRegionName() {
+        return regionName;
+    }
+
+    public void setRegionName(String regionName) {
+        this.regionName = regionName;
     }
 }
