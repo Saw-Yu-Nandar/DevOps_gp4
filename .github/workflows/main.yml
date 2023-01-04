@@ -38,12 +38,7 @@ jobs:
           mvn test -Dtest=devops.codereview.QueryNineteenTest
           mvn test -Dtest=devops.codereview.QueryTwentyTest
           mvn test -Dtest=devops.codereview.QueryTwentyOneTest
-          mvn test -Dtest=devops.codereview.QueryTwentyTwoTest
-          mvn test -Dtest=devops.codereview.QueryChineseLanguageTest
-          mvn test -Dtest=devops.codereview.QueryEnglishLanguageTest
-          mvn test -Dtest=devops.codereview.QueryHindiLanguageTest
-          mvn test -Dtest=devops.codereview.QuerySpanishLanguageTest
-          mvn test -Dtest=devops.codereview.QueryArabicLanguageTest               
+          mvn test -Dtest=devops.codereview.QueryTwentyTwoTest             
           mvn test -Dtest=devops.codereview.QueryTwentySixTest
           mvn test -Dtest=devops.codereview.QueryTwentySevenTest
           mvn test -Dtest=devops.codereview.QueryTwentyEightTest
@@ -108,3 +103,11 @@ jobs:
           files: |
             ./target/*.jar
 
+
+      - name: Copy Output
+        run: docker container cp DevOps_gp4_countries_app_1:./tmp/reports ./
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4.2.5
+        with:
+          branch: reports # The branch the action should deploy to.
+          folder: reports # The folder we are copying
