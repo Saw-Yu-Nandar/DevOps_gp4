@@ -3084,7 +3084,7 @@ public class App {
         for (PeoplePopulation popofcity : populationOfCity) {
             idnum += 1;
             if (popofcity == null) continue;
-            sb.append("| " + popofcity.getCityName() + " | " +
+            sb.append("| " + idnum + "| " + popofcity.getCityName() + " | " +
                     popofcity.getCityPopulation() + " | " + "|\r\n");
         }
         try {
