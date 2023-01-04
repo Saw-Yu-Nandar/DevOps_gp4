@@ -1986,10 +1986,47 @@ public class App {
             }
             String strnotlivingcouper = notlivingcouper+"%";
             String strlivingcouper = livingcouper+"%";
+
+            pcou.setLivingPopCountry(strlivingcouper);
+            pcou.setNotLivingPopCountry(strnotlivingcouper);
+
             String pcouString =
                     String.format("%-45s %-28s %-25s %-25s %-25s",
                             pcou.getCountriesName(), pcou.getCountriesPopulation(), pcou.getCityPopulation(), strnotlivingcouper, strlivingcouper);
             System.out.println(pcouString);
+        }
+    }
+    /**
+     * Outputs to Markdown
+     * 25. The population of people, people living in cities, and people not living in cities in each country.
+     * @param populationCountry
+     */
+    public void outputPopulationCountry(ArrayList<PeoplePopulation> populationCountry, String populationCountryReport) {
+        // Check employees is not null
+        if (populationCountry == null) {
+            System.out.println("No population");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("| Country Name | Total Country Population | Total City Population | People Not Living (%) | People Living (%) |\r\n");
+        sb.append("| --- | --- | --- | --- | --- |\r\n");
+        // Loop over all employees in the list
+        for (PeoplePopulation popcoun : populationCountry) {
+            if (popcoun == null) continue;
+            sb.append("| " + popcoun.getCountriesName() + " | " +
+                    popcoun.getCountriesPopulation() + " | " + popcoun.getCityPopulation() + " | " +
+                    popcoun.getNotLivingPopCountry() + " | " + popcoun.getLivingPopCountry() + " | "
+                    + "|\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + populationCountryReport)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -2607,6 +2644,7 @@ public class App {
         System.out.println("25.The population of people, people living in cities, and people not living in cities in each country. \n");
         ArrayList<PeoplePopulation> popCoun = a.getPopulatedPeopleCountry();
         a.printPopulatedPeopleCountry(popCoun);
+        a.outputPopulationCountry(popCoun, "PeoplePopulationCountry.md");
         System.out.println("\n");
 
         // The population of the world.
