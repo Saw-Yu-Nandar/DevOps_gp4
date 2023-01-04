@@ -834,6 +834,39 @@ public class App {
     }
 
     /**
+     * Outputs to Markdown
+     * 8. All the cities in a continent organised by largest population to smallest.
+     * @param continent
+     */
+    public void outputcitycontinent(ArrayList<City> continent, String Cont) {
+        // Check cities is not null
+        if (continent == null) {
+            System.out.println("No City in a continent");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("| City Name | Country Name | District | Population |\r\n");
+        sb.append("| --- | --- | --- | --- |\r\n");
+        // Loop over all cities in the list
+        for (City cont : continent) {
+            if (cont == null) continue;
+            sb.append("| " + cont.getCit_name() + " | " +
+                    cont.getCountry_name() + " | " +
+                    cont.getCit_district() + " | " + cont.getCit_population() + " |\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + Cont)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * 9. All the cities in a region organised by largest population to smallest.
      * Query execution and pass the array list to format the return value.
      * Function is called in main.
@@ -2970,6 +3003,7 @@ public class App {
         System.out.println("8. All the cities in the Asia organised by largest population to smallest.\n");
         ArrayList<City> continent = a.getAllCitiesContinent("Asia");
         a.printContinents(continent);
+        a.outputcitycontinent(continent,"City in Continent.md");
         System.out.println("\n");
 
         // Display all the cities in a region organised by largest population to smallest.
