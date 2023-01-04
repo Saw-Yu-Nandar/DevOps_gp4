@@ -958,6 +958,7 @@ public class App {
             System.out.println("No City in a continent");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -969,7 +970,7 @@ public class App {
             if (citReg == null) continue;
             sb.append("| " + id + "| " + citReg.getCit_name() + " | " +
                     citReg.getCountry_name() + " | " +
-                    citReg.getCit_district() + " | " + citReg.getCit_population() + " |\r\n");
+                    citReg.getCit_district() + " | " + numFormat.format(Integer.parseInt(citReg.getCit_population())) + " |\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -1054,6 +1055,7 @@ public class App {
             System.out.println("No City in a country");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -1065,7 +1067,7 @@ public class App {
             if (citCt == null) continue;
             sb.append("| " + id + "| " + citCt.getCit_name() + " | " +
                     citCt.getCountry_name() + " | " +
-                    citCt.getCit_district() + " | " + citCt.getCit_population() + " |\r\n");
+                    citCt.getCit_district() + " | " + numFormat.format(Integer.parseInt(citCt.getCit_population())) + " |\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -1150,6 +1152,7 @@ public class App {
             System.out.println("No City in a district");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -1161,7 +1164,7 @@ public class App {
             if (citDt == null) continue;
             sb.append("| " + id + "| " + citDt.getCit_name() + " | " +
                     citDt.getCountry_name() + " | " +
-                    citDt.getCit_district() + " | " + citDt.getCit_population() + " |\r\n");
+                    citDt.getCit_district() + " | " + numFormat.format(Integer.parseInt(citDt.getCit_population())) + " |\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -1245,6 +1248,7 @@ public class App {
             System.out.println("No City in a world");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -1256,7 +1260,7 @@ public class App {
             if (topWld == null) continue;
             sb.append("| " + id + "| " + topWld.getCit_name() + " | " +
                     topWld.getCountry_name() + " | " +
-                    topWld.getCit_district() + " | " + topWld.getCit_population() + " |\r\n");
+                    topWld.getCit_district() + " | " + numFormat.format(Integer.parseInt(topWld.getCit_population())) + " |\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -1341,6 +1345,7 @@ public class App {
             System.out.println("No City in a continent");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -1352,7 +1357,7 @@ public class App {
             if (topCont == null) continue;
             sb.append("| " + id + "| " + topCont.getCit_name() + " | " +
                     topCont.getCountry_name() + " | " +
-                    topCont.getCit_district() + " | " + topCont.getCit_population() + " |\r\n");
+                    topCont.getCit_district() + " | " + numFormat.format(Integer.parseInt(topCont.getCit_population())) + " |\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -1437,6 +1442,7 @@ public class App {
             System.out.println("No City in a region");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -1448,7 +1454,7 @@ public class App {
             if (topReg == null) continue;
             sb.append("| " + id + "| " + topReg.getCit_name() + " | " +
                     topReg.getCountry_name() + " | " +
-                    topReg.getCit_district() + " | " + topReg.getCit_population() + " |\r\n");
+                    topReg.getCit_district() + " | " + numFormat.format(Integer.parseInt(topReg.getCit_population())) + " |\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -1532,6 +1538,7 @@ public class App {
             System.out.println("No City in a country");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -1543,7 +1550,7 @@ public class App {
             if (topcty == null) continue;
             sb.append("| " + id + "| " + topcty.getCit_name() + " | " +
                     topcty.getCountry_name() + " | " +
-                    topcty.getCit_district() + " | " + topcty.getCit_population() + " |\r\n");
+                    topcty.getCit_district() + " | " + numFormat.format(Integer.parseInt(topcty.getCit_population())) + " |\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -1629,6 +1636,7 @@ public class App {
             System.out.println("No City in a district");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -1640,7 +1648,7 @@ public class App {
             if (topdist == null) continue;
             sb.append("| " + id + "| " + topdist.getCit_name() + " | " +
                     topdist.getCountry_name() + " | " +
-                    topdist.getCit_district() + " | " + topdist.getCit_population() + " |\r\n");
+                    topdist.getCit_district() + " | " + numFormat.format(Integer.parseInt(topdist.getCit_population())) + " |\r\n");
         }
         try {
             new File("./reports/").mkdir();
