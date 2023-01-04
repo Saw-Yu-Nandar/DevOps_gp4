@@ -332,6 +332,45 @@ public class App {
     }
 
     /**
+     * Outputs to Markdown
+     * 3. All the countries in a region organised by largest population to smallest.
+     * @param allregion
+     */
+    public void outputRegion(ArrayList<Country> allregion, String AllRegions) {
+        // Check region is not null
+        if (allregion == null)
+        {
+            System.out.println("No regions");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("| Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
+        sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
+        // Loop over all employees in the list
+        for (Country regs : allregion)
+        {
+            if (regs == null) continue;
+            sb.append("| " + regs.getCountryCode() + " | " +
+                    regs.getCountryName() + " | " + regs.getCountryCont() + " | " +
+                    regs.getCountryReg() + " | " + regs.getCountryPopulation() + " | "
+                    + regs.getCountryCap() + "|\r\n");
+        }
+        try
+        {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + AllRegions)));
+            writer.write(sb.toString());
+            writer.close();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * 4. The top N populated countries in the world where N is provided by the user.
      * Query execution by user input and pass the array list to format the return value.
      * Function is called in ma
@@ -398,6 +437,41 @@ public class App {
             System.out.println(npopctrString);
         }
     }
+
+    /**
+     * Outputs to Markdown
+     * 4. The top N populated countries in the world where N is provided by the user.
+     * @param ncountries
+     */
+    public void outputNCountries(ArrayList<Country> ncountries, String TopNCountries) {
+        // Check ncountries is not null
+        if (ncountries == null) {
+            System.out.println("No N Countries");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("| Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
+        sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
+        // Loop over all employees in the list
+        for (Country ncont : ncountries) {
+            if (ncont == null) continue;
+            sb.append("| " + ncont.getCountryCode() + " | " +
+                    ncont.getCountryName() + " | " + ncont.getCountryCont() + " | " +
+                    ncont.getCountryReg() + " | " + ncont.getCountryPopulation() + " | "
+                    + ncont.getCountryCap() + "|\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + TopNCountries)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     /**
      * 5. The top N populated countries in a continent where N is provided by the user.
@@ -468,6 +542,41 @@ public class App {
     }
 
     /**
+     * Outputs to Markdown
+     * 5. The top N populated countries in a continent where N is provided by the user.
+     * @param ncontinents
+     */
+    public void outputNContinents(ArrayList<Country> ncontinents, String TopNContinents) {
+        // Check ncontinents is not null
+        if (ncontinents == null) {
+            System.out.println("No N Countries");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("| Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
+        sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
+        // Loop over all employees in the list
+        for (Country ncont : ncontinents) {
+            if (ncont == null) continue;
+            sb.append("| " + ncont.getCountryCode() + " | " +
+                    ncont.getCountryName() + " | " + ncont.getCountryCont() + " | " +
+                    ncont.getCountryReg() + " | " + ncont.getCountryPopulation() + " | "
+                    + ncont.getCountryCap() + "|\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + TopNContinents)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    /**
      * 6. The top N populated countries in a region where N is provided by the user.
      * Query execution by user input and pass the array list to format the return value.
      * Function is called in main.
@@ -534,6 +643,40 @@ public class App {
             System.out.println(npopregString);
         }
     }
+    /**
+     * Outputs to Markdown
+     * 6. The top N populated countries in a region where N is provided by the user.
+     * @param nregions
+     */
+    public void outputNRegions(ArrayList<Country> nregions, String TopNRegions) {
+        // Check ncontinents is not null
+        if (nregions == null) {
+            System.out.println("No N Countries");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("| Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
+        sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
+        // Loop over all employees in the list
+        for (Country nreg : nregions) {
+            if (nreg == null) continue;
+            sb.append("| " + nreg.getCountryCode() + " | " +
+                    nreg.getCountryName() + " | " + nreg.getCountryCont() + " | " +
+                    nreg.getCountryReg() + " | " + nreg.getCountryPopulation() + " | "
+                    + nreg.getCountryCap() + "|\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + TopNRegions)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     /**
      * 7. All the cities in the world organised by largest population to smallest.
@@ -2249,24 +2392,28 @@ public class App {
         System.out.println("3: All the countries in the Caribbean organised by largest population to smallest.\n");
         ArrayList<Country> regions = a.getAllRegion("Caribbean");
         a.printAllCountries(regions);
+        a.outputRegion(regions, "AllRegions.md");
         System.out.println("\n");
 
         // Display the top N populated countries in the world where N is provided by the user.
         System.out.println("4: The top 10 populated countries in the world.\n");
         ArrayList<Country> nPopulatedCountries = a.getAllNPopulatedCountries(10);
         a.printNPopulatedCountries(nPopulatedCountries);
+        a.outputRegion(nPopulatedCountries, "TopNCountries.md");
         System.out.println("\n");
 
         // Display all the countries in a continent organised by largest population to smallest.
         System.out.println("5. The top 10 populated countries in the Europe.\n");
         ArrayList<Country> nPopulatedContinents = a.getAllNPopulatedContinents("Europe", 10);
         a.printContinent(nPopulatedContinents);
+        a.outputRegion(nPopulatedContinents, "TopNContinents.md");
         System.out.println("\n");
 
         // Display the top N populated countries in a region where N is provided by the user.
         System.out.println("6: The top 10 populated countries in the Caribbean.\n");
         ArrayList<Country> nPopulatedRegion = a.getAllNPopulatedRegion("Caribbean", 10);
         a.printNPopulatedRegion(nPopulatedRegion);
+        a.outputRegion(nPopulatedRegion, "TopNRegions.md");
         System.out.println("\n");
 
         // Display all the cities in the world organised by largest population to smallest.
