@@ -141,15 +141,16 @@ public class App {
             System.out.println("No country");
             return;
         }
-
+        int i = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
-        sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
+        sb.append("| No. | Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
+        sb.append("| --- | --- | --- | --- | --- | --- | --- |\r\n");
         // Loop over all countries in the list
         for (Country cou : countries) {
+            i += 1;
             if (cou == null) continue;
-            sb.append("| " + cou.getCountryCode() + " | " +
+            sb.append("| " + i + "| " + cou.getCountryCode() + " | " +
                     cou.getCountryName() + " | " + cou.getCountryCont() + " | " +
                     cou.getCountryReg() + " | " + cou.getCountryPopulation() + " | "
                     + cou.getCountryCap() + "|\r\n");
