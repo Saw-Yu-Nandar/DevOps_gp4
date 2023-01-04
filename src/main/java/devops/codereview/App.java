@@ -2610,15 +2610,16 @@ public class App {
             System.out.println("No population");
             return;
         }
-
+        int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| Total World Population |\r\n");
-        sb.append("| --- |\r\n");
+        sb.append("| No. | Total World Population |\r\n");
+        sb.append("| --- | --- |\r\n");
         // Loop over population in the list
         for (PeoplePopulation popofworld : populationOfWorld) {
+            idnum += 1;
             if (popofworld == null) continue;
-            sb.append("| " + popofworld.getWorldPopulation() + " | " + "|\r\n");
+            sb.append("| " + idnum + "| " + popofworld.getWorldPopulation() + " | " + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -2703,15 +2704,16 @@ public class App {
             System.out.println("No population");
             return;
         }
-
+        int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| Continent Name | Total Continent Population |\r\n");
-        sb.append("| --- | --- |\r\n");
+        sb.append("| No. | Continent Name | Total Continent Population |\r\n");
+        sb.append("| --- | --- | --- |\r\n");
         // Loop over population in the list
         for (PeoplePopulation popofcontinent : populationOfContinent) {
+            idnum += 1;
             if (popofcontinent == null) continue;
-            sb.append("| " + popofcontinent.getContinentName() + " | " +
+            sb.append("| " + idnum + "| " + popofcontinent.getContinentName() + " | " +
                     popofcontinent.getContinentPopulation() + " | " + "|\r\n");
         }
         try {
