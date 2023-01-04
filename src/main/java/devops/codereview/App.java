@@ -1547,7 +1547,37 @@ public class App {
             System.out.println(regString);
         }
     }
+    /**
+     * Outputs to Markdown
+     * 19. All the capital cities in a region organised by largest to smallest.
+     * @param allcapitalcityreg
+     */
+    public void outputCapitalCityReg(ArrayList<CapitalCity> allcapitalcityreg, String AllCapitalCitiesRegionTable) {
+        // Check region is not null
+        if (allcapitalcityreg == null) {
+            System.out.println("No capital city in region.");
+            return;
+        }
 
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("| Capital City Name | Country | Region | Population |\r\n");
+        sb.append("| --- | --- | --- | --- |\r\n");
+        // Loop over all regions in the list
+        for (CapitalCity capcitreg : allcapitalcityreg) {
+            if (capcitreg == null) continue;
+            sb.append("| " + capcitreg.getCapCityName() + " | " + capcitreg.getCapCityCountry() + " | " +
+                    capcitreg.getCapCityRegion()+ " | " + capcitreg.getCapCityPopulation() + "|\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + AllCapitalCitiesRegionTable)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     /**
      * 20.The top N populated capital cities in the world where N is provided by the user.
      * Query execution and pass the array list to format the return value.
@@ -2885,6 +2915,7 @@ public class App {
         System.out.println("19.All the capital cities in a Caribbean region organised by largest to smallest.\n");
         ArrayList<CapitalCity> capCitRegion = a.getAllCapitalCitiesRegions("Caribbean");
         a.printAllCapitalCityRegion(capCitRegion);
+        a.outputCapitalCityReg(capCitRegion, "All Capital Cities in Region.md");
         System.out.println("\n");
 
         // The top N populated capital cities in the world where N is provided by the user.
