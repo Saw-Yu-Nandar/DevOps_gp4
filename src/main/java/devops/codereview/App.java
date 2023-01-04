@@ -2404,15 +2404,16 @@ public class App {
             System.out.println("No population");
             return;
         }
-
+        int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| Region Name | Total Region Population | Total City Population | People Not Living (%) | People Living (%) |\r\n");
-        sb.append("| --- | --- | --- | --- | --- |\r\n");
+        sb.append("| No. | Region Name | Total Region Population | Total City Population | People Not Living (%) | People Living (%) |\r\n");
+        sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
         // Loop over all employees in the list
         for (PeoplePopulation poprgn : populationRegion) {
+            id += 1;
             if (poprgn == null) continue;
-            sb.append("| " + poprgn.getRegionsName() + " | " +
+            sb.append("| " + id + "| " + poprgn.getRegionsName() + " | " +
                     poprgn.getRegionsPopulation() + " | " + poprgn.getCityPopulation() + " | " +
                     poprgn.getNotLivingPopRegion() + " | " + poprgn.getLivingPopRegion() + " | "
                     + "|\r\n");
