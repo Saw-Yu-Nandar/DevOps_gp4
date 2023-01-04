@@ -2078,15 +2078,16 @@ public class App {
             System.out.println("No top 10 capital city in continent.");
             return;
         }
-
+        int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| Capital City Name | Country | Continent | Population |\r\n");
-        sb.append("| --- | --- | --- | --- |\r\n");
+        sb.append("| No. | Capital City Name | Country | Continent | Population |\r\n");
+        sb.append("| --- | --- | --- | --- | --- |\r\n");
         // Loop over top 10 continent in the list
         for (CapitalCity topcapcitcon : top10capitalcitycont) {
+            id += 1;
             if (topcapcitcon == null) continue;
-            sb.append("| " + topcapcitcon.getCapCityName() + " | " + topcapcitcon.getCapCityCountry() + " | " +
+            sb.append("| " + id +  "| " + topcapcitcon.getCapCityName() + " | " + topcapcitcon.getCapCityCountry() + " | " +
                     topcapcitcon.getCapCityContinent() + " | " + topcapcitcon.getCapCityPopulation() + "|\r\n");
         }
         try {
