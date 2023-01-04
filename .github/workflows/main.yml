@@ -39,6 +39,16 @@ jobs:
           mvn test -Dtest=devops.codereview.QueryTwentyTest
           mvn test -Dtest=devops.codereview.QueryTwentyOneTest
           mvn test -Dtest=devops.codereview.QueryTwentyTwoTest
+          mvn test -Dtest=devops.codereview.QueryTwentyThreeTest
+          mvn test -Dtest=devops.codereview.QueryTwentyFourTest
+          mvn test -Dtest=devops.codereview.QueryTwentyFiveTest
+          mvn test -Dtest=devops.codereview.QueryTwentySixTest
+          mvn test -Dtest=devops.codereview.QueryTwentySevenTest
+          mvn test -Dtest=devops.codereview.QueryTwentyEightTest
+          mvn test -Dtest=devops.codereview.QueryTwentyNineTest
+          mvn test -Dtest=devops.codereview.QueryThirtyTest
+          mvn test -Dtest=devops.codereview.QueryThirtyOneTest
+          mvn test -Dtest=devops.codereview.QueryThirtyTwoTest
   IntegrationTests:
     name: Integration Tests
     runs-on: ubuntu-20.04
@@ -54,15 +64,14 @@ jobs:
           distribution: 'adopt'
       - name: Integration Tests and CodeCov
         run: |
-          docker build -t database ./db
+          docker build -t database ./db 
           docker run --name world -dp 33060:3306 database
-          mvn test -Dtest=devops.codereview.CapitalCityIntegrationTest
           mvn test -Dtest=devops.codereview.CapitalCityIntegrationTest
           mvn test -Dtest=devops.codereview.CountryLanguageIntegrationTest
           mvn test -Dtest=devops.codereview.CountryIntegrationTest
           mvn test -Dtest=devops.codereview.CityIntegrationTest 
           mvn test -Dtest=devops.codereview.PeoplePopulationIntegrationTest
-          mvn -Dtest=devops.codereview.CityIntegrationTest test 
+
           docker stop world
           docker rm world
           docker image rm database
@@ -99,10 +108,10 @@ jobs:
           files: |
             ./target/*.jar
 
-      - name: Copy Output
-        run: docker container cp DevOps_gp4_countries_app_1:./tmp/reports ./
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4.2.5
-        with:
-          branch: reports # The branch the action should deploy to.
-          folder: reports # The folder we are copying
+#      - name: Copy Output
+#        run: docker container cp DevOps_gp4_app_1:./tmp/reports ./
+#      - name: Deploy
+#        uses: JamesIves/github-pages-deploy-action@v4.2.5
+#        with:
+#          branch: reports # The branch the action should deploy to.
+#          folder: reports # The folder we are copying
