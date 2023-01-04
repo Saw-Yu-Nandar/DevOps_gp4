@@ -750,15 +750,16 @@ public class App {
             System.out.println("No City");
             return;
         }
-
+        int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| City Name | Country Name | District | Population |\r\n");
-        sb.append("| --- | --- | --- | --- |\r\n");
+        sb.append("| No. | City Name | Country Name | District | Population |\r\n");
+        sb.append("| --- | --- | --- | --- | --- |\r\n");
         // Loop over all cities in the list
         for (City cit : allCity) {
+            id += 1;
             if (cit == null) continue;
-            sb.append("| " + cit.getCit_name() + " | " +
+            sb.append("| " + id + "| " + cit.getCit_name() + " | " +
                     cit.getCountry_name() + " | " +
                     cit.getCit_district() + " | " + cit.getCit_population() + " |\r\n");
         }
@@ -845,15 +846,16 @@ public class App {
             System.out.println("No City in a continent");
             return;
         }
-
+        int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| City Name | Country Name | District | Population |\r\n");
-        sb.append("| --- | --- | --- | --- |\r\n");
+        sb.append("| No. | City Name | Country Name | District | Population |\r\n");
+        sb.append("| --- | --- | --- | --- | --- |\r\n");
         // Loop over all cities in the list
         for (City cont : continent) {
+            id += 1;
             if (cont == null) continue;
-            sb.append("| " + cont.getCit_name() + " | " +
+            sb.append("| " + id + "| " + cont.getCit_name() + " | " +
                     cont.getCountry_name() + " | " +
                     cont.getCit_district() + " | " + cont.getCit_population() + " |\r\n");
         }
@@ -940,15 +942,16 @@ public class App {
             System.out.println("No City in a continent");
             return;
         }
-
+        int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| City Name | Country Name | District | Population |\r\n");
-        sb.append("| --- | --- | --- | --- |\r\n");
+        sb.append("| No. | City Name | Country Name | District | Population |\r\n");
+        sb.append("| --- | --- | --- | --- | --- |\r\n");
         // Loop over all cities in the list
         for (City citReg : region) {
+            id += 1;
             if (citReg == null) continue;
-            sb.append("| " + citReg.getCit_name() + " | " +
+            sb.append("| " + id + "| " + citReg.getCit_name() + " | " +
                     citReg.getCountry_name() + " | " +
                     citReg.getCit_district() + " | " + citReg.getCit_population() + " |\r\n");
         }
@@ -1035,15 +1038,16 @@ public class App {
             System.out.println("No City in a country");
             return;
         }
-
+        int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| City Name | Country Name | District | Population |\r\n");
-        sb.append("| --- | --- | --- | --- |\r\n");
+        sb.append("| No. | City Name | Country Name | District | Population |\r\n");
+        sb.append("| --- | --- | --- | --- | --- |\r\n");
         // Loop over all cities in the list
         for (City citCt : citCount) {
+            id += 1;
             if (citCt == null) continue;
-            sb.append("| " + citCt.getCit_name() + " | " +
+            sb.append("| " + id + "| " + citCt.getCit_name() + " | " +
                     citCt.getCountry_name() + " | " +
                     citCt.getCit_district() + " | " + citCt.getCit_population() + " |\r\n");
         }
@@ -1130,15 +1134,16 @@ public class App {
             System.out.println("No City in a district");
             return;
         }
-
+        int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| City Name | Country Name | District | Population |\r\n");
-        sb.append("| --- | --- | --- | --- |\r\n");
+        sb.append("| No. | City Name | Country Name | District | Population |\r\n");
+        sb.append("| --- | --- | --- | --- | --- |\r\n");
         // Loop over all cities in the list
         for (City citDt : citDist) {
+            id += 1;
             if (citDt == null) continue;
-            sb.append("| " + citDt.getCit_name() + " | " +
+            sb.append("| " + id + "| " + citDt.getCit_name() + " | " +
                     citDt.getCountry_name() + " | " +
                     citDt.getCit_district() + " | " + citDt.getCit_population() + " |\r\n");
         }
