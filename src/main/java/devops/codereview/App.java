@@ -242,15 +242,16 @@ public class App {
             System.out.println("No continents");
             return;
         }
-
+        int i = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
-        sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
+        sb.append("| No. | Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
+        sb.append("| --- | --- | --- | --- | --- | --- | --- |\r\n");
         // Loop over all continent in the list
         for (Country cont : continents) {
+            i += 1;
             if (cont == null) continue;
-            sb.append("| " + cont.getCountryCode() + " | " +
+            sb.append("| " + i + "| " + cont.getCountryCode() + " | " +
                     cont.getCountryName() + " | " + cont.getCountryCont() + " | " +
                     cont.getCountryReg() + " | " + cont.getCountryPopulation() + " | "
                     + cont.getCountryCap() + "|\r\n");
