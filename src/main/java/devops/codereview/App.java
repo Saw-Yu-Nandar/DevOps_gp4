@@ -1594,6 +1594,39 @@ public class App {
     }
 
     /**
+     * Outputs to Markdown
+     * 15. The top N populated cities in a district where N is provided by the user.
+     * @param topNdist
+     */
+    public void outputTopNcitydist(ArrayList<City> topNdist, String citdist) {
+        // Check cities in a continent is not null
+        if (topNdist == null) {
+            System.out.println("No City in a region");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("| City Name | Country Name | District | Population |\r\n");
+        sb.append("| --- | --- | --- | --- |\r\n");
+        // Loop over all cities in the list
+        for (City topdist : topNdist) {
+            if (topdist == null) continue;
+            sb.append("| " + topdist.getCit_name() + " | " +
+                    topdist.getCountry_name() + " | " +
+                    topdist.getCit_district() + " | " + topdist.getCit_population() + " |\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + citdist)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * 17.All the capital cities in the world organised by largest population to smallest.
      * Query execution and pass the array list to format the return value.
      * Function is called in main.
@@ -3293,6 +3326,7 @@ public class App {
         System.out.println("16: The top 10 populated cities in the Zuid-Holland.\n");
         ArrayList<City> district = a.getTopNPopulatedDistrict("Zuid-Holland",10);
         a.printTopNDistrict(district);
+        a.outputTopNcitydist(district,"Top 10 Cities in District.md");
         System.out.println("\n");
 
         // All the capital cities in the world organised by largest population to smallest.
