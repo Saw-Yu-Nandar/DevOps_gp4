@@ -61,39 +61,7 @@ public class App
             }
         }
     }
-    /**
-     * Outputs to Markdown
-     * 1. All the countries in the world organised by largest population to smallest.
-     * @param countries
-     */
-    public void outputCountries(ArrayList<Country> countries, String filename) {
-        // Check employees is not null
-        if (countries == null) {
-            System.out.println("No country");
-            return;
-        }
 
-        StringBuilder sb = new StringBuilder();
-        // Print header
-        sb.append("| Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
-        sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
-        // Loop over all employees in the list
-        for (Country cou : countries) {
-            if (cou == null) continue;
-            sb.append("| " + cou.getCountryCode() + " | " +
-                    cou.getCountryName() + " | " + cou.getCountryCont() + " | " +
-                    cou.getCountryReg() + " | " + cou.getCountryPopulation() + " | "
-                    + cou.getCountryCap() + "|\r\n");
-        }
-        try {
-            new File("./reports/").mkdir();
-            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
-            writer.write(sb.toString());
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
     /**
      * 1. All the countries in the world organised by largest population to smallest.
      * Query execution and pass the array list to format the return value.
@@ -142,7 +110,7 @@ public class App
         // Check countries is not null
         if (countries == null)
         {
-            System.out.println("No employees");
+            System.out.println("No Countries");
             return;
         }
         // Print header
@@ -158,6 +126,41 @@ public class App
             System.out.println(allctrString);
         }
     }
+
+    /**
+     * Outputs to Markdown
+     * 1. All the countries in the world organised by largest population to smallest.
+     * @param countries
+     */
+    public void outputCountries(ArrayList<Country> countries, String AllCountries) {
+        // Check employees is not null
+        if (countries == null) {
+            System.out.println("No country");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("| Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
+        sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
+        // Loop over all employees in the list
+        for (Country cou : countries) {
+            if (cou == null) continue;
+            sb.append("| " + cou.getCountryCode() + " | " +
+                    cou.getCountryName() + " | " + cou.getCountryCont() + " | " +
+                    cou.getCountryReg() + " | " + cou.getCountryPopulation() + " | "
+                    + cou.getCountryCap() + "|\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + AllCountries)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     /**
      * 2. All the countries in a continent organised by largest population to smallest.
@@ -501,7 +504,7 @@ public class App
     {
         // Create new Application
         App a = new App();
-        App app = new App();
+
         // Connect to database
         //a.connect();
         if(args.length < 1){
@@ -509,14 +512,14 @@ public class App
         }else{
             a.connect(args[0], Integer.parseInt(args[1]));
         }
-        ArrayList<Country> countries = app.getAllCountries();
-        app.outputCountries(countries,"AllCountries.md");
-        System.out.println("\n");
+
         // Display all the countries in the world organised by largest population to smallest.
         System.out.println("1: All the countries in the world organised by largest population to smallest.\n");
         ArrayList<Country> country = a.getAllCountries();
         a.printAllCountries(country);
+        a.outputCountries(country, "AllCountries.md");
         System.out.println("\n");
+
 
         // Display all the countries in a continent organised by largest population to smallest.
         System.out.println("2: All the countries in the Oceania organised by largest population to smallest.\n");
