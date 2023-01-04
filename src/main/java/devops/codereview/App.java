@@ -2364,6 +2364,36 @@ public class App {
             System.out.println(pcoString);
         }
     }
+    /**
+     * Outputs to Markdown
+     * 29. The population of the countries.
+     * @param populationOfCountry
+     */
+    public void outputPopulationOfCountry(ArrayList<PeoplePopulation> populationOfCountry, String populationOfCountryReport) {
+        // Check employees is not null
+        if (populationOfCountry == null) {
+            System.out.println("No population");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("| Total Country Population <Austria> |\r\n");
+        sb.append("| --- |\r\n");
+        // Loop over all employees in the list
+        for (PeoplePopulation popofcountry : populationOfCountry) {
+            if (popofcountry == null) continue;
+            sb.append("| " + popofcountry.getCountriesPopulation() + " | " + "|\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + populationOfCountryReport)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * 30.The population of the district.
@@ -2761,6 +2791,7 @@ public class App {
         System.out.println("29. The population of the countries.");
         ArrayList<PeoplePopulation> popCountries = a.getCountriesPopulation("Austria");
         a.printCountriesPopulation(popCountries);
+        a.outputPopulationOfCountry(popCountries, "PopulationOfCountry.md");
         System.out.println("\n");
 
         // The population of the districts.
