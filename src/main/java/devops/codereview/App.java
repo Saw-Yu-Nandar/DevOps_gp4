@@ -1025,6 +1025,39 @@ public class App {
     }
 
     /**
+     * Outputs to Markdown
+     * 9. All the cities in a country organised by largest population to smallest.
+     * @param citCount
+     */
+    public void outputcityCountry(ArrayList<City> citCount, String country) {
+        // Check cities is not null
+        if (citCount == null) {
+            System.out.println("No City in a continent");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("| City Name | Country Name | District | Population |\r\n");
+        sb.append("| --- | --- | --- | --- |\r\n");
+        // Loop over all cities in the list
+        for (City citCt : citCount) {
+            if (citCt == null) continue;
+            sb.append("| " + citCt.getCit_name() + " | " +
+                    citCt.getCountry_name() + " | " +
+                    citCt.getCit_district() + " | " + citCt.getCit_population() + " |\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + country)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * 11. All the cities in a district organised by largest population to smallest.
      * Query execution and pass the array list to format the return value.
      * Function is called in main.
@@ -3052,6 +3085,7 @@ public class App {
         System.out.println("10: All the cities in the Myanmar organised by largest population to smallest.\n");
         ArrayList<City> countries = a.getAllCitiesCountries("Myanmar");
         a.printCountries(countries);
+        a.outputcityCountry(countries,"Cities in Country.md");
         System.out.println("\n");
 
         // Diaplay all the cities in a country organised by largest population to smallest.
