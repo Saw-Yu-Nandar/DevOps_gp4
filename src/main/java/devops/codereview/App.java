@@ -136,7 +136,7 @@ public class App {
      * @param countries
      */
     public void outputCountries(ArrayList<Country> countries, String AllCountries) {
-        // Check employees is not null
+        // Check countries is not null
         if (countries == null) {
             System.out.println("No country");
             return;
@@ -146,7 +146,7 @@ public class App {
         // Print header
         sb.append("| Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
         sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
-        // Loop over all employees in the list
+        // Loop over all countries in the list
         for (Country cou : countries) {
             if (cou == null) continue;
             sb.append("| " + cou.getCountryCode() + " | " +
@@ -237,7 +237,7 @@ public class App {
      * @param continents
      */
     public void outputContinent(ArrayList<Country> continents, String AllContinents) {
-        // Check employees is not null
+        // Check continent is not null
         if (continents == null) {
             System.out.println("No continents");
             return;
@@ -247,7 +247,7 @@ public class App {
         // Print header
         sb.append("| Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
         sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
-        // Loop over all employees in the list
+        // Loop over all continent in the list
         for (Country cont : continents) {
             if (cont == null) continue;
             sb.append("| " + cont.getCountryCode() + " | " +
@@ -321,7 +321,7 @@ public class App {
         // Loop over all region in the list
         for (Country r : region)
         {
-            //printRegion to check if an region is null
+            //printRegion to check if a region is null
             if (r == null)
                 continue;
             String regString =
@@ -337,7 +337,7 @@ public class App {
      * @param allregion
      */
     public void outputRegion(ArrayList<Country> allregion, String AllRegions) {
-        // Check region is not null
+        // Check country is not null
         if (allregion == null)
         {
             System.out.println("No regions");
@@ -348,7 +348,7 @@ public class App {
         // Print header
         sb.append("| Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
         sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
-        // Loop over all employees in the list
+        // Loop over all countires in the list
         for (Country regs : allregion)
         {
             if (regs == null) continue;
@@ -454,7 +454,7 @@ public class App {
         // Print header
         sb.append("| Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
         sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
-        // Loop over all employees in the list
+        // Loop over all countries in the list
         for (Country ncont : ncountries) {
             if (ncont == null) continue;
             sb.append("| " + ncont.getCountryCode() + " | " +
@@ -547,7 +547,7 @@ public class App {
      * @param ncontinents
      */
     public void outputNContinents(ArrayList<Country> ncontinents, String TopNContinents) {
-        // Check ncontinents is not null
+        // Check countries is not null
         if (ncontinents == null) {
             System.out.println("No N Countries");
             return;
@@ -557,7 +557,7 @@ public class App {
         // Print header
         sb.append("| Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
         sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
-        // Loop over all employees in the list
+        // Loop over all countries in the list
         for (Country ncont : ncontinents) {
             if (ncont == null) continue;
             sb.append("| " + ncont.getCountryCode() + " | " +
@@ -631,10 +631,10 @@ public class App {
         }
         // Print header
         System.out.println(String.format("%-10s %-40s %-30s %-30s %-30s %-30s","Code","Country Name","Continent","Region","Population","Capital"));
-        // Loop over all region in the list
+        // Loop over all countries in the list
         for (Country npopreg : nPopulatedRegion)
         {
-            //printNpopulatedRegion to check if an region is null
+            //printNpopulatedRegion to check if a region is null
             if (npopreg == null)
                 continue;
             String npopregString =
@@ -659,7 +659,7 @@ public class App {
         // Print header
         sb.append("| Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
         sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
-        // Loop over all employees in the list
+        // Loop over all countries in the list
         for (Country nreg : nregions) {
             if (nreg == null) continue;
             sb.append("| " + nreg.getCountryCode() + " | " +
@@ -919,7 +919,7 @@ public class App {
         // Loop over all cities in the list
         for (City r : regions)
         {
-            //printRegion to check if an region is null
+            //printRegion to check if a region is null
             if (r == null)
                 continue;
             String reg_string =
@@ -1505,7 +1505,7 @@ public class App {
     public void outputTopNcitycty(ArrayList<City> topNcty, String citcty) {
         // Check cities in a continent is not null
         if (topNcty == null) {
-            System.out.println("No City in a region");
+            System.out.println("No City in a country");
             return;
         }
 
@@ -1595,13 +1595,13 @@ public class App {
 
     /**
      * Outputs to Markdown
-     * 15. The top N populated cities in a district where N is provided by the user.
+     * 16. The top N populated cities in a district where N is provided by the user.
      * @param topNdist
      */
     public void outputTopNcitydist(ArrayList<City> topNdist, String citdist) {
-        // Check cities in a continent is not null
+        // Check cities in a district is not null
         if (topNdist == null) {
-            System.out.println("No City in a region");
+            System.out.println("No City in a district");
             return;
         }
 
@@ -2514,7 +2514,7 @@ public class App {
      * @param populationCountry
      */
     public void outputPopulationCountry(ArrayList<PeoplePopulation> populationCountry, String populationCountryReport) {
-        // Check employees is not null
+        // Check population is not null
         if (populationCountry == null) {
             System.out.println("No population");
             return;
@@ -2524,7 +2524,7 @@ public class App {
         // Print header
         sb.append("| Country Name | Total Country Population | Total City Population | People Not Living (%) | People Living (%) |\r\n");
         sb.append("| --- | --- | --- | --- | --- |\r\n");
-        // Loop over all employees in the list
+        // Loop over all population in the list
         for (PeoplePopulation popcoun : populationCountry) {
             if (popcoun == null) continue;
             sb.append("| " + popcoun.getCountriesName() + " | " +
@@ -2605,7 +2605,7 @@ public class App {
      * @param populationOfWorld
      */
     public void outputPopulationOfWorld(ArrayList<PeoplePopulation> populationOfWorld, String populationOfWorldReport) {
-        // Check employees is not null
+        // Check population is not null
         if (populationOfWorld == null) {
             System.out.println("No population");
             return;
@@ -2615,7 +2615,7 @@ public class App {
         // Print header
         sb.append("| Total World Population |\r\n");
         sb.append("| --- |\r\n");
-        // Loop over all employees in the list
+        // Loop over population in the list
         for (PeoplePopulation popofworld : populationOfWorld) {
             if (popofworld == null) continue;
             sb.append("| " + popofworld.getWorldPopulation() + " | " + "|\r\n");
@@ -2698,7 +2698,7 @@ public class App {
      * @param populationOfContinent
      */
     public void outputPopulationOfContinent(ArrayList<PeoplePopulation> populationOfContinent, String populationOfContinentReport) {
-        // Check employees is not null
+        // Check population is not null
         if (populationOfContinent == null) {
             System.out.println("No population");
             return;
@@ -2708,7 +2708,7 @@ public class App {
         // Print header
         sb.append("| Continent Name | Total Continent Population |\r\n");
         sb.append("| --- | --- |\r\n");
-        // Loop over all employees in the list
+        // Loop over population in the list
         for (PeoplePopulation popofcontinent : populationOfContinent) {
             if (popofcontinent == null) continue;
             sb.append("| " + popofcontinent.getContinentName() + " | " +
@@ -2791,7 +2791,7 @@ public class App {
      * @param populationOfRegion
      */
     public void outputPopulationOfRegion(ArrayList<PeoplePopulation> populationOfRegion, String populationOfRegionReport) {
-        // Check employees is not null
+        // Check population is not null
         if (populationOfRegion == null) {
             System.out.println("No population");
             return;
@@ -2801,7 +2801,7 @@ public class App {
         // Print header
         sb.append("| Region Name | Total Region Population |\r\n");
         sb.append("| --- | --- |\r\n");
-        // Loop over all employees in the list
+        // Loop over all population in the list
         for (PeoplePopulation popofregion : populationOfRegion) {
             if (popofregion == null) continue;
             sb.append("| " + popofregion.getRegionsName() + " | " +
@@ -2884,7 +2884,7 @@ public class App {
      * @param populationOfCountry
      */
     public void outputPopulationOfCountry(ArrayList<PeoplePopulation> populationOfCountry, String populationOfCountryReport) {
-        // Check employees is not null
+        // Check population is not null
         if (populationOfCountry == null) {
             System.out.println("No population");
             return;
@@ -2894,7 +2894,7 @@ public class App {
         // Print header
         sb.append("| Country Name | Total Country Population |\r\n");
         sb.append("| --- | --- |\r\n");
-        // Loop over all employees in the list
+        // Loop over all population in the list
         for (PeoplePopulation popofcountry : populationOfCountry) {
             if (popofcountry == null) continue;
             sb.append("| " + popofcountry.getCountriesName() + " | " +
@@ -2977,7 +2977,7 @@ public class App {
      * @param populationOfDistrict
      */
     public void outputPopulationOfDistrict(ArrayList<PeoplePopulation> populationOfDistrict, String populationOfDistrictReport) {
-        // Check employees is not null
+        // Check population is not null
         if (populationOfDistrict == null) {
             System.out.println("No population");
             return;
@@ -2987,7 +2987,7 @@ public class App {
         // Print header
         sb.append("| District Name | Total District Population |\r\n");
         sb.append("| --- | --- |\r\n");
-        // Loop over all employees in the list
+        // Loop over all population in the list
         for (PeoplePopulation popofdistrict : populationOfDistrict) {
             if (popofdistrict == null) continue;
             sb.append("| " + popofdistrict.getDistrictName() + " | " +
@@ -3070,7 +3070,7 @@ public class App {
      * @param populationOfCity
      */
     public void outputPopulationOfCity(ArrayList<PeoplePopulation> populationOfCity, String populationOfCityReport) {
-        // Check employees is not null
+        // Check population is not null
         if (populationOfCity == null) {
             System.out.println("No population");
             return;
@@ -3080,7 +3080,7 @@ public class App {
         // Print header
         sb.append("| City Name | Total City Population |\r\n");
         sb.append("| --- | --- |\r\n");
-        // Loop over all employees in the list
+        // Loop over all population in the list
         for (PeoplePopulation popofcity : populationOfCity) {
             if (popofcity == null) continue;
             sb.append("| " + popofcity.getCityName() + " | " +
@@ -3178,7 +3178,7 @@ public class App {
      * @param populationOfLanguage
      */
     public void outputPopulationOfLanguage(ArrayList<CountryLanguage> populationOfLanguage, String populationOfLanguageReport) {
-        // Check employees is not null
+        // Check language is not null
         if (populationOfLanguage == null) {
             System.out.println("No population");
             return;
@@ -3188,7 +3188,7 @@ public class App {
         // Print header
         sb.append("| Language | Population | Percentage |\r\n");
         sb.append("| --- | --- | --- |\r\n");
-        // Loop over all employees in the list
+        // Loop over all language in the list
         for (CountryLanguage popoflan : populationOfLanguage) {
             if (popoflan == null) continue;
             sb.append("| " + popoflan.getCountryLanguage() + " | " +
@@ -3319,7 +3319,7 @@ public class App {
         System.out.println("15: The top 10 populated cities in the Argentina.\n");
         ArrayList<City> ctys = a.getTopNPopulatedCountries("Argentina",10);
         a.printTopNCountries(ctys);
-        a.outputTopNcitycty(ctys,"Top 10 in Country.md");
+        a.outputTopNcitycty(ctys,"Top 10 Cities in Country.md");
         System.out.println("\n");
 
         // Display the top N populated cities in a district where N is provided by the user.
