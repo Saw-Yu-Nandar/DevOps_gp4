@@ -1026,13 +1026,13 @@ public class App {
 
     /**
      * Outputs to Markdown
-     * 9. All the cities in a country organised by largest population to smallest.
+     * 10. All the cities in a country organised by largest population to smallest.
      * @param citCount
      */
     public void outputcityCountry(ArrayList<City> citCount, String country) {
         // Check cities is not null
         if (citCount == null) {
-            System.out.println("No City in a continent");
+            System.out.println("No City in a country");
             return;
         }
 
@@ -1121,13 +1121,13 @@ public class App {
 
     /**
      * Outputs to Markdown
-     * 9. All the cities in a district organised by largest population to smallest.
+     * 11. All the cities in a district organised by largest population to smallest.
      * @param citDist
      */
     public void outputcityDistrict(ArrayList<City> citDist, String dist) {
         // Check cities is not null
         if (citDist == null) {
-            System.out.println("No City in a continent");
+            System.out.println("No City in a district");
             return;
         }
 
@@ -1210,6 +1210,39 @@ public class App {
                     String.format("%-35s %-40s %-25s %-25s",
                             w.getCit_name(),w.getCountry_name(),w.getCit_district(),w.getCit_population());
             System.out.println(w_string);
+        }
+    }
+
+    /**
+     * Outputs to Markdown
+     * 12. The top N populated cities in the world where N is provided by the user.
+     * @param topNWorld
+     */
+    public void outputTopNcityworld(ArrayList<City> topNWorld, String citWld) {
+        // Check cities is not null
+        if (topNWorld == null) {
+            System.out.println("No City in a world");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("| City Name | Country Name | District | Population |\r\n");
+        sb.append("| --- | --- | --- | --- |\r\n");
+        // Loop over all cities in the list
+        for (City topWld : topNWorld) {
+            if (topWld == null) continue;
+            sb.append("| " + topWld.getCit_name() + " | " +
+                    topWld.getCountry_name() + " | " +
+                    topWld.getCit_district() + " | " + topWld.getCit_population() + " |\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + citWld)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -3133,6 +3166,7 @@ public class App {
         System.out.println("12: the top 10 populated cities in the world.\n");
         ArrayList<City> city = a.getTopNPopulatedCities(10);
         a.printTopNWorlds(city);
+        a.outputTopNcityworld(city,"Top 10 Cities in World.md");
         System.out.println("\n");
 
         // Display the top N populated cities in a continent where N is provided by the user.
