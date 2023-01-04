@@ -1309,6 +1309,39 @@ public class App {
     }
 
     /**
+     * Outputs to Markdown
+     * 13. The top N populated cities in a continent where N is provided by the user.
+     * @param topNCont
+     */
+    public void outputTopNcityCont(ArrayList<City> topNCont, String citCont) {
+        // Check cities in a continent is not null
+        if (topNCont == null) {
+            System.out.println("No City in a continent");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("| City Name | Country Name | District | Population |\r\n");
+        sb.append("| --- | --- | --- | --- |\r\n");
+        // Loop over all cities in the list
+        for (City topCont : topNCont) {
+            if (topCont == null) continue;
+            sb.append("| " + topCont.getCit_name() + " | " +
+                    topCont.getCountry_name() + " | " +
+                    topCont.getCit_district() + " | " + topCont.getCit_population() + " |\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + citCont)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * 14. The top N populated cities in a region where N is provided by the user.
      * Query execution and pass the array list to format the return value.
      * Function is called in main.
@@ -3173,6 +3206,7 @@ public class App {
         System.out.println("13. The top 10 populated cities in the Europe.\n");
         ArrayList<City> topcnt = a.getTopNPopulatedContinent("Europe",10);
         a.printTopNContinent(topcnt);
+        a.outputTopNcityCont(topcnt,"Top 10 Cities in Continent.md");
         System.out.println("\n");
 
         // Display the top N populated cities in a region where N is provided by the user.
