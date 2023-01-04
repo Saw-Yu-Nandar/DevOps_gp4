@@ -1357,7 +1357,37 @@ public class App {
             System.out.println(capctrString);
         }
     }
+    /**
+     * Outputs to Markdown
+     * 17.All the capital cities in the world organised by largest population to smallest.
+     * @param allcapitalcity
+     */
+    public void outputCapitalCity(ArrayList<CapitalCity> allcapitalcity, String AllCapitalCitiesTable) {
+        // Check capital city is not null
+        if (allcapitalcity == null) {
+            System.out.println("No capital city in world.");
+            return;
+        }
 
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("| Capital City Name | Country | Population |\r\n");
+        sb.append("| --- | --- | --- |\r\n");
+        // Loop over all capital cities in the list
+        for (CapitalCity capcit : allcapitalcity) {
+            if (capcit == null) continue;
+            sb.append("| " + capcit.getCapCityName() + " | " +
+                    capcit.getCapCityCountry() + " | " + capcit.getCapCityPopulation() + "|\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + AllCapitalCitiesTable)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     /**
      * 18.All the capital cities in a continent organised by largest population to smallest.
      * Query execution and pass the array list to format the return value.
@@ -2811,6 +2841,7 @@ public class App {
         System.out.println("17: All the capital cities in the world organised by largest population to smallest.\n");
         ArrayList<CapitalCity> capitalCities = a.getAllCapitalCities();
         a.printAllCapitalCities(capitalCities);
+        a.outputCapitalCity(capitalCities, "All Capital Cities in World.md");
         System.out.println("\n");
 
         // All the capital cities in a continent organised by largest population to smallest.
