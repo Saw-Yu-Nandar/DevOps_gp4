@@ -1770,7 +1770,7 @@ public class App {
      * 23. The population of people, people living in cities, and people not living in cities in each continent.
      * @param populationContinent
      */
-    public void outputPopulationContinent(ArrayList<PeoplePopulation> populationContinent, String AllCountries) {
+    public void outputPopulationContinent(ArrayList<PeoplePopulation> populationContinent, String populationContinentReport) {
         // Check employees is not null
         if (populationContinent == null) {
             System.out.println("No population");
@@ -1791,7 +1791,7 @@ public class App {
         }
         try {
             new File("./reports/").mkdir();
-            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + populationContinent)));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + populationContinentReport)));
             writer.write(sb.toString());
             writer.close();
         } catch (IOException e) {
