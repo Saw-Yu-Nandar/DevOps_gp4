@@ -2889,15 +2889,16 @@ public class App {
             System.out.println("No population");
             return;
         }
-
+        int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| Country Name | Total Country Population |\r\n");
-        sb.append("| --- | --- |\r\n");
+        sb.append("| No. | Country Name | Total Country Population |\r\n");
+        sb.append("| --- | --- | --- |\r\n");
         // Loop over all population in the list
         for (PeoplePopulation popofcountry : populationOfCountry) {
+            idnum += 0;
             if (popofcountry == null) continue;
-            sb.append("| " + popofcountry.getCountriesName() + " | " +
+            sb.append("| " + idnum + "| " + popofcountry.getCountriesName() + " | " +
                     popofcountry.getCountriesPopulation() + " | " + "|\r\n");
         }
         try {
