@@ -1984,15 +1984,16 @@ public class App {
             System.out.println("No top 10 capital city in world.");
             return;
         }
-
+        int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| Capital City Name | Country | Population |\r\n");
-        sb.append("| --- | --- | --- |\r\n");
+        sb.append("| No. | Capital City Name | Country | Population |\r\n");
+        sb.append("| --- | --- | --- | --- |\r\n");
         // Loop over top 10 capital city in the list
         for (CapitalCity topcapcit : top10capitalcity) {
+            id += 1;
             if (topcapcit == null) continue;
-            sb.append("| " + topcapcit.getCapCityName() + " | " + topcapcit.getCapCityCountry() + " | " +
+            sb.append("| " + id + "| " + topcapcit.getCapCityName() + " | " + topcapcit.getCapCityCountry() + " | " +
                     topcapcit.getCapCityPopulation() + "|\r\n");
         }
         try {
