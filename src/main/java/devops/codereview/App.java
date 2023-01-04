@@ -208,16 +208,14 @@ public class App {
 
     /**
      * 2. All the countries in a continent organised by largest population to smallest.
-     *
-     Su Hnin, [12/25/2022 11:38 PM]
-     ormatting the output data from the list.
+     * Formatting the output data from the list.
      **/
     public void printContinent(ArrayList<Country> continent)
     {
         // Check continent is not null
         if (continent == null)
         {
-            System.out.println("No employees");
+            System.out.println("No continent");
             return;
         }
         // Print header
@@ -231,6 +229,39 @@ public class App {
                     String.format("%-10s %-40s %-30s %-30s %-30s %-30s",
                             cont.getCountryCode(),cont.getCountryName(),cont.getCountryCont(),cont.getCountryReg(),cont.getCountryPopulation(),cont.getCountryCap());
             System.out.println(contString);
+        }
+    }
+    /**
+     * Outputs to Markdown
+     * 2. All the countries in a continent organised by largest population to smallest.
+     * @param continents
+     */
+    public void outputContinent(ArrayList<Country> continents, String AllContinents) {
+        // Check employees is not null
+        if (continents == null) {
+            System.out.println("No continents");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("| Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
+        sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
+        // Loop over all employees in the list
+        for (Country cont : continents) {
+            if (cont == null) continue;
+            sb.append("| " + cont.getCountryCode() + " | " +
+                    cont.getCountryName() + " | " + cont.getCountryCont() + " | " +
+                    cont.getCountryReg() + " | " + cont.getCountryPopulation() + " | "
+                    + cont.getCountryCap() + "|\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + AllContinents)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -2207,11 +2238,11 @@ public class App {
         a.outputCountries(country, "AllCountries.md");
         System.out.println("\n");
 
-
         // Display all the countries in a continent organised by largest population to smallest.
         System.out.println("2: All the countries in the Oceania organised by largest population to smallest.\n");
         ArrayList<Country> continents = a.getAllContinents("Oceania");
         a.printAllCountries(continents);
+        a.outputContinent(continents, "AllContinents.md");
         System.out.println("\n");
 
         // Display all the countries in a region organised by largest population to smallest.
