@@ -113,12 +113,47 @@ public class PeoplePopulationIntegrationTest {
      * Query 32: languages Percentage, Population
      */
     @Test
-    void testGetLanguages ()
+    void testGetLanguagesChinese ()
     {
         ArrayList<CountryLanguage> couLang = app.getCountryLanguage("Chinese","English","Hindi","Spanish","Arabic");
         CountryLanguage lang = couLang.get(0);
         assertEquals(lang.getCountryLanguage(), "Chinese");
         assertEquals(lang.getCountryPopulation(), "1968265500");
+    }
 
+    @Test
+    void testGetLanguagesEnglish ()
+    {
+        ArrayList<CountryLanguage> couLang = app.getCountryLanguage("Chinese","English","Hindi","Spanish","Arabic");
+        CountryLanguage lang = couLang.get(3);
+        assertEquals(lang.getCountryLanguage(), "English");
+        assertEquals(lang.getCountryPopulation(), "627418300");
+    }
+
+    @Test
+    void testGetLanguagesHindi ()
+    {
+        ArrayList<CountryLanguage> couLang = app.getCountryLanguage("Chinese","English","Hindi","Spanish","Arabic");
+        CountryLanguage lang = couLang.get(1);
+        assertEquals(lang.getCountryLanguage(), "Hindi");
+        assertEquals(lang.getCountryPopulation(), "1046303000");
+    }
+
+    @Test
+    void testGetLanguagesSpanish ()
+    {
+        ArrayList<CountryLanguage> couLang = app.getCountryLanguage("Chinese","English","Hindi","Spanish","Arabic");
+        CountryLanguage lang = couLang.get(2);
+        assertEquals(lang.getCountryLanguage(), "Spanish");
+        assertEquals(lang.getCountryPopulation(), "750296800");
+    }
+
+    @Test
+    void testGetLanguagesArabic ()
+    {
+        ArrayList<CountryLanguage> couLang = app.getCountryLanguage("Chinese","English","Hindi","Spanish","Arabic");
+        CountryLanguage lang = couLang.get(4);
+        assertEquals(lang.getCountryLanguage(), "Arabic");
+        assertEquals(lang.getCountryPopulation(), "552045100");
     }
 }
