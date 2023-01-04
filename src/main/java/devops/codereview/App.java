@@ -343,16 +343,17 @@ public class App {
             System.out.println("No regions");
             return;
         }
-
+        int i = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
-        sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
+        sb.append("| No. | Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
+        sb.append("| --- | --- | --- | --- | --- | --- | --- |\r\n");
         // Loop over all countires in the list
         for (Country regs : allregion)
         {
+            i += 1;
             if (regs == null) continue;
-            sb.append("| " + regs.getCountryCode() + " | " +
+            sb.append("| " + i + "| " + regs.getCountryCode() + " | " +
                     regs.getCountryName() + " | " + regs.getCountryCont() + " | " +
                     regs.getCountryReg() + " | " + regs.getCountryPopulation() + " | "
                     + regs.getCountryCap() + "|\r\n");
@@ -449,15 +450,16 @@ public class App {
             System.out.println("No N Countries");
             return;
         }
-
+        int i = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
-        sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
+        sb.append("| No. | Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
+        sb.append("| --- | --- | --- | --- | --- | --- | --- |\r\n");
         // Loop over all countries in the list
         for (Country ncont : ncountries) {
+            i += 1;
             if (ncont == null) continue;
-            sb.append("| " + ncont.getCountryCode() + " | " +
+            sb.append("| " + i + "| " + ncont.getCountryCode() + " | " +
                     ncont.getCountryName() + " | " + ncont.getCountryCont() + " | " +
                     ncont.getCountryReg() + " | " + ncont.getCountryPopulation() + " | "
                     + ncont.getCountryCap() + "|\r\n");
@@ -552,15 +554,16 @@ public class App {
             System.out.println("No N Countries");
             return;
         }
-
+        int i = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
-        sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
+        sb.append("| No. | Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
+        sb.append("| --- | --- | --- | --- | --- | --- | --- |\r\n");
         // Loop over all countries in the list
         for (Country ncont : ncontinents) {
+            i += 1;
             if (ncont == null) continue;
-            sb.append("| " + ncont.getCountryCode() + " | " +
+            sb.append("| " + i + "| " + ncont.getCountryCode() + " | " +
                     ncont.getCountryName() + " | " + ncont.getCountryCont() + " | " +
                     ncont.getCountryReg() + " | " + ncont.getCountryPopulation() + " | "
                     + ncont.getCountryCap() + "|\r\n");
@@ -654,15 +657,16 @@ public class App {
             System.out.println("No N Countries");
             return;
         }
-
+        int i = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
-        sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
+        sb.append("| No. | Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
+        sb.append("| --- | --- | --- | --- | --- | --- | --- |\r\n");
         // Loop over all countries in the list
         for (Country nreg : nregions) {
+            i += 1;
             if (nreg == null) continue;
-            sb.append("| " + nreg.getCountryCode() + " | " +
+            sb.append("| " + i + "| " + nreg.getCountryCode() + " | " +
                     nreg.getCountryName() + " | " + nreg.getCountryCont() + " | " +
                     nreg.getCountryReg() + " | " + nreg.getCountryPopulation() + " | "
                     + nreg.getCountryCap() + "|\r\n");
