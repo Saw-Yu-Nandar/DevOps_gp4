@@ -740,6 +740,38 @@ public class App {
     }
 
     /**
+     * Outputs to Markdown
+     * 7. All the cities in the world organised by largest population to smallest.
+     * @param allCity
+     */
+    public void outputCities(ArrayList<City> allCity, String allCities) {
+        // Check cities is not null
+        if (allCity == null) {
+            System.out.println("No City");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("| City Name | Country Name | Population |\r\n");
+        sb.append("| --- | --- | --- |\r\n");
+        // Loop over all cities in the list
+        for (City cit : allCity) {
+            if (cit == null) continue;
+            sb.append("| " + cit.getCit_name() + " | " +
+                    cit.getCountry_name() + " | " + cit.getCit_population() + " |\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + allCities)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * 8. All the cities in a continent organised by largest population to smallest.
      * Query execution and pass the array list to format the return value.
      * Function is called in main.
@@ -2931,6 +2963,7 @@ public class App {
         System.out.println("7: All the cities in the world organised by largest population to smallest.\n");
         ArrayList<City> cou = a.getAllCities();
         a.printCities(cou);
+        a.outputCities(cou,"All cities.md");
         System.out.println("\n");
 
         // Display all the cities in a continent organised by largest population to smallest.
