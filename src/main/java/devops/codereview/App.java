@@ -155,7 +155,7 @@ public class App {
             if (cou == null) continue;
             sb.append("| " + i + "| " + cou.getCountryCode() + " | " +
                     cou.getCountryName() + " | " + cou.getCountryCont() + " | " +
-                    cou.getCountryReg() + " | " + numFormat.format(cou.getCountryPopulation()) + " | "
+                    cou.getCountryReg() + " | " + numFormat.format(Integer.parseInt(cou.getCountryPopulation())) + " | "
                     + cou.getCountryCap() + "|\r\n");
         }
         try {
