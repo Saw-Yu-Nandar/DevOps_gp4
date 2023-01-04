@@ -2519,15 +2519,16 @@ public class App {
             System.out.println("No population");
             return;
         }
-
+        int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| Country Name | Total Country Population | Total City Population | People Not Living (%) | People Living (%) |\r\n");
-        sb.append("| --- | --- | --- | --- | --- |\r\n");
+        sb.append("| No. | Country Name | Total Country Population | Total City Population | People Not Living (%) | People Living (%) |\r\n");
+        sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
         // Loop over all population in the list
         for (PeoplePopulation popcoun : populationCountry) {
+            id += 1;
             if (popcoun == null) continue;
-            sb.append("| " + popcoun.getCountriesName() + " | " +
+            sb.append("| " + id + "| " + popcoun.getCountriesName() + " | " +
                     popcoun.getCountriesPopulation() + " | " + popcoun.getCityPopulation() + " | " +
                     popcoun.getNotLivingPopCountry() + " | " + popcoun.getLivingPopCountry() + " | "
                     + "|\r\n");
