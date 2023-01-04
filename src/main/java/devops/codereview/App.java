@@ -1700,15 +1700,16 @@ public class App {
             System.out.println("No capital city in world.");
             return;
         }
-
+        int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| Capital City Name | Country | Population |\r\n");
-        sb.append("| --- | --- | --- |\r\n");
+        sb.append("| No. | Capital City Name | Country | Population |\r\n");
+        sb.append("| --- | --- | --- | --- |\r\n");
         // Loop over all capital cities in the list
         for (CapitalCity capcit : allcapitalcity) {
+            id += 1;
             if (capcit == null) continue;
-            sb.append("| " + capcit.getCapCityName() + " | " +
+            sb.append("| " + id + "| " + capcit.getCapCityName() + " | " +
                     capcit.getCapCityCountry() + " | " + capcit.getCapCityPopulation() + "|\r\n");
         }
         try {
@@ -1795,15 +1796,16 @@ public class App {
             System.out.println("No capital city in continent.");
             return;
         }
-
+        int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| Capital City Name | Country | Continent | Population |\r\n");
-        sb.append("| --- | --- | --- | --- |\r\n");
+        sb.append("| No. | Capital City Name | Country | Continent | Population |\r\n");
+        sb.append("| --- | --- | --- | --- | --- |\r\n");
         // Loop over all continents in the list
         for (CapitalCity capcitcon : allcapitalcitycont) {
+            id += 1;
             if (capcitcon == null) continue;
-            sb.append("| " + capcitcon.getCapCityName() + " | " + capcitcon.getCapCityCountry() + " | " +
+            sb.append("| " + id + "| " + capcitcon.getCapCityName() + " | " + capcitcon.getCapCityCountry() + " | " +
                     capcitcon.getCapCityContinent()+ " | " + capcitcon.getCapCityPopulation() + "|\r\n");
         }
         try {
@@ -1890,15 +1892,16 @@ public class App {
             System.out.println("No capital city in region.");
             return;
         }
-
+        int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| Capital City Name | Country | Region | Population |\r\n");
-        sb.append("| --- | --- | --- | --- |\r\n");
+        sb.append("| No. | Capital City Name | Country | Region | Population |\r\n");
+        sb.append("| --- | --- | --- | --- | --- |\r\n");
         // Loop over all regions in the list
         for (CapitalCity capcitreg : allcapitalcityreg) {
+            id += 1;
             if (capcitreg == null) continue;
-            sb.append("| " + capcitreg.getCapCityName() + " | " + capcitreg.getCapCityCountry() + " | " +
+            sb.append("| " + id + "| " + capcitreg.getCapCityName() + " | " + capcitreg.getCapCityCountry() + " | " +
                     capcitreg.getCapCityRegion()+ " | " + capcitreg.getCapCityPopulation() + "|\r\n");
         }
         try {
