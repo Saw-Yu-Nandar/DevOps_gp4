@@ -2087,7 +2087,36 @@ public class App {
             System.out.println("Total World Population: "+pworldString);
         }
     }
+    /**
+     * Outputs to Markdown
+     * 26. The population of the world.
+     * @param populationOfWorld
+     */
+    public void outputPopulationOfWorld(ArrayList<PeoplePopulation> populationOfWorld, String populationOfWorldReport) {
+        // Check employees is not null
+        if (populationOfWorld == null) {
+            System.out.println("No population");
+            return;
+        }
 
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("| Total World Population |\r\n");
+        sb.append("| --- |\r\n");
+        // Loop over all employees in the list
+        for (PeoplePopulation popofworld : populationOfWorld) {
+            if (popofworld == null) continue;
+            sb.append("| " + popofworld.getWorldPopulation() + " | " + "|\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + populationOfWorldReport)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * 27.The population of the continent.
@@ -2651,6 +2680,7 @@ public class App {
         System.out.println("26. The population of the world.");
         ArrayList<PeoplePopulation> popWorld = a.getWorldPopulation();
         a.printWorldPopulation(popWorld);
+        a.outputPopulationOfWorld(popWorld, "PopulationOfWorld.md");
         System.out.println("\n");
 
         // The population of the continent.
