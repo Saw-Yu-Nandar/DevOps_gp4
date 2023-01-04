@@ -1734,6 +1734,7 @@ public class App {
             System.out.println("No capital city in world.");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -1744,7 +1745,7 @@ public class App {
             id += 1;
             if (capcit == null) continue;
             sb.append("| " + id + "| " + capcit.getCapCityName() + " | " +
-                    capcit.getCapCityCountry() + " | " + capcit.getCapCityPopulation() + "|\r\n");
+                    capcit.getCapCityCountry() + " | " + numFormat.format(Integer.parseInt(capcit.getCapCityPopulation())) + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -1830,6 +1831,7 @@ public class App {
             System.out.println("No capital city in continent.");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -1840,7 +1842,7 @@ public class App {
             id += 1;
             if (capcitcon == null) continue;
             sb.append("| " + id + "| " + capcitcon.getCapCityName() + " | " + capcitcon.getCapCityCountry() + " | " +
-                    capcitcon.getCapCityContinent()+ " | " + capcitcon.getCapCityPopulation() + "|\r\n");
+                    capcitcon.getCapCityContinent()+ " | " + numFormat.format(Integer.parseInt(capcitcon.getCapCityPopulation())) + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -1926,6 +1928,7 @@ public class App {
             System.out.println("No capital city in region.");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -1936,7 +1939,7 @@ public class App {
             id += 1;
             if (capcitreg == null) continue;
             sb.append("| " + id + "| " + capcitreg.getCapCityName() + " | " + capcitreg.getCapCityCountry() + " | " +
-                    capcitreg.getCapCityRegion()+ " | " + capcitreg.getCapCityPopulation() + "|\r\n");
+                    capcitreg.getCapCityRegion()+ " | " + numFormat.format(Integer.parseInt(capcitreg.getCapCityPopulation())) + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -2021,6 +2024,7 @@ public class App {
             System.out.println("No top 10 capital city in world.");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -2031,7 +2035,7 @@ public class App {
             id += 1;
             if (topcapcit == null) continue;
             sb.append("| " + id + "| " + topcapcit.getCapCityName() + " | " + topcapcit.getCapCityCountry() + " | " +
-                    topcapcit.getCapCityPopulation() + "|\r\n");
+                    numFormat.format(Integer.parseInt(topcapcit.getCapCityPopulation())) + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -2117,6 +2121,7 @@ public class App {
             System.out.println("No top 10 capital city in continent.");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -2127,7 +2132,7 @@ public class App {
             id += 1;
             if (topcapcitcon == null) continue;
             sb.append("| " + id +  "| " + topcapcitcon.getCapCityName() + " | " + topcapcitcon.getCapCityCountry() + " | " +
-                    topcapcitcon.getContinentName() + " | " + topcapcitcon.getCapCityPopulation() + "|\r\n");
+                    topcapcitcon.getContinentName() + " | " + numFormat.format(Integer.parseInt(topcapcitcon.getCapCityPopulation())) + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -2213,6 +2218,7 @@ public class App {
             System.out.println("No top 10 capital city in region.");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -2223,7 +2229,7 @@ public class App {
             id += 1;
             if (topcapcitreg == null) continue;
             sb.append("| " + id + "| " + topcapcitreg.getCapCityName() + " | " + topcapcitreg.getCapCityCountry() + " | " +
-                    topcapcitreg.getRegionName() + " | " + topcapcitreg.getCapCityPopulation() + "|\r\n");
+                    topcapcitreg.getRegionName() + " | " + numFormat.format(Integer.parseInt(topcapcitreg.getCapCityPopulation())) + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -2330,6 +2336,7 @@ public class App {
             System.out.println("No population");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -2340,7 +2347,7 @@ public class App {
             id += 1;
             if (popcontinent == null) continue;
             sb.append("| " + id + "| " + popcontinent.getContinentName() + " | " +
-                    popcontinent.getContinentPopulation() + " | " + popcontinent.getCityPopulation() + " | " +
+                    numFormat.format(Integer.parseInt(popcontinent.getContinentPopulation())) + " | " + numFormat.format(Integer.parseInt(popcontinent.getCityPopulation())) + " | " +
                     popcontinent.getNotLivingPopContinent() + " | " + popcontinent.getLivingPopContinent() + " | "
                     + "|\r\n");
         }
@@ -2447,6 +2454,7 @@ public class App {
             System.out.println("No population");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -2457,7 +2465,7 @@ public class App {
             id += 1;
             if (poprgn == null) continue;
             sb.append("| " + id + "| " + poprgn.getRegionsName() + " | " +
-                    poprgn.getRegionsPopulation() + " | " + poprgn.getCityPopulation() + " | " +
+                    numFormat.format(Integer.parseInt(poprgn.getRegionsPopulation())) + " | " + numFormat.format(Integer.parseInt(poprgn.getCityPopulation())) + " | " +
                     poprgn.getNotLivingPopRegion() + " | " + poprgn.getLivingPopRegion() + " | "
                     + "|\r\n");
         }
@@ -2563,6 +2571,7 @@ public class App {
             System.out.println("No population");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -2573,7 +2582,7 @@ public class App {
             id += 1;
             if (popcoun == null) continue;
             sb.append("| " + id + "| " + popcoun.getCountriesName() + " | " +
-                    popcoun.getCountriesPopulation() + " | " + popcoun.getCityPopulation() + " | " +
+                    numFormat.format(Integer.parseInt(popcoun.getCountriesPopulation())) + " | " + numFormat.format(Integer.parseInt(popcoun.getCityPopulation())) + " | " +
                     popcoun.getNotLivingPopCountry() + " | " + popcoun.getLivingPopCountry() + " | "
                     + "|\r\n");
         }
@@ -2655,6 +2664,7 @@ public class App {
             System.out.println("No population");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -2664,7 +2674,7 @@ public class App {
         for (PeoplePopulation popofworld : populationOfWorld) {
             idnum += 1;
             if (popofworld == null) continue;
-            sb.append("| " + idnum + "| " + popofworld.getWorldPopulation() + " | " + "|\r\n");
+            sb.append("| " + idnum + "| " + numFormat.format(Integer.parseInt(popofworld.getWorldPopulation())) + " | " + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -2749,6 +2759,7 @@ public class App {
             System.out.println("No population");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -2759,7 +2770,7 @@ public class App {
             idnum += 1;
             if (popofcontinent == null) continue;
             sb.append("| " + idnum + "| " + popofcontinent.getContinentName() + " | " +
-                    popofcontinent.getContinentPopulation() + " | " + "|\r\n");
+                    numFormat.format(Integer.parseInt(popofcontinent.getContinentPopulation())) + " | " + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -2843,6 +2854,7 @@ public class App {
             System.out.println("No population");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -2853,7 +2865,7 @@ public class App {
             idnum += 1;
             if (popofregion == null) continue;
             sb.append("| " + idnum + "| " + popofregion.getRegionsName() + " | " +
-                    popofregion.getRegionsPopulation() + " | " + "|\r\n");
+                    numFormat.format(Integer.parseInt(popofregion.getRegionsPopulation())) + " | " + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -2937,6 +2949,7 @@ public class App {
             System.out.println("No population");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -2947,7 +2960,7 @@ public class App {
             idnum += 1;
             if (popofcountry == null) continue;
             sb.append("| " + idnum + "| " + popofcountry.getCountriesName() + " | " +
-                    popofcountry.getCountriesPopulation() + " | " + "|\r\n");
+                    numFormat.format(Integer.parseInt(popofcountry.getCountriesPopulation())) + " | " + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -3031,6 +3044,7 @@ public class App {
             System.out.println("No population");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -3041,7 +3055,7 @@ public class App {
             idnum += 1;
             if (popofdistrict == null) continue;
             sb.append("| " + idnum + "| " + popofdistrict.getDistrictName() + " | " +
-                    popofdistrict.getDistrictPopulation() + " | " + "|\r\n");
+                    numFormat.format(Integer.parseInt(popofdistrict.getDistrictPopulation())) + " | " + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -3125,6 +3139,7 @@ public class App {
             System.out.println("No population");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -3135,7 +3150,7 @@ public class App {
             idnum += 1;
             if (popofcity == null) continue;
             sb.append("| " + idnum + "| " + popofcity.getCityName() + " | " +
-                    popofcity.getCityPopulation() + " | " + "|\r\n");
+                    numFormat.format(Integer.parseInt(popofcity.getCityPopulation())) + " | " + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -3234,6 +3249,7 @@ public class App {
             System.out.println("No population");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -3244,7 +3260,7 @@ public class App {
             idnum += 1;
             if (popoflan == null) continue;
             sb.append("| " + idnum + "| " + popoflan.getCountryLanguage() + " | " +
-                    popoflan.getCountryPopulation() + " | " + popoflan.getCountryLanguagePercent() + " | " + "|\r\n");
+                    numFormat.format(Integer.parseInt(popoflan.getCountryPopulation())) + " | " + popoflan.getCountryLanguagePercent() + " | " + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
