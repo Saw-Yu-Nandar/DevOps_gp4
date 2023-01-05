@@ -799,7 +799,8 @@ public class App {
                 conti.setCitName(rset.getString("CityName"));
                 conti.setCountryName(rset.getString("CountryName"));
                 conti.setCitDistrict(rset.getString("District"));
-                conti.setCitCont(rset.getString("Continent"));
+                //conti.setCitCont(rset.getString("Continent"));
+                conti.setCitCont(inputCitContinent);
                 conti.setCitPopulation(rset.getString("Population"));
                 continent.add(conti);
             }
