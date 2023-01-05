@@ -128,41 +128,6 @@ public class App
     }
 
     /**
-     * Outputs to Markdown
-     * 1. All the countries in the world organised by largest population to smallest.
-     * @param countries
-     */
-    public void outputCountries(ArrayList<Country> countries, String AllCountries) {
-        // Check employees is not null
-        if (countries == null) {
-            System.out.println("No country");
-            return;
-        }
-
-        StringBuilder sb = new StringBuilder();
-        // Print header
-        sb.append("| Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
-        sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
-        // Loop over all employees in the list
-        for (Country cou : countries) {
-            if (cou == null) continue;
-            sb.append("| " + cou.getCountryCode() + " | " +
-                    cou.getCountryName() + " | " + cou.getCountryCont() + " | " +
-                    cou.getCountryReg() + " | " + cou.getCountryPopulation() + " | "
-                    + cou.getCountryCap() + "|\r\n");
-        }
-        try {
-            new File("./reports/").mkdir();
-            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + AllCountries)));
-            writer.write(sb.toString());
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    /**
      * 2. All the countries in a continent organised by largest population to smallest.
      * Query execution and pass the array list to format the return value.
      * Function is called in main.
@@ -198,7 +163,7 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get all the countries in the Oceania organised by largest population to smallest.");
+            System.out.println("Failed to get all the countries in Oceania organised by largest population to smallest.");
             return null;
         }
     }
@@ -214,7 +179,7 @@ public class App
         // Check continent is not null
         if (continent == null)
         {
-            System.out.println("No employees");
+            System.out.println("There is no country in Oceania.");
             return;
         }
         // Print header
@@ -248,7 +213,7 @@ public class App
                     "SELECT country.Code, country.Name as 'CountryName', country.Continent, country.Region, city.Name as 'CityName', country.Population FROM country INNER JOIN city WHERE country.Code = city.CountryCode AND country.Capital=city.ID AND country.Region = '"+inputRegion+"' ORDER BY country.Population DESC;";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryThree);
-            // Extract region information
+            // Extract country information
             ArrayList<Country> regions = new ArrayList<Country>();
             while (rset.next())
             {
@@ -266,7 +231,7 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get all the countries in the Caribbean organised by largest population to smallest.");
+            System.out.println("Failed to get all the countries in Caribbean organised by largest population to smallest.");
             return null;
         }
     }
@@ -279,7 +244,7 @@ public class App
         // Check region is not null
         if (region == null)
         {
-            System.out.println("No region");
+            System.out.println("There is no region in Caribbean.");
             return;
         }
         // Print header
@@ -347,12 +312,12 @@ public class App
         // Check npopulatedcountries is not null
         if (nPopulatedCountry == null)
         {
-            System.out.println("No region");
+            System.out.println("There is no top 10 populated country in the world.");
             return;
         }
         // Print header
         System.out.println(String.format("%-10s %-40s %-30s %-30s %-30s %-30s", "Code", "Country Name", "Continent", "Region", "Population", "Capital"));
-        // Loop over all countries in the list
+        // Loop over top n country in the list
         for (Country npopc : nPopulatedCountry)
         {
             //printcontinent to check if an Continent is null
@@ -383,7 +348,7 @@ public class App
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryFive);
-            // Extract continent information
+            // Extract country information
             ArrayList<Country> nPopulatedContinents = new ArrayList<Country>();
             while (rset.next())
             {
@@ -401,7 +366,7 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the top 10 populated countries in the Europe.");
+            System.out.println("Failed to get the top 10 populated countries in Europe.");
             return null;
         }
     }
@@ -415,7 +380,7 @@ public class App
         // Check npopulatedcontinent is not null
         if (nPopulatedContinents == null)
         {
-            System.out.println("No region");
+            System.out.println("There is no top 10 populated country in Europe.");
             return;
         }
         // Print header
@@ -451,7 +416,7 @@ public class App
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQuerySix);
-            // Extract region information
+            // Extract country information
             ArrayList<Country> nPopulatedRegion = new ArrayList<Country>();
             while (rset.next())
             {
@@ -469,7 +434,7 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the top 10 populated countries in the Caribbean.");
+            System.out.println("Failed to get the top 10 populated countries in Caribbean.");
             return null;
         }
     }
@@ -483,7 +448,7 @@ public class App
         // Check npopulatedregion is not null
         if (nPopulatedRegion == null)
         {
-            System.out.println("No region");
+            System.out.println("There is no top 10 populated country in Caribbean.");
             return;
         }
         // Print header
@@ -517,18 +482,17 @@ public class App
         System.out.println("1: All the countries in the world organised by largest population to smallest.\n");
         ArrayList<Country> country = a.getAllCountries();
         a.printAllCountries(country);
-        a.outputCountries(country, "AllCountries.md");
         System.out.println("\n");
 
 
         // Display all the countries in a continent organised by largest population to smallest.
-        System.out.println("2: All the countries in the Oceania organised by largest population to smallest.\n");
+        System.out.println("2: All the countries in Oceania organised by largest population to smallest.\n");
         ArrayList<Country> continents = a.getAllContinents("Oceania");
         a.printAllCountries(continents);
         System.out.println("\n");
 
         // Display all the countries in a region organised by largest population to smallest.
-        System.out.println("3: All the countries in the Caribbean organised by largest population to smallest.\n");
+        System.out.println("3: All the countries in Caribbean organised by largest population to smallest.\n");
         ArrayList<Country> regions = a.getAllRegion("Caribbean");
         a.printAllCountries(regions);
         System.out.println("\n");
@@ -540,13 +504,13 @@ public class App
         System.out.println("\n");
 
         // Display all the countries in a continent organised by largest population to smallest.
-        System.out.println("5. The top 10 populated countries in the Europe.\n");
+        System.out.println("5. The top 10 populated countries in Europe.\n");
         ArrayList<Country> nPopulatedContinents = a.getAllNPopulatedContinents("Europe", 10);
         a.printContinent(nPopulatedContinents);
         System.out.println("\n");
 
         // Display the top N populated countries in a region where N is provided by the user.
-        System.out.println("6: The top 10 populated countries in the Caribbean.\n");
+        System.out.println("6: The top 10 populated countries in Caribbean.\n");
         ArrayList<Country> nPopulatedRegion = a.getAllNPopulatedRegion("Caribbean", 10);
         a.printNPopulatedRegion(nPopulatedRegion);
         System.out.println("\n");
