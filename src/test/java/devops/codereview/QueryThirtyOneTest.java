@@ -1,5 +1,5 @@
 package devops.codereview;
-
+//Unit testing for the population of the city.
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 

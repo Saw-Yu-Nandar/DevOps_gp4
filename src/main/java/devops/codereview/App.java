@@ -81,7 +81,7 @@ public class App
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryTwentyThree);
-            // Extract continent information
+            // Extract people population information
             ArrayList<PeoplePopulation> populationCont = new ArrayList<PeoplePopulation>();
             while (rset.next())
             {
@@ -114,11 +114,11 @@ public class App
         }
         // Print header
         System.out.println(String.format("%-20s %-28s %-25s %-25s %-25s", "Continent","Continent Total Population","City Total Population","People Not Living (%)","People Living (%)"));
-        // Loop over all capital cities in a continent
+        // Loop over people population in a continent
 
         for (PeoplePopulation pcon : popuConti)
         {
-            //print the list to check if capital cities in a continent is null
+            //print the list to check if people population in a continent is null
             if (pcon == null)
                 continue;
             if (pcon.getCityPopulation() == null){
@@ -162,7 +162,7 @@ public class App
                     "SELECT country.Region, SUM(country.Population) as 'RegionPopulation', SUM((SELECT SUM(city.Population) FROM city WHERE city.CountryCode=country.Code)) as 'CityPopulation' FROM country GROUP BY country.Region;";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryTwentyFour);
-            // Extract region information
+            // Extract people population information
             ArrayList<PeoplePopulation> populationReg = new ArrayList<PeoplePopulation>();
             while (rset.next())
             {
@@ -195,10 +195,10 @@ public class App
         }
         // Print header
         System.out.println(String.format("%-30s %-25s %-25s %-25s %-25s", "Region", "Region Total Population","City Total Population", "People Not Living (%)", "People Living (%)"));
-        // Loop over all capital cities in a region
+        // Loop over people population in a region
         for (PeoplePopulation preg : popuRegs)
         {
-            //print the list to check if capital cities in a region is null
+            //print the list to check if people population in a region is null
             if (preg == null)
                 continue;
             if (preg.getCityPopulation() == null){
@@ -241,7 +241,7 @@ public class App
                     "SELECT country.Name, SUM(country.Population) as 'CountryPopulation', SUM((SELECT SUM(city.Population) FROM city WHERE city.CountryCode=country.Code)) as 'CityPopulation' FROM country GROUP BY country.Name;";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryTwentyFive);
-            // Extract country information
+            // Extract people population information
             ArrayList<PeoplePopulation> populationCou = new ArrayList<PeoplePopulation>();
             while (rset.next())
             {
@@ -274,9 +274,10 @@ public class App
         }
         // Print header
         System.out.println(String.format("%-45s %-28s %-25s %-25s %-25s", "Country Name" ,"Country Total Population" ,"City Total Population", "People Not Living(%)", "People Living(%)"));
+        // Loop over people population in a country
         for (PeoplePopulation pcou : popuCoun)
         {
-            //print the list to check if capital cities in a country is null
+            //print the list to check if people population in a country is null
             if (pcou == null)
                 continue;
             if (pcou.getCityPopulation() == null){
@@ -318,7 +319,7 @@ public class App
                     "SELECT SUM(country.Population) as 'Population' FROM country;";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryTwentySix);
-            // Extract country information
+            // Extract people population information
             ArrayList<PeoplePopulation> populationWorld = new ArrayList<PeoplePopulation>();
             while (rset.next())
             {
@@ -331,7 +332,7 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the population of the world.");
+            System.out.println("Failed to get the people population of the world.");
             return null;
         }
     }
@@ -344,18 +345,18 @@ public class App
 
         // Check country is not null
         if (popWorld == null) {
-            System.out.println("There is no population of the world.");
+            System.out.println("There is no people population of the world.");
             return;
         }
-        // Print header
+        // Loop over people population in the world
         for (PeoplePopulation wpop : popWorld) {
-            //print the list to check if capital cities in a country is null
+            //print the list to check if people population in the world is null
             if (wpop == null)
                 continue;
             String pworldString =
                     String.format("%-40s",
                             wpop.getWorldPopulation());
-            System.out.println("Total World Population: "+pworldString);
+            System.out.println("Total World People Population: "+pworldString);
         }
     }
 
@@ -376,7 +377,7 @@ public class App
                     "SELECT country.Continent, SUM(country.Population) AS 'Population' FROM country WHERE country.Continent = '"+inputTotalCont+"';";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryTwentySeven);
-            // Extract continent information
+            // Extract people population information
             ArrayList<PeoplePopulation> populationConti = new ArrayList<PeoplePopulation>();
             while (rset.next())
             {
@@ -390,7 +391,7 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the population of the continent.");
+            System.out.println("Failed to get the people population of Asia.");
             return null;
         }
     }
@@ -401,17 +402,17 @@ public class App
     public void printContinentPopulation(ArrayList<PeoplePopulation> popConti)
     {
 
-        // Check country is not null
+        // Check continent is not null
         if (popConti == null) {
-            System.out.println("There is no population of the continent.");
+            System.out.println("There is no people population of Asia");
             return;
         }
         // Print header
         System.out.println(String.format("%-40s %-40s", "Continent Name", "Population"));
-        // Loop over all capital cities in a country
+        // Loop over people population in continent
         for (PeoplePopulation continentPopulation : popConti)
         {
-            //print the list to check if capital cities in a country is null
+            //print the list to check if people population in continent is null
             if (continentPopulation == null)
                 continue;
             String pcontString =
@@ -433,12 +434,12 @@ public class App
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            //Query 27.The population of the continent.
+            //Query 27.The population of the region.
             String strQueryTwentyEight =
                     "SELECT country.Region, SUM(country.Population) AS 'Population' FROM country WHERE country.Region='"+inputTotalRegion+"';";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryTwentyEight);
-            // Extract regions information
+            // Extract people population information
             ArrayList<PeoplePopulation> populationRegi = new ArrayList<PeoplePopulation>();
             while (rset.next())
             {
@@ -452,7 +453,7 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the population of the continent.");
+            System.out.println("Failed to get the people population of Caribbean.");
             return null;
         }
     }
@@ -463,17 +464,17 @@ public class App
     public void printRegionsPopulation(ArrayList<PeoplePopulation> popRegs)
     {
 
-        // Check country is not null
+        // Check region is not null
         if (popRegs == null) {
-            System.out.println("There is no population of the regions.");
+            System.out.println("There is no people population of Caribbean.");
             return;
         }
         // Print header
         System.out.println(String.format("%-40s %-40s", "Region Name", "Population"));
-        // Loop over population from region
+        // Loop over people population in region
         for (PeoplePopulation regionsPopulation : popRegs)
         {
-            //print the list to check if capital cities in a country is null
+            //print the list to check if people population in region is null
             if (regionsPopulation == null)
                 continue;
             String pregiString =
@@ -500,7 +501,7 @@ public class App
                     "SELECT country.Name, country.Population FROM country WHERE country.Name='"+inputTotalCountry+"';";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryTwentyNine);
-            // Extract countries information
+            // Extract people population information
             ArrayList<PeoplePopulation> populCountry = new ArrayList<PeoplePopulation>();
             while (rset.next())
             {
@@ -514,7 +515,7 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the population of the country.");
+            System.out.println("Failed to get the people population of Austria.");
             return null;
         }
     }
@@ -527,15 +528,15 @@ public class App
 
         // Check country is not null
         if (popContr == null) {
-            System.out.println("There is no population of the countries.");
+            System.out.println("There is no people population of Austria.");
             return;
         }
         // Print header
         System.out.println(String.format("%-50s %-40s", "Country Name", "Population"));
-        // Loop over population from region
+        // Loop over people population in country
         for (PeoplePopulation countrPopulation : popContr)
         {
-            //print the list to check if capital cities in a country is null
+            //print the list to check if people population in country is null
             if (countrPopulation == null)
                 continue;
             String pcoString =
@@ -562,7 +563,7 @@ public class App
                     "SELECT city.District, city.Population FROM city WHERE city.District='"+inputTotalDistrict+"';";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryThirty);
-            // Extract countries information
+            // Extract people population information
             ArrayList<PeoplePopulation> populationDistr = new ArrayList<PeoplePopulation>();
             while (rset.next())
             {
@@ -576,7 +577,7 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the population of the districts.");
+            System.out.println("Failed to get the people population of Kabol.");
             return null;
         }
     }
@@ -587,17 +588,17 @@ public class App
     public void printDistrictsPopulation(ArrayList<PeoplePopulation> popDist)
     {
 
-        // Check country is not null
+        // Check district is not null
         if (popDist == null) {
-            System.out.println("There is no population of the districts.");
+            System.out.println("There is no people population of Kabol.");
             return;
         }
         // Print header
         System.out.println(String.format("%-40s %-40s", "District Name", "Population"));
-        // Loop over population from region
+        // Loop over people population in district
         for (PeoplePopulation dstPopulation : popDist)
         {
-            //print the list to check if capital cities in a country is null
+            //print the list to check if people population in district is null
             if (dstPopulation == null)
                 continue;
             String pdiString =
@@ -624,7 +625,7 @@ public class App
                     "SELECT city.Name, city.Population FROM city WHERE city.Name='"+inputTotalCity+"';";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryThirtyOne);
-            // Extract city information
+            // Extract people population information
             ArrayList<PeoplePopulation> populatCities = new ArrayList<PeoplePopulation>();
             while (rset.next())
             {
@@ -638,7 +639,7 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the population of the city.");
+            System.out.println("Failed to get the people population of Haag.");
             return null;
         }
     }
@@ -649,17 +650,17 @@ public class App
     public void printCityPopulation(ArrayList<PeoplePopulation> popCity)
     {
 
-        // Check country is not null
+        // Check city is not null
         if (popCity == null) {
-            System.out.println("There is no population of the cities.");
+            System.out.println("There is no people population of Haag.");
             return;
         }
         // Print header
         System.out.println(String.format("%-40s %-40s", "City Name", "Population"));
-        // Loop over population from region
+        // Loop over people population in city
         for (PeoplePopulation cityPopul : popCity)
         {
-            //print the list to check if capital cities in a country is null
+            //print the list to check if people population in city is null
             if (cityPopul == null)
                 continue;
             String pcitString =
@@ -686,7 +687,7 @@ public class App
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryLanguage4);
-            // Extract countries information
+            // Extract language information
             ArrayList<CountryLanguage> countryLanguage4 = new ArrayList<CountryLanguage>();
             while (rset.next())
             {
@@ -714,7 +715,7 @@ public class App
         // Check country language is not null
         if (countryLang == null)
         {
-            System.out.println("No languages");
+            System.out.println("There is no list the population of people who speak different language in descending order.");
             return;
         }
         // Print header
@@ -780,37 +781,37 @@ public class App
         System.out.println("\n");
 
         // The population of the continent.
-        System.out.println("27. The population of the continent.");
+        System.out.println("27. The population of Asia.");
         ArrayList<PeoplePopulation> popContin = a.getContinentPopulation("Asia");
         a.printContinentPopulation(popContin);
         System.out.println("\n");
 
         // The population of the regions.
-        System.out.println("28. The population of the regions.");
+        System.out.println("28. The population of Caribbean.");
         ArrayList<PeoplePopulation> popRegions = a.getRegionsPopulation("Caribbean");
         a.printRegionsPopulation(popRegions);
         System.out.println("\n");
 
         // The population of the countries.
-        System.out.println("29. The population of the countries.");
+        System.out.println("29. The population of Austria.");
         ArrayList<PeoplePopulation> popCountries = a.getCountriesPopulation("Austria");
         a.printCountriesPopulation(popCountries);
         System.out.println("\n");
 
         // The population of the districts.
-        System.out.println("30. The population of the districts.");
+        System.out.println("30. The population of Kabol.");
         ArrayList<PeoplePopulation> popDisct = a.getDistrictPopulation("Kabol");
         a.printDistrictsPopulation(popDisct);
         System.out.println("\n");
 
         // The population of the cities.
-        System.out.println("31. The population of the cities.");
+        System.out.println("31. The population of Haag.");
         ArrayList<PeoplePopulation> popCities = a.getCityPopulation("Haag");
         a.printCityPopulation(popCities);
         System.out.println("\n");
 
         // List the population of people who speak language in descending order.
-        System.out.println("32: List the population of people who speak language in descending order.\n");
+        System.out.println("32: List the population of people who speak different language in descending order.\n");
         ArrayList<CountryLanguage> countLanguage = a.getCountryLanguage("Chinese", "English","Hindi", "Spanish", "Arabic");
         a.printCountryLanguage(countLanguage);
         // Disconnect from database
