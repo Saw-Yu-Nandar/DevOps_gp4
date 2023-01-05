@@ -2302,7 +2302,6 @@ public class App {
             System.out.println("Error !");
             return;
         }
-
         NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
@@ -2316,7 +2315,8 @@ public class App {
             if (popcontinent == null) continue;
 
             sb.append("| " + id + "| " + popcontinent.getContinentName() + " | " +
-                    popcontinent.getContinentPopulation() + " | " + popcontinent.getCityPopulation() + " | " +
+                    numFormat.format(Long.parseLong(popcontinent.getContinentPopulation())) + " | " +
+                            numFormat.format(Long.parseLong(popcontinent.getCityPopulation())) + " | " +
                     popcontinent.getNotLivingPopContinent() + " | " + popcontinent.getLivingPopContinent() + " | "
                     + "|\r\n");
         }
@@ -2419,6 +2419,7 @@ public class App {
             System.out.println("Error !");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -2429,7 +2430,8 @@ public class App {
             id += 1;
             if (poprgn == null) continue;
             sb.append("| " + id + "| " + poprgn.getRegionsName() + " | " +
-                    poprgn.getRegionsPopulation() + " | " + poprgn.getCityPopulation() + " | " +
+                    numFormat.format(Long.parseLong(poprgn.getRegionsPopulation())) + " | " +
+                            numFormat.format(Long.parseLong(poprgn.getCityPopulation())) + " | " +
                     poprgn.getNotLivingPopRegion() + " | " + poprgn.getLivingPopRegion() + " | "
                     + "|\r\n");
         }
@@ -2636,7 +2638,6 @@ public class App {
             idnum += 1;
             if (popofworld == null)
                 continue;
-            //System.out.println(popofworld.getWorldPopulation() +"type"+ popofworld.getWorldPopulation()instanceof String);
             sb.append("| " + idnum + "| " + numFormat.format(Long.parseLong(popofworld.getWorldPopulation())) + " | " + "|\r\n");
         }
         try {
@@ -2731,7 +2732,6 @@ public class App {
             idnum += 1;
             if (popofcontinent == null)
                 continue;
-            //System.out.println(popofcontinent.getContinentPopulation() +"type"+ popofcontinent.getContinentPopulation()instanceof String);
             sb.append("| " + idnum + "| " + popofcontinent.getContinentName() + " | " +
                     numFormat.format(Long.parseLong(popofcontinent.getContinentPopulation())) + " | " + "|\r\n");
         }
