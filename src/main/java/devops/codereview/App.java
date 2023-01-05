@@ -2531,6 +2531,7 @@ public class App {
             System.out.println("Error !");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -2541,8 +2542,9 @@ public class App {
             id += 1;
             if (popcoun == null) continue;
             sb.append("| " + id + "| " + popcoun.getCountriesName() + " | " +
-                    popcoun.getCountriesPopulation() + " | " + popcoun.getCityPopulation() + " | " +
-                    popcoun.getNotLivingPopCountry() + " | " + popcoun.getLivingPopCountry() + " | "
+                    numFormat.format(Long.parseLong(popcoun.getCountriesPopulation())) + " | " +
+                            numFormat.format(Long.parseLong(popcoun.getCityPopulation())) + " | " +
+                                    popcoun.getNotLivingPopCountry() + " | " + popcoun.getLivingPopCountry() + " | "
                     + "|\r\n");
         }
         try {
