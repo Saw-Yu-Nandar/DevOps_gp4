@@ -2346,6 +2346,12 @@ public class App {
             id += 1;
             if (popcontinent == null) continue;
 
+
+            int val = Integer.parseInt(popcontinent.getContinentPopulation());
+            System.out.println(val);
+            popcontinent.getContinentPopulation().getClass();
+
+
             sb.append("| " + id + "| " + popcontinent.getContinentName() + " | " +
                     popcontinent.getContinentPopulation() + " | " + popcontinent.getCityPopulation() + " | " +
                     popcontinent.getNotLivingPopContinent() + " | " + popcontinent.getLivingPopContinent() + " | "
