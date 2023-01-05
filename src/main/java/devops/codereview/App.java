@@ -2756,7 +2756,6 @@ public class App {
             System.out.println("No population");
             return;
         }
-        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -2767,7 +2766,7 @@ public class App {
             idnum += 1;
             if (popofcontinent == null) continue;
             sb.append("| " + idnum + "| " + popofcontinent.getContinentName() + " | " +
-                    numFormat.format(Integer.parseInt(popofcontinent.getContinentPopulation())) + " | " + "|\r\n");
+                    popofcontinent.getContinentPopulation() + " | " + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
