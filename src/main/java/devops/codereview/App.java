@@ -701,8 +701,8 @@ public class App
 
         // Display all the cities in a region organised by largest population to smallest.
         System.out.println("9: All the cities in Caribbean organised by largest population to smallest.\n");
-        ArrayList<City> regions = a.getAllCitiesRegions("Caribbean");
-        a.printRegions(regions);
+        ArrayList<City> regi = a.getAllCitiesRegions("Caribbean");
+        a.printRegions(regi);
         System.out.println("\n");
 
         // Display all the cities in a country organised by largest population to smallest.
