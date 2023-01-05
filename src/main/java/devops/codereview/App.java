@@ -2315,11 +2315,8 @@ public class App {
             id += 1;
             if (popcontinent == null) continue;
 
-            int conpopint = Integer.parseInt(popcontinent.getContinentPopulation());
-            String conpopintfmt = numFormat.format(conpopint).toString();
-
             sb.append("| " + id + "| " + popcontinent.getContinentName() + " | " +
-                    conpopintfmt + " | " + popcontinent.getCityPopulation() + " | " +
+                    popcontinent.getContinentPopulation() + " | " + popcontinent.getCityPopulation() + " | " +
                     popcontinent.getNotLivingPopContinent() + " | " + popcontinent.getLivingPopContinent() + " | "
                     + "|\r\n");
         }
