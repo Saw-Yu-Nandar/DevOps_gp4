@@ -2632,8 +2632,10 @@ public class App {
         // Loop over people population in the list
         for (PeoplePopulation popofworld : populationOfWorld) {
             idnum += 1;
-            if (popofworld == null) continue;
-            sb.append("| " + idnum + "| " + numFormat.format(Integer.parseInt(popofworld.getWorldPopulation())) + " | " + "|\r\n");
+            if (popofworld == null)
+                continue;
+            //System.out.println(popofworld.getWorldPopulation() +"type"+ popofworld.getWorldPopulation()instanceof String);
+            sb.append("| " + idnum + "| " + numFormat.format(Long.parseLong(popofworld.getWorldPopulation())) + " | " + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -2725,10 +2727,11 @@ public class App {
         // Loop over continent people population in the list
         for (PeoplePopulation popofcontinent : populationOfContinent) {
             idnum += 1;
-            if (popofcontinent == null) continue;
-            System.out.println(popofcontinent.getContinentPopulation() +"type"+ popofcontinent.getContinentPopulation()instanceof String);
+            if (popofcontinent == null)
+                continue;
+            //System.out.println(popofcontinent.getContinentPopulation() +"type"+ popofcontinent.getContinentPopulation()instanceof String);
             sb.append("| " + idnum + "| " + popofcontinent.getContinentName() + " | " +
-                    numFormat.format(Integer.parseInt(popofcontinent.getContinentPopulation())) + " | " + "|\r\n");
+                    numFormat.format(Long.parseLong(popofcontinent.getContinentPopulation())) + " | " + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
