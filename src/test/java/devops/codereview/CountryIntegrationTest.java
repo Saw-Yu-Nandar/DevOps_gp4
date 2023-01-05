@@ -112,5 +112,3 @@ public class CountryIntegrationTest {
         assertEquals(Integer.parseInt(npopregn.getCountryPopulation()), 11201000);
     }
 }
-
-

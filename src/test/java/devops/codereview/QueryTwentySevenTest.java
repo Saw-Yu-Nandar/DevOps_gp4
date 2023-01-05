@@ -1,5 +1,5 @@
 package devops.codereview;
-
+//Unit testing for the population of a continent.
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -34,10 +34,10 @@ public class QueryTwentySevenTest {
     void printPopConti()
     {
         ArrayList<PeoplePopulation> popContiPrint = new ArrayList<PeoplePopulation>();
-        PeoplePopulation popConti   = new PeoplePopulation();
-        popConti.setContinentName("Afghanistan");
-        popConti.setContinentPopulation("22720000");
-        popContiPrint.add(popConti);
+        PeoplePopulation popContip   = new PeoplePopulation();
+        popContip.setContinentName("Oceania");
+        popContip.setContinentPopulation("30401150");
+        popContiPrint.add(popContip);
         app.printContinentPopulation(popContiPrint);
     }
 }

@@ -11,14 +11,47 @@ public class PeoplePopulationIntegrationTest {
         app = new App();
         app.connect("localhost:33060", 30000);
     }
+    /*
+     * Query 23: The population of people, people living in cities, and people not living in cities in each continent.
+     */
+    @Test
+    void testGetPopulatedPeopleConitnent() {
+        ArrayList<PeoplePopulation> popPeopleContinent = app.getPopulatedPeopleContinent();
+        PeoplePopulation popPeopleCont = popPeopleContinent.get(0);
+        assertEquals(popPeopleCont.getContinentName(), "North America");
+        assertEquals(Integer.parseInt(popPeopleCont.getContinentPopulation()), 482993000);
+        assertEquals(Integer.parseInt(popPeopleCont.getCityPopulation()), 168250381);
+    }
+    /*
+     * Query 24: The population of people, people living in cities, and people not living in cities in each region.
+     */
+    @Test
+    void testGetPopulatedPeopleRegion() {
+        ArrayList<PeoplePopulation> popPeopleRegion = app.getPopulatedPeopleRegions();
+        PeoplePopulation popPeopleReg = popPeopleRegion.get(0);
+        assertEquals(popPeopleReg.getRegionsName(), "Caribbean");
+        assertEquals(Integer.parseInt(popPeopleReg.getRegionsPopulation()), 38140000);
+        assertEquals(Integer.parseInt(popPeopleReg.getCityPopulation()), 11067550);
+    }
 
+    /*
+     * Query 25: The population of people, people living in cities, and people not living in cities in each country.
+     */
+    @Test
+    void testGetPopulatedPeopleCountry() {
+        ArrayList<PeoplePopulation> popPeopleCountry = app.getPopulatedPeopleCountry();
+        PeoplePopulation popPeopleCount = popPeopleCountry.get(0);
+        assertEquals(popPeopleCount.getCountriesName(), "Aruba");
+        assertEquals(Integer.parseInt(popPeopleCount.getCountriesPopulation()), 103000);
+        assertEquals(Integer.parseInt(popPeopleCount.getCityPopulation()), 29034);
+    }
     /*
      * Query 26: The population of the world.
      */
     @Test
     void testGetPopWorld() {
-        ArrayList<PeoplePopulation> popWld = app.getWorldPopulation();
-        PeoplePopulation populationWld = popWld.get(0);
+        ArrayList<PeoplePopulation> popGetWld = app.getWorldPopulation();
+        PeoplePopulation populationWld = popGetWld.get(0);
         assertEquals(populationWld.getWorldPopulation(), "6078749450");
     }
 
@@ -27,10 +60,10 @@ public class PeoplePopulationIntegrationTest {
      */
     @Test
     void testGetPopContinent() {
-        ArrayList<PeoplePopulation> popCon = app.getContinentPopulation();
-        PeoplePopulation populationCon = popCon.get(0);
-        assertEquals(populationCon.getContinentName(), "North America");
-        assertEquals(populationCon.getContinentPopulation(), "482993000");
+        ArrayList<PeoplePopulation> popGetCon = app.getContinentPopulation("Asia");
+        PeoplePopulation populationCon = popGetCon.get(0);
+        assertEquals(populationCon.getContinentName(), "Asia");
+        assertEquals(populationCon.getContinentPopulation(), "3705025700");
     }
 
     /*
@@ -38,8 +71,8 @@ public class PeoplePopulationIntegrationTest {
      */
     @Test
     void testGetPopRegions() {
-        ArrayList<PeoplePopulation> popReg = app.getRegionsPopulation();
-        PeoplePopulation populationReg = popReg.get(0);
+        ArrayList<PeoplePopulation> popGetReg = app.getRegionsPopulation("Caribbean");
+        PeoplePopulation populationReg = popGetReg.get(0);
         assertEquals(populationReg.getRegionsName(), "Caribbean");
         assertEquals(populationReg.getRegionsPopulation(), "38140000");
     }
@@ -49,10 +82,10 @@ public class PeoplePopulationIntegrationTest {
      */
     @Test
     void testGetPopCountries() {
-        ArrayList<PeoplePopulation> popCountr = app.getCountriesPopulation();
-        PeoplePopulation populCountr = popCountr.get(0);
-        assertEquals(populCountr.getCountriesName(), "Aruba");
-        assertEquals(populCountr.getCountriesPopulation(), "103000");
+        ArrayList<PeoplePopulation> popGetCountr = app.getCountriesPopulation("Austria");
+        PeoplePopulation populationCountr = popGetCountr.get(0);
+        assertEquals(populationCountr.getCountriesName(), "Austria");
+        assertEquals(populationCountr.getCountriesPopulation(), "8091800");
     }
 
     /*
@@ -60,21 +93,67 @@ public class PeoplePopulationIntegrationTest {
      */
     @Test
     void testGetPopDistricts() {
-        ArrayList<PeoplePopulation> popDst = app.getDistrictPopulation();
-        PeoplePopulation populationDistr = popDst.get(0);
-        assertEquals(populationDistr.getDistrictName(), "Kabol");
-        assertEquals(populationDistr.getDistrictPopulation(), "1780000");
+        ArrayList<PeoplePopulation> popGetDst = app.getDistrictPopulation("Kabol");
+        PeoplePopulation populationDist = popGetDst.get(0);
+        assertEquals(populationDist.getDistrictName(), "Kabol");
+        assertEquals(populationDist.getDistrictPopulation(), "1780000");
     }
-
-        /*
-         * Query 31: The population of the cities.
-         */
+    /*
+     * Query 31: The population of the cities.
+     */
     @Test
     void testGetPopCity ()
     {
-        ArrayList<PeoplePopulation> popCt = app.getCityPopulation();
-        PeoplePopulation populCity = popCt.get(0);
-        assertEquals(populCity.getCityName(), "Kabul");
-        assertEquals(populCity.getCityPopulation(), "1780000");
+        ArrayList<PeoplePopulation> popGetCty = app.getCityPopulation("Haag");
+        PeoplePopulation populationCty = popGetCty.get(0);
+        assertEquals(populationCty.getCityName(), "Haag");
+        assertEquals(populationCty.getCityPopulation(), "440900");
+    }
+    /*
+     * Query 32: languages Percentage, Population
+     */
+    @Test
+    void testGetLanguagesChinese ()
+    {
+        ArrayList<CountryLanguage> couLang = app.getCountryLanguage("Chinese","English","Hindi","Spanish","Arabic");
+        CountryLanguage lang = couLang.get(0);
+        assertEquals(lang.getCountryLanguage(), "Chinese");
+        assertEquals(lang.getCountryPopulation(), "1968265500");
+    }
+
+    @Test
+    void testGetLanguagesEnglish ()
+    {
+        ArrayList<CountryLanguage> couLang = app.getCountryLanguage("Chinese","English","Hindi","Spanish","Arabic");
+        CountryLanguage lang = couLang.get(3);
+        assertEquals(lang.getCountryLanguage(), "English");
+        assertEquals(lang.getCountryPopulation(), "627418300");
+    }
+
+    @Test
+    void testGetLanguagesHindi ()
+    {
+        ArrayList<CountryLanguage> couLang = app.getCountryLanguage("Chinese","English","Hindi","Spanish","Arabic");
+        CountryLanguage lang = couLang.get(1);
+        assertEquals(lang.getCountryLanguage(), "Hindi");
+        assertEquals(lang.getCountryPopulation(), "1046303000");
+    }
+
+    @Test
+    void testGetLanguagesSpanish ()
+    {
+        ArrayList<CountryLanguage> couLang = app.getCountryLanguage("Chinese","English","Hindi","Spanish","Arabic");
+        CountryLanguage lang = couLang.get(2);
+        assertEquals(lang.getCountryLanguage(), "Spanish");
+        assertEquals(lang.getCountryPopulation(), "750296800");
+    }
+
+    @Test
+    void testGetLanguagesArabic ()
+    {
+        ArrayList<CountryLanguage> couLang = app.getCountryLanguage("Chinese","English","Hindi","Spanish","Arabic");
+        CountryLanguage lang = couLang.get(4);
+        assertEquals(lang.getCountryLanguage(), "Arabic");
+        assertEquals(lang.getCountryPopulation(), "552045100");
     }
 }

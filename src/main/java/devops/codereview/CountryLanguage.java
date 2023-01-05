@@ -1,31 +1,40 @@
 package devops.codereview;
 
 public class CountryLanguage {
-    private String language;
-    private String percentage;
-    private String population;
+    private String countryLanguage;
+    private String countryPopulation;
+    private String countryPercent;
+    private String countryLanguagePercent;
 
-    public String getLanguage() {
-        return language;
+    public String getCountryLanguage() {
+        return countryLanguage;
     }
 
-    public void setLanguage(String language) {
-        this.language = language;
+    public void setCountryLanguage(String countryLanguage) {
+        this.countryLanguage = countryLanguage;
     }
 
-    public String getPercentage() {
-        return percentage;
+    public String getCountryPopulation() {
+        return countryPopulation;
     }
 
-    public void setPercentage(String percentage) {
-        this.percentage = percentage;
+    public void setCountryPopulation(String countryPopulation) {
+        this.countryPopulation = countryPopulation;
     }
 
-    public String getPopulation() {
-        return population;
+    public String getCountryPercent() {
+        return countryPercent;
     }
 
-    public void setPopulation(String population) {
-        this.population = population;
+    public void setCountryPercent(String countryPercent) {
+        this.countryPercent = countryPercent;
+    }
+
+    public String getCountryLanguagePercent() {
+        return countryLanguagePercent;
+    }
+
+    public void setCountryLanguagePercent(String countryLanguagePercent) {
+        this.countryLanguagePercent = countryLanguagePercent;
     }
 }

@@ -1,4 +1,5 @@
-package devops.codereview;//Unit testing all the cities in a region organised by largest population to smallest.
+package devops.codereview;
+//Unit testing all the cities in a region organised by largest population to smallest.
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -34,10 +35,11 @@ public class QueryNineTest
     {
         ArrayList<City> regions   = new ArrayList<City>();
         City reg                  = new City();
-        reg.setCityName("Luanda");
-        reg.setCountryName("Angola");
-        reg.setCityDistrict("Luanda");
-        reg.setCityPopulation("12878000");
+        reg.setCitName("Santiago de Cuba");
+        reg.setCountryName("Cuba");
+        reg.setCitDistrict("Santiago de Cuba");
+        reg.setCitReg("Caribbean");
+        reg.setCitPopulation("433180");
         regions.add(reg);
         app.printRegions(regions);
     }

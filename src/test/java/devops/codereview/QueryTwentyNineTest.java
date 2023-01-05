@@ -1,5 +1,5 @@
 package devops.codereview;
-
+//Unit testing for the population of a country.
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -17,8 +17,8 @@ public class QueryTwentyNineTest {
     @Test
     void printPopCountryTestEmpty()
     {
-        ArrayList<PeoplePopulation> popCounEmp = new ArrayList<PeoplePopulation>();
-        app.printCountriesPopulation(popCounEmp);
+        ArrayList<PeoplePopulation> popCounEmpt = new ArrayList<PeoplePopulation>();
+        app.printCountriesPopulation(popCounEmpt);
     }
 
     //print a list with a null value
@@ -34,10 +34,10 @@ public class QueryTwentyNineTest {
     void printPopCountry()
     {
         ArrayList<PeoplePopulation> popCounPrint = new ArrayList<PeoplePopulation>();
-        PeoplePopulation popCoun  = new PeoplePopulation();
-        popCoun.setCountriesName("Rangoon (Yangon)");
-        popCoun.setCountriesPopulation("3361700");
-        popCounPrint.add(popCoun);
+        PeoplePopulation popCounp   = new PeoplePopulation();
+        popCounp.setCountriesName("Bangladesh");
+        popCounp.setCountriesPopulation("129155000");
+        popCounPrint.add(popCounp);
         app.printCountriesPopulation(popCounPrint);
     }
 }

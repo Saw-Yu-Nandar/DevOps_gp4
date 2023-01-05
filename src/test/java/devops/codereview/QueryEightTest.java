@@ -1,4 +1,5 @@
-package devops.codereview;//Unit testing for all the cities in a continent organised by largest population to smallest.
+package devops.codereview;
+//Unit testing for all the cities in a continent organised by largest population to smallest.
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -34,10 +35,11 @@ public class QueryEightTest
     {
         ArrayList<City> continent = new ArrayList<City>();
         City conti                = new City();
-        conti.setCityName("Tilburg");
-        conti.setCountryName("Netherlands");
-        conti.setCityDistrict("Noord-Brabant");
-        conti.setCityPopulation("193238");
+        conti.setCitName("Seoul");
+        conti.setCountryName("South Korea");
+        conti.setCitDistrict("Seoul");
+        conti.setCitCont("Asia");
+        conti.setCitPopulation("9981619");
         continent.add(conti);
         app.printContinents(continent);
     }

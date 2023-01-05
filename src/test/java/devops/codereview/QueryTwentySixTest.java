@@ -1,5 +1,5 @@
 package devops.codereview;
-
+//Unit testing for the population of the world.
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
@@ -24,20 +24,18 @@ public class QueryTwentySixTest {
     @Test
     void printPopWorldNull()
     {
-        ArrayList<PeoplePopulation> popworld = new ArrayList<PeoplePopulation>();
-        popworld.add(null);
-        app.printWorldPopulation(popworld);
+        ArrayList<PeoplePopulation> popWorld = new ArrayList<PeoplePopulation>();
+        popWorld.add(null);
+        app.printWorldPopulation(popWorld);
     }
 
     @Test
     void printPopWorld()
     {
         ArrayList<PeoplePopulation> popWorldPrint = new ArrayList<PeoplePopulation>();
-        PeoplePopulation popWorld   = new PeoplePopulation();
-        popWorld.setWorldName("Africa");
-        popWorld.setWorldPopulation("10925000");
-        //pop_world_p.world_population    = "10925000";
-        popWorldPrint.add(popWorld);
+        PeoplePopulation popWorldp   = new PeoplePopulation();
+        popWorldp.setWorldPopulation("10925000");
+        popWorldPrint.add(popWorldp);
         app.printWorldPopulation(popWorldPrint);
     }
 }

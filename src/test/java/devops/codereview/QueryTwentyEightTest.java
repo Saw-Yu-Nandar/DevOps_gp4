@@ -1,5 +1,5 @@
 package devops.codereview;
-
+//Unit testing for the population of a region.
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -17,8 +17,8 @@ public class QueryTwentyEightTest {
     @Test
     void printPopRegionsTestEmpty()
     {
-        ArrayList<PeoplePopulation> popRegEmp = new ArrayList<PeoplePopulation>();
-        app.printRegionsPopulation(popRegEmp);
+        ArrayList<PeoplePopulation> popRegEmpt = new ArrayList<PeoplePopulation>();
+        app.printRegionsPopulation(popRegEmpt);
     }
 
     //print a list with a null value
@@ -34,10 +34,10 @@ public class QueryTwentyEightTest {
     void printPopRegions()
     {
         ArrayList<PeoplePopulation> popRegPrint = new ArrayList<PeoplePopulation>();
-        PeoplePopulation popReg   = new PeoplePopulation();
-        popReg.setRegionsName("Yerevan");
-        popReg.setRegionsPopulation("3520000");
-        popRegPrint.add(popReg);
+        PeoplePopulation popRegp   = new PeoplePopulation();
+        popRegp.setRegionsName("Western Europe");
+        popRegp.setRegionsPopulation("183247600");
+        popRegPrint.add(popRegp);
         app.printRegionsPopulation(popRegPrint);
     }
 }

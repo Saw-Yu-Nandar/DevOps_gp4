@@ -1,5 +1,5 @@
 package devops.codereview;
-
+//Unit testing for the population of the city.
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -17,8 +17,8 @@ public class QueryThirtyOneTest {
     @Test
     void printPopCityTestEmpty()
     {
-        ArrayList<PeoplePopulation> popCityEmp = new ArrayList<PeoplePopulation>();
-        app.printCityPopulation(popCityEmp);
+        ArrayList<PeoplePopulation> popCityEmpt = new ArrayList<PeoplePopulation>();
+        app.printCityPopulation(popCityEmpt);
     }
 
     //print a list with a null value
@@ -33,11 +33,11 @@ public class QueryThirtyOneTest {
     @Test
     void printPopCity()
     {
-        ArrayList<PeoplePopulation> popCityPrint = new ArrayList<PeoplePopulation>();
-        PeoplePopulation popCity   = new PeoplePopulation();
-        popCity.setCityName("London");
-        popCity.setCityPopulation("7285000");
-        popCityPrint.add(popCity);
-        app.printCityPopulation(popCityPrint);
+        ArrayList<PeoplePopulation> popCityPrinnt = new ArrayList<PeoplePopulation>();
+        PeoplePopulation popCityp = new PeoplePopulation();
+        popCityp.setCityName("London");
+        popCityp.setCityPopulation("7285000");
+        popCityPrinnt.add(popCityp);
+        app.printCityPopulation(popCityPrinnt);
     }
 }
