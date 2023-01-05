@@ -2523,6 +2523,10 @@ public class App {
             }
             String strnotlivingcouper = notlivingcouper+"%";
             String strlivingcouper = livingcouper+"%";
+
+            pcou.setLivingPopCountryPer(strlivingcouper);
+            pcou.setNotLivingPopCountryPer(strnotlivingcouper);
+
             String pcouString =
                     String.format("%-45s %-28s %-25s %-25s %-25s",
                             pcou.getCountriesName(), pcou.getCountriesPopulation(), pcou.getCityPopulation(), strnotlivingcouper, strlivingcouper);
@@ -2553,7 +2557,7 @@ public class App {
             sb.append("| " + id + "| " + popcoun.getCountriesName() + " | " +
                     numFormat.format(Long.parseLong(popcoun.getCountriesPopulation())) + " | " +
                             numFormat.format(Long.parseLong(popcoun.getCityPopulation())) + " | " +
-                                    popcoun.getNotLivingPopCountry() + " | " + popcoun.getLivingPopCountry() + " | "
+                                    popcoun.getNotLivingPopCountryPer() + " | " + popcoun.getLivingPopCountryPer() + " | "
                     + "|\r\n");
         }
         try {
