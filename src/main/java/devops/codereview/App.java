@@ -840,7 +840,7 @@ public class App {
      * 8. All the cities in a continent organised by largest population to smallest.
      * @param continent
      */
-    public void outputcitycontinent(ArrayList<City> continent, String Cont) {
+    public void outputcitycontinent(ArrayList<City> continent, String cont) {
         // Check cities is not null
         if (continent == null) {
             System.out.println("Error !");
@@ -850,18 +850,19 @@ public class App {
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| No. | City Name | Country Name | District | Continent | Population |\r\n");
+        sb.append("| No. | City Name | Country Name | District | Continent |Population |\r\n");
         sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
-        // Loop over all continents in the list
-        for (City cont : continent) {
+        // Loop over all regions in the list
+        for (City contpop : continent) {
             id += 1;
-            if (cont == null) continue;
-            sb.append("| " + id + "| " + cont.getCitName() + " | " + cont.getCountryName() + " | " +
-                    cont.getCitDistrict() + " | " + numFormat.format(Integer.parseInt(cont.getCitPopulation())) + " |\r\n");
+            if (contpop == null) continue;
+            sb.append("| " + id + "| " + contpop.getCitName() + " | " +
+                    contpop.getCountryName() + " | " + contpop.getCitDistrict() + " | " +
+                    contpop.getCitCont() + " | " + numFormat.format(Integer.parseInt(contpop.getCitPopulation())) + " |\r\n");
         }
         try {
             new File("./reports/").mkdir();
-            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + Cont)));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + cont)));
             writer.write(sb.toString());
             writer.close();
         } catch (IOException e) {
