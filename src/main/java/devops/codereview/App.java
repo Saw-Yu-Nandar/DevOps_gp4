@@ -856,9 +856,8 @@ public class App {
         for (City cont : continent) {
             id += 1;
             if (cont == null) continue;
-            sb.append("| " + id + "| " + cont.getCitName() + " | " +
-                    cont.getCountryName() + " | " + cont.getCitDistrict() + " | " +
-                    " | " + cont.getCitCont() + " | " + numFormat.format(Integer.parseInt(cont.getCitPopulation())) + " |\r\n");
+            sb.append("| " + id + "| " + cont.getCitName() + " | " + cont.getCountryName() + " | " +
+                    cont.getCitDistrict() + " | " + numFormat.format(Integer.parseInt(cont.getCitPopulation())) + " |\r\n");
         }
         try {
             new File("./reports/").mkdir();
