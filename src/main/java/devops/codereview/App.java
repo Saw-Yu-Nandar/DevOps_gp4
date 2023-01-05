@@ -2672,7 +2672,8 @@ public class App {
         for (PeoplePopulation popofworld : populationOfWorld) {
             idnum += 1;
             if (popofworld == null) continue;
-            sb.append("| " + idnum + "| " + numFormat.format(Integer.parseInt(popofworld.getWorldPopulation())) + " | " + "|\r\n");
+            String worldpopformat = NumberFormat.getInstance().format(popofworld.getWorldPopulation());
+            sb.append("| " + idnum + "| " + worldpopformat + " | " + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
