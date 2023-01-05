@@ -2342,12 +2342,17 @@ public class App {
         // Print header
         sb.append("| No. | Continent Name | Continent Total Population | City Total Population | People Not Living (%) | People Living (%) |\r\n");
         sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
+
         // Loop over all employees in the list
         for (PeoplePopulation popcontinent : populationContinent) {
             id += 1;
             if (popcontinent == null) continue;
+
+            BigInteger bigintcont = BigInteger.valueOf(Long.parseLong(popcontinent.getContinentPopulation()));
+            BigInteger bigintegercont = new BigInteger(numFormat.format(bigintcont));
+
             sb.append("| " + id + "| " + popcontinent.getContinentName() + " | " +
-                    numFormat.format(Integer.parseInt(popcontinent.getContinentPopulation())) + " | " + numFormat.format(Integer.parseInt(popcontinent.getCityPopulation())) + " | " +
+                    bigintegercont + " | " + numFormat.format(Integer.parseInt(popcontinent.getCityPopulation())) + " | " +
                     popcontinent.getNotLivingPopContinent() + " | " + popcontinent.getLivingPopContinent() + " | "
                     + "|\r\n");
         }
