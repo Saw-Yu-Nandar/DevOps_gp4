@@ -1,5 +1,5 @@
-//Unit testing for the population of people, people living in cities, and people not living in cities in each country.
 package devops.codereview;
+//Unit testing for the population of people, people living in cities, and people not living in cities in each country.
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;

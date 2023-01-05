@@ -1,5 +1,5 @@
 package devops.codereview;
-
+//Unit testing for the top N populated cities in the world where N is provided by the user.
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -35,10 +35,10 @@ public class QueryTwelveTest
     {
         ArrayList<City> worlds = new ArrayList<City>();
         City world = new City();
-        world.setCit_name("Moscow");
-        world.setCountry_name("Russian Federation");
-        world.setCit_district("Moscow (City)");
-        world.setCit_population("8389200");
+        world.setCitName("Moscow");
+        world.setCountryName("Russian Federation");
+        world.setCitDistrict("Moscow (City)");
+        world.setCitPopulation("8389200");
         worlds.add(world);
         app.printTopNWorlds(worlds);
     }

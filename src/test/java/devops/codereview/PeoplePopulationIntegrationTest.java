@@ -99,8 +99,8 @@ public class PeoplePopulationIntegrationTest {
         assertEquals(populationDist.getDistrictPopulation(), "1780000");
     }
     /*
-    * Query 31: The population of the cities.
-    */
+     * Query 31: The population of the cities.
+     */
     @Test
     void testGetPopCity ()
     {

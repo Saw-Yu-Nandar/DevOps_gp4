@@ -67,9 +67,9 @@ public class App {
             }
         }
     }
-
-    /** 1. All the countries in the world organised by largest population to smallest.
-     * * Query execution and pass the array list to format the return value.
+    /**
+     * 1. All the countries in the world organised by largest population to smallest.
+     * Query execution and pass the array list to format the return value.
      * Function is called in main.
      **/
     public ArrayList<Country> getAllCountries()
@@ -131,7 +131,6 @@ public class App {
             System.out.println(allctrString);
         }
     }
-
     /**
      * Outputs to Markdown
      * 1. All the countries in the world organised by largest population to smallest.
@@ -147,6 +146,7 @@ public class App {
         int i = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
+        System.out.println("1: All the countries in the world organised by largest population to smallest.\n");
         sb.append("| No. | Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
         sb.append("| --- | --- | --- | --- | --- | --- | --- |\r\n");
         // Loop over all countries in the list
@@ -167,8 +167,6 @@ public class App {
             e.printStackTrace();
         }
     }
-
-
     /**
      * 2. All the countries in a continent organised by largest population to smallest.
      * Query execution and pass the array list to format the return value.
@@ -205,21 +203,23 @@ public class App {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get all the countries in the Oceania organised by largest population to smallest.");
+            System.out.println("Failed to get all the countries in Oceania organised by largest population to smallest.");
             return null;
         }
     }
 
     /**
      * 2. All the countries in a continent organised by largest population to smallest.
-     * Formatting the output data from the list.
+     *
+     Su Hnin, [12/25/2022 11:38 PM]
+     ormatting the output data from the list.
      **/
     public void printContinent(ArrayList<Country> continent)
     {
         // Check continent is not null
         if (continent == null)
         {
-            System.out.println("No continent");
+            System.out.println("There is no country in Oceania.");
             return;
         }
         // Print header
@@ -250,6 +250,7 @@ public class App {
         int i = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
+        System.out.println("2: All the countries in Oceania organised by largest population to smallest.\n");
         sb.append("| No. | Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
         sb.append("| --- | --- | --- | --- | --- | --- | --- |\r\n");
         // Loop over all continent in the list
@@ -270,7 +271,6 @@ public class App {
             e.printStackTrace();
         }
     }
-
     /**
      * 3. All the countries in a region organised by largest population to smallest.
      * Query execution and pass the array list to format the return value.
@@ -288,7 +288,7 @@ public class App {
                     "SELECT country.Code, country.Name as 'CountryName', country.Continent, country.Region, city.Name as 'CityName', country.Population FROM country INNER JOIN city WHERE country.Code = city.CountryCode AND country.Capital=city.ID AND country.Region = '"+inputRegion+"' ORDER BY country.Population DESC;";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryThree);
-            // Extract region information
+            // Extract country information
             ArrayList<Country> regions = new ArrayList<Country>();
             while (rset.next())
             {
@@ -306,7 +306,7 @@ public class App {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get all the countries in the Caribbean organised by largest population to smallest.");
+            System.out.println("Failed to get all the countries in Caribbean organised by largest population to smallest.");
             return null;
         }
     }
@@ -319,15 +319,15 @@ public class App {
         // Check region is not null
         if (region == null)
         {
-            System.out.println("No region");
+            System.out.println("There is no region in Caribbean.");
             return;
         }
         // Print header
-        System.out.println(String.format("%-10s %-30s %-30s %-30s %-30s %-20s", "Code","Country Name","Continent","Region","Population","Capital"));
+        System.out.println(String.format("%-10s %-40s %-30s %-30s %-30s %-30s", "Code","Country Name","Continent","Region","Population","Capital"));
         // Loop over all region in the list
         for (Country r : region)
         {
-            //printRegion to check if a region is null
+            //printRegion to check if an region is null
             if (r == null)
                 continue;
             String regString =
@@ -336,7 +336,6 @@ public class App {
             System.out.println(regString);
         }
     }
-
     /**
      * Outputs to Markdown
      * 3. All the countries in a region organised by largest population to smallest.
@@ -353,9 +352,10 @@ public class App {
         int i = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
+        System.out.println("3: All the countries in Caribbean organised by largest population to smallest.\n");
         sb.append("| No. | Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
         sb.append("| --- | --- | --- | --- | --- | --- | --- |\r\n");
-        // Loop over all countires in the list
+        // Loop over all regions in the list
         for (Country regs : allregion)
         {
             i += 1;
@@ -377,7 +377,6 @@ public class App {
             e.printStackTrace();
         }
     }
-
     /**
      * 4. The top N populated countries in the world where N is provided by the user.
      * Query execution by user input and pass the array list to format the return value.
@@ -428,12 +427,12 @@ public class App {
         // Check npopulatedcountries is not null
         if (nPopulatedCountry == null)
         {
-            System.out.println("No region");
+            System.out.println("There is no top 10 populated country in the world.");
             return;
         }
         // Print header
         System.out.println(String.format("%-10s %-40s %-30s %-30s %-30s %-30s", "Code", "Country Name", "Continent", "Region", "Population", "Capital"));
-        // Loop over all countries in the list
+        // Loop over top n country in the list
         for (Country npopc : nPopulatedCountry)
         {
             //printcontinent to check if an Continent is null
@@ -445,7 +444,6 @@ public class App {
             System.out.println(npopctrString);
         }
     }
-
     /**
      * Outputs to Markdown
      * 4. The top N populated countries in the world where N is provided by the user.
@@ -461,9 +459,10 @@ public class App {
         int i = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
+        System.out.println("4: The top 10 populated countries in the world.\n");
         sb.append("| No. | Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
         sb.append("| --- | --- | --- | --- | --- | --- | --- |\r\n");
-        // Loop over all countries in the list
+        // Loop over top n country in the list
         for (Country ncont : ncountries) {
             i += 1;
             if (ncont == null) continue;
@@ -481,8 +480,6 @@ public class App {
             e.printStackTrace();
         }
     }
-
-
     /**
      * 5. The top N populated countries in a continent where N is provided by the user.
      * Query execution by user input and pass the array list to format the return value.
@@ -501,7 +498,7 @@ public class App {
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryFive);
-            // Extract continent information
+            // Extract country information
             ArrayList<Country> nPopulatedContinents = new ArrayList<Country>();
             while (rset.next())
             {
@@ -519,7 +516,7 @@ public class App {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the top 10 populated countries in the Europe.");
+            System.out.println("Failed to get the top 10 populated countries in Europe.");
             return null;
         }
     }
@@ -533,7 +530,7 @@ public class App {
         // Check npopulatedcontinent is not null
         if (nPopulatedContinents == null)
         {
-            System.out.println("No region");
+            System.out.println("There is no top 10 populated country in Europe.");
             return;
         }
         // Print header
@@ -550,7 +547,6 @@ public class App {
             System.out.println(npopcontString);
         }
     }
-
     /**
      * Outputs to Markdown
      * 5. The top N populated countries in a continent where N is provided by the user.
@@ -566,9 +562,10 @@ public class App {
         int i = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
+        System.out.println("5. The top 10 populated countries in Europe.\n");
         sb.append("| No. | Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
         sb.append("| --- | --- | --- | --- | --- | --- | --- |\r\n");
-        // Loop over all countries in the list
+        // Loop over top n continent in the list
         for (Country ncont : ncontinents) {
             i += 1;
             if (ncont == null) continue;
@@ -586,8 +583,6 @@ public class App {
             e.printStackTrace();
         }
     }
-
-
     /**
      * 6. The top N populated countries in a region where N is provided by the user.
      * Query execution by user input and pass the array list to format the return value.
@@ -606,7 +601,7 @@ public class App {
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQuerySix);
-            // Extract region information
+            // Extract country information
             ArrayList<Country> nPopulatedRegion = new ArrayList<Country>();
             while (rset.next())
             {
@@ -624,7 +619,7 @@ public class App {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the top 10 populated countries in the Caribbean.");
+            System.out.println("Failed to get the top 10 populated countries in Caribbean.");
             return null;
         }
     }
@@ -638,15 +633,15 @@ public class App {
         // Check npopulatedregion is not null
         if (nPopulatedRegion == null)
         {
-            System.out.println("No region");
+            System.out.println("There is no top 10 populated country in Caribbean.");
             return;
         }
         // Print header
         System.out.println(String.format("%-10s %-40s %-30s %-30s %-30s %-30s","Code","Country Name","Continent","Region","Population","Capital"));
-        // Loop over all countries in the list
+        // Loop over all region in the list
         for (Country npopreg : nPopulatedRegion)
         {
-            //printNpopulatedRegion to check if a region is null
+            //printNpopulatedRegion to check if an region is null
             if (npopreg == null)
                 continue;
             String npopregString =
@@ -670,9 +665,10 @@ public class App {
         int i = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
+        System.out.println("6: The top 10 populated countries in Caribbean.\n");
         sb.append("| No. | Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
         sb.append("| --- | --- | --- | --- | --- | --- | --- |\r\n");
-        // Loop over all countries in the list
+        // Loop over top n region in the list
         for (Country nreg : nregions) {
             i += 1;
             if (nreg == null) continue;
@@ -690,13 +686,11 @@ public class App {
             e.printStackTrace();
         }
     }
-
-
     /**
      * 7. All the cities in the world organised by largest population to smallest.
      * Query execution and pass the array list to format the return value.
-     * Function is called in main.**/
-
+     * Function is called in main.
+     **/
     public ArrayList<City> getAllCities()
     {
         try
@@ -714,10 +708,10 @@ public class App {
             while (rset.next())
             {
                 City cit = new City();
-                cit.setCit_name(rset.getString("CityName"));
-                cit.setCountry_name(rset.getString("CountryName"));
-                cit.setCit_district(rset.getString("District"));
-                cit.setCit_population(rset.getString("Population"));
+                cit.setCitName(rset.getString("CityName"));
+                cit.setCountryName(rset.getString("CountryName"));
+                cit.setCitDistrict(rset.getString("District"));
+                cit.setCitPopulation(rset.getString("Population"));
                 cities.add(cit);
             }
             return cities;
@@ -746,13 +740,12 @@ public class App {
         {
             if (cit == null)
                 continue;
-            String cit_string =
+            String allcitString =
                     String.format("%-35s %-40s %-25s %-25s",
-                            cit.getCit_name(),cit.getCountry_name(),cit.getCit_district(),cit.getCit_population());
-            System.out.println(cit_string);
+                            cit.getCitName(),cit.getCountryName(),cit.getCitDistrict(),cit.getCitPopulation());
+            System.out.println(allcitString);
         }
     }
-
     /**
      * Outputs to Markdown
      * 7. All the cities in the world organised by largest population to smallest.
@@ -768,15 +761,16 @@ public class App {
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
+        System.out.println("7: All the cities in the world organised by largest population to smallest.\n");
         sb.append("| No. | City Name | Country Name | District | Population |\r\n");
         sb.append("| --- | --- | --- | --- | --- |\r\n");
         // Loop over all cities in the list
         for (City cit : allCity) {
             id += 1;
             if (cit == null) continue;
-            sb.append("| " + id + "| " + cit.getCit_name() + " | " +
-                    cit.getCountry_name() + " | " +
-                    cit.getCit_district() + " | " + numFormat.format(Integer.parseInt(cit.getCit_population())) + " |\r\n");
+            sb.append("| " + id + "| " + cit.getCitName() + " | " +
+                    cit.getCountryName() + " | " +
+                    cit.getCitDistrict() + " | " + numFormat.format(Integer.parseInt(cit.getCitPopulation())) + " |\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -787,13 +781,12 @@ public class App {
             e.printStackTrace();
         }
     }
-
     /**
      * 8. All the cities in a continent organised by largest population to smallest.
      * Query execution and pass the array list to format the return value.
      * Function is called in main.
      **/
-    public ArrayList<City> getAllCitiesContinent(String input_continent)
+    public ArrayList<City> getAllCitiesContinent(String inputCitContinent)
     {
         try
         {
@@ -802,7 +795,7 @@ public class App {
             // Create string for SQL statement
             //Query 8: All the cities in a continent organised by largest population to smallest.
             String strQueryEight =
-                    "SELECT city.Name as 'CityName', country.Name as 'CountryName', city.District, city.Population FROM city INNER JOIN country on city.CountryCode = country.Code WHERE country.Continent = '"+input_continent+"' ORDER BY city.Population DESC;";
+                    "SELECT city.Name as 'CityName', country.Name as 'CountryName', city.District, country.Continent, city.Population FROM city INNER JOIN country on city.CountryCode = country.Code WHERE country.Continent = '"+ inputCitContinent +"' ORDER BY city.Population DESC;";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryEight);
             // Extract continent information
@@ -810,10 +803,11 @@ public class App {
             while (rset.next())
             {
                 City conti = new City();
-                conti.setCit_name(rset.getString("CityName"));
-                conti.setCountry_name(rset.getString("CountryName"));
-                conti.setCit_district(rset.getString("District"));
-                conti.setCit_population(rset.getString("Population"));
+                conti.setCitName(rset.getString("CityName"));
+                conti.setCountryName(rset.getString("CountryName"));
+                conti.setCitDistrict(rset.getString("District"));
+                conti.setCitCont(rset.getString("Continent"));
+                conti.setCitPopulation(rset.getString("Population"));
                 continent.add(conti);
             }
             return continent;
@@ -821,11 +815,10 @@ public class App {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get all the cities in the Asia organised by largest population to smallest.");
+            System.out.println("Failed to get all the cities in Asia organised by largest population to smallest.");
             return null;
         }
     }
-
     /**
      * 8. All the cities in a continent organised by largest population to smallest.
      * Formatting the output data from the list.
@@ -833,23 +826,22 @@ public class App {
     public void printContinents(ArrayList<City> continent)
     {
         if (continent == null){
-            System.out.println("There is no city in a continent!");
+            System.out.println("There is no city in Asia.");
         }
         //System.out.println("8. All the cities in a continent organised by largest population to smallest.");
         // Print header
-        System.out.println(String.format("%-35s %-40s %-25s %-25s","City Name","Country Name","District","Population"));
+        System.out.println(String.format("%-35s %-40s %-25s %-25s %-25s","City Name","Country Name","District","Continent","Population"));
         // Loop over all cities in the list
         for (City c : continent)
         {
             if (c == null)
                 continue;
-            String conti_string =
-                    String.format("%-35s %-40s %-25s %-25s",
-                            c.getCit_name(),c.getCountry_name(),c.getCit_district(),c.getCit_population());
-            System.out.println(conti_string);
+            String allcontiString =
+                    String.format("%-35s %-40s %-25s %-25s %-25s",
+                            c.getCitName(),c.getCountryName(),c.getCitDistrict(),c.getCitCont(),c.getCitPopulation());
+            System.out.println(allcontiString);
         }
     }
-
     /**
      * Outputs to Markdown
      * 8. All the cities in a continent organised by largest population to smallest.
@@ -865,15 +857,16 @@ public class App {
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| No. | City Name | Country Name | District | Population |\r\n");
-        sb.append("| --- | --- | --- | --- | --- |\r\n");
-        // Loop over all cities in the list
+        System.out.println("8. All the cities in Asia organised by largest population to smallest.\n");
+        sb.append("| No. | City Name | Country Name | District | Continent | Population |\r\n");
+        sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
+        // Loop over all continents in the list
         for (City cont : continent) {
             id += 1;
             if (cont == null) continue;
-            sb.append("| " + id + "| " + cont.getCit_name() + " | " +
-                    cont.getCountry_name() + " | " +
-                    cont.getCit_district() + " | " + numFormat.format(Integer.parseInt(cont.getCit_population())) + " |\r\n");
+            sb.append("| " + id + "| " + cont.getCitName() + " | " +
+                    cont.getCountryName() + " | " + cont.getCitDistrict() + " | " +
+                    " | " + cont.getCitCont() + " | " + numFormat.format(Integer.parseInt(cont.getCitPopulation())) + " |\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -884,13 +877,12 @@ public class App {
             e.printStackTrace();
         }
     }
-
     /**
      * 9. All the cities in a region organised by largest population to smallest.
      * Query execution and pass the array list to format the return value.
      * Function is called in main.
      **/
-    public ArrayList<City> getAllCitiesRegions(String input_regions)
+    public ArrayList<City> getAllCitiesRegions(String inputCitRegions)
     {
         try
         {
@@ -899,7 +891,7 @@ public class App {
             // Create string for SQL statement
             //Query 9: All the cities in a region organised by largest population to smallest.
             String strQueryEight =
-                    "SELECT city.Name as 'CityName',country.Name as 'CountryName', city.District, city.Population FROM city INNER JOIN country on city.CountryCode = country.Code WHERE country.Region = '"+input_regions+"' ORDER BY city.Population DESC;";
+                    "SELECT city.Name as 'CityName',country.Name as 'CountryName', city.District, country.Region, city.Population FROM city INNER JOIN country on city.CountryCode = country.Code WHERE country.Region = '"+inputCitRegions+"' ORDER BY city.Population DESC;";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryEight);
             // Extract regions information
@@ -907,10 +899,11 @@ public class App {
             while (rset.next())
             {
                 City reg          = new City();
-                reg.setCit_name(rset.getString("CityName"));
-                reg.setCountry_name(rset.getString("CountryName"));
-                reg.setCit_district(rset.getString("District"));
-                reg.setCit_population(rset.getString("Population"));
+                reg.setCitName(rset.getString("CityName"));
+                reg.setCountryName(rset.getString("CountryName"));
+                reg.setCitDistrict(rset.getString("District"));
+                reg.setCitReg(rset.getString("Region"));
+                reg.setCitPopulation(rset.getString("Population"));
                 regions.add(reg);
             }
             return regions;
@@ -918,10 +911,11 @@ public class App {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get all the cities in the Caribbean organised by largest population to smallest.");
+            System.out.println("Failed to get all the cities in Caribbean organised by largest population to smallest.");
             return null;
         }
     }
+
     /**
      * 9. All the cities in a region organised by largest population to smallest.
      * Formatting the output data from the list.
@@ -929,24 +923,22 @@ public class App {
     public void printRegions(ArrayList<City> regions)
     {
         if (regions == null){
-            System.out.println("There is no city in a region!");
+            System.out.println("There is no city in Caribbean");
         }
         //System.out.println("9. All the cities in a region organised by largest population to smallest.");
         // Print header
-        System.out.println(String.format("%-35s %-40s %-25s %-25s","City Name","Country Name","District","Population"));
+        System.out.println(String.format("%-35s %-40s %-25s %-25s %-25s","City Name","Country Name","District","Region","Population"));
         // Loop over all cities in the list
         for (City r : regions)
         {
-            //printRegion to check if a region is null
             if (r == null)
                 continue;
-            String reg_string =
-                    String.format("%-35s %-40s %-25s %-25s",
-                            r.getCit_name(),r.getCountry_name(),r.getCit_district(),r.getCit_population());
-            System.out.println(reg_string);
+            String allregString =
+                    String.format("%-35s %-40s %-25s %-25s %-25s",
+                            r.getCitName(),r.getCountryName(),r.getCitDistrict(),r.getCitReg(),r.getCitPopulation());
+            System.out.println(allregString);
         }
     }
-
     /**
      * Outputs to Markdown
      * 9. All the cities in a region organised by largest population to smallest.
@@ -955,22 +947,23 @@ public class App {
     public void outputcityregion(ArrayList<City> region, String reg) {
         // Check cities is not null
         if (region == null) {
-            System.out.println("No City in a continent");
+            System.out.println("No City in a region");
             return;
         }
         NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| No. | City Name | Country Name | District | Population |\r\n");
-        sb.append("| --- | --- | --- | --- | --- |\r\n");
-        // Loop over all cities in the list
+        System.out.println("9: All the cities in Caribbean organised by largest population to smallest.\n");
+        sb.append("| No. | City Name | Country Name | District | Region |Population |\r\n");
+        sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
+        // Loop over all regions in the list
         for (City citReg : region) {
             id += 1;
             if (citReg == null) continue;
-            sb.append("| " + id + "| " + citReg.getCit_name() + " | " +
-                    citReg.getCountry_name() + " | " +
-                    citReg.getCit_district() + " | " + numFormat.format(Integer.parseInt(citReg.getCit_population())) + " |\r\n");
+            sb.append("| " + id + "| " + citReg.getCitName() + " | " +
+                    citReg.getCountryName() + " | " + citReg.getCitDistrict() + " | " +
+                    citReg.getCitReg() + " | " + numFormat.format(Integer.parseInt(citReg.getCitPopulation())) + " |\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -981,13 +974,12 @@ public class App {
             e.printStackTrace();
         }
     }
-
     /**
      * 10. All the cities in a country organised by largest population to smallest.
      * Query execution and pass the array list to format the return value.
      * Function is called in main.
      **/
-    public ArrayList<City> getAllCitiesCountries(String input_countries)
+    public ArrayList<City> getAllCitiesCountries(String inputCitCountries)
     {
         try
         {
@@ -996,7 +988,7 @@ public class App {
             // Create string for SQL statement
             //Query 10: All the cities in a country organised by largest population to smallest.
             String strQueryEight =
-                    "SELECT city.Name as 'CityName',country.Name as 'CountryName',city.District, city.Population FROM country INNER JOIN city WHERE country.Code = city.CountryCode AND country.Name='"+input_countries+"' ORDER BY city.Population DESC;";
+                    "SELECT city.Name as 'CityName',country.Name as 'CountryName',city.District, city.Population FROM country INNER JOIN city WHERE country.Code = city.CountryCode AND country.Name='"+inputCitCountries+"' ORDER BY city.Population DESC;";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryEight);
             // Extract country information
@@ -1004,10 +996,10 @@ public class App {
             while (rset.next())
             {
                 City c1           = new City();
-                c1.setCit_name(rset.getString("CityName"));
-                c1.setCountry_name(rset.getString("CountryName"));
-                c1.setCit_district(rset.getString("District"));
-                c1.setCit_population(rset.getString("Population"));
+                c1.setCitName(rset.getString("CityName"));
+                c1.setCountryName(rset.getString("CountryName"));
+                c1.setCitDistrict(rset.getString("District"));
+                c1.setCitPopulation(rset.getString("Population"));
                 countries.add(c1);
             }
             return countries;
@@ -1015,7 +1007,7 @@ public class App {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get all the cities in the Myanmar organised by largest population to smallest.");
+            System.out.println("Failed to get all the cities in Myanmar organised by largest population to smallest.");
             return null;
         }
     }
@@ -1027,7 +1019,7 @@ public class App {
     public void printCountries(ArrayList<City> countries)
     {
         if (countries == null){
-            System.out.println("There is no city in a country!");
+            System.out.println("There is no city in Myanmar.");
         }
         //System.out.println("10. All the cities in a country organised by largest population to smallest.");
         // Print header
@@ -1037,13 +1029,12 @@ public class App {
         {
             if (cou == null)
                 continue;
-            String c_string =
+            String allcouString =
                     String.format("%-35s %-40s %-25s %-25s",
-                            cou.getCit_name(),cou.getCountry_name(),cou.getCit_district(),cou.getCit_population());
-            System.out.println(c_string);
+                            cou.getCitName(),cou.getCountryName(),cou.getCitDistrict(),cou.getCitPopulation());
+            System.out.println(allcouString);
         }
     }
-
     /**
      * Outputs to Markdown
      * 10. All the cities in a country organised by largest population to smallest.
@@ -1059,15 +1050,16 @@ public class App {
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
+        System.out.println("10: All the cities in Myanmar organised by largest population to smallest.\n");
         sb.append("| No. | City Name | Country Name | District | Population |\r\n");
         sb.append("| --- | --- | --- | --- | --- |\r\n");
-        // Loop over all cities in the list
+        // Loop over all country in the list
         for (City citCt : citCount) {
             id += 1;
             if (citCt == null) continue;
-            sb.append("| " + id + "| " + citCt.getCit_name() + " | " +
-                    citCt.getCountry_name() + " | " +
-                    citCt.getCit_district() + " | " + numFormat.format(Integer.parseInt(citCt.getCit_population())) + " |\r\n");
+            sb.append("| " + id + "| " + citCt.getCitName() + " | " +
+                    citCt.getCountryName() + " | " +
+                    citCt.getCitDistrict() + " | " + numFormat.format(Integer.parseInt(citCt.getCitPopulation())) + " |\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -1078,13 +1070,12 @@ public class App {
             e.printStackTrace();
         }
     }
-
     /**
      * 11. All the cities in a district organised by largest population to smallest.
      * Query execution and pass the array list to format the return value.
      * Function is called in main.
      **/
-    public ArrayList<City> getAllCitiesDistrict(String input_district)
+    public ArrayList<City> getAllCitiesDistrict(String inputCitDistrict)
     {
         try
         {
@@ -1093,18 +1084,18 @@ public class App {
             // Create string for SQL statement
             //Query 11: All the cities in a district organised by largest population to smallest.
             String strQueryEight =
-                    "SELECT city.Name as 'CityName', country.Name as 'CountryName', city.District as 'District', city.Population FROM country INNER JOIN city WHERE city.District='"+input_district+"' AND country.Code=city.CountryCode ORDER BY city.Population DESC;";
+                    "SELECT city.Name as 'CityName', country.Name as 'CountryName', city.District as 'District', city.Population FROM country INNER JOIN city WHERE city.District='"+inputCitDistrict+"' AND country.Code=city.CountryCode ORDER BY city.Population DESC;";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryEight);
-            // Extract district information
+            // Extract city information
             ArrayList<City> district = new ArrayList<City>();
             while (rset.next())
             {
                 City dist         = new City();
-                dist.setCit_name(rset.getString("CityName"));
-                dist.setCountry_name(rset.getString("CountryName"));
-                dist.setCit_district(rset.getString("District"));
-                dist.setCit_population(rset.getString("Population"));
+                dist.setCitName(rset.getString("CityName"));
+                dist.setCountryName(rset.getString("CountryName"));
+                dist.setCitDistrict(rset.getString("District"));
+                dist.setCitPopulation(rset.getString("Population"));
                 district.add(dist);
             }
             return district;
@@ -1112,7 +1103,7 @@ public class App {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get all the cities in the Queensland organised by largest population to smallest.");
+            System.out.println("Failed to get all the cities in Queensland organised by largest population to smallest.");
             return null;
         }
     }
@@ -1124,7 +1115,7 @@ public class App {
     public void printDistrict(ArrayList<City> district)
     {
         if (district == null){
-            System.out.println("There is no cities in a district!");
+            System.out.println("There is no city in Queensland");
         }
         //System.out.println("11. All the cities in a district organised by largest population to smallest.");
         // Print header
@@ -1134,13 +1125,12 @@ public class App {
         {
             if (di == null)
                 continue;
-            String d_string =
+            String alldistString =
                     String.format("%-35s %-40s %-25s %-25s",
-                            di.getCit_name(),di.getCountry_name(),di.getCit_district(),di.getCit_population());
-            System.out.println(d_string);
+                            di.getCitName(),di.getCountryName(),di.getCitDistrict(),di.getCitPopulation());
+            System.out.println(alldistString);
         }
     }
-
     /**
      * Outputs to Markdown
      * 11. All the cities in a district organised by largest population to smallest.
@@ -1156,15 +1146,15 @@ public class App {
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
+        System.out.println("11: All the cities in Queensland organised by largest population to smallest.\n");
         sb.append("| No. | City Name | Country Name | District | Population |\r\n");
         sb.append("| --- | --- | --- | --- | --- |\r\n");
-        // Loop over all cities in the list
+        // Loop over all districts in the list
         for (City citDt : citDist) {
             id += 1;
             if (citDt == null) continue;
-            sb.append("| " + id + "| " + citDt.getCit_name() + " | " +
-                    citDt.getCountry_name() + " | " +
-                    citDt.getCit_district() + " | " + numFormat.format(Integer.parseInt(citDt.getCit_population())) + " |\r\n");
+            sb.append("| " + id + "| " + citDt.getCitName() + " | " + citDt.getCountryName() + " | " +
+                    citDt.getCitDistrict() + " | " + numFormat.format(Integer.parseInt(citDt.getCitPopulation())) + " |\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -1175,13 +1165,12 @@ public class App {
             e.printStackTrace();
         }
     }
-
     /**
      * 12. The top N populated cities in the world where N is provided by the user.
      * Query execution and pass the array list to format the return value.
      * Function is called in main.
      **/
-    public ArrayList<City> getTopNPopulatedCities(int input_world)
+    public ArrayList<City> getTopNPopulatedCities(int inputTopWorld)
     {
         try
         {
@@ -1190,7 +1179,7 @@ public class App {
             // Create string for SQL statement
             //Query 12: The top N populated cities in the world where N is provided by the user.
             String strQueryEight =
-                    "SELECT city.Name as 'Cityname', country.Name as 'Countryname', city.District, city.Population FROM city INNER JOIN country WHERE city.CountryCode=country.Code ORDER BY city.Population DESC LIMIT "+input_world+";";
+                    "SELECT city.Name as 'Cityname', country.Name as 'Countryname', city.District, city.Population FROM city INNER JOIN country WHERE city.CountryCode=country.Code ORDER BY city.Population DESC LIMIT "+inputTopWorld+";";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryEight);
             // Extract cities information
@@ -1198,10 +1187,10 @@ public class App {
             while (rset.next())
             {
                 City world = new City();
-                world.setCit_name(rset.getString("Cityname"));
-                world.setCountry_name(rset.getString("Countryname"));
-                world.setCit_district(rset.getString("District"));
-                world.setCit_population(rset.getString("Population"));
+                world.setCitName(rset.getString("Cityname"));
+                world.setCountryName(rset.getString("Countryname"));
+                world.setCitDistrict(rset.getString("District"));
+                world.setCitPopulation(rset.getString("Population"));
                 worlds.add(world);
             }
             return worlds;
@@ -1220,7 +1209,7 @@ public class App {
     public void printTopNWorlds(ArrayList<City> wld)
     {
         if (wld == null){
-            System.out.println("There is no top N populated cities in the world!");
+            System.out.println("There is no top 10 populated cities in the world!");
         }
         //System.out.println("12. The top N populated cities in the world where N is provided by the user.");
         // Print header
@@ -1230,13 +1219,12 @@ public class App {
         {
             if (w == null)
                 continue;
-            String w_string =
+            String topwString =
                     String.format("%-35s %-40s %-25s %-25s",
-                            w.getCit_name(),w.getCountry_name(),w.getCit_district(),w.getCit_population());
-            System.out.println(w_string);
+                            w.getCitName(),w.getCountryName(),w.getCitDistrict(),w.getCitPopulation());
+            System.out.println(topwString);
         }
     }
-
     /**
      * Outputs to Markdown
      * 12. The top N populated cities in the world where N is provided by the user.
@@ -1252,15 +1240,15 @@ public class App {
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
+        System.out.println("12: The top 10 populated cities in the world.\n");
         sb.append("| No. | City Name | Country Name | District | Population |\r\n");
         sb.append("| --- | --- | --- | --- | --- |\r\n");
-        // Loop over all cities in the list
+        // Loop over top n city in the list
         for (City topWld : topNWorld) {
             id += 1;
             if (topWld == null) continue;
-            sb.append("| " + id + "| " + topWld.getCit_name() + " | " +
-                    topWld.getCountry_name() + " | " +
-                    topWld.getCit_district() + " | " + numFormat.format(Integer.parseInt(topWld.getCit_population())) + " |\r\n");
+            sb.append("| " + id + "| " + topWld.getCitName() + " | " + topWld.getCountryName() + " | " +
+                    topWld.getCitDistrict() + " | " + numFormat.format(Integer.parseInt(topWld.getCitPopulation())) + " |\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -1271,13 +1259,12 @@ public class App {
             e.printStackTrace();
         }
     }
-
     /**
      * 13. The top N populated cities in a continent where N is provided by the user.
      * Query execution and pass the array list to format the return value.
      * Function is called in main.
      **/
-    public ArrayList<City>getTopNPopulatedContinent(String input_Continent, int input_limited)
+    public ArrayList<City>getTopNPopulatedContinent(String inputTopContinent, int inputLimited)
     {
         try
         {
@@ -1286,18 +1273,19 @@ public class App {
             // Create string for SQL statement
             //Query 13: The top N populated cities in the continent where N is provided by the user.
             String strQueryEight =
-                    "SELECT city.Name as 'CityName', country.Name as 'CountryName', city.District, city.Population FROM city INNER JOIN country on city.CountryCode = country.Code WHERE country.Continent = '"+input_Continent+"' ORDER BY city.Population DESC LIMIT "+input_limited+";";
+                    "SELECT city.Name as 'CityName', country.Name as 'CountryName', city.District, country.Continent, city.Population FROM city INNER JOIN country on city.CountryCode = country.Code WHERE country.Continent = '"+inputTopContinent+"' ORDER BY city.Population DESC LIMIT "+ inputLimited +";";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryEight);
-            // Extract continent information
+            // Extract city information
             ArrayList<City> continent = new ArrayList<City>();
             while (rset.next())
             {
                 City conti            = new City();
-                conti.setCit_name(rset.getString("Cityname"));
-                conti.setCountry_name(rset.getString("Countryname"));
-                conti.setCit_district(rset.getString("District"));
-                conti.setCit_population(rset.getString("Population"));
+                conti.setCitName(rset.getString("Cityname"));
+                conti.setCountryName(rset.getString("Countryname"));
+                conti.setCitDistrict(rset.getString("District"));
+                conti.setCitCont(rset.getString("Continent"));
+                conti.setCitPopulation(rset.getString("Population"));
                 continent.add(conti);
             }
             return continent;
@@ -1305,7 +1293,7 @@ public class App {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the top N populated cities in the Europe.");
+            System.out.println("Failed to get the top 10 populated cities in Europe.");
             return null;
         }
     }
@@ -1317,23 +1305,22 @@ public class App {
     public void printTopNContinent(ArrayList<City> cnt)
     {
         if (cnt == null){
-            System.out.println("No cities in a continent");
+            System.out.println("There is no top 10 populated city in Europe.");
         }
         //System.out.println("13. The top N populated cities in a continent where N is provided by the user.");
         // Print header
-        System.out.println(String.format("%-35s %-40s %-25s %-25s","City Name","Country Name","District","Population"));
+        System.out.println(String.format("%-35s %-40s %-25s %-25s %-25s","City Name","Country Name","District","Continent","Population"));
         // Loop over all cities in the list
         for (City cont : cnt)
         {
             if (cont == null)
                 continue;
-            String cont_string =
-                    String.format("%-35s %-40s %-25s %-25s",
-                            cont.getCit_name(),cont.getCountry_name(),cont.getCit_district(),cont.getCit_population());
-            System.out.println(cont_string);
+            String topcontString =
+                    String.format("%-35s %-40s %-25s %-25s %-25s",
+                            cont.getCitName(),cont.getCountryName(),cont.getCitDistrict(),cont.getCitCont(),cont.getCitPopulation());
+            System.out.println(topcontString);
         }
     }
-
     /**
      * Outputs to Markdown
      * 13. The top N populated cities in a continent where N is provided by the user.
@@ -1349,15 +1336,16 @@ public class App {
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| No. | City Name | Country Name | District | Population |\r\n");
-        sb.append("| --- | --- | --- | --- | --- |\r\n");
-        // Loop over all cities in the list
+        System.out.println("13. The top 10 populated cities in Europe.\n");
+        sb.append("| No. | City Name | Country Name | District | Continent | Population |\r\n");
+        sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
+        // Loop over top n continent in the list
         for (City topCont : topNCont) {
             id += 1;
             if (topCont == null) continue;
-            sb.append("| " + id + "| " + topCont.getCit_name() + " | " +
-                    topCont.getCountry_name() + " | " +
-                    topCont.getCit_district() + " | " + numFormat.format(Integer.parseInt(topCont.getCit_population())) + " |\r\n");
+            sb.append("| " + id + "| " + topCont.getCitName() + " | " + topCont.getCountryName() + " | " +
+                    topCont.getCitDistrict() + " | " + topCont.getCitCont() +" | " +
+                    numFormat.format(Integer.parseInt(topCont.getCitPopulation())) + " |\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -1368,13 +1356,12 @@ public class App {
             e.printStackTrace();
         }
     }
-
     /**
      * 14. The top N populated cities in a region where N is provided by the user.
      * Query execution and pass the array list to format the return value.
      * Function is called in main.
      **/
-    public ArrayList<City> getTopNPopulatedRegion(String inputRegion, int inputLimit)
+    public ArrayList<City> getTopNPopulatedRegion(String inputTopRegion, int inputLimited)
     {
         try
         {
@@ -1383,18 +1370,19 @@ public class App {
             // Create string for SQL statement
             //Query 14: The top N populated cities in a region where N is provided by the user.
             String strQueryEight =
-                    "SELECT country.Region, city.Name as 'CityName', country.Name as 'CountryName', city.District, city.Population FROM city INNER JOIN country on city.CountryCode = country.Code WHERE country.Region = '"+ inputRegion +"' ORDER BY city.Population DESC LIMIT "+ inputLimit +";";
+                    "SELECT country.Region, city.Name as 'CityName', country.Name as 'CountryName', city.District, country.Region, city.Population FROM city INNER JOIN country on city.CountryCode = country.Code WHERE country.Region = '"+inputTopRegion+"' ORDER BY city.Population DESC LIMIT "+ inputLimited +";";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryEight);
-            // Extract region information
+            // Extract city information
             ArrayList<City> region = new ArrayList<City>();
             while (rset.next())
             {
                 City reg          = new City();
-                reg.setCit_name(rset.getString("Cityname"));
-                reg.setCountry_name(rset.getString("Countryname"));
-                reg.setCit_district(rset.getString("District"));
-                reg.setCit_population(rset.getString("Population"));
+                reg.setCitName(rset.getString("Cityname"));
+                reg.setCountryName(rset.getString("Countryname"));
+                reg.setCitDistrict(rset.getString("District"));
+                reg.setCitReg(rset.getString("Region"));
+                reg.setCitPopulation(rset.getString("Population"));
                 region.add(reg);
             }
             return region;
@@ -1402,7 +1390,7 @@ public class App {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the top 10 populated cities in the Caribbean.");
+            System.out.println("Failed to get the top 10 populated cities in Caribbean.");
             return null;
         }
     }
@@ -1414,30 +1402,29 @@ public class App {
     public void printTopNRegion(ArrayList<City> regn)
     {
         if (regn == null){
-            System.out.println("No cities in a region");
+            System.out.println("There is no top 10 populated city in Caribbean");
         }
         //System.out.println("14. The top N populated cities in a region where N is provided by the user.");
         // Print header
-        System.out.println(String.format("%-35s %-40s %-25s %-25s","City Name","Country Name","District","Population"));
+        System.out.println(String.format("%-35s %-40s %-25s %-25s %-25s","City Name","Country Name","District","Region","Population"));
         // Loop over all cities in the list
         for (City cont : regn)
         {
             if (cont == null)
                 continue;
-            String cont_string =
-                    String.format("%-35s %-40s %-25s %-25s",
-                            cont.getCit_name(),cont.getCountry_name(),cont.getCit_district(),cont.getCit_population());
-            System.out.println(cont_string);
+            String topregString =
+                    String.format("%-35s %-40s %-25s %-25s %-25s",
+                            cont.getCitName(),cont.getCountryName(),cont.getCitDistrict(),cont.getCitReg(),cont.getCitPopulation());
+            System.out.println(topregString);
         }
     }
-
     /**
      * Outputs to Markdown
      * 14. The top N populated cities in a region where N is provided by the user.
      * @param topNReg
      */
     public void outputTopNcityReg(ArrayList<City> topNReg, String citReg) {
-        // Check cities in a continent is not null
+        // Check cities in a region is not null
         if (topNReg == null) {
             System.out.println("No City in a region");
             return;
@@ -1446,15 +1433,16 @@ public class App {
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| No. | City Name | Country Name | District | Population |\r\n");
-        sb.append("| --- | --- | --- | --- | --- |\r\n");
-        // Loop over all cities in the list
+        System.out.println("14: The top 10 populated cities in Caribbean.\n");
+        sb.append("| No. | City Name | Country Name | District | Region | Population |\r\n");
+        sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
+        // Loop over top n region in the list
         for (City topReg : topNReg) {
             id += 1;
             if (topReg == null) continue;
-            sb.append("| " + id + "| " + topReg.getCit_name() + " | " +
-                    topReg.getCountry_name() + " | " +
-                    topReg.getCit_district() + " | " + numFormat.format(Integer.parseInt(topReg.getCit_population())) + " |\r\n");
+            sb.append("| " + id + "| " + topReg.getCitName() + " | " + topReg.getCountryName() + " | " +
+                    topReg.getCitDistrict() + " | " + topReg.getCitReg() + " | " +
+                    numFormat.format(Integer.parseInt(topReg.getCitPopulation())) + " |\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -1465,33 +1453,32 @@ public class App {
             e.printStackTrace();
         }
     }
-
     /**
      * 15. The top N populated cities in a country where N is provided by the user.
      * Query execution and pass the array list to format the return value.
      * Function is called in main.
      **/
-    public ArrayList<City> getTopNPopulatedCountries(String input_Country, int input_limited)
+    public ArrayList<City> getTopNPopulatedCountries(String inputTopCountry, int inputLimited)
     {
         try
         {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            //Query 13: The top N populated cities in a country where N is provided by the user.
+            //Query 15: The top N populated cities in a country where N is provided by the user.
             String strQueryEight =
-                    "SELECT city.Name as 'CityName',country.Name as 'CountryName',city.District, city.Population FROM city INNER JOIN country on city.CountryCode = country.Code WHERE country.Name = '"+input_Country+"' ORDER BY city.Population DESC LIMIT "+input_limited+";";
+                    "SELECT city.Name as 'CityName',country.Name as 'CountryName',city.District, city.Population FROM city INNER JOIN country on city.CountryCode = country.Code WHERE country.Name = '"+inputTopCountry+"' ORDER BY city.Population DESC LIMIT "+ inputLimited +";";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryEight);
-            // Extract country information
+            // Extract city information
             ArrayList<City> country = new ArrayList<City>();
             while (rset.next())
             {
                 City cty = new City();
-                cty.setCit_name(rset.getString("Cityname"));
-                cty.setCountry_name(rset.getString("Countryname"));
-                cty.setCit_district(rset.getString("District"));
-                cty.setCit_population(rset.getString("Population"));
+                cty.setCitName(rset.getString("CityName"));
+                cty.setCountryName(rset.getString("CountryName"));
+                cty.setCitDistrict(rset.getString("District"));
+                cty.setCitPopulation(rset.getString("Population"));
                 country.add(cty);
             }
             return country;
@@ -1499,7 +1486,7 @@ public class App {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the top 10 populated cities in the Argentina.");
+            System.out.println("Failed to get the top 10 populated cities in Argentina.");
             return null;
         }
     }
@@ -1510,7 +1497,7 @@ public class App {
     public void printTopNCountries(ArrayList<City> count)
     {
         if (count == null){
-            System.out.println("No cities in a country");
+            System.out.println("There is no top 10 populated city in Argentina.");
         }
         //System.out.println("15. The top N populated cities in a country where N is provided by the user.");
         // Print header
@@ -1520,20 +1507,19 @@ public class App {
         {
             if (cont == null)
                 continue;
-            String cont_string =
+            String topcouString =
                     String.format("%-35s %-40s %-25s %-30s",
-                            cont.getCit_name(),cont.getCountry_name(),cont.getCit_district(),cont.getCit_population());
-            System.out.println(cont_string);
+                            cont.getCitName(),cont.getCountryName(),cont.getCitDistrict(),cont.getCitPopulation());
+            System.out.println(topcouString);
         }
     }
-
     /**
      * Outputs to Markdown
      * 15. The top N populated cities in a country where N is provided by the user.
      * @param topNcty
      */
     public void outputTopNcitycty(ArrayList<City> topNcty, String citcty) {
-        // Check cities in a continent is not null
+        // Check cities in a country is not null
         if (topNcty == null) {
             System.out.println("No City in a country");
             return;
@@ -1542,15 +1528,15 @@ public class App {
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
+        System.out.println("15: The top 10 populated cities in Argentina.\n");
         sb.append("| No. | City Name | Country Name | District | Population |\r\n");
         sb.append("| --- | --- | --- | --- | --- |\r\n");
-        // Loop over all cities in the list
+        // Loop over top n country in the list
         for (City topcty : topNcty) {
             id += 1;
             if (topcty == null) continue;
-            sb.append("| " + id + "| " + topcty.getCit_name() + " | " +
-                    topcty.getCountry_name() + " | " +
-                    topcty.getCit_district() + " | " + numFormat.format(Integer.parseInt(topcty.getCit_population())) + " |\r\n");
+            sb.append("| " + id + "| " + topcty.getCitName() + " | " + topcty.getCountryName() + " | " +
+                    topcty.getCitDistrict() + " | " + numFormat.format(Integer.parseInt(topcty.getCitPopulation())) + " |\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -1561,13 +1547,12 @@ public class App {
             e.printStackTrace();
         }
     }
-
     /**
      * 16. The top N populated cities in a district where N is provided by the user.
      * Query execution and pass the array list to format the return value.
      * Function is called in main.
      **/
-    public ArrayList<City> getTopNPopulatedDistrict(String input_District, int input_limited)
+    public ArrayList<City> getTopNPopulatedDistrict(String inputTopDistrict, int inputLimited)
     {
         try
         {
@@ -1576,18 +1561,18 @@ public class App {
             // Create string for SQL statement
             //Query 13: The top N populated cities in a district  where N is provided by the user.
             String strQueryEight =
-                    "SELECT city.Name as 'CityName', country.name as 'CountryName', city.District, city.Population FROM city INNER JOIN country on city.CountryCode = country.Code WHERE city.District = '"+input_District+"' ORDER BY city.Population DESC LIMIT "+input_limited+";";
+                    "SELECT city.Name as 'CityName', country.name as 'CountryName', city.District, city.Population FROM city INNER JOIN country on city.CountryCode = country.Code WHERE city.District = '"+inputTopDistrict+"' ORDER BY city.Population DESC LIMIT "+ inputLimited +";";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryEight);
-            // Extract district information
+            // Extract city information
             ArrayList<City> dist = new ArrayList<City>();
             while (rset.next())
             {
                 City dis = new City();
-                dis.setCit_name(rset.getString("Cityname"));
-                dis.setCountry_name(rset.getString("Countryname"));
-                dis.setCit_district(rset.getString("District"));
-                dis.setCit_population(rset.getString("Population"));
+                dis.setCitName(rset.getString("Cityname"));
+                dis.setCountryName(rset.getString("Countryname"));
+                dis.setCitDistrict(rset.getString("District"));
+                dis.setCitPopulation(rset.getString("Population"));
                 dist.add(dis);
             }
             return dist;
@@ -1595,7 +1580,7 @@ public class App {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the top 10 populated cities in the Zuid-Holland.");
+            System.out.println("Failed to get the top 10 populated cities in Zuid-Holland.");
             return null;
         }
     }
@@ -1607,24 +1592,23 @@ public class App {
     public void printTopNDistrict(ArrayList<City> dists)
     {
         if (dists == null){
-            System.out.println("No cities in a region");
+            System.out.println("There is no top 10 populated city in Zuid-Holland");
         }
         //System.out.println("16. The top N populated cities in a district where N is provided by the user.");
         // Print header
-        System.out.println(String.format("%-30s %-25s %-25s %-30s","City Name","Country Name","District","Population"));
+        System.out.println(String.format("%-30s %-40s %-25s %-30s","City Name","Country Name","District","Population"));
         // Loop over all cities in the list
         for (City cont : dists)
         {
             if (cont == null)
                 continue;
-            String cont_string =
+            String topdistString =
                     String.format("%-30s %-40s %-25s %-30s",
-                            cont.getCit_name(),cont.getCountry_name(),cont.getCit_district(),cont.getCit_population());
-            System.out.println(cont_string);
+                            cont.getCitName(),cont.getCountryName(),cont.getCitDistrict(),cont.getCitPopulation());
+            System.out.println(topdistString);
         }
 
     }
-
     /**
      * Outputs to Markdown
      * 16. The top N populated cities in a district where N is provided by the user.
@@ -1640,15 +1624,15 @@ public class App {
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
+        System.out.println("16: The top 10 populated cities in Zuid-Holland.\n");
         sb.append("| No. | City Name | Country Name | District | Population |\r\n");
         sb.append("| --- | --- | --- | --- | --- |\r\n");
-        // Loop over all cities in the list
+        // Loop over top n district in the list
         for (City topdist : topNdist) {
             id += 1;
             if (topdist == null) continue;
-            sb.append("| " + id + "| " + topdist.getCit_name() + " | " +
-                    topdist.getCountry_name() + " | " +
-                    topdist.getCit_district() + " | " + numFormat.format(Integer.parseInt(topdist.getCit_population())) + " |\r\n");
+            sb.append("| " + id + "| " + topdist.getCitName() + " | " + topdist.getCountryName() + " | " +
+                    topdist.getCitDistrict() + " | " + numFormat.format(Integer.parseInt(topdist.getCitPopulation())) + " |\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -1659,7 +1643,6 @@ public class App {
             e.printStackTrace();
         }
     }
-
     /**
      * 17.All the capital cities in the world organised by largest population to smallest.
      * Query execution and pass the array list to format the return value.
@@ -1678,7 +1661,7 @@ public class App {
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQuerySeventeen);
-            // Extract capitalcities information
+            // Extract capital cities information
             ArrayList<CapitalCity> allCapitalCity = new ArrayList<CapitalCity>();
             while (rset.next())
             {
@@ -1703,15 +1686,15 @@ public class App {
      **/
     public void printAllCapitalCities(ArrayList<CapitalCity> capitalCities)
     {
-        // Check countries is not null
+        // Check capital city is not null
         if (capitalCities == null)
         {
-            System.out.println("No Capital Cities");
+            System.out.println("There is no capital city in the world.");
             return;
         }
         // Print header
         System.out.println(String.format("%-40s %-40s %-25s", "CapitalCity","Country","Population"));
-        // Loop over all countries in the list
+        // Loop over all capital city in the list
         for (CapitalCity cc : capitalCities)
         {
             if (cc == null)
@@ -1738,6 +1721,7 @@ public class App {
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
+        System.out.println("17: All the capital cities in the world organised by largest population to smallest.\n");
         sb.append("| No. | Capital City Name | Country | Population |\r\n");
         sb.append("| --- | --- | --- | --- |\r\n");
         // Loop over all capital cities in the list
@@ -1774,7 +1758,7 @@ public class App {
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryEighteen);
-            // Extract continent information
+            // Extract capital city information
             ArrayList<CapitalCity> capCitContinent = new ArrayList<CapitalCity>();
             while (rset.next())
             {
@@ -1790,7 +1774,7 @@ public class App {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get all the capitalcities in a Asia organised by largest population to smallest.");
+            System.out.println("Failed to get all the capital city in Asia organised by largest population to smallest.");
             return null;
         }
     }
@@ -1804,7 +1788,7 @@ public class App {
         // Check continent is not null
         if (capcitContinent == null)
         {
-            System.out.println("No Capital City Continent");
+            System.out.println("There is no capital city in Asia.");
             return;
         }
         // Print header
@@ -1820,6 +1804,7 @@ public class App {
             System.out.println(capconString);
         }
     }
+
     /**
      * Outputs to Markdown
      * 18.All the capital cities in a continent organised by largest population to smallest.
@@ -1835,6 +1820,7 @@ public class App {
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
+        System.out.println("18: All the capital cities in Oceania continent organised by largest population to smallest.\n");
         sb.append("| No. | Capital City Name | Country | Continent | Population |\r\n");
         sb.append("| --- | --- | --- | --- | --- |\r\n");
         // Loop over all continents in the list
@@ -1871,7 +1857,7 @@ public class App {
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryNineteen);
-            // Extract region information
+            // Extract capital city information
             ArrayList<CapitalCity> capCitRegion = new ArrayList<CapitalCity>();
             while (rset.next())
             {
@@ -1887,7 +1873,7 @@ public class App {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get all the capitalcities in a Caribbean organised by largest population to smallest.");
+            System.out.println("Failed to get all the capital cities in Caribbean organised by largest population to smallest.");
             return null;
         }
     }
@@ -1900,7 +1886,7 @@ public class App {
         // Check region is not null
         if (capcitRegion == null)
         {
-            System.out.println("No CapitalCity region");
+            System.out.println("There is no capital city in Caribbean.");
             return;
         }
         // Print header
@@ -1932,6 +1918,7 @@ public class App {
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
+        System.out.println("19.All the capital cities in Caribbean region organised by largest to smallest.\n");
         sb.append("| No. | Capital City Name | Country | Region | Population |\r\n");
         sb.append("| --- | --- | --- | --- | --- |\r\n");
         // Loop over all regions in the list
@@ -1968,7 +1955,7 @@ public class App {
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryTwenty);
-            // Extract region information
+            // Extract capital city information
             ArrayList<CapitalCity> capWorld = new ArrayList<CapitalCity>();
             while (rset.next())
             {
@@ -1983,7 +1970,7 @@ public class App {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the top N populated capital cities in the world where N is provided by the user.");
+            System.out.println("Failed to get the top 10 populated capital cities in the world.");
             return null;
         }
     }
@@ -1993,15 +1980,15 @@ public class App {
      **/
     public void printTopNCapCitiesWorld(ArrayList<CapitalCity> capWorld)
     {
-        // Check region is not null
+        // Check capital city is not null
         if (capWorld == null)
         {
-            System.out.println("There is no Capital City in the world");
+            System.out.println("There is no top 10 populated capital city in the world.");
             return;
         }
         // Print header
         System.out.println(String.format("%-30s %-40s %-30s", "Capital City Name","Country Name", "Population"));
-        // Loop over all capital cities in the world
+        // Loop over top n capital city in the world
         for (CapitalCity ccr : capWorld)
         {
             //print the list to check if capital cities in the world is null
@@ -2028,9 +2015,10 @@ public class App {
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
+        System.out.println("20.The top 10 populated capital cities in the world \n");
         sb.append("| No. | Capital City Name | Country | Population |\r\n");
         sb.append("| --- | --- | --- | --- |\r\n");
-        // Loop over top 10 capital city in the list
+        // Loop over top n capital city in the list
         for (CapitalCity topcapcit : top10capitalcity) {
             id += 1;
             if (topcapcit == null) continue;
@@ -2060,19 +2048,19 @@ public class App {
             // Create string for SQL statement
             //Query 20.The top N populated capital cities in a continent where N is provided by the user.
             String strQueryTwentyOne =
-                    "SELECT city.Name as 'CityName', country.Name as 'CountryName', country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode AND country.Continent = '"+ inputContin +"' ORDER BY country.Population DESC LIMIT "+ inputLimit +";";
+                    "SELECT city.Name as 'CityName', country.Name as 'CountryName',country.Continent, country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode AND country.Continent = '"+ inputContin +"' ORDER BY country.Population DESC LIMIT "+ inputLimit +";";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryTwentyOne);
-            // Extract region information
+            // Extract capital city information
             ArrayList<CapitalCity> capCont = new ArrayList<CapitalCity>();
             while (rset.next())
             {
                 CapitalCity capCnt = new CapitalCity();
                 capCnt.setCapCityName(rset.getString("CityName"));
                 capCnt.setCapCityCountry(rset.getString("CountryName"));
+                capCnt.setCapCityContinent(rset.getString("Continent"));
                 capCnt.setCapCityPopulation(rset.getString("Population"));
-                capCnt.setContinentName(inputContin);
                 capCont.add(capCnt);
             }
             return capCont;
@@ -2080,7 +2068,7 @@ public class App {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the top N populated capital cities in a continent where N is provided by the user.");
+            System.out.println("Failed to get the top 10 populated capital cities in North America.");
             return null;
         }
     }
@@ -2090,14 +2078,14 @@ public class App {
      **/
     public void printTopNCapCitiesCont(ArrayList<CapitalCity> ncontCap)
     {
-        // Check region is not null
+        // Check continent is not null
         if (ncontCap == null)
         {
-            System.out.println("There is no Capital City in the world");
+            System.out.println("There is no capital city in North America.");
             return;
         }
         // Print header
-        System.out.println(String.format("%-30s %-40s %-30s", "Capital City Name","Country Name", "Population"));
+        System.out.println(String.format("%-30s %-40s %-35s %-30s", "Capital City Name","Country Name","Continent", "Population"));
         // Loop over all capital cities in a continent
         for (CapitalCity ccr : ncontCap)
         {
@@ -2105,8 +2093,8 @@ public class App {
             if (ccr == null)
                 continue;
             String coString =
-                    String.format("%-30s %-40s %-30s",
-                            ccr.getCapCityName(),ccr.getCapCityCountry(), ccr.getCapCityPopulation());
+                    String.format("%-30s %-40s %-35s %-30s",
+                            ccr.getCapCityName(),ccr.getCapCityCountry(), ccr.getCapCityContinent(),ccr.getCapCityPopulation());
             System.out.println(coString);
         }
     }
@@ -2125,9 +2113,10 @@ public class App {
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
+        System.out.println("21.The top 10 populated capital cities in North America \n");
         sb.append("| No. | Capital City Name | Country | Continent | Population |\r\n");
         sb.append("| --- | --- | --- | --- | --- |\r\n");
-        // Loop over top 10 continent in the list
+        // Loop over top n continent in the list
         for (CapitalCity topcapcitcon : top10capitalcitycont) {
             id += 1;
             if (topcapcitcon == null) continue;
@@ -2157,19 +2146,19 @@ public class App {
             // Create string for SQL statement
             //Query 20.The top N populated capital cities in a region where N is provided by the user.
             String strQueryTwentyTwo =
-                    "SELECT city.Name as 'CityName', country.Name as 'CountryName', country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode AND country.Region='"+ inputTopRegion +"' ORDER BY country.Population DESC LIMIT "+ inputLimit +";";
+                    "SELECT city.Name as 'CityName', country.Name as 'CountryName',country.Region, country.Population FROM city INNER JOIN country WHERE city.ID = country.Capital AND country.Code=city.CountryCode AND country.Region='"+ inputTopRegion +"' ORDER BY country.Population DESC LIMIT "+ inputLimit +";";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryTwentyTwo);
-            // Extract region information
+            // Extract capital city information
             ArrayList<CapitalCity> capRegion = new ArrayList<CapitalCity>();
             while (rset.next())
             {
                 CapitalCity capRegi = new CapitalCity();
                 capRegi.setCapCityName(rset.getString("CityName"));
                 capRegi.setCapCityCountry(rset.getString("CountryName"));
+                capRegi.setCapCityRegion(rset.getString("Region"));
                 capRegi.setCapCityPopulation(rset.getString("Population"));
-                capRegi.setRegionName(inputTopRegion);
                 capRegion.add(capRegi);
             }
             return capRegion;
@@ -2177,7 +2166,7 @@ public class App {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the top N populated capital cities in a region where N is provided by the user.");
+            System.out.println("Failed to get the top 10 populated capital cities in Middle East.");
             return null;
         }
     }
@@ -2190,23 +2179,24 @@ public class App {
         // Check region is not null
         if (regCap == null)
         {
-            System.out.println("There is no Capital City in the world");
+            System.out.println("There is no capital city in Middle East.");
             return;
         }
         // Print header
-        System.out.println(String.format("%-30s %-40s %-30s", "Capital City Name","Country Name", "Population"));
-        // Loop over all capital cities in a continent
+        System.out.println(String.format("%-30s %-40s %-35s %-30s", "Capital City Name","Country Name", "Region","Population"));
+        // Loop over all capital cities in a region
         for (CapitalCity ccr : regCap)
         {
             //print the list to check if capital cities in a region is null
             if (ccr == null)
                 continue;
             String reString =
-                    String.format("%-30s %-40s %-30s",
-                            ccr.getCapCityName(),ccr.getCapCityCountry(), ccr.getCapCityPopulation());
+                    String.format("%-30s %-40s %-35s %-30s",
+                            ccr.getCapCityName(),ccr.getCapCityCountry(), ccr.getCapCityRegion(), ccr.getCapCityPopulation());
             System.out.println(reString);
         }
     }
+
     /**
      * Outputs to Markdown
      * 22. The top 10 populated capital cities in a region where N is provided by the user.
@@ -2222,9 +2212,10 @@ public class App {
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
+        System.out.println("22.The top 10 populated capital cities in Middle East \n");
         sb.append("| No. | Capital City Name | Country | Region | Population |\r\n");
         sb.append("| --- | --- | --- | --- | --- |\r\n");
-        // Loop over top 10 region in the list
+        // Loop over top n region in the list
         for (CapitalCity topcapcitreg : top10capitalcityreg) {
             id += 1;
             if (topcapcitreg == null) continue;
@@ -2258,7 +2249,7 @@ public class App {
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryTwentyThree);
-            // Extract continent information
+            // Extract people population information
             ArrayList<PeoplePopulation> populationCont = new ArrayList<PeoplePopulation>();
             while (rset.next())
             {
@@ -2291,10 +2282,11 @@ public class App {
         }
         // Print header
         System.out.println(String.format("%-20s %-28s %-25s %-25s %-25s", "Continent","Continent Total Population","City Total Population","People Not Living (%)","People Living (%)"));
-        // Loop over all capital cities in a continent
+        // Loop over people population in a continent
+
         for (PeoplePopulation pcon : popuConti)
         {
-            //print the list to check if capital cities in a continent is null
+            //print the list to check if people population in a continent is null
             if (pcon == null)
                 continue;
             if (pcon.getCityPopulation() == null){
@@ -2314,9 +2306,6 @@ public class App {
             String strnotlivingconper = notlivingcon+"%";
             String strlivingconper = livingconper+"%";
 
-            pcon.setLivingPopContinent(strlivingconper);
-            pcon.setNotLivingPopContinent(strnotlivingconper);
-
             String pconString =
                     String.format("%-20s %-28s %-25s %-25s %-25s",
                             pcon.getContinentName(),pcon.getContinentPopulation(), pcon.getCityPopulation(), strnotlivingconper, strlivingconper);
@@ -2330,7 +2319,7 @@ public class App {
      * @param populationContinent
      */
     public void outputPopulationContinent(ArrayList<PeoplePopulation> populationContinent, String populationContinentReport) {
-        // Check employees is not null
+        // Check people population is not null
         if (populationContinent == null) {
             System.out.println("No population");
             return;
@@ -2338,10 +2327,11 @@ public class App {
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
+        System.out.println("23.The population of people, people living in cities, and people not living in cities in each continent. \n");
         sb.append("| No. | Continent Name | Continent Total Population | City Total Population | People Not Living (%) | People Living (%) |\r\n");
         sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
 
-        // Loop over all employees in the list
+        // Loop over continent people population in the list
         for (PeoplePopulation popcontinent : populationContinent) {
             id += 1;
             if (popcontinent == null) continue;
@@ -2377,7 +2367,7 @@ public class App {
                     "SELECT country.Region, SUM(country.Population) as 'RegionPopulation', SUM((SELECT SUM(city.Population) FROM city WHERE city.CountryCode=country.Code)) as 'CityPopulation' FROM country GROUP BY country.Region;";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryTwentyFour);
-            // Extract region information
+            // Extract people population information
             ArrayList<PeoplePopulation> populationReg = new ArrayList<PeoplePopulation>();
             while (rset.next())
             {
@@ -2410,10 +2400,10 @@ public class App {
         }
         // Print header
         System.out.println(String.format("%-30s %-25s %-25s %-25s %-25s", "Region", "Region Total Population","City Total Population", "People Not Living (%)", "People Living (%)"));
-        // Loop over all capital cities in a region
+        // Loop over people population in a region
         for (PeoplePopulation preg : popuRegs)
         {
-            //print the list to check if capital cities in a region is null
+            //print the list to check if people population in a region is null
             if (preg == null)
                 continue;
             if (preg.getCityPopulation() == null){
@@ -2432,10 +2422,6 @@ public class App {
             }
             String strnotlivingregper = notlivingregper+"%";
             String strlivingregper = livingregper+"%";
-
-            preg.setLivingPopRegion(strlivingregper);
-            preg.setNotLivingPopRegion(strnotlivingregper);
-
             String pregString =
                     String.format("%-30s %-25s %-25s %-25s %-25s",
                             preg.getRegionsName(),preg.getRegionsPopulation(),preg.getCityPopulation(),strnotlivingregper,strlivingregper);
@@ -2449,7 +2435,7 @@ public class App {
      * @param populationRegion
      */
     public void outputPopulationRegion(ArrayList<PeoplePopulation> populationRegion, String populationRegionReport) {
-        // Check employees is not null
+        // Check people population is not null
         if (populationRegion == null) {
             System.out.println("No population");
             return;
@@ -2457,9 +2443,10 @@ public class App {
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
+        System.out.println("24.The population of people, people living in cities, and people not living in cities in each region. \n");
         sb.append("| No. | Region Name | Total Region Population | Total City Population | People Not Living (%) | People Living (%) |\r\n");
         sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
-        // Loop over all employees in the list
+        // Loop over region people population in the list
         for (PeoplePopulation poprgn : populationRegion) {
             id += 1;
             if (poprgn == null) continue;
@@ -2477,7 +2464,6 @@ public class App {
             e.printStackTrace();
         }
     }
-
     /**
      * 25.The population of people, people living in cities, and people not living in cities in each country.
      * Query execution and pass the array list to format the return value.
@@ -2495,7 +2481,7 @@ public class App {
                     "SELECT country.Name, SUM(country.Population) as 'CountryPopulation', SUM((SELECT SUM(city.Population) FROM city WHERE city.CountryCode=country.Code)) as 'CityPopulation' FROM country GROUP BY country.Name;";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryTwentyFive);
-            // Extract country information
+            // Extract people population information
             ArrayList<PeoplePopulation> populationCou = new ArrayList<PeoplePopulation>();
             while (rset.next())
             {
@@ -2528,9 +2514,10 @@ public class App {
         }
         // Print header
         System.out.println(String.format("%-45s %-28s %-25s %-25s %-25s", "Country Name" ,"Country Total Population" ,"City Total Population", "People Not Living(%)", "People Living(%)"));
+        // Loop over people population in a country
         for (PeoplePopulation pcou : popuCoun)
         {
-            //print the list to check if capital cities in a country is null
+            //print the list to check if people population in a country is null
             if (pcou == null)
                 continue;
             if (pcou.getCityPopulation() == null){
@@ -2549,10 +2536,6 @@ public class App {
             }
             String strnotlivingcouper = notlivingcouper+"%";
             String strlivingcouper = livingcouper+"%";
-
-            pcou.setLivingPopCountry(strlivingcouper);
-            pcou.setNotLivingPopCountry(strnotlivingcouper);
-
             String pcouString =
                     String.format("%-45s %-28s %-25s %-25s %-25s",
                             pcou.getCountriesName(), pcou.getCountriesPopulation(), pcou.getCityPopulation(), strnotlivingcouper, strlivingcouper);
@@ -2565,7 +2548,7 @@ public class App {
      * @param populationCountry
      */
     public void outputPopulationCountry(ArrayList<PeoplePopulation> populationCountry, String populationCountryReport) {
-        // Check population is not null
+        // Check people population is not null
         if (populationCountry == null) {
             System.out.println("No population");
             return;
@@ -2573,9 +2556,10 @@ public class App {
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
+        System.out.println("25.The population of people, people living in cities, and people not living in cities in each country. \n");
         sb.append("| No. | Country Name | Total Country Population | Total City Population | People Not Living (%) | People Living (%) |\r\n");
         sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
-        // Loop over all population in the list
+        // Loop over country people population in the list
         for (PeoplePopulation popcoun : populationCountry) {
             id += 1;
             if (popcoun == null) continue;
@@ -2593,7 +2577,6 @@ public class App {
             e.printStackTrace();
         }
     }
-
     /**
      * 26.The population of the world.
      * Query execution and pass the array list to format the return value.
@@ -2611,7 +2594,7 @@ public class App {
                     "SELECT SUM(country.Population) as 'Population' FROM country;";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryTwentySix);
-            // Extract country information
+            // Extract people population information
             ArrayList<PeoplePopulation> populationWorld = new ArrayList<PeoplePopulation>();
             while (rset.next())
             {
@@ -2624,7 +2607,7 @@ public class App {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the population of the world.");
+            System.out.println("Failed to get the people population of the world.");
             return null;
         }
     }
@@ -2637,27 +2620,28 @@ public class App {
 
         // Check country is not null
         if (popWorld == null) {
-            System.out.println("There is no population of the world.");
+            System.out.println("There is no people population of the world.");
             return;
         }
-        // Print header
+        // Loop over people population in the world
         for (PeoplePopulation wpop : popWorld) {
-            //print the list to check if capital cities in a country is null
+            //print the list to check if people population in the world is null
             if (wpop == null)
                 continue;
             String pworldString =
                     String.format("%-40s",
                             wpop.getWorldPopulation());
-            System.out.println("Total World Population: "+pworldString);
+            System.out.println("Total World People Population: "+pworldString);
         }
     }
+
     /**
      * Outputs to Markdown
      * 26. The population of the world.
      * @param populationOfWorld
      */
     public void outputPopulationOfWorld(ArrayList<PeoplePopulation> populationOfWorld, String populationOfWorldReport) {
-        // Check population is not null
+        // Check people population is not null
         if (populationOfWorld == null) {
             System.out.println("No population");
             return;
@@ -2665,9 +2649,10 @@ public class App {
         int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
+        System.out.println("26. The population of the world.");
         sb.append("| No. | Total World Population |\r\n");
         sb.append("| --- | --- |\r\n");
-        // Loop over population in the list
+        // Loop over people population in the list
         for (PeoplePopulation popofworld : populationOfWorld) {
             idnum += 1;
             if (popofworld == null) continue;
@@ -2682,7 +2667,6 @@ public class App {
             e.printStackTrace();
         }
     }
-
     /**
      * 27.The population of the continent.
      * Query execution and pass the array list to format the return value.
@@ -2700,7 +2684,7 @@ public class App {
                     "SELECT country.Continent, SUM(country.Population) AS 'Population' FROM country WHERE country.Continent = '"+inputTotalCont+"';";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryTwentySeven);
-            // Extract continent information
+            // Extract people population information
             ArrayList<PeoplePopulation> populationConti = new ArrayList<PeoplePopulation>();
             while (rset.next())
             {
@@ -2714,11 +2698,10 @@ public class App {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the population of the continent.");
+            System.out.println("Failed to get the people population of Asia.");
             return null;
         }
     }
-
     /**
      * 27. The population of the continent.
      * Formatting the output data from the list.
@@ -2726,17 +2709,17 @@ public class App {
     public void printContinentPopulation(ArrayList<PeoplePopulation> popConti)
     {
 
-        // Check country is not null
+        // Check continent is not null
         if (popConti == null) {
-            System.out.println("There is no population of the continent.");
+            System.out.println("There is no people population of Asia");
             return;
         }
         // Print header
-        System.out.println(String.format("%-40s %-40s", "Continent Name", "Population"));
-        // Loop over all capital cities in a country
+        System.out.println(String.format("%-40s %-40s", "Continent Name", "Total Continent Population"));
+        // Loop over people population in continent
         for (PeoplePopulation continentPopulation : popConti)
         {
-            //print the list to check if capital cities in a country is null
+            //print the list to check if people population in continent is null
             if (continentPopulation == null)
                 continue;
             String pcontString =
@@ -2751,7 +2734,7 @@ public class App {
      * @param populationOfContinent
      */
     public void outputPopulationOfContinent(ArrayList<PeoplePopulation> populationOfContinent, String populationOfContinentReport) {
-        // Check population is not null
+        // Check people population is not null
         if (populationOfContinent == null) {
             System.out.println("No population");
             return;
@@ -2759,9 +2742,10 @@ public class App {
         int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
+        System.out.println("27. The population of Asia.");
         sb.append("| No. | Continent Name | Total Continent Population |\r\n");
         sb.append("| --- | --- | --- |\r\n");
-        // Loop over population in the list
+        // Loop over continent people population in the list
         for (PeoplePopulation popofcontinent : populationOfContinent) {
             idnum += 1;
             if (popofcontinent == null) continue;
@@ -2777,7 +2761,6 @@ public class App {
             e.printStackTrace();
         }
     }
-
     /**
      * 28.The population of the regions.
      * Query execution and pass the array list to format the return value.
@@ -2790,12 +2773,12 @@ public class App {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            //Query 27.The population of the continent.
+            //Query 27.The population of the region.
             String strQueryTwentyEight =
                     "SELECT country.Region, SUM(country.Population) AS 'Population' FROM country WHERE country.Region='"+inputTotalRegion+"';";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryTwentyEight);
-            // Extract regions information
+            // Extract people population information
             ArrayList<PeoplePopulation> populationRegi = new ArrayList<PeoplePopulation>();
             while (rset.next())
             {
@@ -2809,7 +2792,7 @@ public class App {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the population of the continent.");
+            System.out.println("Failed to get the people population of Caribbean.");
             return null;
         }
     }
@@ -2820,17 +2803,17 @@ public class App {
     public void printRegionsPopulation(ArrayList<PeoplePopulation> popRegs)
     {
 
-        // Check country is not null
+        // Check region is not null
         if (popRegs == null) {
-            System.out.println("There is no population of the regions.");
+            System.out.println("There is no people population of Caribbean.");
             return;
         }
         // Print header
-        System.out.println(String.format("%-40s %-40s", "Region Name", "Population"));
-        // Loop over population from region
+        System.out.println(String.format("%-40s %-40s", "Region Name", "Total Region Population"));
+        // Loop over people population in region
         for (PeoplePopulation regionsPopulation : popRegs)
         {
-            //print the list to check if capital cities in a country is null
+            //print the list to check if people population in region is null
             if (regionsPopulation == null)
                 continue;
             String pregiString =
@@ -2845,7 +2828,7 @@ public class App {
      * @param populationOfRegion
      */
     public void outputPopulationOfRegion(ArrayList<PeoplePopulation> populationOfRegion, String populationOfRegionReport) {
-        // Check population is not null
+        // Check people population is not null
         if (populationOfRegion == null) {
             System.out.println("No population");
             return;
@@ -2854,9 +2837,10 @@ public class App {
         int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
+        System.out.println("28. The population of Caribbean.");
         sb.append("| No. | Region Name | Total Region Population |\r\n");
         sb.append("| --- | --- | --- |\r\n");
-        // Loop over all population in the list
+        // Loop over region people population in the list
         for (PeoplePopulation popofregion : populationOfRegion) {
             idnum += 1;
             if (popofregion == null) continue;
@@ -2872,7 +2856,6 @@ public class App {
             e.printStackTrace();
         }
     }
-
     /**
      * 29.The population of the country.
      * Query execution and pass the array list to format the return value.
@@ -2890,7 +2873,7 @@ public class App {
                     "SELECT country.Name, country.Population FROM country WHERE country.Name='"+inputTotalCountry+"';";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryTwentyNine);
-            // Extract countries information
+            // Extract people population information
             ArrayList<PeoplePopulation> populCountry = new ArrayList<PeoplePopulation>();
             while (rset.next())
             {
@@ -2904,7 +2887,7 @@ public class App {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the population of the country.");
+            System.out.println("Failed to get the people population of Austria.");
             return null;
         }
     }
@@ -2917,15 +2900,15 @@ public class App {
 
         // Check country is not null
         if (popContr == null) {
-            System.out.println("There is no population of the countries.");
+            System.out.println("There is no people population of Austria.");
             return;
         }
         // Print header
-        System.out.println(String.format("%-50s %-40s", "Country Name", "Population"));
-        // Loop over population from region
+        System.out.println(String.format("%-50s %-40s", "Country Name", "Total Country Population"));
+        // Loop over people population in country
         for (PeoplePopulation countrPopulation : popContr)
         {
-            //print the list to check if capital cities in a country is null
+            //print the list to check if people population in country is null
             if (countrPopulation == null)
                 continue;
             String pcoString =
@@ -2940,7 +2923,7 @@ public class App {
      * @param populationOfCountry
      */
     public void outputPopulationOfCountry(ArrayList<PeoplePopulation> populationOfCountry, String populationOfCountryReport) {
-        // Check population is not null
+        // Check people population is not null
         if (populationOfCountry == null) {
             System.out.println("No population");
             return;
@@ -2949,9 +2932,10 @@ public class App {
         int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
+        System.out.println("29. The population of Austria.");
         sb.append("| No. | Country Name | Total Country Population |\r\n");
         sb.append("| --- | --- | --- |\r\n");
-        // Loop over all population in the list
+        // Loop over country people population in the list
         for (PeoplePopulation popofcountry : populationOfCountry) {
             idnum += 1;
             if (popofcountry == null) continue;
@@ -2967,7 +2951,6 @@ public class App {
             e.printStackTrace();
         }
     }
-
     /**
      * 30.The population of the district.
      * Query execution and pass the array list to format the return value.
@@ -2985,7 +2968,7 @@ public class App {
                     "SELECT city.District, city.Population FROM city WHERE city.District='"+inputTotalDistrict+"';";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryThirty);
-            // Extract countries information
+            // Extract people population information
             ArrayList<PeoplePopulation> populationDistr = new ArrayList<PeoplePopulation>();
             while (rset.next())
             {
@@ -2999,7 +2982,7 @@ public class App {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the population of the districts.");
+            System.out.println("Failed to get the people population of Kabol.");
             return null;
         }
     }
@@ -3010,17 +2993,17 @@ public class App {
     public void printDistrictsPopulation(ArrayList<PeoplePopulation> popDist)
     {
 
-        // Check country is not null
+        // Check district is not null
         if (popDist == null) {
-            System.out.println("There is no population of the districts.");
+            System.out.println("There is no people population of Kabol.");
             return;
         }
         // Print header
-        System.out.println(String.format("%-40s %-40s", "District Name", "Population"));
-        // Loop over population from region
+        System.out.println(String.format("%-40s %-40s", "District Name", "Total District Population"));
+        // Loop over people population in district
         for (PeoplePopulation dstPopulation : popDist)
         {
-            //print the list to check if capital cities in a country is null
+            //print the list to check if people population in district is null
             if (dstPopulation == null)
                 continue;
             String pdiString =
@@ -3035,7 +3018,7 @@ public class App {
      * @param populationOfDistrict
      */
     public void outputPopulationOfDistrict(ArrayList<PeoplePopulation> populationOfDistrict, String populationOfDistrictReport) {
-        // Check population is not null
+        // Check people population is not null
         if (populationOfDistrict == null) {
             System.out.println("No population");
             return;
@@ -3044,9 +3027,10 @@ public class App {
         int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
+        System.out.println("30. The population of Kabol.");
         sb.append("| No. | District Name | Total District Population |\r\n");
         sb.append("| --- | --- | --- |\r\n");
-        // Loop over all population in the list
+        // Loop over district people population in the list
         for (PeoplePopulation popofdistrict : populationOfDistrict) {
             idnum += 1;
             if (popofdistrict == null) continue;
@@ -3062,7 +3046,6 @@ public class App {
             e.printStackTrace();
         }
     }
-
     /**
      * 31.The population of the city.
      * Query execution and pass the array list to format the return value.
@@ -3080,7 +3063,7 @@ public class App {
                     "SELECT city.Name, city.Population FROM city WHERE city.Name='"+inputTotalCity+"';";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryThirtyOne);
-            // Extract city information
+            // Extract people population information
             ArrayList<PeoplePopulation> populatCities = new ArrayList<PeoplePopulation>();
             while (rset.next())
             {
@@ -3094,7 +3077,7 @@ public class App {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the population of the city.");
+            System.out.println("Failed to get the people population of Haag.");
             return null;
         }
     }
@@ -3105,17 +3088,17 @@ public class App {
     public void printCityPopulation(ArrayList<PeoplePopulation> popCity)
     {
 
-        // Check country is not null
+        // Check city is not null
         if (popCity == null) {
-            System.out.println("There is no population of the cities.");
+            System.out.println("There is no people population of Haag.");
             return;
         }
         // Print header
         System.out.println(String.format("%-40s %-40s", "City Name", "Population"));
-        // Loop over population from region
+        // Loop over people population in city
         for (PeoplePopulation cityPopul : popCity)
         {
-            //print the list to check if capital cities in a country is null
+            //print the list to check if people population in city is null
             if (cityPopul == null)
                 continue;
             String pcitString =
@@ -3130,7 +3113,7 @@ public class App {
      * @param populationOfCity
      */
     public void outputPopulationOfCity(ArrayList<PeoplePopulation> populationOfCity, String populationOfCityReport) {
-        // Check population is not null
+        // Check people population is not null
         if (populationOfCity == null) {
             System.out.println("No population");
             return;
@@ -3139,9 +3122,10 @@ public class App {
         int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
+        System.out.println("31. The population of Haag.");
         sb.append("| No. | City Name | Total City Population |\r\n");
         sb.append("| --- | --- | --- |\r\n");
-        // Loop over all population in the list
+        // Loop over city people population in the list
         for (PeoplePopulation popofcity : populationOfCity) {
             idnum += 1;
             if (popofcity == null) continue;
@@ -3157,7 +3141,6 @@ public class App {
             e.printStackTrace();
         }
     }
-
     /**
      * 32. List the population of people who speak different languages in descending order
      * Query execution by user input and pass the array list to format the return value.
@@ -3176,7 +3159,7 @@ public class App {
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryLanguage4);
-            // Extract countries information
+            // Extract language information
             ArrayList<CountryLanguage> countryLanguage4 = new ArrayList<CountryLanguage>();
             while (rset.next())
             {
@@ -3204,7 +3187,7 @@ public class App {
         // Check country language is not null
         if (countryLang == null)
         {
-            System.out.println("No languages");
+            System.out.println("There is no list the population of people who speak different language in descending order.");
             return;
         }
         // Print header
@@ -3227,7 +3210,6 @@ public class App {
             float countrpoplan = Float.parseFloat(cl4.getCountryPopulation());
             float res = 100 * (countrpoplan/totalpoplanfloat);
             String resStr = res+"%";
-            cl4.setCountryLanguagePercent(resStr);
             String langString =
                     String.format("%-30s %-30s %-30s",
                             cl4.getCountryLanguage(),cl4.getCountryPopulation(), resStr);
@@ -3249,9 +3231,10 @@ public class App {
         int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
+        System.out.println("32: List the population of people who speak different language in descending order.\n");
         sb.append("| No. | Language | Population | Percentage |\r\n");
         sb.append("| --- | --- | --- | --- |\r\n");
-        // Loop over all language in the list
+        // Loop over language in the list
         for (CountryLanguage popoflan : populationOfLanguage) {
             idnum += 1;
             if (popoflan == null) continue;
@@ -3279,48 +3262,46 @@ public class App {
             a.connect(args[0], Integer.parseInt(args[1]));
         }
         System.out.println("\n");
-
-
         // Display all the countries in the world organised by largest population to smallest.
         System.out.println("1: All the countries in the world organised by largest population to smallest.\n");
         ArrayList<Country> country = a.getAllCountries();
         a.printAllCountries(country);
-        a.outputCountries(country, "AllCountries.md");
+        a.outputCountries(country, "All Countries in the World.md");
         System.out.println("\n");
 
         // Display all the countries in a continent organised by largest population to smallest.
-        System.out.println("2: All the countries in the Oceania organised by largest population to smallest.\n");
+        System.out.println("2: All the countries in Oceania organised by largest population to smallest.\n");
         ArrayList<Country> continents = a.getAllContinents("Oceania");
         a.printAllCountries(continents);
-        a.outputContinent(continents, "AllContinents.md");
+        a.outputContinent(continents, "All Countries in a Continent.md");
         System.out.println("\n");
 
         // Display all the countries in a region organised by largest population to smallest.
-        System.out.println("3: All the countries in the Caribbean organised by largest population to smallest.\n");
+        System.out.println("3: All the countries in Caribbean organised by largest population to smallest.\n");
         ArrayList<Country> regions = a.getAllRegion("Caribbean");
         a.printAllCountries(regions);
-        a.outputRegion(regions, "AllRegions.md");
+        a.outputRegion(regions, "All Countries in a Region.md");
         System.out.println("\n");
 
         // Display the top N populated countries in the world where N is provided by the user.
         System.out.println("4: The top 10 populated countries in the world.\n");
         ArrayList<Country> nPopulatedCountries = a.getAllNPopulatedCountries(10);
         a.printNPopulatedCountries(nPopulatedCountries);
-        a.outputRegion(nPopulatedCountries, "TopNCountries.md");
+        a.outputRegion(nPopulatedCountries, "Top 10 Country in the World.md");
         System.out.println("\n");
 
         // Display all the countries in a continent organised by largest population to smallest.
-        System.out.println("5. The top 10 populated countries in the Europe.\n");
+        System.out.println("5. The top 10 populated countries in Europe.\n");
         ArrayList<Country> nPopulatedContinents = a.getAllNPopulatedContinents("Europe", 10);
         a.printContinent(nPopulatedContinents);
-        a.outputRegion(nPopulatedContinents, "TopNContinents.md");
+        a.outputRegion(nPopulatedContinents, "Top 10 Country in a Continent.md");
         System.out.println("\n");
 
         // Display the top N populated countries in a region where N is provided by the user.
-        System.out.println("6: The top 10 populated countries in the Caribbean.\n");
+        System.out.println("6: The top 10 populated countries in Caribbean.\n");
         ArrayList<Country> nPopulatedRegion = a.getAllNPopulatedRegion("Caribbean", 10);
         a.printNPopulatedRegion(nPopulatedRegion);
-        a.outputRegion(nPopulatedRegion, "TopNRegions.md");
+        a.outputRegion(nPopulatedRegion, "Top 10 Country in a Region.md");
         System.out.println("\n");
 
         // Display all the cities in the world organised by largest population to smallest.
@@ -3331,178 +3312,178 @@ public class App {
         System.out.println("\n");
 
         // Display all the cities in a continent organised by largest population to smallest.
-        System.out.println("8. All the cities in the Asia organised by largest population to smallest.\n");
+        System.out.println("8. All the cities in Asia organised by largest population to smallest.\n");
         ArrayList<City> continent = a.getAllCitiesContinent("Asia");
         a.printContinents(continent);
-        a.outputcitycontinent(continent,"Cities in Continent.md");
+        a.outputcitycontinent(continent,"All Cities in a Continent.md");
         System.out.println("\n");
 
         // Display all the cities in a region organised by largest population to smallest.
-        System.out.println("9: All the cities in the Caribbean organised by largest population to smallest.\n");
+        System.out.println("9: All the cities in Caribbean organised by largest population to smallest.\n");
         ArrayList<City> regi = a.getAllCitiesRegions("Caribbean");
         a.printRegions(regi);
-        a.outputcityregion(regi,"Cities in Region.md");
+        a.outputcityregion(regi,"All Cities in a Region.md");
         System.out.println("\n");
 
         // Display all the cities in a country organised by largest population to smallest.
-        System.out.println("10: All the cities in the Myanmar organised by largest population to smallest.\n");
+        System.out.println("10: All the cities in Myanmar organised by largest population to smallest.\n");
         ArrayList<City> countries = a.getAllCitiesCountries("Myanmar");
         a.printCountries(countries);
-        a.outputcityCountry(countries,"Cities in Country.md");
+        a.outputcityCountry(countries,"All Cities in a Country.md");
         System.out.println("\n");
 
         // Diaplay all the cities in a country organised by largest population to smallest.
-        System.out.println("11: All the cities in the Queensland organised by largest population to smallest.\n");
+        System.out.println("11: All the cities in Queensland organised by largest population to smallest.\n");
         ArrayList<City> dist = a.getAllCitiesDistrict("Queensland");
         a.printDistrict(dist);
-        a.outputcityDistrict(dist,"Cities in District.md");
+        a.outputcityDistrict(dist,"All Cities in a District.md");
         System.out.println("\n");
 
         // Display the top N populated cities in the world where N is provided by the user.
-        System.out.println("12: the top 10 populated cities in the world.\n");
+        System.out.println("12: The top 10 populated cities in the world.\n");
         ArrayList<City> city = a.getTopNPopulatedCities(10);
         a.printTopNWorlds(city);
-        a.outputTopNcityworld(city,"Top 10 Cities in World.md");
+        a.outputTopNcityworld(city,"Top 10 Cities in the World.md");
         System.out.println("\n");
 
         // Display the top N populated cities in a continent where N is provided by the user.
-        System.out.println("13. The top 10 populated cities in the Europe.\n");
+        System.out.println("13. The top 10 populated cities in Europe.\n");
         ArrayList<City> topcnt = a.getTopNPopulatedContinent("Europe",10);
         a.printTopNContinent(topcnt);
-        a.outputTopNcityCont(topcnt,"Top 10 Cities in Continent.md");
+        a.outputTopNcityCont(topcnt,"Top 10 Cities in a Continent.md");
         System.out.println("\n");
 
         // Display the top N populated cities in a region where N is provided by the user.
-        System.out.println("14: The top 10 populated cities in the Caribbean.\n");
+        System.out.println("14: The top 10 populated cities in Caribbean.\n");
         ArrayList<City> regs = a.getTopNPopulatedRegion("Caribbean",10);
         a.printTopNRegion(regs);
-        a.outputTopNcityReg(regs,"Top 10 Cities in Region.md");
+        a.outputTopNcityReg(regs,"Top 10 Cities in a Region.md");
         System.out.println("\n");
 
         // Display the top N populated cities in a country where N is provided by the user.
-        System.out.println("15: The top 10 populated cities in the Argentina.\n");
+        System.out.println("15: The top 10 populated cities in Argentina.\n");
         ArrayList<City> ctys = a.getTopNPopulatedCountries("Argentina",10);
         a.printTopNCountries(ctys);
-        a.outputTopNcitycty(ctys,"Top 10 Cities in Country.md");
+        a.outputTopNcitycty(ctys,"Top 10 Cities in a Country.md");
         System.out.println("\n");
 
         // Display the top N populated cities in a district where N is provided by the user.
-        System.out.println("16: The top 10 populated cities in the Zuid-Holland.\n");
+        System.out.println("16: The top 10 populated cities in Zuid-Holland.\n");
         ArrayList<City> district = a.getTopNPopulatedDistrict("Zuid-Holland",10);
         a.printTopNDistrict(district);
-        a.outputTopNcitydist(district,"Top 10 Cities in District.md");
+        a.outputTopNcitydist(district,"Top 10 Cities in a District.md");
         System.out.println("\n");
 
         // All the capital cities in the world organised by largest population to smallest.
         System.out.println("17: All the capital cities in the world organised by largest population to smallest.\n");
         ArrayList<CapitalCity> capitalCities = a.getAllCapitalCities();
         a.printAllCapitalCities(capitalCities);
-        a.outputCapitalCity(capitalCities, "All Capital Cities in World.md");
+        a.outputCapitalCity(capitalCities, "All Capital Cities in the World.md");
         System.out.println("\n");
 
         // All the capital cities in a continent organised by largest population to smallest.
-        System.out.println("18: All the capital cities in a Oceania continent organised by largest population to smallest.\n");
+        System.out.println("18: All the capital cities in Oceania continent organised by largest population to smallest.\n");
         ArrayList<CapitalCity> capCitContinent = a.getAllCapitalCitiesContinents("Asia");
         a.printAllCapitalCityContinent(capCitContinent);
-        a.outputCapitalCityCont(capCitContinent, "All Capital Cities in Continent.md");
+        a.outputCapitalCityCont(capCitContinent, "All Capital Cities in a Continent.md");
         System.out.println("\n");
 
         // All the capital cities in a region organised by largest to smallest.
-        System.out.println("19.All the capital cities in a Caribbean region organised by largest to smallest.\n");
+        System.out.println("19.All the capital cities in Caribbean region organised by largest to smallest.\n");
         ArrayList<CapitalCity> capCitRegion = a.getAllCapitalCitiesRegions("Caribbean");
         a.printAllCapitalCityRegion(capCitRegion);
-        a.outputCapitalCityReg(capCitRegion, "All Capital Cities in Region.md");
+        a.outputCapitalCityReg(capCitRegion, "All Capital Cities in a Region.md");
         System.out.println("\n");
 
         // The top N populated capital cities in the world where N is provided by the user.
         System.out.println("20.The top 10 populated capital cities in the world \n");
         ArrayList<CapitalCity> capWld = a.getTopNCapCitiesWorld(10);
         a.printTopNCapCitiesWorld(capWld);
-        a.outputTop10CapitalCity(capWld, "Top 10 Capital Cities in World.md");
+        a.outputTop10CapitalCity(capWld, "Top 10 Capital Cities in the World.md");
         System.out.println("\n");
 
         // The top N populated capital cities in a continent where N is provided by the user.
         System.out.println("21.The top 10 populated capital cities in North America \n");
         ArrayList<CapitalCity> contCapital = a.getTopNCapCitiesCont("North America",10);
         a.printTopNCapCitiesCont(contCapital);
-        a.outputTop10CapitalCityCont(contCapital, "Top 10 Capital Cities in Continent.md");
+        a.outputTop10CapitalCityCont(contCapital, "Top 10 Capital Cities in a Continent.md");
         System.out.println("\n");
 
         // The top N populated capital cities in a region where N is provided by the user.
         System.out.println("22.The top 10 populated capital cities in Middle East \n");
         ArrayList<CapitalCity> regWld = a.getTopNCapCitiesReg("Middle East",10);
         a.printTopNCapCitiesReg(regWld);
-        a.outputTop10CapitalCityReg(regWld,"Top 10 Capital Cities in Region.md");
+        a.outputTop10CapitalCityReg(regWld,"Top 10 Capital Cities in a Region.md");
         System.out.println("\n");
 
         // The population of people, people living in cities, and people not living in cities in each continent.
         System.out.println("23.The population of people, people living in cities, and people not living in cities in each continent. \n");
         ArrayList<PeoplePopulation> popCont = a.getPopulatedPeopleContinent();
         a.printPopulatedPeopleConitnent(popCont);
-        a.outputPopulationContinent(popCont, "PeoplePopulationContinent.md");
+        a.outputPopulationContinent(popCont, "People Population in each Continent.md");
         System.out.println("\n");
 
         // The population of people, people living in cities, and people not living in cities in each region.
         System.out.println("24.The population of people, people living in cities, and people not living in cities in each region. \n");
         ArrayList<PeoplePopulation> popReg = a.getPopulatedPeopleRegions();
         a.printPopulatedPeopleRegions(popReg);
-        a.outputPopulationRegion(popReg, "PeoplePopulationRegion.md");
+        a.outputPopulationRegion(popReg, "People Population in each Region.md");
         System.out.println("\n");
 
         // The population of people, people living in cities, and people not living in cities in each country.
         System.out.println("25.The population of people, people living in cities, and people not living in cities in each country. \n");
         ArrayList<PeoplePopulation> popCoun = a.getPopulatedPeopleCountry();
         a.printPopulatedPeopleCountry(popCoun);
-        a.outputPopulationCountry(popCoun, "PeoplePopulationCountry.md");
+        a.outputPopulationCountry(popCoun, "People Population in each Country.md");
         System.out.println("\n");
 
         // The population of the world.
         System.out.println("26. The population of the world.");
         ArrayList<PeoplePopulation> popWorld = a.getWorldPopulation();
         a.printWorldPopulation(popWorld);
-        a.outputPopulationOfWorld(popWorld, "PopulationOfWorld.md");
+        a.outputPopulationOfWorld(popWorld, "Total Population Of the World.md");
         System.out.println("\n");
 
         // The population of the continent.
-        System.out.println("27. The population of the continent.");
+        System.out.println("27. The population of Asia.");
         ArrayList<PeoplePopulation> popContin = a.getContinentPopulation("Asia");
         a.printContinentPopulation(popContin);
-        a.outputPopulationOfContinent(popContin, "PopulationOfContinent.md");
+        a.outputPopulationOfContinent(popContin, "Total Population of a Continent.md");
         System.out.println("\n");
 
         // The population of the regions.
-        System.out.println("28. The population of the regions.");
+        System.out.println("28. The population of Caribbean.");
         ArrayList<PeoplePopulation> popRegions = a.getRegionsPopulation("Caribbean");
         a.printRegionsPopulation(popRegions);
-        a.outputPopulationOfRegion(popRegions, "PopulationOfRegion.md");
+        a.outputPopulationOfRegion(popRegions, "Total Population of a Region.md");
         System.out.println("\n");
 
         // The population of the countries.
-        System.out.println("29. The population of the countries.");
+        System.out.println("29. The population of Austria.");
         ArrayList<PeoplePopulation> popCountries = a.getCountriesPopulation("Austria");
         a.printCountriesPopulation(popCountries);
-        a.outputPopulationOfCountry(popCountries, "PopulationOfCountry.md");
+        a.outputPopulationOfCountry(popCountries, "Total Population of a Country.md");
         System.out.println("\n");
 
         // The population of the districts.
-        System.out.println("30. The population of the districts.");
+        System.out.println("30. The population of Kabol.");
         ArrayList<PeoplePopulation> popDisct = a.getDistrictPopulation("Kabol");
         a.printDistrictsPopulation(popDisct);
-        a.outputPopulationOfDistrict(popDisct, "PopulationOfDistrict.md");
+        a.outputPopulationOfDistrict(popDisct, "Total Population of a District.md");
         System.out.println("\n");
 
         // The population of the cities.
-        System.out.println("31. The population of the cities.");
+        System.out.println("31. The population of Haag.");
         ArrayList<PeoplePopulation> popCities = a.getCityPopulation("Haag");
         a.printCityPopulation(popCities);
         a.outputPopulationOfCity(popCities, "PopulationOfCity.md");
         System.out.println("\n");
 
         // List the population of people who speak language in descending order.
-        System.out.println("32: List the population of people who speak language in descending order.\n");
+        System.out.println("32: List the population of people who speak different language in descending order.\n");
         ArrayList<CountryLanguage> countLanguage = a.getCountryLanguage("Chinese", "English","Hindi", "Spanish", "Arabic");
         a.printCountryLanguage(countLanguage);
-        a.outputPopulationOfLanguage(countLanguage, "LanguagesSpoken.md");
+        a.outputPopulationOfLanguage(countLanguage, "List of Different Languages Spoken.md");
 
         // Disconnect from database
         a.disconnect();

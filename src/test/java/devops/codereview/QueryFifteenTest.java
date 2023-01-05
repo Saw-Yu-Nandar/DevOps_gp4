@@ -1,5 +1,5 @@
 package devops.codereview;
-
+//Unit testing for the top N populated cities in a country where N is provided by the user.
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -35,10 +35,10 @@ public class QueryFifteenTest
     {
         ArrayList<City> country = new ArrayList<City>();
         City cty = new City();
-        cty.setCit_name("Moscow");
-        cty.setCountry_name("Russian Federation");
-        cty.setCit_district("Moscow (City)");
-        cty.setCit_population("8389200");
+        cty.setCitName("Buenos Aires");
+        cty.setCountryName("Argentina");
+        cty.setCitDistrict("Distrito Federal");
+        cty.setCitPopulation("2982146");
         country.add(cty);
         app.printTopNCountries(country);
     }

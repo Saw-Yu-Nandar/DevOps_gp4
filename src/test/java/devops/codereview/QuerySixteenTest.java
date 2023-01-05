@@ -1,5 +1,5 @@
 package devops.codereview;
-
+//Unit testing for the top N populated cities in a district where N is provided by the user.
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -35,10 +35,10 @@ public class QuerySixteenTest
     {
         ArrayList<City> dist = new ArrayList<City>();
         City dis = new City();
-        dis.setCit_name("Moscow");
-        dis.setCountry_name("Russian Federation");
-        dis.setCit_district("Moscow (City)");
-        dis.setCit_population("8389200");
+        dis.setCitName("Haag");
+        dis.setCountryName("Netherlands");
+        dis.setCitDistrict("Zuid-Holland");
+        dis.setCitPopulation("440900");
         dist.add(dis);
         app.printTopNDistrict(dist);
     }
