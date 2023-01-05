@@ -2292,9 +2292,6 @@ public class App {
         // Print header
         System.out.println(String.format("%-20s %-28s %-25s %-25s %-25s", "Continent","Continent Total Population","City Total Population","People Not Living (%)","People Living (%)"));
         // Loop over all capital cities in a continent
-
-        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
-
         for (PeoplePopulation pcon : popuConti)
         {
             //print the list to check if capital cities in a continent is null
@@ -2320,9 +2317,6 @@ public class App {
             pcon.setLivingPopContinent(strlivingconper);
             pcon.setNotLivingPopContinent(strnotlivingconper);
 
-            pcon.setContinentPopulation(numFormat.format(Integer.parseInt(pcon.getContinentPopulation())));
-            pcon.setCityPopulation(numFormat.format(Integer.parseInt(pcon.getCityPopulation())));
-
             String pconString =
                     String.format("%-20s %-28s %-25s %-25s %-25s",
                             pcon.getContinentName(),pcon.getContinentPopulation(), pcon.getCityPopulation(), strnotlivingconper, strlivingconper);
@@ -2341,7 +2335,6 @@ public class App {
             System.out.println("No population");
             return;
         }
-        //NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -2461,7 +2454,6 @@ public class App {
             System.out.println("No population");
             return;
         }
-        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -2472,7 +2464,7 @@ public class App {
             id += 1;
             if (poprgn == null) continue;
             sb.append("| " + id + "| " + poprgn.getRegionsName() + " | " +
-                    numFormat.format(Integer.parseInt(poprgn.getRegionsPopulation())) + " | " + numFormat.format(Integer.parseInt(poprgn.getCityPopulation())) + " | " +
+                    poprgn.getRegionsPopulation() + " | " + poprgn.getCityPopulation() + " | " +
                     poprgn.getNotLivingPopRegion() + " | " + poprgn.getLivingPopRegion() + " | "
                     + "|\r\n");
         }
@@ -2578,7 +2570,6 @@ public class App {
             System.out.println("No population");
             return;
         }
-        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -2589,7 +2580,7 @@ public class App {
             id += 1;
             if (popcoun == null) continue;
             sb.append("| " + id + "| " + popcoun.getCountriesName() + " | " +
-                    numFormat.format(Integer.parseInt(popcoun.getCountriesPopulation())) + " | " + numFormat.format(Integer.parseInt(popcoun.getCityPopulation())) + " | " +
+                    popcoun.getCountriesPopulation() + " | " + popcoun.getCityPopulation() + " | " +
                     popcoun.getNotLivingPopCountry() + " | " + popcoun.getLivingPopCountry() + " | "
                     + "|\r\n");
         }
