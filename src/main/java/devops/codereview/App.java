@@ -2726,6 +2726,7 @@ public class App {
         for (PeoplePopulation popofcontinent : populationOfContinent) {
             idnum += 1;
             if (popofcontinent == null) continue;
+            System.out.println(popofcontinent.getContinentPopulation() +"type"+ popofcontinent.getContinentPopulation()instanceof String);
             sb.append("| " + idnum + "| " + popofcontinent.getContinentName() + " | " +
                     numFormat.format(Integer.parseInt(popofcontinent.getContinentPopulation())) + " | " + "|\r\n");
         }
