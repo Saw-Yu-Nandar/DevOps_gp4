@@ -10,7 +10,8 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class App {
+public class App
+{
     /**
      * Connection to MySQL database.
      */
@@ -41,7 +42,7 @@ public class App {
                 System.out.println("Successfully connected");
                 break;
             } catch (SQLException sqle) {
-                System.out.println("Failed to connect to database attempt " + Integer.toString(i));
+                System.out.println("Failed to connect to database attempt " +                                  Integer.toString(i));
                 System.out.println(sqle.getMessage());
             } catch (InterruptedException ie) {
                 System.out.println("Thread interrupted? Should not happen.");
@@ -813,6 +814,7 @@ public class App {
             return null;
         }
     }
+
     /**
      * 8. All the cities in a continent organised by largest population to smallest.
      * Formatting the output data from the list.
@@ -1440,6 +1442,7 @@ public class App {
             e.printStackTrace();
         }
     }
+
     /**
      * 15. The top N populated cities in a country where N is provided by the user.
      * Query execution and pass the array list to format the return value.
@@ -1533,6 +1536,7 @@ public class App {
             e.printStackTrace();
         }
     }
+
     /**
      * 16. The top N populated cities in a district where N is provided by the user.
      * Query execution and pass the array list to format the return value.
@@ -3247,11 +3251,10 @@ public class App {
         App a = new App();
 
         // Connect to database
-        //a.connect();
         if(args.length < 1){
-            a.connect("localhost:33060", 30000);
+            a.connect("localhost:33060", 0);
         }else{
-            a.connect(args[0], Integer.parseInt(args[1]));
+            a.connect("db:3306", 30000);
         }
         System.out.println("\n");
         // Display all the countries in the world organised by largest population to smallest.
