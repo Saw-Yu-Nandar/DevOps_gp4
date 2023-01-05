@@ -26,7 +26,10 @@ CodeReview 1: project workflow is set-up and try one of the feature requirements
 [![codecov](https://codecov.io/gh/Saw-Yu-Nandar/DevOps_gp4/branch/master/graph/badge.svg?token=C6W4ALVTNI)](https://codecov.io/gh/Saw-Yu-Nandar/DevOps_gp4) 
 
 
-#Requirements for Query Report have been fullfilled. 
+# Requirements for Query Report have been fullfilled. 
 | ID    | Name | Met  | Screenshot |
 |-------|------|------|------------|
 | 1     | All the countries in the world organised by largest population to smallest. | Yes | ![Query1 Report Table](Screenshot/1.png) |
+| 2     | All the countries in a continent organised by largest population to smallest.| Yes | ![Query1 Report Table](Screenshot/2.png) |
+| 3     | All the countries in a region organised by largest population to smallest. | Yes | ![Query1 Report Table](Screenshot/3.png) |
+
