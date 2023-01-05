@@ -3251,10 +3251,11 @@ public class App
         App a = new App();
 
         // Connect to database
+        //a.connect();
         if(args.length < 1){
-            a.connect("localhost:33060", 0);
+            a.connect("localhost:33060", 30000);
         }else{
-            a.connect("db:3306", 30000);
+            a.connect(args[0], Integer.parseInt(args[1]));
         }
         System.out.println("\n");
         // Display all the countries in the world organised by largest population to smallest.
