@@ -2404,6 +2404,10 @@ public class App {
             }
             String strnotlivingregper = notlivingregper+"%";
             String strlivingregper = livingregper+"%";
+
+            preg.setLivingPopRegPer(strlivingregper);
+            preg.setNotLivingPopRegPer(strnotlivingregper);
+
             String pregString =
                     String.format("%-30s %-25s %-25s %-25s %-25s",
                             preg.getRegionsName(),preg.getRegionsPopulation(),preg.getCityPopulation(),strnotlivingregper,strlivingregper);
@@ -2435,7 +2439,7 @@ public class App {
             sb.append("| " + id + "| " + poprgn.getRegionsName() + " | " +
                     numFormat.format(Long.parseLong(poprgn.getRegionsPopulation())) + " | " +
                             numFormat.format(Long.parseLong(poprgn.getCityPopulation())) + " | " +
-                    poprgn.getNotLivingPopRegion() + " | " + poprgn.getLivingPopRegion() + " | "
+                    poprgn.getNotLivingPopRegPer() + " | " + poprgn.getLivingPopRegPer() + " | "
                     + "|\r\n");
         }
         try {
