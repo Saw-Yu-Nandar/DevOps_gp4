@@ -42,7 +42,7 @@ public class App
                 System.out.println("Successfully connected");
                 break;
             } catch (SQLException sqle) {
-                System.out.println("Failed to connect to database attempt " +                                  Integer.toString(i));
+                System.out.println("Failed to connect to database attempt " + Integer.toString(i));
                 System.out.println(sqle.getMessage());
             } catch (InterruptedException ie) {
                 System.out.println("Thread interrupted? Should not happen.");
@@ -2289,9 +2289,6 @@ public class App
             String strnotlivingconper = notlivingcon+"%";
             String strlivingconper = livingconper+"%";
 
-            pcon.setLivingPopContPer(strlivingconper);
-            pcon.setNotLivingPopContPer(strnotlivingconper);
-
             String pconString =
                     String.format("%-20s %-28s %-25s %-25s %-25s",
                             pcon.getContinentName(),pcon.getContinentPopulation(), pcon.getCityPopulation(), strnotlivingconper, strlivingconper);
@@ -2409,10 +2406,6 @@ public class App
             }
             String strnotlivingregper = notlivingregper+"%";
             String strlivingregper = livingregper+"%";
-
-            preg.setLivingPopRegPer(strlivingregper);
-            preg.setNotLivingPopRegPer(strnotlivingregper);
-
             String pregString =
                     String.format("%-30s %-25s %-25s %-25s %-25s",
                             preg.getRegionsName(),preg.getRegionsPopulation(),preg.getCityPopulation(),strnotlivingregper,strlivingregper);
@@ -2528,10 +2521,6 @@ public class App
             }
             String strnotlivingcouper = notlivingcouper+"%";
             String strlivingcouper = livingcouper+"%";
-
-            pcou.setLivingPopCountryPer(strlivingcouper);
-            pcou.setNotLivingPopCountryPer(strnotlivingcouper);
-
             String pcouString =
                     String.format("%-45s %-28s %-25s %-25s %-25s",
                             pcou.getCountriesName(), pcou.getCountriesPopulation(), pcou.getCityPopulation(), strnotlivingcouper, strlivingcouper);
@@ -2682,7 +2671,7 @@ public class App
                     "SELECT country.Continent, SUM(country.Population) AS 'Population' FROM country WHERE country.Continent = '"+inputTotalCont+"';";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryTwentySeven);
-            // Extract people population information
+            // Extract continent information
             ArrayList<PeoplePopulation> populationConti = new ArrayList<PeoplePopulation>();
             while (rset.next())
             {
@@ -3205,7 +3194,6 @@ public class App
             float countrpoplan = Float.parseFloat(cl4.getCountryPopulation());
             float res = 100 * (countrpoplan/totalpoplanfloat);
             String resStr = res+"%";
-            cl4.setCountryLanguagePercent(resStr);
             String langString =
                     String.format("%-30s %-30s %-30s",
                             cl4.getCountryLanguage(),cl4.getCountryPopulation(), resStr);
