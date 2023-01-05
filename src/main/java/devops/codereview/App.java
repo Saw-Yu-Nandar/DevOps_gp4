@@ -2662,7 +2662,6 @@ public class App {
             System.out.println("No population");
             return;
         }
-        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -2672,8 +2671,7 @@ public class App {
         for (PeoplePopulation popofworld : populationOfWorld) {
             idnum += 1;
             if (popofworld == null) continue;
-            String worldpopformat = NumberFormat.getInstance().format(Integer.parseInt(popofworld.getWorldPopulation().toString()));
-            sb.append("| " + idnum + "| " + worldpopformat + " | " + "|\r\n");
+            sb.append("| " + idnum + "| " + popofworld.getWorldPopulation() + " | " + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -2758,7 +2756,6 @@ public class App {
             System.out.println("No population");
             return;
         }
-        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -2769,7 +2766,7 @@ public class App {
             idnum += 1;
             if (popofcontinent == null) continue;
             sb.append("| " + idnum + "| " + popofcontinent.getContinentName() + " | " +
-                    numFormat.format(Integer.parseInt(popofcontinent.getContinentPopulation())) + " | " + "|\r\n");
+                    popofcontinent.getContinentPopulation() + " | " + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -2853,7 +2850,6 @@ public class App {
             System.out.println("No population");
             return;
         }
-        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -2864,7 +2860,7 @@ public class App {
             idnum += 1;
             if (popofregion == null) continue;
             sb.append("| " + idnum + "| " + popofregion.getRegionsName() + " | " +
-                    numFormat.format(Integer.parseInt(popofregion.getRegionsPopulation())) + " | " + "|\r\n");
+                    popofregion.getRegionsPopulation() + " | " + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -2948,7 +2944,6 @@ public class App {
             System.out.println("No population");
             return;
         }
-        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -2959,7 +2954,7 @@ public class App {
             idnum += 1;
             if (popofcountry == null) continue;
             sb.append("| " + idnum + "| " + popofcountry.getCountriesName() + " | " +
-                    numFormat.format(Integer.parseInt(popofcountry.getCountriesPopulation())) + " | " + "|\r\n");
+                    popofcountry.getCountriesPopulation() + " | " + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -3043,7 +3038,6 @@ public class App {
             System.out.println("No population");
             return;
         }
-        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -3054,7 +3048,7 @@ public class App {
             idnum += 1;
             if (popofdistrict == null) continue;
             sb.append("| " + idnum + "| " + popofdistrict.getDistrictName() + " | " +
-                    numFormat.format(Integer.parseInt(popofdistrict.getDistrictPopulation())) + " | " + "|\r\n");
+                    popofdistrict.getDistrictPopulation() + " | " + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -3138,7 +3132,6 @@ public class App {
             System.out.println("No population");
             return;
         }
-        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -3149,7 +3142,7 @@ public class App {
             idnum += 1;
             if (popofcity == null) continue;
             sb.append("| " + idnum + "| " + popofcity.getCityName() + " | " +
-                    numFormat.format(Integer.parseInt(popofcity.getCityPopulation())) + " | " + "|\r\n");
+                    popofcity.getCityPopulation() + " | " + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
