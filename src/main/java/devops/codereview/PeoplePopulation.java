@@ -20,6 +20,8 @@ public class PeoplePopulation {
     private String notLivingPopRegion;
     private String livingPopCountry;
     private String notLivingPopCountry;
+    private String livingPopContPer;
+    private String notLivingPopContPer;
 
     public String getWorldName() {
         return worldName;
@@ -163,5 +165,21 @@ public class PeoplePopulation {
 
     public void setNotLivingPopCountry(String notLivingPopCountry) {
         this.notLivingPopCountry = notLivingPopCountry;
+    }
+
+    public String getLivingPopContPer() {
+        return livingPopContPer;
+    }
+
+    public void setLivingPopContPer(String livingPopContPer) {
+        this.livingPopContPer = livingPopContPer;
+    }
+
+    public String getNotLivingPopContPer() {
+        return notLivingPopContPer;
+    }
+
+    public void setNotLivingPopContPer(String notLivingPopContPer) {
+        this.notLivingPopContPer = notLivingPopContPer;
     }
 }

@@ -2284,6 +2284,9 @@ public class App {
             String strnotlivingconper = notlivingcon+"%";
             String strlivingconper = livingconper+"%";
 
+            pcon.setLivingPopContPer(strlivingconper);
+            pcon.setNotLivingPopContPer(strnotlivingconper);
+
             String pconString =
                     String.format("%-20s %-28s %-25s %-25s %-25s",
                             pcon.getContinentName(),pcon.getContinentPopulation(), pcon.getCityPopulation(), strnotlivingconper, strlivingconper);
@@ -2317,7 +2320,7 @@ public class App {
             sb.append("| " + id + "| " + popcontinent.getContinentName() + " | " +
                     numFormat.format(Long.parseLong(popcontinent.getContinentPopulation())) + " | " +
                             numFormat.format(Long.parseLong(popcontinent.getCityPopulation())) + " | " +
-                    popcontinent.getNotLivingPopContinent() + " | " + popcontinent.getLivingPopContinent() + " | "
+                    popcontinent.getNotLivingPopContPer() + " | " + popcontinent.getLivingPopContPer() + " | "
                     + "|\r\n");
         }
         try {
