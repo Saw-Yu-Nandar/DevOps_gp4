@@ -2944,6 +2944,7 @@ public class App {
             System.out.println("No population");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -2954,7 +2955,7 @@ public class App {
             idnum += 1;
             if (popofcountry == null) continue;
             sb.append("| " + idnum + "| " + popofcountry.getCountriesName() + " | " +
-                    popofcountry.getCountriesPopulation() + " | " + "|\r\n");
+                    numFormat.format(Integer.parseInt(popofcountry.getCountriesPopulation())) + " | " + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -3038,6 +3039,7 @@ public class App {
             System.out.println("No population");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -3048,7 +3050,7 @@ public class App {
             idnum += 1;
             if (popofdistrict == null) continue;
             sb.append("| " + idnum + "| " + popofdistrict.getDistrictName() + " | " +
-                    popofdistrict.getDistrictPopulation() + " | " + "|\r\n");
+                    numFormat.format(Integer.parseInt(popofdistrict.getDistrictPopulation())) + " | " + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -3132,6 +3134,7 @@ public class App {
             System.out.println("No population");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -3142,7 +3145,7 @@ public class App {
             idnum += 1;
             if (popofcity == null) continue;
             sb.append("| " + idnum + "| " + popofcity.getCityName() + " | " +
-                    popofcity.getCityPopulation() + " | " + "|\r\n");
+                    numFormat.format(Integer.parseInt(popofcity.getCityPopulation())) + " | " + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
