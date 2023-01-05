@@ -2293,6 +2293,8 @@ public class App {
         System.out.println(String.format("%-20s %-28s %-25s %-25s %-25s", "Continent","Continent Total Population","City Total Population","People Not Living (%)","People Living (%)"));
         // Loop over all capital cities in a continent
 
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
+
         for (PeoplePopulation pcon : popuConti)
         {
             //print the list to check if capital cities in a continent is null
@@ -2318,6 +2320,9 @@ public class App {
             pcon.setLivingPopContinent(strlivingconper);
             pcon.setNotLivingPopContinent(strnotlivingconper);
 
+            pcon.setContinentPopulation(numFormat.format(Integer.parseInt(pcon.getContinentPopulation())));
+            pcon.setCityPopulation(numFormat.format(Integer.parseInt(pcon.getCityPopulation())));
+
             String pconString =
                     String.format("%-20s %-28s %-25s %-25s %-25s",
                             pcon.getContinentName(),pcon.getContinentPopulation(), pcon.getCityPopulation(), strnotlivingconper, strlivingconper);
@@ -2336,7 +2341,7 @@ public class App {
             System.out.println("No population");
             return;
         }
-        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
+        //NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -2349,7 +2354,7 @@ public class App {
             if (popcontinent == null) continue;
 
             sb.append("| " + id + "| " + popcontinent.getContinentName() + " | " +
-                    numFormat.format(Long.parseLong(popcontinent.getContinentPopulation())) + " | " + numFormat.format(Long.parseLong(popcontinent.getCityPopulation())) + " | " +
+                    popcontinent.getContinentPopulation() + " | " + popcontinent.getCityPopulation() + " | " +
                     popcontinent.getNotLivingPopContinent() + " | " + popcontinent.getLivingPopContinent() + " | "
                     + "|\r\n");
         }
