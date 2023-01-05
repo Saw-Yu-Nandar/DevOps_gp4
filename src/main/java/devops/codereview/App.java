@@ -2672,7 +2672,7 @@ public class App {
         for (PeoplePopulation popofworld : populationOfWorld) {
             idnum += 1;
             if (popofworld == null) continue;
-            String worldpopformat = NumberFormat.getInstance().format(popofworld.getWorldPopulation());
+            String worldpopformat = NumberFormat.getInstance().format(Integer.parseInt(popofworld.getWorldPopulation().toString()));
             sb.append("| " + idnum + "| " + worldpopformat + " | " + "|\r\n");
         }
         try {
