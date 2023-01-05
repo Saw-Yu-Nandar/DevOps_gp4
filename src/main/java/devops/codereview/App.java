@@ -408,7 +408,7 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-40s %-40s", "Continent Name", "Population"));
+        System.out.println(String.format("%-40s %-40s", "Continent Name", "Total Continent Population"));
         // Loop over people population in continent
         for (PeoplePopulation continentPopulation : popConti)
         {
@@ -470,7 +470,7 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-40s %-40s", "Region Name", "Population"));
+        System.out.println(String.format("%-40s %-40s", "Region Name", "Total Region Population"));
         // Loop over people population in region
         for (PeoplePopulation regionsPopulation : popRegs)
         {
@@ -532,7 +532,7 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-50s %-40s", "Country Name", "Population"));
+        System.out.println(String.format("%-50s %-40s", "Country Name", "Total Country Population"));
         // Loop over people population in country
         for (PeoplePopulation countrPopulation : popContr)
         {
@@ -594,7 +594,7 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-40s %-40s", "District Name", "Population"));
+        System.out.println(String.format("%-40s %-40s", "District Name", "Total District Population"));
         // Loop over people population in district
         for (PeoplePopulation dstPopulation : popDist)
         {
