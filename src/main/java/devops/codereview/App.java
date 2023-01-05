@@ -2528,6 +2528,10 @@ public class App
             }
             String strnotlivingcouper = notlivingcouper+"%";
             String strlivingcouper = livingcouper+"%";
+
+            pcou.setLivingPopCountryPer(strlivingcouper);
+            pcou.setNotLivingPopCountryPer(strnotlivingcouper);
+
             String pcouString =
                     String.format("%-45s %-28s %-25s %-25s %-25s",
                             pcou.getCountriesName(), pcou.getCountriesPopulation(), pcou.getCityPopulation(), strnotlivingcouper, strlivingcouper);
