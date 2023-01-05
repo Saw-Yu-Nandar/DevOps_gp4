@@ -2662,6 +2662,7 @@ public class App {
             System.out.println("No population");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -2671,7 +2672,7 @@ public class App {
         for (PeoplePopulation popofworld : populationOfWorld) {
             idnum += 1;
             if (popofworld == null) continue;
-            sb.append("| " + idnum + "| " + popofworld.getWorldPopulation() + " | " + "|\r\n");
+            sb.append("| " + idnum + "| " + numFormat.format(Integer.parseInt(popofworld.getWorldPopulation())) + " | " + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -2756,6 +2757,7 @@ public class App {
             System.out.println("No population");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -2766,7 +2768,7 @@ public class App {
             idnum += 1;
             if (popofcontinent == null) continue;
             sb.append("| " + idnum + "| " + popofcontinent.getContinentName() + " | " +
-                    popofcontinent.getContinentPopulation() + " | " + "|\r\n");
+                    numFormat.format(Integer.parseInt(popofcontinent.getContinentPopulation())) + " | " + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
@@ -2850,6 +2852,7 @@ public class App {
             System.out.println("No population");
             return;
         }
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -2860,7 +2863,7 @@ public class App {
             idnum += 1;
             if (popofregion == null) continue;
             sb.append("| " + idnum + "| " + popofregion.getRegionsName() + " | " +
-                    popofregion.getRegionsPopulation() + " | " + "|\r\n");
+                    numFormat.format(Integer.parseInt(popofregion.getRegionsPopulation())) + " | " + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
