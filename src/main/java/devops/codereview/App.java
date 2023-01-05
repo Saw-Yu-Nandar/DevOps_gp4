@@ -146,8 +146,6 @@ public class App {
         int i = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("1. All the countries in the world organised by largest population to smallest.\r\n");
-        sb.append("| --- | --- | --- | --- | --- | --- | --- |\r\n");
         sb.append("| No. | Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
         sb.append("| --- | --- | --- | --- | --- | --- | --- |\r\n");
         // Loop over all countries in the list
