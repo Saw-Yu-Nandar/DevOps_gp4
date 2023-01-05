@@ -34,10 +34,11 @@ public class QueryEightTest
     {
         ArrayList<City> continent = new ArrayList<City>();
         City conti                = new City();
-        conti.setCit_name("Tilburg");
-        conti.setCountry_name("Netherlands");
-        conti.setCit_district("Noord-Brabant");
-        conti.setCit_population("193238");
+        conti.setCitName("Seoul");
+        conti.setCountryName("South Korea");
+        conti.setCitDistrict("Seoul");
+        conti.setCitCont("Asia");
+        conti.setCitPopulation("9981619");
         continent.add(conti);
         app.printContinents(continent);
     }

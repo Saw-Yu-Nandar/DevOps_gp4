@@ -1,40 +1,58 @@
 package devops.codereview;
 
 public class City {
-    private String cit_name;
-    private String country_name;
-    private String cit_district;
-    private String cit_population;
+    private String citName;
+    private String countryName;
+    private String citDistrict;
+    private String citCont;
+    private String citReg;
+    private String citPopulation;
 
-    public String getCit_name() {
-        return cit_name;
+    public String getCitName() {
+        return citName;
     }
 
-    public void setCit_name(String cit_name) {
-        this.cit_name = cit_name;
+    public void setCitName(String citName) {
+        this.citName = citName;
     }
 
-    public String getCountry_name() {
-        return country_name;
+    public String getCountryName() {
+        return countryName;
     }
 
-    public void setCountry_name(String country_name) {
-        this.country_name = country_name;
+    public void setCountryName(String countryName) {
+        this.countryName = countryName;
     }
 
-    public String getCit_district() {
-        return cit_district;
+    public String getCitDistrict() {
+        return citDistrict;
     }
 
-    public void setCit_district(String cit_district) {
-        this.cit_district = cit_district;
+    public void setCitDistrict(String citDistrict) {
+        this.citDistrict = citDistrict;
     }
 
-    public String getCit_population() {
-        return cit_population;
+    public String getCitCont() {
+        return citCont;
     }
 
-    public void setCit_population(String cit_population) {
-        this.cit_population = cit_population;
+    public void setCitCont(String citCont) {
+        this.citCont = citCont;
+    }
+
+    public String getCitReg() {
+        return citReg;
+    }
+
+    public void setCitReg(String citReg) {
+        this.citReg = citReg;
+    }
+
+    public String getCitPopulation() {
+        return citPopulation;
+    }
+
+    public void setCitPopulation(String citPopulation) {
+        this.citPopulation = citPopulation;
     }
 }
