@@ -2198,7 +2198,7 @@ public class App {
             id += 1;
             if (topcapcitreg == null) continue;
             sb.append("| " + id + "| " + topcapcitreg.getCapCityName() + " | " + topcapcitreg.getCapCityCountry() + " | " +
-                    topcapcitreg.getRegionName() + " | " + numFormat.format(Integer.parseInt(topcapcitreg.getCapCityPopulation())) + "|\r\n");
+                    topcapcitreg.getCapCityRegion() + " | " + numFormat.format(Integer.parseInt(topcapcitreg.getCapCityPopulation())) + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
