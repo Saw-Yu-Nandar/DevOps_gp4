@@ -2348,14 +2348,11 @@ public class App {
             id += 1;
             if (popcontinent == null) continue;
 
-            BigInteger bigintcont = BigInteger.valueOf(Long.parseLong(popcontinent.getContinentPopulation()));
-            String bigintegercont = numFormat.format(bigintcont);
-
-            BigInteger bigintcity = BigInteger.valueOf(Long.parseLong(popcontinent.getCityPopulation()));
-            String bigintegercity = numFormat.format(bigintcity);
+            BigInteger bigintcont = new BigInteger(String.valueOf(popcontinent.getContinentPopulation()));
+            String bigintcontformat = numFormat.format(bigintcont);
 
             sb.append("| " + id + "| " + popcontinent.getContinentName() + " | " +
-                    bigintegercont + " | " + bigintegercity + " | " +
+                    bigintcontformat + " | " + numFormat.format(Integer.parseInt(popcontinent.getCityPopulation())) + " | " +
                     popcontinent.getNotLivingPopContinent() + " | " + popcontinent.getLivingPopContinent() + " | "
                     + "|\r\n");
         }
