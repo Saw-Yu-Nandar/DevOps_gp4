@@ -67,6 +67,7 @@ public class App {
             }
         }
     }
+
     /**
      * 1. All the countries in the world organised by largest population to smallest.
      * Query execution and pass the array list to format the return value.
@@ -3244,6 +3245,7 @@ public class App {
     {
         // Create new Application
         App a = new App();
+
         // Connect to database
         //a.connect();
         if(args.length < 1){
@@ -3258,6 +3260,7 @@ public class App {
         a.printAllCountries(country);
         a.outputCountries(country, "All Countries in the World.md");
         System.out.println("\n");
+
 
         // Display all the countries in a continent organised by largest population to smallest.
         System.out.println("2: All the countries in Oceania organised by largest population to smallest.\n");
