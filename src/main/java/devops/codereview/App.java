@@ -3194,6 +3194,7 @@ public class App
             float countrpoplan = Float.parseFloat(cl4.getCountryPopulation());
             float res = 100 * (countrpoplan/totalpoplanfloat);
             String resStr = res+"%";
+            cl4.setCountryLanguagePercent(resStr);
             String langString =
                     String.format("%-30s %-30s %-30s",
                             cl4.getCountryLanguage(),cl4.getCountryPopulation(), resStr);
