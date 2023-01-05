@@ -2302,6 +2302,8 @@ public class App {
             System.out.println("Error !");
             return;
         }
+
+        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -2313,8 +2315,11 @@ public class App {
             id += 1;
             if (popcontinent == null) continue;
 
+            int conpopint = Integer.parseInt(popcontinent.getContinentPopulation());
+            String conpopintfmt = numFormat.format(conpopint).toString();
+
             sb.append("| " + id + "| " + popcontinent.getContinentName() + " | " +
-                    popcontinent.getContinentPopulation() + " | " + popcontinent.getCityPopulation() + " | " +
+                    conpopintfmt + " | " + popcontinent.getCityPopulation() + " | " +
                     popcontinent.getNotLivingPopContinent() + " | " + popcontinent.getLivingPopContinent() + " | "
                     + "|\r\n");
         }
