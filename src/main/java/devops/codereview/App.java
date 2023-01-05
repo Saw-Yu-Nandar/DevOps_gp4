@@ -2100,7 +2100,7 @@ public class App {
             id += 1;
             if (topcapcitcon == null) continue;
             sb.append("| " + id +  "| " + topcapcitcon.getCapCityName() + " | " + topcapcitcon.getCapCityCountry() + " | " +
-                    topcapcitcon.getContinentName() + " | " + numFormat.format(Integer.parseInt(topcapcitcon.getCapCityPopulation())) + "|\r\n");
+                    topcapcitcon.getCapCityContinent() + " | " + numFormat.format(Integer.parseInt(topcapcitcon.getCapCityPopulation())) + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
