@@ -139,14 +139,13 @@ public class App {
     public void outputCountries(ArrayList<Country> countries, String AllCountries) {
         // Check countries is not null
         if (countries == null) {
-            System.out.println("No country");
+            System.out.println("Error !");
             return;
         }
         NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int i = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        System.out.println("1: All the countries in the world organised by largest population to smallest.\n");
         sb.append("| No. | Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
         sb.append("| --- | --- | --- | --- | --- | --- | --- |\r\n");
         // Loop over all countries in the list
@@ -243,14 +242,13 @@ public class App {
     public void outputContinent(ArrayList<Country> continents, String AllContinents) {
         // Check continent is not null
         if (continents == null) {
-            System.out.println("No continents");
+            System.out.println("Error !");
             return;
         }
         NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int i = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        System.out.println("2: All the countries in Oceania organised by largest population to smallest.\n");
         sb.append("| No. | Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
         sb.append("| --- | --- | --- | --- | --- | --- | --- |\r\n");
         // Loop over all continent in the list
@@ -345,14 +343,13 @@ public class App {
         // Check country is not null
         if (allregion == null)
         {
-            System.out.println("No regions");
+            System.out.println("Error !");
             return;
         }
         NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int i = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        System.out.println("3: All the countries in Caribbean organised by largest population to smallest.\n");
         sb.append("| No. | Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
         sb.append("| --- | --- | --- | --- | --- | --- | --- |\r\n");
         // Loop over all regions in the list
@@ -452,14 +449,13 @@ public class App {
     public void outputNCountries(ArrayList<Country> ncountries, String TopNCountries) {
         // Check ncountries is not null
         if (ncountries == null) {
-            System.out.println("No N Countries");
+            System.out.println("Error !");
             return;
         }
         NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int i = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        System.out.println("4: The top 10 populated countries in the world.\n");
         sb.append("| No. | Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
         sb.append("| --- | --- | --- | --- | --- | --- | --- |\r\n");
         // Loop over top n country in the list
@@ -555,14 +551,13 @@ public class App {
     public void outputNContinents(ArrayList<Country> ncontinents, String TopNContinents) {
         // Check countries is not null
         if (ncontinents == null) {
-            System.out.println("No N Countries");
+            System.out.println("Error !");
             return;
         }
         NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int i = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        System.out.println("5. The top 10 populated countries in Europe.\n");
         sb.append("| No. | Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
         sb.append("| --- | --- | --- | --- | --- | --- | --- |\r\n");
         // Loop over top n continent in the list
@@ -658,14 +653,13 @@ public class App {
     public void outputNRegions(ArrayList<Country> nregions, String TopNRegions) {
         // Check ncontinents is not null
         if (nregions == null) {
-            System.out.println("No N Countries");
+            System.out.println("Error !");
             return;
         }
         NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int i = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        System.out.println("6: The top 10 populated countries in Caribbean.\n");
         sb.append("| No. | Country Code | Country Name | Continent | Region | Population | Capital |\r\n");
         sb.append("| --- | --- | --- | --- | --- | --- | --- |\r\n");
         // Loop over top n region in the list
@@ -754,14 +748,13 @@ public class App {
     public void outputCities(ArrayList<City> allCity, String allCities) {
         // Check cities is not null
         if (allCity == null) {
-            System.out.println("No City");
+            System.out.println("Error !");
             return;
         }
         NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        System.out.println("7: All the cities in the world organised by largest population to smallest.\n");
         sb.append("| No. | City Name | Country Name | District | Population |\r\n");
         sb.append("| --- | --- | --- | --- | --- |\r\n");
         // Loop over all cities in the list
@@ -850,14 +843,13 @@ public class App {
     public void outputcitycontinent(ArrayList<City> continent, String Cont) {
         // Check cities is not null
         if (continent == null) {
-            System.out.println("No City in a continent");
+            System.out.println("Error !");
             return;
         }
         NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        System.out.println("8. All the cities in Asia organised by largest population to smallest.\n");
         sb.append("| No. | City Name | Country Name | District | Continent | Population |\r\n");
         sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
         // Loop over all continents in the list
@@ -947,14 +939,13 @@ public class App {
     public void outputcityregion(ArrayList<City> region, String reg) {
         // Check cities is not null
         if (region == null) {
-            System.out.println("No City in a region");
+            System.out.println("Error !");
             return;
         }
         NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        System.out.println("9: All the cities in Caribbean organised by largest population to smallest.\n");
         sb.append("| No. | City Name | Country Name | District | Region |Population |\r\n");
         sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
         // Loop over all regions in the list
@@ -1043,14 +1034,13 @@ public class App {
     public void outputcityCountry(ArrayList<City> citCount, String country) {
         // Check cities is not null
         if (citCount == null) {
-            System.out.println("No City in a country");
+            System.out.println("Error !");
             return;
         }
         NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        System.out.println("10: All the cities in Myanmar organised by largest population to smallest.\n");
         sb.append("| No. | City Name | Country Name | District | Population |\r\n");
         sb.append("| --- | --- | --- | --- | --- |\r\n");
         // Loop over all country in the list
@@ -1139,14 +1129,13 @@ public class App {
     public void outputcityDistrict(ArrayList<City> citDist, String dist) {
         // Check cities is not null
         if (citDist == null) {
-            System.out.println("No City in a district");
+            System.out.println("Error !t");
             return;
         }
         NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        System.out.println("11: All the cities in Queensland organised by largest population to smallest.\n");
         sb.append("| No. | City Name | Country Name | District | Population |\r\n");
         sb.append("| --- | --- | --- | --- | --- |\r\n");
         // Loop over all districts in the list
@@ -1233,14 +1222,13 @@ public class App {
     public void outputTopNcityworld(ArrayList<City> topNWorld, String citWld) {
         // Check cities is not null
         if (topNWorld == null) {
-            System.out.println("No City in a world");
+            System.out.println("Error !");
             return;
         }
         NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        System.out.println("12: The top 10 populated cities in the world.\n");
         sb.append("| No. | City Name | Country Name | District | Population |\r\n");
         sb.append("| --- | --- | --- | --- | --- |\r\n");
         // Loop over top n city in the list
@@ -1329,14 +1317,13 @@ public class App {
     public void outputTopNcityCont(ArrayList<City> topNCont, String citCont) {
         // Check cities in a continent is not null
         if (topNCont == null) {
-            System.out.println("No City in a continent");
+            System.out.println("Error !");
             return;
         }
         NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        System.out.println("13. The top 10 populated cities in Europe.\n");
         sb.append("| No. | City Name | Country Name | District | Continent | Population |\r\n");
         sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
         // Loop over top n continent in the list
@@ -1426,14 +1413,13 @@ public class App {
     public void outputTopNcityReg(ArrayList<City> topNReg, String citReg) {
         // Check cities in a region is not null
         if (topNReg == null) {
-            System.out.println("No City in a region");
+            System.out.println("Error !");
             return;
         }
         NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        System.out.println("14: The top 10 populated cities in Caribbean.\n");
         sb.append("| No. | City Name | Country Name | District | Region | Population |\r\n");
         sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
         // Loop over top n region in the list
@@ -1521,14 +1507,13 @@ public class App {
     public void outputTopNcitycty(ArrayList<City> topNcty, String citcty) {
         // Check cities in a country is not null
         if (topNcty == null) {
-            System.out.println("No City in a country");
+            System.out.println("Error !");
             return;
         }
         NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        System.out.println("15: The top 10 populated cities in Argentina.\n");
         sb.append("| No. | City Name | Country Name | District | Population |\r\n");
         sb.append("| --- | --- | --- | --- | --- |\r\n");
         // Loop over top n country in the list
@@ -1617,14 +1602,13 @@ public class App {
     public void outputTopNcitydist(ArrayList<City> topNdist, String citdist) {
         // Check cities in a district is not null
         if (topNdist == null) {
-            System.out.println("No City in a district");
+            System.out.println("Error !");
             return;
         }
         NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        System.out.println("16: The top 10 populated cities in Zuid-Holland.\n");
         sb.append("| No. | City Name | Country Name | District | Population |\r\n");
         sb.append("| --- | --- | --- | --- | --- |\r\n");
         // Loop over top n district in the list
@@ -1714,14 +1698,13 @@ public class App {
     public void outputCapitalCity(ArrayList<CapitalCity> allcapitalcity, String AllCapitalCitiesTable) {
         // Check capital city is not null
         if (allcapitalcity == null) {
-            System.out.println("No capital city in world.");
+            System.out.println("Error !");
             return;
         }
         NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        System.out.println("17: All the capital cities in the world organised by largest population to smallest.\n");
         sb.append("| No. | Capital City Name | Country | Population |\r\n");
         sb.append("| --- | --- | --- | --- |\r\n");
         // Loop over all capital cities in the list
@@ -1813,14 +1796,13 @@ public class App {
     public void outputCapitalCityCont(ArrayList<CapitalCity> allcapitalcitycont, String AllCapitalCitiesContinentTable) {
         // Check continent is not null
         if (allcapitalcitycont == null) {
-            System.out.println("No capital city in continent.");
+            System.out.println("Error !");
             return;
         }
         NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        System.out.println("18: All the capital cities in Oceania continent organised by largest population to smallest.\n");
         sb.append("| No. | Capital City Name | Country | Continent | Population |\r\n");
         sb.append("| --- | --- | --- | --- | --- |\r\n");
         // Loop over all continents in the list
@@ -1911,14 +1893,13 @@ public class App {
     public void outputCapitalCityReg(ArrayList<CapitalCity> allcapitalcityreg, String AllCapitalCitiesRegionTable) {
         // Check region is not null
         if (allcapitalcityreg == null) {
-            System.out.println("No capital city in region.");
+            System.out.println("Error !");
             return;
         }
         NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        System.out.println("19.All the capital cities in Caribbean region organised by largest to smallest.\n");
         sb.append("| No. | Capital City Name | Country | Region | Population |\r\n");
         sb.append("| --- | --- | --- | --- | --- |\r\n");
         // Loop over all regions in the list
@@ -2008,14 +1989,13 @@ public class App {
     public void outputTop10CapitalCity(ArrayList<CapitalCity> top10capitalcity, String Top10CapitalCityTable) {
         // Check capital city is not null
         if (top10capitalcity == null) {
-            System.out.println("No top 10 capital city in world.");
+            System.out.println("Error !");
             return;
         }
         NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        System.out.println("20.The top 10 populated capital cities in the world \n");
         sb.append("| No. | Capital City Name | Country | Population |\r\n");
         sb.append("| --- | --- | --- | --- |\r\n");
         // Loop over top n capital city in the list
@@ -2106,14 +2086,13 @@ public class App {
     public void outputTop10CapitalCityCont(ArrayList<CapitalCity> top10capitalcitycont, String Top10CapitalCityContTable) {
         // Check continent is not null
         if (top10capitalcitycont == null) {
-            System.out.println("No top 10 capital city in continent.");
+            System.out.println("Error !");
             return;
         }
         NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        System.out.println("21.The top 10 populated capital cities in North America \n");
         sb.append("| No. | Capital City Name | Country | Continent | Population |\r\n");
         sb.append("| --- | --- | --- | --- | --- |\r\n");
         // Loop over top n continent in the list
@@ -2205,14 +2184,13 @@ public class App {
     public void outputTop10CapitalCityReg(ArrayList<CapitalCity> top10capitalcityreg, String Top10CapitalCityRegTable) {
         // Check region is not null
         if (top10capitalcityreg == null) {
-            System.out.println("No top 10 capital city in region.");
+            System.out.println("Error !");
             return;
         }
         NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        System.out.println("22.The top 10 populated capital cities in Middle East \n");
         sb.append("| No. | Capital City Name | Country | Region | Population |\r\n");
         sb.append("| --- | --- | --- | --- | --- |\r\n");
         // Loop over top n region in the list
@@ -2321,13 +2299,12 @@ public class App {
     public void outputPopulationContinent(ArrayList<PeoplePopulation> populationContinent, String populationContinentReport) {
         // Check people population is not null
         if (populationContinent == null) {
-            System.out.println("No population");
+            System.out.println("Error !");
             return;
         }
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        System.out.println("23.The population of people, people living in cities, and people not living in cities in each continent. \n");
         sb.append("| No. | Continent Name | Continent Total Population | City Total Population | People Not Living (%) | People Living (%) |\r\n");
         sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
 
@@ -2437,13 +2414,12 @@ public class App {
     public void outputPopulationRegion(ArrayList<PeoplePopulation> populationRegion, String populationRegionReport) {
         // Check people population is not null
         if (populationRegion == null) {
-            System.out.println("No population");
+            System.out.println("Error !");
             return;
         }
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        System.out.println("24.The population of people, people living in cities, and people not living in cities in each region. \n");
         sb.append("| No. | Region Name | Total Region Population | Total City Population | People Not Living (%) | People Living (%) |\r\n");
         sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
         // Loop over region people population in the list
@@ -2550,13 +2526,12 @@ public class App {
     public void outputPopulationCountry(ArrayList<PeoplePopulation> populationCountry, String populationCountryReport) {
         // Check people population is not null
         if (populationCountry == null) {
-            System.out.println("No population");
+            System.out.println("Error !");
             return;
         }
         int id = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        System.out.println("25.The population of people, people living in cities, and people not living in cities in each country. \n");
         sb.append("| No. | Country Name | Total Country Population | Total City Population | People Not Living (%) | People Living (%) |\r\n");
         sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
         // Loop over country people population in the list
@@ -2643,13 +2618,12 @@ public class App {
     public void outputPopulationOfWorld(ArrayList<PeoplePopulation> populationOfWorld, String populationOfWorldReport) {
         // Check people population is not null
         if (populationOfWorld == null) {
-            System.out.println("No population");
+            System.out.println("Error !");
             return;
         }
         int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        System.out.println("26. The population of the world.");
         sb.append("| No. | Total World Population |\r\n");
         sb.append("| --- | --- |\r\n");
         // Loop over people population in the list
@@ -2736,13 +2710,12 @@ public class App {
     public void outputPopulationOfContinent(ArrayList<PeoplePopulation> populationOfContinent, String populationOfContinentReport) {
         // Check people population is not null
         if (populationOfContinent == null) {
-            System.out.println("No population");
+            System.out.println("Error !");
             return;
         }
         int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        System.out.println("27. The population of Asia.");
         sb.append("| No. | Continent Name | Total Continent Population |\r\n");
         sb.append("| --- | --- | --- |\r\n");
         // Loop over continent people population in the list
@@ -2830,14 +2803,13 @@ public class App {
     public void outputPopulationOfRegion(ArrayList<PeoplePopulation> populationOfRegion, String populationOfRegionReport) {
         // Check people population is not null
         if (populationOfRegion == null) {
-            System.out.println("No population");
+            System.out.println("Error !");
             return;
         }
         NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        System.out.println("28. The population of Caribbean.");
         sb.append("| No. | Region Name | Total Region Population |\r\n");
         sb.append("| --- | --- | --- |\r\n");
         // Loop over region people population in the list
@@ -2925,14 +2897,13 @@ public class App {
     public void outputPopulationOfCountry(ArrayList<PeoplePopulation> populationOfCountry, String populationOfCountryReport) {
         // Check people population is not null
         if (populationOfCountry == null) {
-            System.out.println("No population");
+            System.out.println("Error !");
             return;
         }
         NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        System.out.println("29. The population of Austria.");
         sb.append("| No. | Country Name | Total Country Population |\r\n");
         sb.append("| --- | --- | --- |\r\n");
         // Loop over country people population in the list
@@ -3020,14 +2991,13 @@ public class App {
     public void outputPopulationOfDistrict(ArrayList<PeoplePopulation> populationOfDistrict, String populationOfDistrictReport) {
         // Check people population is not null
         if (populationOfDistrict == null) {
-            System.out.println("No population");
+            System.out.println("Error !");
             return;
         }
         NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        System.out.println("30. The population of Kabol.");
         sb.append("| No. | District Name | Total District Population |\r\n");
         sb.append("| --- | --- | --- |\r\n");
         // Loop over district people population in the list
@@ -3115,14 +3085,13 @@ public class App {
     public void outputPopulationOfCity(ArrayList<PeoplePopulation> populationOfCity, String populationOfCityReport) {
         // Check people population is not null
         if (populationOfCity == null) {
-            System.out.println("No population");
+            System.out.println("Error !");
             return;
         }
         NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        System.out.println("31. The population of Haag.");
         sb.append("| No. | City Name | Total City Population |\r\n");
         sb.append("| --- | --- | --- |\r\n");
         // Loop over city people population in the list
@@ -3224,14 +3193,13 @@ public class App {
     public void outputPopulationOfLanguage(ArrayList<CountryLanguage> populationOfLanguage, String populationOfLanguageReport) {
         // Check language is not null
         if (populationOfLanguage == null) {
-            System.out.println("No population");
+            System.out.println("Error !");
             return;
         }
         NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        System.out.println("32: List the population of people who speak different language in descending order.\n");
         sb.append("| No. | Language | Population | Percentage |\r\n");
         sb.append("| --- | --- | --- | --- |\r\n");
         // Loop over language in the list
