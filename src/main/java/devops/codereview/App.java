@@ -3280,7 +3280,9 @@ public class App
             return;
         }
 
-        float worldpopint = Float.parseFloat(String.valueOf(getWorldPopulation()));
+        PeoplePopulation worldpopu = new PeoplePopulation();
+        Integer worldpopint = Integer.valueOf(worldpopu.getWorldPopulation());
+
         // Print header
         System.out.println(String.format("%-30s %-30s %-30s", "Language", "Population", "Percent"));
         String pattern="###.00";
