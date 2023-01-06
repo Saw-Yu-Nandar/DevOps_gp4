@@ -2,9 +2,13 @@ SET09623 2022-2023 TR2 001 - DevOps
 --------------------------------------
 # Group 4 Members
 
-| Saw Yu Nandar (Product Owner) | Yoon Ei Shwe Zin (Scrum Master) | Su Hnin Lwin | Nang Shwe Sin Win |
-|-------------------------------|---------------------------------|--------------|-------------------|
-|             40516606          |               40516568          |   40516571   |       40516595    |
+|              Member          |        ID      |      Role     |
+|------------------------------|----------------|---------------|
+| Saw Yu Nandar                |    40516606    | Product Owner |       
+| Yoon Ei Shwe Zin             |    40516568    | Scrum Master  |
+| Su Hnin Lwin                 |    40516571    | Team Member   |
+| Nang Shwe Zin Win            |    40516595    | Team Member   |
+
 
 
 # Contribution Spreadsheet
