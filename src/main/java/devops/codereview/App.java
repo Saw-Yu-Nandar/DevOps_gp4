@@ -3206,7 +3206,11 @@ public class App
             // Create string for SQL statement
             //Query 33. List the population of people who speak different language in descending order
             String strQueryLanguage4 =
-                    "SELECT countrylanguage.Language, SUM(country.Population) as 'countrypop' FROM country, countrylanguage WHERE country.Code=countrylanguage.CountryCode AND countrylanguage.Language='"+ inputCh +"' UNION SELECT countrylanguage.Language, SUM(country.Population) AS countrypop FROM country, countrylanguage WHERE country.Code=countrylanguage.CountryCode AND countrylanguage.Language='"+ inputEn +"' UNION SELECT countrylanguage.Language, SUM(country.Population) AS countrypop FROM country, countrylanguage WHERE country.Code=countrylanguage.CountryCode AND countrylanguage.Language='"+ inputHin +"' UNION SELECT countrylanguage.Language, SUM(country.Population) AS countrypop FROM country, countrylanguage WHERE country.Code=countrylanguage.CountryCode AND countrylanguage.Language='"+ inputSp +"' UNION SELECT countrylanguage.Language, SUM(country.Population) AS countrypop FROM country, countrylanguage WHERE country.Code=countrylanguage.CountryCode AND countrylanguage.Language='"+ inputAr +"' ORDER BY countrypop DESC;";
+                    "SELECT countrylanguage.Language, SUM(countrylanguage.Percentage*country.Population)/100 AS countrypopulation, " +
+                            "SUM(country.Population*countrylanguage.Percentage)/(SELECT SUM(country.Population) FROM country) " +
+                            "AS AllCountriesPopulation FROM countrylanguage, country WHERE countrylanguage.CountryCode=country.Code " +
+                            "AND countrylanguage.Language in ('"+inputCh+"', '"+inputEn+"', '"+inputHin+"', '"+inputSp+"', '"+inputAr+"') " +
+                            "GROUP BY countrylanguage.Language ORDER BY AllCountriesPopulation DESC;";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strQueryLanguage4);
@@ -3216,7 +3220,8 @@ public class App
             {
                 CountryLanguage language4 = new CountryLanguage();
                 language4.setCountryLanguage(rset.getString("Language"));
-                language4.setCountryPopulation(rset.getString("countrypop"));
+                language4.setCountryPopulation(rset.getString("countrypopulation"));
+                language4.setCountryLanguagePercent(rset.getString("AllCountriesPopulation"));
                 countryLanguage4.add(language4);
             }
             return countryLanguage4;
@@ -3244,14 +3249,6 @@ public class App
         // Print header
         System.out.println(String.format("%-30s %-30s %-30s", "Language", "Population", "Percent"));
         // Loop over all languages in the list
-        BigInteger totalpoplan = BigInteger.valueOf(0);
-        for (CountryLanguage lp : countryLang)
-        {
-            if (lp == null)
-                continue;
-            BigInteger counint = new BigInteger(String.format(lp.getCountryPopulation()));
-            totalpoplan = totalpoplan.add(counint);
-        }
         String pattern="###.00";
         DecimalFormat df=new DecimalFormat(pattern);
         for (CountryLanguage cl4 : countryLang)
@@ -3259,11 +3256,8 @@ public class App
             //print language to check if a language is null
             if (cl4 == null)
                 continue;
-            float totalpoplanfloat = Float.parseFloat(String.valueOf(totalpoplan));
-            float countrpoplan = Float.parseFloat(cl4.getCountryPopulation());
-            float res = 100 * (countrpoplan/totalpoplanfloat);
-            String formatnum = df.format(res);
-            String resStr = formatnum+"%";
+
+            String resStr = String.format(df.format(Integer.parseInt(cl4.getCountryLanguagePercent())))+"%";
             cl4.setCountryLanguagePercent(resStr);
             String langString =
                     String.format("%-30s %-30s %-30s",
