@@ -3233,6 +3233,44 @@ public class App
      * 32. List the population of people who speak different languages in descending order
      * Formatting the output data from the list.
      **/
+//    public void printCountryLanguage(ArrayList<CountryLanguage> countryLang)
+//    {
+//        // Check country language is not null
+//        if (countryLang == null)
+//        {
+//            System.out.println("There is no list the population of people who speak different language in descending order.");
+//            return;
+//        }
+//        // Print header
+//        System.out.println(String.format("%-30s %-30s %-30s", "Language", "Population", "Percent"));
+//        // Loop over all languages in the list
+//        BigInteger totalpoplan = BigInteger.valueOf(0);
+//        for (CountryLanguage lp : countryLang)
+//        {
+//            if (lp == null)
+//                continue;
+//            BigInteger counint = new BigInteger(String.format(lp.getCountryPopulation()));
+//            totalpoplan = totalpoplan.add(counint);
+//        }
+//        String pattern="###.00";
+//        DecimalFormat df=new DecimalFormat(pattern);
+//        for (CountryLanguage cl4 : countryLang)
+//        {
+//            //print language to check if a language is null
+//            if (cl4 == null)
+//                continue;
+//            float totalpoplanfloat = Float.parseFloat(String.valueOf(totalpoplan));
+//            float countrpoplan = Float.parseFloat(cl4.getCountryPopulation());
+//            float res = 100 * (countrpoplan/totalpoplanfloat);
+//            String formatnum = df.format(res);
+//            String resStr = formatnum+"%";
+//            cl4.setCountryLanguagePercent(resStr);
+//            String langString =
+//                    String.format("%-30s %-30s %-30s",
+//                            cl4.getCountryLanguage(),cl4.getCountryPopulation(), resStr);
+//            System.out.println(langString);
+//        }
+//    }
     public void printCountryLanguage(ArrayList<CountryLanguage> countryLang)
     {
         // Check country language is not null
@@ -3241,17 +3279,12 @@ public class App
             System.out.println("There is no list the population of people who speak different language in descending order.");
             return;
         }
+
+        PeoplePopulation world = new PeoplePopulation();
+        Long worldpopint = Long.parseLong(world.getWorldPopulation());
+
         // Print header
         System.out.println(String.format("%-30s %-30s %-30s", "Language", "Population", "Percent"));
-        // Loop over all languages in the list
-        BigInteger totalpoplan = BigInteger.valueOf(0);
-        for (CountryLanguage lp : countryLang)
-        {
-            if (lp == null)
-                continue;
-            BigInteger counint = new BigInteger(String.format(lp.getCountryPopulation()));
-            totalpoplan = totalpoplan.add(counint);
-        }
         String pattern="###.00";
         DecimalFormat df=new DecimalFormat(pattern);
         for (CountryLanguage cl4 : countryLang)
@@ -3259,7 +3292,7 @@ public class App
             //print language to check if a language is null
             if (cl4 == null)
                 continue;
-            float totalpoplanfloat = Float.parseFloat(String.valueOf(totalpoplan));
+            float totalpoplanfloat = Float.parseFloat(String.valueOf(worldpopint));
             float countrpoplan = Float.parseFloat(cl4.getCountryPopulation());
             float res = 100 * (countrpoplan/totalpoplanfloat);
             String formatnum = df.format(res);
