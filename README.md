@@ -13,8 +13,6 @@ SET09623 2022-2023 TR2 001 - DevOps
 
 # Contribution Spreadsheet
 
-![workflow](https://github.com/Saw-Yu-Nandar/DevOps_gp4/actions/workflows/main.yml/badge.svg)
-
 |   Matric No (Team Members)   | Code Review 1  | Code Review 2 | Code Review 3 | Code Review 4 | Final Deliverable |
 |------------------------------|----------------|---------------|---------------|---------------|-------------------|
 | Saw Yu Nandar (40516606)     |       25       |       28      |       25      |       22      |         25        |         
@@ -40,9 +38,6 @@ SET09623 2022-2023 TR2 001 - DevOps
 [![LICENSE](https://img.shields.io/github/license/Saw-Yu-Nandar/DevOps_gp4.svg?style=flat-square)](https://github.com/Saw-Yu-Nandar/DevOps_gp_project/blob/master/LICENSE)
 
 ![workflow](https://github.com/Saw-Yu-Nandar/DevOps_gp4/actions/workflows/main.yml/badge.svg)
-
-# Software Engineering Methods
-![workflow](https://img.shields.io/github/workflow/status/Saw-Yu-Nandar/DevOps_gp4/main.yml/main?style=flat-square)
 
 
 
