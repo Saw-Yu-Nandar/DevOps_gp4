@@ -2288,30 +2288,32 @@ public class App
                 notlivingcon = 0.0F;
             }
 
-            String pattern="###.00";
-            DecimalFormat df=new DecimalFormat(pattern);
-
-            String formatnotlivingconper = df.format(notlivingcon);
-            String formatlivingconper = df.format(livingconper);
-
-            if(formatnotlivingconper == ".00" || formatnotlivingconper == "00")
+            if(livingconper == 0.0F)
             {
-                formatnotlivingconper = "0";
+                String strnotlivingconper = notlivingcon+"%";
+                String strlivingconper = livingconper+"%";
+
+                pcon.setLivingPopContPer(strlivingconper);
+                pcon.setNotLivingPopContPer(strnotlivingconper);
             }
-            if(formatlivingconper == ".00" || formatlivingconper == "00")
+            else
             {
-                formatlivingconper = "0";
+                String pattern="###.00";
+                DecimalFormat df=new DecimalFormat(pattern);
+
+                String formatnotlivingconper = df.format(notlivingcon);
+                String formatlivingconper = df.format(livingconper);
+
+                String strnotlivingconper = formatnotlivingconper+"%";
+                String strlivingconper = formatlivingconper+"%";
+
+                pcon.setLivingPopContPer(strlivingconper);
+                pcon.setNotLivingPopContPer(strnotlivingconper);
             }
-
-            String strnotlivingconper = formatnotlivingconper+"%";
-            String strlivingconper = formatlivingconper+"%";
-
-            pcon.setLivingPopContPer(strlivingconper);
-            pcon.setNotLivingPopContPer(strnotlivingconper);
 
             String pconString =
                     String.format("%-20s %-28s %-25s %-25s %-25s",
-                            pcon.getContinentName(),pcon.getContinentPopulation(), pcon.getCityPopulation(), strnotlivingconper, strlivingconper);
+                            pcon.getContinentName(),pcon.getContinentPopulation(), pcon.getCityPopulation(), pcon.getNotLivingPopContPer(), pcon.getLivingPopContPer());
             System.out.println(pconString);
         }
     }
