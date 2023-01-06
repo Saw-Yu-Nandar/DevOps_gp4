@@ -2567,11 +2567,11 @@ public class App
 
             if(livingcouper == 0.0F && notlivingcouper == 0.0F)
             {
-                String strnotlivingcouper = livingcouper+"%";
-                String strlivingcouper = notlivingcouper+"%";
+                String strlivingcouper = livingcouper+"%";
+                String strnotlivingcouper = notlivingcouper+"%";
 
-                pcou.setLivingPopRegPer(strlivingcouper);
-                pcou.setNotLivingPopRegPer(strnotlivingcouper);
+                pcou.setLivingPopCountryPer(strlivingcouper);
+                pcou.setNotLivingPopCountryPer(strnotlivingcouper);
             }
             else
             {
