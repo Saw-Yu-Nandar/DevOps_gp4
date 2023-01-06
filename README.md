@@ -24,10 +24,10 @@ SET09623 2022-2023 TR2 001 - DevOps
 
 
 # Build status for master
-![workflow](https://img.shields.io/github/workflow/status/Saw-Yu-Nandar/DevOps_gp4/main.yml/main?style=flat-square)
+[![Build Status](https://app.travis-ci.com/Saw-Yu-Nandar/testing.svg?branch=master)](https://app.travis-ci.com/Saw-Yu-Nandar/testing)
 
 # Build status for develop
-![workflow](https://img.shields.io/github/workflow/status/Saw-Yu-Nandar/DevOps_gp4/main.yml/main?style=flat-square)
+[![Build Status](https://app.travis-ci.com/Saw-Yu-Nandar/testing.svg?branch=develop)](https://app.travis-ci.com/Saw-Yu-Nandar/testing)
 
 # Code Coverage test for master
 [![codecov](https://codecov.io/gh/Saw-Yu-Nandar/DevOps_gp4/branch/master/graph/badge.svg?token=C6W4ALVTNI)](https://codecov.io/gh/Saw-Yu-Nandar/DevOps_gp4) 
@@ -40,6 +40,8 @@ SET09623 2022-2023 TR2 001 - DevOps
 
 ![workflow](https://github.com/Saw-Yu-Nandar/DevOps_gp4/actions/workflows/main.yml/badge.svg)
 
+# Software Engineering Methods
+![workflow](https://img.shields.io/github/workflow/status/Saw-Yu-Nandar/DevOps_gp4/main.yml/main?style=flat-square)
 
 
 
