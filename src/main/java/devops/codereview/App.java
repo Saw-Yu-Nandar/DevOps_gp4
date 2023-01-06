@@ -3288,8 +3288,7 @@ public class App
         for (CountryLanguage popoflan : populationOfLanguage) {
             idnum += 1;
             if (popoflan == null) continue;
-            sb.append("| " + idnum + "| " + popoflan.getCountryLanguage() + " | "
-                    + " | " + popoflan.getCountryLanguagePercent() + " | " + "|\r\n");
+            sb.append("| " + idnum + "| " + popoflan.getCountryLanguage() + " | " + popoflan.getCountryLanguagePercent() + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
