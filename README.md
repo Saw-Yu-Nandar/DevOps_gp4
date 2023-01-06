@@ -63,7 +63,7 @@ SET09623 2022-2023 TR2 001 - DevOps
 | 20    | The top N populated capital cities in the world where N is provided by the user. | Yes | ![Query20 Report Table](Screenshot/20.png) |
 | 21    | The top N populated capital cities in a continent where N is provided by the user. | Yes | ![Query21 Report Table](Screenshot/21.png) |
 | 22    | The top N populated capital cities in a region where N is provided by the user. | Yes | ![Query22 Report Table](Screenshot/22.png) |
-| 23    | The population of people, people living in cities, and people not living in cities in each continent. | Yes | ![Query23 Report Table](Screenshot/23..png) |
+| 23    | The population of people, people living in cities, and people not living in cities in each continent. | Yes | ![Query23 Report Table](Screenshot/23.png) |
 | 24    | The population of people, people living in cities, and people not living in cities in each region. | Yes | ![Query24 Report Table](Screenshot/24.png) |
 | 25    | The population of people, people living in cities, and people not living in cities in each country. | Yes | ![Query25 Report Table](Screenshot/25.png) |
 | 26    | The population of the world. | Yes | ![Query26 Report Table](Screenshot/26.png) |
