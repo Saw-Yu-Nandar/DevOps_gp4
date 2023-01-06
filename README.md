@@ -7,6 +7,18 @@ SET09623 2022-2023 TR2 001 - DevOps
 |             40516606          |               40516568          |   40516571   |       40516595    |
 
 
+# Contribution Spreadsheet
+
+
+|   Matric No (Team Members)   | Code Review 1  | Code Review 2 | Code Review 3 | Code Review 4 | Final Deliverable |
+|------------------------------|----------------|---------------|---------------|---------------|-------------------|
+| Saw Yu Nandar (40516606)     |       25       |       28      |       25      |       22      |         25        |               
+| Yoon Ei Shwe Zin (40516568)  |       25       |       23      |       25      |       28      |         25        |               
+| Su Hnin Lwin (40516571)      |       25       |       21      |       25      |       28      |         25        |               
+| Nang Shwe Zin Win (40516595) |       25       |       28      |       25      |       22      |         25        |
+|             Total            |      100       |      100      |      100      |      100      |        100        |
+
+
 # Build status for master
 ![workflow](https://img.shields.io/github/workflow/status/Saw-Yu-Nandar/DevOps_gp4/main.yml/main?style=flat-square)
 
