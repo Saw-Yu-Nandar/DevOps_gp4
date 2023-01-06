@@ -13,6 +13,7 @@ SET09623 2022-2023 TR2 001 - DevOps
 
 # Contribution Spreadsheet
 
+![workflow](https://github.com/Saw-Yu-Nandar/DevOps_gp4/actions/workflows/main.yml/badge.svg)
 
 |   Matric No (Team Members)   | Code Review 1  | Code Review 2 | Code Review 3 | Code Review 4 | Final Deliverable |
 |------------------------------|----------------|---------------|---------------|---------------|-------------------|
@@ -24,10 +25,10 @@ SET09623 2022-2023 TR2 001 - DevOps
 
 
 # Build status for master
-[![Build Status](https://app.travis-ci.com/Saw-Yu-Nandar/testing.svg?branch=master)](https://app.travis-ci.com/Saw-Yu-Nandar/testing)
+![Build Status](https://img.shields.io/github/workflow/status/Saw-Yu-Nandar/DevOps_gp4/main.yml/main?style=flat-square)
 
 # Build status for develop
-[![Build Status](https://app.travis-ci.com/Saw-Yu-Nandar/testing.svg?branch=develop)](https://app.travis-ci.com/Saw-Yu-Nandar/testing)
+![Build Status](https://img.shields.io/github/workflow/status/Saw-Yu-Nandar/DevOps_gp4/main.yml/main?style=flat-square)
 
 # Code Coverage test for master
 [![codecov](https://codecov.io/gh/Saw-Yu-Nandar/DevOps_gp4/branch/master/graph/badge.svg?token=C6W4ALVTNI)](https://codecov.io/gh/Saw-Yu-Nandar/DevOps_gp4) 
