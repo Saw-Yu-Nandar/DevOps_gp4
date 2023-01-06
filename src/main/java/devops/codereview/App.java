@@ -2294,17 +2294,17 @@ public class App
             String formatnotlivingconper = df.format(notlivingcon);
             String formatlivingconper = df.format(livingconper);
 
+            if(formatnotlivingconper == ".00" || formatnotlivingconper == "00")
+            {
+                formatnotlivingconper = "0";
+            }
+            if(formatlivingconper == ".00" || formatlivingconper == "00")
+            {
+                formatlivingconper = "0";
+            }
+
             String strnotlivingconper = formatnotlivingconper+"%";
             String strlivingconper = formatlivingconper+"%";
-
-            if(strnotlivingconper == ".00%")
-            {
-                strnotlivingconper = "0%";
-            }
-            if(strlivingconper == ".00%")
-            {
-                strlivingconper = "0%";
-            }
 
             pcon.setLivingPopContPer(strlivingconper);
             pcon.setNotLivingPopContPer(strnotlivingconper);
