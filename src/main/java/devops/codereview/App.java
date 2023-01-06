@@ -3286,14 +3286,12 @@ public class App
         sb.append("| No. | Language | Population | Percentage |\r\n");
         sb.append("| --- | --- | --- | --- |\r\n");
         // Loop over language in the list
-        String pattern="###";
-        DecimalFormat df=new DecimalFormat(pattern);
         for (CountryLanguage popoflan : populationOfLanguage) {
             idnum += 1;
             if (popoflan == null) continue;
-            int poplanguage = Integer.parseInt(popoflan.getCountryPopulation());
+            int poplanguage = (int)Float.parseFloat(popoflan.getCountryPopulation());
             sb.append("| " + idnum + "| " + popoflan.getCountryLanguage() + " | " +
-                    numFormat.format(Integer.parseInt(df.format(poplanguage))) + " | " + popoflan.getCountryLanguagePercent() + " | " + "|\r\n");
+                    numFormat.format(poplanguage) + " | " + popoflan.getCountryLanguagePercent() + " | " + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
