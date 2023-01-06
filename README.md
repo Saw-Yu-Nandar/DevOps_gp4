@@ -1,11 +1,7 @@
 SET09623 2022-2023 TR2 001 - DevOps
 -----------------------------------
 
-#Team Members: Saw Yu Nandar, Yoon Ei Shwe Zin, Su Hnin Lwin, Nang Shwe Sin Win
-
-CodeReview 1: project workflow is set-up and try one of the feature requirements
-
-
+# Team Members: Saw Yu Nandar, Yoon Ei Shwe Zin, Su Hnin Lwin, Nang Shwe Sin Win
 
 ![workflow](https://github.com/Saw-Yu-Nandar/DevOps_gp4/actions/workflows/main.yml/badge.svg)
 
@@ -17,5 +13,5 @@ CodeReview 1: project workflow is set-up and try one of the feature requirements
 ![workflow](https://img.shields.io/github/workflow/status/Saw-Yu-Nandar/DevOps_gp4/main.yml/main?style=flat-square)
 
 
-#Code Coverage
+# Code Coverage
 [![codecov](https://codecov.io/gh/Saw-Yu-Nandar/DevOps_gp4/branch/master/graph/badge.svg?token=C6W4ALVTNI)](https://codecov.io/gh/Saw-Yu-Nandar/DevOps_gp4)
