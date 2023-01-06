@@ -38,7 +38,7 @@ SET09623 2022-2023 TR2 001 - DevOps
 
 
 
-# Requirements for Query Report have been fullfilled. 
+# 32 requirements of 32 have been implemented, which is 100%.
 | ID    | Name | Met  | Screenshot |
 |-------|------|------|------------|
 | 1     | All the countries in the world organised by largest population to smallest. | Yes | ![Query1 Report Table](Screenshot/1.png) |
