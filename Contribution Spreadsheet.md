@@ -1,9 +1,10 @@
-#Contribution Spreadsheet
+# Contribution Spreadsheet
 
 
-| Team Members       | Code Review 1  | Code Review 2 | Code Review 3 | Code Review 4 | 
-|--------------------|----------------|---------------|---------------|---------------|
-| Saw Yu Nandar      |       25       |       28      |       25      |       22      |               
-| Yoon Ei Shwe Zin   |       25       |       23      |       25      |       28      |               
-| Su Hnin Lwin       |       25       |       21      |       25      |       28      |               
-| Nang Shwe Zin Win  |       25       |       28      |       25      |       22      |               
+|   Matric No (Team Members)   | Code Review 1  | Code Review 2 | Code Review 3 | Code Review 4 | Final Deliverable |
+|------------------------------|----------------|---------------|---------------|---------------|-------------------|
+| Saw Yu Nandar (40516606)     |       25       |       28      |       25      |       22      |         25        |               
+| Yoon Ei Shwe Zin (40516568)  |       25       |       23      |       25      |       28      |         25        |               
+| Su Hnin Lwin (40516571)      |       25       |       21      |       25      |       28      |         25        |               
+| Nang Shwe Zin Win (40516595) |       25       |       28      |       25      |       22      |         25        |
+|             Total            |      100       |      100      |      100      |      100      |        100        |
