@@ -5,6 +5,7 @@ public class CountryLanguage {
     private String countryPopulation;
     private String countryPercent;
     private String countryLanguagePercent;
+    private String countryLanguagePercentDecimal;
 
     public String getCountryLanguage() {
         return countryLanguage;
@@ -36,5 +37,13 @@ public class CountryLanguage {
 
     public void setCountryLanguagePercent(String countryLanguagePercent) {
         this.countryLanguagePercent = countryLanguagePercent;
+    }
+
+    public String getCountryLanguagePercentDecimal() {
+        return countryLanguagePercentDecimal;
+    }
+
+    public void setCountryLanguagePercentDecimal(String countryLanguagePercentDecimal) {
+        this.countryLanguagePercentDecimal = countryLanguagePercentDecimal;
     }
 }

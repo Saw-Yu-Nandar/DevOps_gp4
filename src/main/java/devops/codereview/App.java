@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.sql.*;
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -3205,6 +3206,7 @@ public class App
             float countrpoplan = Float.parseFloat(cl4.getCountryPopulation());
             float res = 100 * (countrpoplan/totalpoplanfloat);
             String resStr = res+"%";
+            cl4.setCountryLanguagePercentDecimal(resStr);
             cl4.setCountryLanguagePercent(resStr);
             String langString =
                     String.format("%-30s %-30s %-30s",
@@ -3224,6 +3226,8 @@ public class App
             return;
         }
         NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
+        String pattern="###,###.00";
+        DecimalFormat df=new DecimalFormat(pattern);
         int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -3232,9 +3236,11 @@ public class App
         // Loop over language in the list
         for (CountryLanguage popoflan : populationOfLanguage) {
             idnum += 1;
+            String decinumber=df.format(popoflan.getCountryLanguagePercentDecimal());
+            String decinumper = decinumber+"%";
             if (popoflan == null) continue;
             sb.append("| " + idnum + "| " + popoflan.getCountryLanguage() + " | " +
-                    numFormat.format(Integer.parseInt(popoflan.getCountryPopulation())) + " | " + popoflan.getCountryLanguagePercent() + " | " + "|\r\n");
+                    numFormat.format(Integer.parseInt(popoflan.getCountryPopulation())) + " | " + decinumper + " | " + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
