@@ -2288,7 +2288,7 @@ public class App
                 notlivingcon = 0.0F;
             }
 
-            if(livingconper == 0.0F)
+            if(livingconper == 0.0F && notlivingcon == 0.0F)
             {
                 String strnotlivingconper = notlivingcon+"%";
                 String strlivingconper = livingconper+"%";
@@ -2426,21 +2426,34 @@ public class App
             if(String.valueOf(notlivingregper) == nan){
                 notlivingregper = 0.0F;
             }
-            String pattern="###.00";
-            DecimalFormat df=new DecimalFormat(pattern);
 
-//            String formatnotlivingregper = df.format(notlivingregper);
-//            String formatlivingregper = df.format(livingregper);
+            if(livingregper == 0.0F && notlivingregper == 0.0F)
+            {
+                String strnotlivingregper = livingregper+"%";
+                String strlivingregper = notlivingregper+"%";
 
-            String strnotlivingregper = notlivingregper+"%";
-            String strlivingregper = livingregper+"%";
+                preg.setLivingPopRegPer(strlivingregper);
+                preg.setNotLivingPopRegPer(strnotlivingregper);
+            }
+            else
+            {
+                String pattern="###.00";
+                DecimalFormat df=new DecimalFormat(pattern);
 
-            preg.setLivingPopRegPer(strlivingregper);
-            preg.setNotLivingPopRegPer(strnotlivingregper);
+                String formatnotlivingregper = df.format(notlivingregper);
+                String formatlivingregper = df.format(livingregper);
+
+                String strnotlivingregper = formatnotlivingregper+"%";
+                String strlivingregper = formatlivingregper+"%";
+
+                preg.setLivingPopContPer(strlivingregper);
+                preg.setNotLivingPopContPer(strnotlivingregper);
+            }
+
 
             String pregString =
                     String.format("%-30s %-25s %-25s %-25s %-25s",
-                            preg.getRegionsName(),preg.getRegionsPopulation(),preg.getCityPopulation(),strnotlivingregper,strlivingregper);
+                            preg.getRegionsName(),preg.getRegionsPopulation(),preg.getCityPopulation(),preg.getNotLivingPopRegPer(),preg.getLivingPopRegPer());
             System.out.println(pregString);
         }
     }
