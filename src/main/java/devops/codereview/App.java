@@ -3257,7 +3257,9 @@ public class App
             if (cl4 == null)
                 continue;
 
-            String resStr = String.format(df.format(Integer.parseInt(cl4.getCountryLanguagePercent())))+"%";
+            float respercent = Float.parseFloat(cl4.getCountryLanguagePercent());
+            String formatrespercent = String.format(df.format(respercent));
+            String resStr = formatrespercent+"%";
             cl4.setCountryLanguagePercent(resStr);
             String langString =
                     String.format("%-30s %-30s %-30s",
