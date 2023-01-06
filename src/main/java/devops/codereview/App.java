@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.sql.*;
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -2286,15 +2287,33 @@ public class App
             if(String.valueOf(notlivingcon) == nan){
                 notlivingcon = 0.0F;
             }
-            String strnotlivingconper = notlivingcon+"%";
-            String strlivingconper = livingconper+"%";
 
-            pcon.setLivingPopContPer(strlivingconper);
-            pcon.setNotLivingPopContPer(strnotlivingconper);
+            if(livingconper == 0.0F && notlivingcon == 0.0F)
+            {
+                String strnotlivingconper = notlivingcon+"%";
+                String strlivingconper = livingconper+"%";
+
+                pcon.setLivingPopContPer(strlivingconper);
+                pcon.setNotLivingPopContPer(strnotlivingconper);
+            }
+            else
+            {
+                String pattern="###.00";
+                DecimalFormat df=new DecimalFormat(pattern);
+
+                String formatnotlivingconper = df.format(notlivingcon);
+                String formatlivingconper = df.format(livingconper);
+
+                String strnotlivingconper = formatnotlivingconper+"%";
+                String strlivingconper = formatlivingconper+"%";
+
+                pcon.setLivingPopContPer(strlivingconper);
+                pcon.setNotLivingPopContPer(strnotlivingconper);
+            }
 
             String pconString =
                     String.format("%-20s %-28s %-25s %-25s %-25s",
-                            pcon.getContinentName(),pcon.getContinentPopulation(), pcon.getCityPopulation(), strnotlivingconper, strlivingconper);
+                            pcon.getContinentName(),pcon.getContinentPopulation(), pcon.getCityPopulation(), pcon.getNotLivingPopContPer(), pcon.getLivingPopContPer());
             System.out.println(pconString);
         }
     }
@@ -2407,15 +2426,34 @@ public class App
             if(String.valueOf(notlivingregper) == nan){
                 notlivingregper = 0.0F;
             }
-            String strnotlivingregper = notlivingregper+"%";
-            String strlivingregper = livingregper+"%";
 
-            preg.setLivingPopRegPer(strlivingregper);
-            preg.setNotLivingPopRegPer(strnotlivingregper);
+            if(livingregper == 0.0F && notlivingregper == 0.0F)
+            {
+                String strnotlivingregper = livingregper+"%";
+                String strlivingregper = notlivingregper+"%";
+
+                preg.setLivingPopRegPer(strlivingregper);
+                preg.setNotLivingPopRegPer(strnotlivingregper);
+            }
+            else
+            {
+                String pattern="###.00";
+                DecimalFormat df=new DecimalFormat(pattern);
+
+                String formatnotlivingregper = df.format(notlivingregper);
+                String formatlivingregper = df.format(livingregper);
+
+                String strnotlivingregper = formatnotlivingregper+"%";
+                String strlivingregper = formatlivingregper+"%";
+
+                preg.setLivingPopRegPer(strlivingregper);
+                preg.setNotLivingPopRegPer(strnotlivingregper);
+            }
+
 
             String pregString =
                     String.format("%-30s %-25s %-25s %-25s %-25s",
-                            preg.getRegionsName(),preg.getRegionsPopulation(),preg.getCityPopulation(),strnotlivingregper,strlivingregper);
+                            preg.getRegionsName(),preg.getRegionsPopulation(),preg.getCityPopulation(),preg.getNotLivingPopRegPer(),preg.getLivingPopRegPer());
             System.out.println(pregString);
         }
     }
@@ -2526,15 +2564,33 @@ public class App
             if(String.valueOf(notlivingcouper) == nan){
                 notlivingcouper = 0.0F;
             }
-            String strnotlivingcouper = notlivingcouper+"%";
-            String strlivingcouper = livingcouper+"%";
 
-            pcou.setLivingPopCountryPer(strlivingcouper);
-            pcou.setNotLivingPopCountryPer(strnotlivingcouper);
+            if(livingcouper == 0.0F && notlivingcouper == 0.0F)
+            {
+                String strlivingcouper = livingcouper+"%";
+                String strnotlivingcouper = notlivingcouper+"%";
+
+                pcou.setLivingPopCountryPer(strlivingcouper);
+                pcou.setNotLivingPopCountryPer(strnotlivingcouper);
+            }
+            else
+            {
+                String pattern="###.00";
+                DecimalFormat df=new DecimalFormat(pattern);
+
+                String formatnotlivingcouper = df.format(notlivingcouper);
+                String formatlivingcouper = df.format(livingcouper);
+
+                String strnotlivingcouper = formatnotlivingcouper+"%";
+                String strlivingcouper = formatlivingcouper+"%";
+
+                pcou.setLivingPopCountryPer(strlivingcouper);
+                pcou.setNotLivingPopCountryPer(strnotlivingcouper);
+            }
 
             String pcouString =
                     String.format("%-45s %-28s %-25s %-25s %-25s",
-                            pcou.getCountriesName(), pcou.getCountriesPopulation(), pcou.getCityPopulation(), strnotlivingcouper, strlivingcouper);
+                            pcou.getCountriesName(), pcou.getCountriesPopulation(), pcou.getCityPopulation(), pcou.getNotLivingPopCountryPer(), pcou.getLivingPopCountryPer());
             System.out.println(pcouString);
         }
     }
@@ -3196,6 +3252,8 @@ public class App
             BigInteger counint = new BigInteger(String.format(lp.getCountryPopulation()));
             totalpoplan = totalpoplan.add(counint);
         }
+        String pattern="###.00";
+        DecimalFormat df=new DecimalFormat(pattern);
         for (CountryLanguage cl4 : countryLang)
         {
             //print language to check if a language is null
@@ -3204,7 +3262,8 @@ public class App
             float totalpoplanfloat = Float.parseFloat(String.valueOf(totalpoplan));
             float countrpoplan = Float.parseFloat(cl4.getCountryPopulation());
             float res = 100 * (countrpoplan/totalpoplanfloat);
-            String resStr = res+"%";
+            String formatnum = df.format(res);
+            String resStr = formatnum+"%";
             cl4.setCountryLanguagePercent(resStr);
             String langString =
                     String.format("%-30s %-30s %-30s",
