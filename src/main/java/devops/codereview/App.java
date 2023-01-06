@@ -3280,9 +3280,6 @@ public class App
             return;
         }
 
-        PeoplePopulation worldpopu = new PeoplePopulation();
-        Integer worldpopint = Integer.valueOf(worldpopu.getWorldPopulation());
-
         // Print header
         System.out.println(String.format("%-30s %-30s %-30s", "Language", "Population", "Percent"));
         String pattern="###.00";
@@ -3293,7 +3290,7 @@ public class App
             if (cl4 == null)
                 continue;
 
-            float totalpoplanfloat = worldpopint;
+            float totalpoplanfloat = 6078749450.0F;
             float countrpoplan = Float.parseFloat(cl4.getCountryPopulation());
             float res = 100 * (countrpoplan/totalpoplanfloat);
             String formatnum = df.format(res);
