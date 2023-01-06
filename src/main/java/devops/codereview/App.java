@@ -2446,8 +2446,8 @@ public class App
                 String strnotlivingregper = formatnotlivingregper+"%";
                 String strlivingregper = formatlivingregper+"%";
 
-                preg.setLivingPopContPer(strlivingregper);
-                preg.setNotLivingPopContPer(strnotlivingregper);
+                preg.setLivingPopRegPer(strlivingregper);
+                preg.setNotLivingPopRegPer(strnotlivingregper);
             }
 
 
@@ -2564,15 +2564,33 @@ public class App
             if(String.valueOf(notlivingcouper) == nan){
                 notlivingcouper = 0.0F;
             }
-            String strnotlivingcouper = notlivingcouper+"%";
-            String strlivingcouper = livingcouper+"%";
 
-            pcou.setLivingPopCountryPer(strlivingcouper);
-            pcou.setNotLivingPopCountryPer(strnotlivingcouper);
+            if(livingcouper == 0.0F && notlivingcouper == 0.0F)
+            {
+                String strnotlivingcouper = livingcouper+"%";
+                String strlivingcouper = notlivingcouper+"%";
+
+                pcou.setLivingPopRegPer(strlivingcouper);
+                pcou.setNotLivingPopRegPer(strnotlivingcouper);
+            }
+            else
+            {
+                String pattern="###.00";
+                DecimalFormat df=new DecimalFormat(pattern);
+
+                String formatnotlivingcouper = df.format(notlivingcouper);
+                String formatlivingcouper = df.format(livingcouper);
+
+                String strnotlivingcouper = formatnotlivingcouper+"%";
+                String strlivingcouper = formatlivingcouper+"%";
+
+                pcou.setLivingPopCountryPer(strlivingcouper);
+                pcou.setNotLivingPopCountryPer(strnotlivingcouper);
+            }
 
             String pcouString =
                     String.format("%-45s %-28s %-25s %-25s %-25s",
-                            pcou.getCountriesName(), pcou.getCountriesPopulation(), pcou.getCityPopulation(), strnotlivingcouper, strlivingcouper);
+                            pcou.getCountriesName(), pcou.getCountriesPopulation(), pcou.getCityPopulation(), pcou.getNotLivingPopCountryPer(), pcou.getLivingPopCountryPer());
             System.out.println(pcouString);
         }
     }
