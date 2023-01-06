@@ -3289,9 +3289,12 @@ public class App
         for (CountryLanguage popoflan : populationOfLanguage) {
             idnum += 1;
             if (popoflan == null) continue;
-            int poplanguage = (int)Float.parseFloat(popoflan.getCountryPopulation());
+            int poplanguage = Math.round(Float.parseFloat(popoflan.getCountryPopulation()));
+            int poplanguageint = Integer.parseInt(numFormat.format(poplanguage));
+            String poplanguagestr = String.valueOf(poplanguageint);
+            //int poplanguage = (int)Float.parseFloat(popoflan.getCountryPopulation());
             sb.append("| " + idnum + "| " + popoflan.getCountryLanguage() + " | " +
-                    numFormat.format(poplanguage) + " | " + popoflan.getCountryLanguagePercent() + " | " + "|\r\n");
+                    poplanguagestr + " | " + popoflan.getCountryLanguagePercent() + " | " + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
