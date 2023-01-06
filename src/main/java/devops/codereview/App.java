@@ -3197,6 +3197,8 @@ public class App
             BigInteger counint = new BigInteger(String.format(lp.getCountryPopulation()));
             totalpoplan = totalpoplan.add(counint);
         }
+        String pattern="###.00";
+        DecimalFormat df=new DecimalFormat(pattern);
         for (CountryLanguage cl4 : countryLang)
         {
             //print language to check if a language is null
@@ -3205,8 +3207,8 @@ public class App
             float totalpoplanfloat = Float.parseFloat(String.valueOf(totalpoplan));
             float countrpoplan = Float.parseFloat(cl4.getCountryPopulation());
             float res = 100 * (countrpoplan/totalpoplanfloat);
-            String resStr = res+"%";
-            cl4.setCountryLanguagePercentDecimal(resStr);
+            String formatnum = df.format(res);
+            String resStr = formatnum+"%";
             cl4.setCountryLanguagePercent(resStr);
             String langString =
                     String.format("%-30s %-30s %-30s",
@@ -3226,8 +3228,6 @@ public class App
             return;
         }
         NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
-        String pattern="###,###.00";
-        DecimalFormat df=new DecimalFormat(pattern);
         int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -3236,11 +3236,9 @@ public class App
         // Loop over language in the list
         for (CountryLanguage popoflan : populationOfLanguage) {
             idnum += 1;
-            String decinumber=df.format(popoflan.getCountryLanguagePercentDecimal());
-            String decinumper = decinumber+"%";
             if (popoflan == null) continue;
             sb.append("| " + idnum + "| " + popoflan.getCountryLanguage() + " | " +
-                    numFormat.format(Integer.parseInt(popoflan.getCountryPopulation())) + " | " + decinumper + " | " + "|\r\n");
+                    numFormat.format(Integer.parseInt(popoflan.getCountryPopulation())) + " | " + popoflan.getCountryLanguagePercent() + " | " + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
