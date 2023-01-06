@@ -3274,7 +3274,7 @@ public class App
      * @param populationOfLanguage
      */
     public void outputPopulationOfLanguage(ArrayList<CountryLanguage> populationOfLanguage, String populationOfLanguageReport) {
-        // Check All the languages are not null
+        // Check languages is not null
         if (populationOfLanguage == null) {
             System.out.println("Error !");
             return;
