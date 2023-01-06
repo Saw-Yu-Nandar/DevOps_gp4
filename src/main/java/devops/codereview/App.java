@@ -3279,6 +3279,7 @@ public class App
             System.out.println("There is no list the population of people who speak different language in descending order.");
             return;
         }
+
         float worldpopint = Float.parseFloat(String.valueOf(getWorldPopulation()));
         // Print header
         System.out.println(String.format("%-30s %-30s %-30s", "Language", "Population", "Percent"));
@@ -3290,7 +3291,7 @@ public class App
             if (cl4 == null)
                 continue;
 
-            float totalpoplanfloat = Float.parseFloat(String.valueOf(worldpopint));
+            float totalpoplanfloat = worldpopint;
             float countrpoplan = Float.parseFloat(cl4.getCountryPopulation());
             float res = 100 * (countrpoplan/totalpoplanfloat);
             String formatnum = df.format(res);
