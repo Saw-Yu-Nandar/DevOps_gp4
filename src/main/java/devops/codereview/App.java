@@ -3261,6 +3261,7 @@ public class App
             String formatrespercent = String.format(df.format(respercent));
             String resStr = formatrespercent+"%";
             cl4.setCountryLanguagePercent(resStr);
+
             String langString =
                     String.format("%-30s %-30s %-30s",
                             cl4.getCountryLanguage(),cl4.getCountryPopulation(), resStr);
@@ -3288,8 +3289,9 @@ public class App
         for (CountryLanguage popoflan : populationOfLanguage) {
             idnum += 1;
             if (popoflan == null) continue;
+            int poplanguage = Integer.parseInt(popoflan.getCountryPopulation());
             sb.append("| " + idnum + "| " + popoflan.getCountryLanguage() + " | " +
-                    numFormat.format(Integer.parseInt(popoflan.getCountryPopulation())) + " | " + popoflan.getCountryLanguagePercent() + " | " + "|\r\n");
+                    numFormat.format(poplanguage) + " | " + popoflan.getCountryLanguagePercent() + " | " + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
