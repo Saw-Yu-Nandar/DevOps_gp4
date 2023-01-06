@@ -3279,10 +3279,7 @@ public class App
             System.out.println("There is no list the population of people who speak different language in descending order.");
             return;
         }
-
-        PeoplePopulation world = new PeoplePopulation();
-        Long worldpopint = Long.parseLong(world.getWorldPopulation());
-
+        float worldpopint = Float.parseFloat(String.valueOf(getWorldPopulation()));
         // Print header
         System.out.println(String.format("%-30s %-30s %-30s", "Language", "Population", "Percent"));
         String pattern="###.00";
@@ -3292,6 +3289,7 @@ public class App
             //print language to check if a language is null
             if (cl4 == null)
                 continue;
+
             float totalpoplanfloat = Float.parseFloat(String.valueOf(worldpopint));
             float countrpoplan = Float.parseFloat(cl4.getCountryPopulation());
             float res = 100 * (countrpoplan/totalpoplanfloat);
