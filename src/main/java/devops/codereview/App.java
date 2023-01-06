@@ -2287,8 +2287,15 @@ public class App
             if(String.valueOf(notlivingcon) == nan){
                 notlivingcon = 0.0F;
             }
-            String strnotlivingconper = notlivingcon+"%";
-            String strlivingconper = livingconper+"%";
+
+            String pattern="###.00";
+            DecimalFormat df=new DecimalFormat(pattern);
+
+            String formatnotlivingconper = df.format(notlivingcon);
+            String formatlivingconper = df.format(livingconper);
+
+            String strnotlivingconper = formatnotlivingconper+"%";
+            String strlivingconper = formatlivingconper+"%";
 
             pcon.setLivingPopContPer(strlivingconper);
             pcon.setNotLivingPopContPer(strnotlivingconper);
