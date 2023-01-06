@@ -3279,21 +3279,17 @@ public class App
             System.out.println("Error !");
             return;
         }
-        NumberFormat numFormat = NumberFormat.getInstance(Locale.US);
         int idnum = 0;
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| No. | Language | Population | Percentage |\r\n");
-        sb.append("| --- | --- | --- | --- |\r\n");
+        sb.append("| No. | Language | Percentage |\r\n");
+        sb.append("| --- | --- | --- |\r\n");
         // Loop over language in the list
         for (CountryLanguage popoflan : populationOfLanguage) {
             idnum += 1;
             if (popoflan == null) continue;
-            int poplanguage = Math.round(Float.parseFloat(popoflan.getCountryPopulation()));
-
-            //int poplanguage = (int)Float.parseFloat(popoflan.getCountryPopulation());
-            sb.append("| " + idnum + "| " + popoflan.getCountryLanguage() + " | " +
-                    numFormat.format(poplanguage) + " | " + popoflan.getCountryLanguagePercent() + " | " + "|\r\n");
+            sb.append("| " + idnum + "| " + popoflan.getCountryLanguage() + " | "
+                    + " | " + popoflan.getCountryLanguagePercent() + " | " + "|\r\n");
         }
         try {
             new File("./reports/").mkdir();
