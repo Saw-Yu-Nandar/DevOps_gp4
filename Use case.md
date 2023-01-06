@@ -5,164 +5,380 @@
 
 ## CHARACTERISTIC INFORMATION
 
-## Report 1
+# Report 1 
 
-### Goal in Context
+Goal in Context: UML Report Part - Query by all countries of population in the world, continent and region organized by largest population to smallest. 
 
-UML Report Part - Query on Population by continent, region, country. 
+Scope: Organization 
 
-### Scope
+Level: Primary  
 
-Organization.
+Preconditions 
 
-### Level
+1) Database connects to world.sql that has world data. 
 
-Primary task.
+2) The user must be authorized person who includes in organization administrator 
 
-### Preconditions
+Success End Condition: Report on all countries of population in the world, continent and region organized by largest population to smallest. 
 
-1. Database connects to world.sql that has world data.
-2. The user must be authorized person who includes in organization administrator.
+Failed End Condition: Invalid data in database. 
 
-### Success End Condition
+Primary Actor: Organization administrator. 
 
-Report that is available for all the countries in the world organized by population or region or continent or country.
+Trigger: none 
 
-### Failed End Condition
+MAIN SUCCESS SCENARIO 
 
-Invalid data in database.
+1) Read population from country and city in continent and region from database. 
 
-### Primary Actor
+2) Data retrieved from country and city table. 
 
-Organization administrator.
+3) Data correctness.  
 
-### Trigger
+4) Produce a report with string format. 
 
-None.
+5) Final report is written in table format in markdown file.  
 
-## MAIN SUCCESS SCENARIO
+EXTENSIONS: none. 
 
-1. Database connection successful.
-2. Data retrieve.
-3. Produce Report. 
+SUB-VARIATIONS: none. 
 
-## EXTENSIONS
+SCHEDULE: End of Code Review - January 6, 2023. 
 
-None.
 
-## SUB-VARIATIONS
+# Report 2 
 
-None.
+Goal in Context: UML Report Part - Query by top "n" populated by countries in the world, continent and region where N is provided by the user.  
 
-## SCHEDULE
+Scope: Organization. 
 
-**DUE DATE**: January 6, 2023.
+Level: Primary.  
 
+Preconditions 
 
+1) Database connects to world.sql that has world data. 
 
-## Report 2
+2) The user must be authorized person who includes in organization administrator 
 
-### Goal in Context
+Success End Condition: Report by top "n" populated by countries in the world, continent and region where N is provided by the user. 
 
-UML Report Part - Query by Top "n" populated by country, city, capital. 
+Failed End Condition: Invalid data in database. 
 
-### Scope
+Primary Actor: Organization administrator. 
 
-Organization.
+Trigger: none 
 
-### Level
+MAIN SUCCESS SCENARIO 
 
-Primary task.
+1) Read population from country and city in continent and region from database. 
 
-### Preconditions
+2) Get user input for “n” number to limit the numbers of output lines.  
 
-1. Database connects to world.sql that has world data.
-2. The user must be authorized person who includes in organization administrator.
+3) Data retrieved from country and city table. 
 
-### Success End Condition
+4) Correct data and limited output lines.  
 
-Report the populated countries by world, continent, region, district provided by user. 
+5) Produce a report with string format. 
 
-### Failed End Condition
+6) Final report is written in table format in markdown file. 
 
-Invalid data in database.
+EXTENSIONS: none. 
 
-### Primary Actor
+SUB-VARIATIONS: none. 
 
-Organization administrator.
+SCHEDULE: End of Code Review - January 6, 2023 
 
-### Trigger
 
-None.
+# Report 3 
 
-## MAIN SUCCESS SCENARIO
+Goal in Context: UML Report Part - Query by all cities of population in the world, continent and region organized by largest population to smallest. 
 
-1. Database connection successful.
-2. Data retrieve.
-3. Produce Report. 
+Scope: Organization. 
 
-## EXTENSIONS
+Level: Primary.  
 
-None.
+Preconditions 
 
-## SUB-VARIATIONS
+1) Database connects to world.sql that has world data. 
 
-None.
+2) The user must be authorized person who includes in organization administrator 
 
-## SCHEDULE
+Success End Condition: Report by all cities of population in the world, continent and region organized by largest population to smallest. 
 
-**DUE DATE**: January 6, 2023.
+Failed End Condition: Invalid data in database. 
 
+Primary Actor: Organization administrator. 
 
-## Report 3
+Trigger: none 
 
-### Goal in Context
+MAIN SUCCESS SCENARIO 
 
-UML Report Part - Query by country city capital by descending order.
+1) Read population from country and city in continent and region from database. 
 
-### Scope
+2) Data retrieved from country and city table. 
 
-Organization.
+3) Data correctness.  
 
-### Level
+4) Produce a report with string format. 
 
-Primary task.
+5) Final report is written in table format in markdown file. 
 
-### Preconditions
+EXTENSIONS: none. 
 
-1. Database connects to world.sql that has world data.
-2. The user must be authorized person who includes in organization administrator.
+SUB-VARIATIONS: none. 
 
-### Success End Condition
+SCHEDULE: End of Code Review - January 6, 2023 
 
-Report by city in the world/ continent/ region/ country by population in descending order.
 
-### Failed End Condition
+# Report 4 
 
-Invalid data in database.
+Goal in Context: UML Report Part - Query by top "n" populated by cities in the world, continent, region, country and district where N is provided by the user. 
 
-### Primary Actor
+Scope: Organization. 
 
-Organization administrator.
+Level: Primary.  
 
-### Trigger
+Preconditions 
 
-None.
+1) Database connects to world.sql that has world data. 
 
-## MAIN SUCCESS SCENARIO
+2) The user must be authorized person who includes in organization administrator 
 
-1. Database connection successful.
-2. Data retrieve.
-3. Produce Report. 
+Success End Condition: Report by top "n" populated by cities in the world, continent, region, country and district where N is provided by the user.  
 
-## EXTENSIONS
+Failed End Condition: Invalid data in database. 
 
-None.
+Primary Actor: Organization administrator. 
 
-## SUB-VARIATIONS
+Trigger: none 
 
-None.
+MAIN SUCCESS SCENARIO 
 
-## SCHEDULE
+1) Read population from country and city in continent, region, country and district from database. 
 
-**DUE DATE**: January 6, 2023.
+2) Get user input for “n” number to limit the numbers of output lines. 
+
+3) Get user input for “name” of the relevant continent, region, country.  
+
+4) Data retrieved from country and city table. 
+
+5) Data correctness.  
+
+6) Produce a report with string format. 
+
+7) Final report is written in table format in markdown file. 
+
+EXTENSIONS: none. 
+
+SUB-VARIATIONS: none. 
+
+SCHEDULE: End of Code Review - January 6, 2023 
+
+
+# Report 5 
+
+Goal in Context: UML Report Part - Query by all capital cities of population in the world, continent and region organized by largest population to smallest. 
+
+Scope: Organization. 
+
+Level: Primary.  
+
+Preconditions 
+
+1) Database connects to world.sql that has world data. 
+
+2) The user must be authorized person who includes in organization administrator 
+
+Success End Condition: Report by all capital cities of population in the world, continent and region organized by largest population to smallest. 
+
+Failed End Condition: Invalid data in database. 
+
+Primary Actor: Organization administrator. 
+
+Trigger: none 
+
+MAIN SUCCESS SCENARIO 
+
+1) Read population from country and city in continent and region from database. 
+
+2) Data retrieved from country and city table. 
+
+3) Data correctness.  
+
+4) Produce a report with string format. 
+
+5) Final report is written in table format in markdown file. 
+
+EXTENSIONS: none. 
+
+SUB-VARIATIONS: none. 
+
+SCHEDULE: End of Code Review - January 6, 2023 
+
+
+# Report 6 
+
+Goal in Context: UML Report Part - Query by top N populated capital cities in the world, continent, region where N is provided by the user. 
+
+Scope: Organization. 
+
+Level: Primary.  
+
+Preconditions 
+
+1) Database connects to world.sql that has world data. 
+
+2) The user must be authorized person who includes in organization administrator 
+
+Success End Condition: Report by all the capital cities in the world, continent, region organized by largest population to smallest. 
+
+Failed End Condition: Invalid data in database. 
+
+Primary Actor: Organization administrator. 
+
+Trigger: none 
+
+MAIN SUCCESS SCENARIO 
+
+1) Read all capital cities in the continent, region from database. 
+
+2) Get user input for “n” number to limit the numbers of output lines. 
+
+3) Get user input for “name” of the relevant continent, region. 
+
+4) Data retrieved from country and city table. 
+
+5) Data correctness.  
+
+6) Produce a report with string format. 
+
+7) Final report is written in table format in markdown file. 
+
+EXTENSIONS: none. 
+
+SUB-VARIATIONS: none. 
+
+SCHEDULE: End of Code Review - January 6, 2023 
+
+
+# Report 7 
+
+Goal in Context: UML Report Part - Query by population which is people living and not living in cities in each continent, region and country. 
+
+Scope: Organization. 
+
+Level: Primary.  
+
+Preconditions 
+
+1) Database connects to world.sql that has world data. 
+
+2) The user must be authorized person who includes in organization administrator 
+
+Success End Condition: Report by population which is people living and not living in cities in each continent, region and country. 
+
+Failed End Condition: Invalid data in database. 
+
+Primary Actor: Organization administrator. 
+
+Trigger: none 
+
+MAIN SUCCESS SCENARIO 
+
+1) Read population from country and city in each continent, region and country from database. 
+
+2) Data retrieved from country table. 
+
+3) Data correctness.  
+
+4) Produce a report with string format. 
+
+5) Final report is written in table format in markdown file. 
+
+EXTENSIONS: none. 
+
+SUB-VARIATIONS: none. 
+
+SCHEDULE: End of Code Review - January 6, 2023 
+
+
+# Report 8 
+
+Goal in Context: UML Report Part - Query by population of the world, continent, region, country, district and city. 
+
+Scope: Organization. 
+
+Level: Primary.  
+
+Preconditions 
+
+1) Database connects to world.sql that has world data. 
+
+2) The user must be authorized person who includes in organization administrator 
+
+Success End Condition: Report by population of the world, continent, region, country, district and city. 
+
+Failed End Condition: Invalid data in database. 
+
+Primary Actor: Organization administrator. 
+
+Trigger: none 
+
+MAIN SUCCESS SCENARIO 
+
+1) Read population from country and city of the world, continent, region, country, district and city from database. 
+
+2) Data retrieved from country table. 
+
+3) Data correctness.  
+
+4) Produce a report with string format. 
+
+5) Final report is written in table format in markdown file. 
+
+EXTENSIONS: none. 
+
+SUB-VARIATIONS: none. 
+
+SCHEDULE: End of Code Review - January 6, 2023 
+
+
+# Report 9 
+
+Goal in Context: UML Report Part - Query by greatest to smallest number of people population who speak languages. 
+
+Scope: Organization. 
+
+Level: Primary.  
+
+Preconditions 
+
+1) Database connects to world.sql that has world data. 
+
+2) The user must be authorized person who includes in organization administrator 
+
+Success End Condition: Report by greatest to smallest number of people population who speak languages. 
+
+Failed End Condition: Invalid data in database. 
+
+Primary Actor: Organization administrator. 
+
+Trigger: none 
+
+MAIN SUCCESS SCENARIO 
+
+1) Read country language from database. 
+
+2) Data retrieved from country table. 
+
+3) Data correctness.  
+
+4) Produce a report with string format. 
+
+5) Final report is written in table format in markdown file. 
+
+EXTENSIONS: none. 
+
+SUB-VARIATIONS: none. 
+
+SCHEDULE: End of Code Review - January 6, 2023 
